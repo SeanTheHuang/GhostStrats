@@ -130,23 +130,20 @@ public class Pathfinding : MonoBehaviour {
             currentNode = currentNode.parent;
         }
 
-        Vector3[] wayPoints = SimplifyPath(path, _agentClearance, _endPos);
+        Vector3[] wayPoints = SimplifyPath(path, _agentClearance);
         Array.Reverse(wayPoints);
 
         return wayPoints;
     }
 
-    Vector3[] SimplifyPath(List<Node> path, int _agentClearance, Vector3 _endPos)
+    Vector3[] SimplifyPath(List<Node> path, int _agentClearance)
     {
         List<Vector3> wayPoints = new List<Vector3>();
-        wayPoints.Add(_endPos);
-
         Vector2 directionOld = Vector2.zero;
-        int clearanceOld = -1;
 
         //Offset due to clearance requirements of agent
         float offset = grid.m_nodeRadius * (float)(_agentClearance - 1);
-        for (int i = 1; i < path.Count; i++)
+        for (int i = 0; i < path.Count; i++)
         {
             //Vector2 directionNew = new Vector2(path[i].gridX - path[i - 1].gridX, path[i].gridY - path[i - 1].gridY);
 
@@ -161,7 +158,7 @@ public class Pathfinding : MonoBehaviour {
             //    clearanceOld = path[i - 1].clearance;
             //}
 
-            Vector3 newPoint = path[i - 1].clearance > 1 ? path[i - 1].WorldPosition + new Vector3(offset, 0, offset) : path[i - 1].WorldPosition;
+            Vector3 newPoint = path[i].clearance > 1 ? path[i].WorldPosition + new Vector3(offset, 0, offset) : path[i].WorldPosition;
             wayPoints.Add(newPoint);
         }
 

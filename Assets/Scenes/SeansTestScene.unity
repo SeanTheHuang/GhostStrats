@@ -505,6 +505,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ae9376c1ab4b84e8de06a3833774d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_selectionMask:
+    serializedVersion: 2
+    m_Bits: 2049
 --- !u!1 &1605835428
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +604,7 @@ GameObject:
   - component: {fileID: 1679437529}
   m_Layer: 0
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Entity/Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -633,3 +636,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 10
   m_maxMoves: 5
+  m_moveSpeed: 5

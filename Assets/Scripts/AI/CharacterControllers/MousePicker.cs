@@ -9,7 +9,7 @@ public class MousePicker : MonoBehaviour {
     private Action<Vector3> m_callBack;
 
     private static MousePicker m_instance;
-    private LayerMask m_groundMask;
+    public LayerMask m_selectionMask;
 
     public static MousePicker Instance()
     {
@@ -19,7 +19,6 @@ public class MousePicker : MonoBehaviour {
     {
         m_instance = this;
         m_isActive = false;
-        m_groundMask = LayerMask.NameToLayer("Default");
     }
 
     private void Update()
@@ -32,12 +31,27 @@ public class MousePicker : MonoBehaviour {
 
     void MouseLogic()
     {
-        // If click on pl
+        // If click on ghost, ghost is now currently selected
+        // If click on ground, currently selected ghost will try move towards it
 
         // Default: Left mouse button right now
         if (Input.GetButtonDown("Fire1"))
         {
-            // Find out where player pressed, 
+            // The ray can only hit players or the ground
+            RaycastHit rayHit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out rayHit, 50, m_selectionMask)){
+                if (rayHit.transform.CompareTag("Entity/Ghost")) {
+                    // Select that ghost
+                    // TODO:
+                }
+                else {
+                    // Player wants to move towards this position
+                    m_callBack(rayHit.point);
+                }
+            }
+            // else, ray did not hit anything important
         }
     }
 

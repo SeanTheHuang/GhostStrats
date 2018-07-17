@@ -18,11 +18,11 @@ public abstract class EntityBase : MonoBehaviour {
     [Header("Base Stats")]
     [Range(1, 20)] public int m_maxHealth = 10;
     [Range(1, 10)] public int m_maxMoves = 5;
+    [Range(1, 30)] public float m_moveSpeed = 5;
 
     public abstract void OnDeath();
     public abstract void OnSpawn();
     public abstract void OnEntityHit();
     public abstract void Move();
     public abstract void ChooseAction();
-
 }
