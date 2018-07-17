@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerKeyboardInput : MonoBehaviour {
 
+    static PlayerKeyboardInput instance;
+
     // Abilities can only be used if the character is selected
     public GameObject m_selectedGhost;
     GhostAbilityBehaviour m_GhostAbilityScript;
@@ -25,6 +27,16 @@ public class PlayerKeyboardInput : MonoBehaviour {
     public GameObject m_ghost1;
     public GameObject m_ghost2;
     public GameObject m_ghost3;
+
+    public static PlayerKeyboardInput Instance()
+    {
+        return instance;
+    }
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {

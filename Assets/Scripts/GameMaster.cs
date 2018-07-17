@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour {
 
-    public GameObject m_KeyBoardInput;
+    PlayerKeyboardInput m_KeyBoardInput;
 
     static GameMaster instance;
 
@@ -16,6 +16,11 @@ public class GameMaster : MonoBehaviour {
     private void Awake()
     {
         instance = this;
+    }
+
+    void Start()
+    {
+        m_KeyBoardInput = PlayerKeyboardInput.Instance();
     }
 
     // Tells all the relevant systems that a new ghost has been selected
