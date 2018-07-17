@@ -8,7 +8,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
     public GameObject m_selectedGhost;
     GhostAbilityBehaviour m_GhostAbilityScript;
 
-    public GameObject m_gameMaster;
+    GameMaster m_gameMaster;
 
     // The keycodes that let the player use a ghosts abilities
     public KeyCode m_attack;
@@ -29,17 +29,18 @@ public class PlayerKeyboardInput : MonoBehaviour {
     void Start()
     {
         UpdateSelectedGhost(m_selectedGhost);
+        m_gameMaster = GameMaster.Instance();
     }
 
     void Update()
     {
         // Keyboard input to select ghosts
         if (Input.GetKeyDown(m_ghostKey1))
-            m_gameMaster.GetComponent<GameMaster>().UpdateSelectedGhost(m_ghost1);
+            m_gameMaster.UpdateSelectedGhost(m_ghost1);
         if (Input.GetKeyDown(m_ghostKey2))
-            m_gameMaster.GetComponent<GameMaster>().UpdateSelectedGhost(m_ghost2);
+            m_gameMaster.UpdateSelectedGhost(m_ghost2);
         if (Input.GetKeyDown(m_ghostKey3))
-            m_gameMaster.GetComponent<GameMaster>().UpdateSelectedGhost(m_ghost3);
+            m_gameMaster.UpdateSelectedGhost(m_ghost3);
 
         // Keyboard input to use ghost abilities
         if (m_selectedGhost && !m_GhostAbilityScript.m_abilityUsed) // Check to see if a ghost is selected and they haven't already used an ability
