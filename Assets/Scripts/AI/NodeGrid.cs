@@ -293,15 +293,26 @@ public class NodeGrid : MonoBehaviour {
 
     public Node NodeFromWorldPoint(Vector3 worldPos)
     {
-        float percentX = (worldPos.x + m_gridWorldSize.x / 2) / m_gridWorldSize.x;
-        float percentY = (worldPos.z + m_gridWorldSize.y / 2) / m_gridWorldSize.y;
+        Vector2 gridPosition = WorldPosToGrid(worldPos);
+
+        if (gridPosition.x < 0 || (gridPosition.x > m_gridSizeX - 1)
+            || gridPosition.y < 0 || (gridPosition.y > m_gridSizeY - 1))
+            return null;
+
+        return (m_mainGrid[(int)gridPosition.x, (int)gridPosition.y]);
+    }
+
+    public Vector2 WorldPosToGrid(Vector3 _worldPos)
+    {
+        float percentX = (_worldPos.x + m_gridWorldSize.x / 2) / m_gridWorldSize.x;
+        float percentY = (_worldPos.z + m_gridWorldSize.y / 2) / m_gridWorldSize.y;
         percentX = Mathf.Clamp01(percentX);
         percentY = Mathf.Clamp01(percentY);
 
         int x = Mathf.RoundToInt((m_gridSizeX - 1) * percentX);
         int y = Mathf.RoundToInt((m_gridSizeY - 1) * percentY);
 
-        return (m_mainGrid[x, y]);
+        return new Vector2(x, y);
     }
 
     public List<Node> GetNeighbours(Node node)

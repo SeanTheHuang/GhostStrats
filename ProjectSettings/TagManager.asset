@@ -16,8 +16,8 @@ TagManager:
   - PostProcessing
   - Wall
   - Unwalkable
-  - 
-  - 
+  - Entity/Ghost
+  - Entity/Punk
   - 
   - 
   - 

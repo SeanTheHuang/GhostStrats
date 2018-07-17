@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 1086865988}
   - component: {fileID: 1086865987}
   - component: {fileID: 1086865986}
+  - component: {fileID: 1086865990}
   m_Layer: 0
   m_Name: PathFinder
   m_TagString: Untagged
@@ -493,6 +494,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1086865990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1086865985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ae9376c1ab4b84e8de06a3833774d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1605835428
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +598,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1679437528}
+  - component: {fileID: 1679437529}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -607,3 +620,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1679437529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1679437527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d351a7bedfb07184e82b091b07445c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 10
+  m_maxMoves: 5

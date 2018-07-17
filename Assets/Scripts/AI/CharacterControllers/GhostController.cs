@@ -2,19 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GhostState
-{
-    IDLE,
-    OVERSPOOK,
-    MOVING,
-    STUNNED,
-    DEAD,
-    TRANSFORMED
-}
-
+[SelectionBase]
 public class GhostController : EntityBase {
 
-    private GhostState m_ghostState, m_oldGhostState;
+    private CharacterStates m_ghostState, m_oldGhostState;
+
+    private int m_numMovesLeft;
 
     private void Awake()
     {
@@ -22,7 +15,7 @@ public class GhostController : EntityBase {
     }
     private void Initilaize()
     {
-        m_ghostState = GhostState.IDLE;
+        m_ghostState = m_oldGhostState = CharacterStates.IDLE;
     }
 
     public override void OnDeath()
@@ -36,6 +29,9 @@ public class GhostController : EntityBase {
     }
     public override void Move()
     {
+        // This Ghost's turn to move!, get where the player wants to move
+        m_ghostState = CharacterStates.CHOOSING_WHERE_TO_MOVE;
+        m_numMovesLeft = m_maxMoves;
     }
     public override void ChooseAction()
     {
