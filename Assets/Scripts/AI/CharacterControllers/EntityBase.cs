@@ -2,7 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CharacterStates
+{
+    IDLE,
+    OVERSPOOK,
+    CHOOSING_WHERE_TO_MOVE,
+    MOVING,
+    STUNNED,
+    DEAD,
+    TRANSFORMED
+}
+
 public abstract class EntityBase : MonoBehaviour {
+
+    [Header("Base Stats")]
+    [Range(1, 20)] public int m_maxHealth = 10;
+    [Range(1, 10)] public int m_maxMoves = 5;
 
     public abstract void OnDeath();
     public abstract void OnSpawn();

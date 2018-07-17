@@ -10,6 +10,7 @@ public class PathRequestManager : MonoBehaviour {
 
     static PathRequestManager instance;
     Pathfinding pathfinding;
+    NodeGrid m_nodeGrid;
 
     bool isProcessingPath;
 
@@ -22,6 +23,7 @@ public class PathRequestManager : MonoBehaviour {
     {
         instance = this;
         pathfinding = GetComponent<Pathfinding>();
+        m_nodeGrid = GetComponent<NodeGrid>();
     }
 
     struct PathRequest
@@ -62,5 +64,40 @@ public class PathRequestManager : MonoBehaviour {
         currentPathRequest.callBack(path, success);
         isProcessingPath = false;
         TryProcessNext();
+    }
+
+    // Returns the width/height of 1 tile
+    public float GridSize()
+    {
+        return m_nodeGrid.m_nodeRadius;
+    }
+
+    public bool SetNodeState(NodeState _newState, Transform _entityOnTile)
+    {
+        Node currentNode = m_nodeGrid.NodeFromWorldPoint(_entityOnTile.position);
+
+        if (currentNode == null)
+            return false;
+
+        currentNode.m_nodeState = _newState;
+        currentNode.m_entityOnTile = _entityOnTile;
+        return true;
+    }
+
+    public List<T> GetObjectsFromListOfPositions<T>(List<Vector3> _worldPositionList, NodeState _type)
+    {
+        List<T> m_outputList = new List<T>();
+
+        foreach (Vector2 v3 in _worldPositionList) {
+            Node nodeToCheck = m_nodeGrid.NodeFromWorldPoint(v3);
+
+            if (nodeToCheck != null) {
+                if (nodeToCheck.m_nodeState == _type) {
+                    // NOTE: Assuming entity has a controller we are looking for
+                    m_outputList.Add(nodeToCheck.m_entityOnTile.GetComponent<T>());
+                }
+            }
+        }
+        return m_outputList;
     }
 }

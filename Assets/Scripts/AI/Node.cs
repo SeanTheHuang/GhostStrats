@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+public enum NodeState
+{
+    EMPTY,
+    GHOST,
+    PUNK,
+    GHOST_TRAP,
+    PUNK_TRAP,
+    OBSTACLE
+}
+
 public class Node : IHeapItem<Node>
 {
     public int gCost;
@@ -15,7 +25,9 @@ public class Node : IHeapItem<Node>
 
     public Node parent;
 
-    
+    public NodeState m_nodeState;
+    public Transform m_entityOnTile;
+
     public bool Walkable;
     public Vector3 WorldPosition;
     int heapIndex;
@@ -26,6 +38,8 @@ public class Node : IHeapItem<Node>
         WorldPosition = _worldPos;
         gridX = _gridX;
         gridY = _gridY;
+        m_nodeState = NodeState.EMPTY;
+        m_entityOnTile = null;
     }
 
     public int fCost
