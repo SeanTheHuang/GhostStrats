@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ghost_Ability_Behaviour : MonoBehaviour
+public class GhostAbilityBehaviour : MonoBehaviour
 {
     // Abilities can only be used if the character has not used this one this turn
     public bool m_abilityUsed;

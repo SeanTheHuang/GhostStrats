@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Keyboard_Input : MonoBehaviour {
+public class PlayerKeyboardInput : MonoBehaviour {
 
     // Abilities can only be used if the character is selected
     public GameObject m_selectedGhost;
-    Ghost_Ability_Behaviour m_GhostAbilityScript;
+    GhostAbilityBehaviour m_GhostAbilityScript;
 
     public GameObject m_gameMaster;
 
@@ -35,11 +35,11 @@ public class Player_Keyboard_Input : MonoBehaviour {
     {
         // Keyboard input to select ghosts
         if (Input.GetKeyDown(m_ghostKey1))
-            m_gameMaster.GetComponent<Game_Master>().UpdateSelectedGhost(m_ghost1);
+            m_gameMaster.GetComponent<GameMaster>().UpdateSelectedGhost(m_ghost1);
         if (Input.GetKeyDown(m_ghostKey2))
-            m_gameMaster.GetComponent<Game_Master>().UpdateSelectedGhost(m_ghost2);
+            m_gameMaster.GetComponent<GameMaster>().UpdateSelectedGhost(m_ghost2);
         if (Input.GetKeyDown(m_ghostKey3))
-            m_gameMaster.GetComponent<Game_Master>().UpdateSelectedGhost(m_ghost3);
+            m_gameMaster.GetComponent<GameMaster>().UpdateSelectedGhost(m_ghost3);
 
         // Keyboard input to use ghost abilities
         if (m_selectedGhost && !m_GhostAbilityScript.m_abilityUsed) // Check to see if a ghost is selected and they haven't already used an ability
@@ -70,6 +70,6 @@ public class Player_Keyboard_Input : MonoBehaviour {
     public void UpdateSelectedGhost(GameObject newGhost)
     {
         m_selectedGhost = newGhost;
-        m_GhostAbilityScript = newGhost.GetComponent<Ghost_Ability_Behaviour>();
+        m_GhostAbilityScript = newGhost.GetComponent<GhostAbilityBehaviour>();
     }
 }
