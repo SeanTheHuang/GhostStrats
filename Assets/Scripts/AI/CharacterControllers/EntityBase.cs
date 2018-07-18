@@ -23,6 +23,6 @@ public abstract class EntityBase : MonoBehaviour {
     public abstract void OnDeath();
     public abstract void OnSpawn();
     public abstract void OnEntityHit();
-    public abstract void Move();
+    public abstract void SelectingWhereToMove();
     public abstract void ChooseAction();
 }

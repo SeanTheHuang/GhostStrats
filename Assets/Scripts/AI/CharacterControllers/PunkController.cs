@@ -13,7 +13,7 @@ public class PunkController : EntityBase {
     public override void OnEntityHit()
     {
     }
-    public override void Move()
+    public override void SelectingWhereToMove()
     {
     }
     public override void ChooseAction()

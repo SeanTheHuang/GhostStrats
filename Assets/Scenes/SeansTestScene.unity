@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 1086865986}
   - component: {fileID: 1086865990}
   - component: {fileID: 1086865991}
+  - component: {fileID: 1086865992}
   m_Layer: 0
   m_Name: __TestGameMaster__
   m_TagString: Untagged
@@ -465,6 +466,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0e45b11d3d28b4d81104f190c8d3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1086865992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1086865985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac01ab5ce762ef4fb1266996d7ab666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_selectedGhost: {fileID: 0}
+  m_attack: 113
+  m_hide: 119
+  m_overwatch: 101
+  m_special: 114
+  m_ghostKey1: 49
+  m_ghostKey2: 50
+  m_ghostKey3: 51
+  m_ghost1: {fileID: 0}
+  m_ghost2: {fileID: 0}
+  m_ghost3: {fileID: 0}
 --- !u!1 &1605835428
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerKeyboardInput : MonoBehaviour {
 
     static PlayerKeyboardInput instance;
+    const int s_numGhosts = 3;
 
     // Abilities can only be used if the character is selected
     public GameObject m_selectedGhost;
@@ -24,9 +25,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
     public KeyCode m_ghostKey3;
 
     // The ghosts associated to the keyboard buttons 1,2,3
-    public GameObject m_ghost1;
-    public GameObject m_ghost2;
-    public GameObject m_ghost3;
+    private List<GameObject> m_ghostList;
 
     public static PlayerKeyboardInput Instance()
     {
@@ -36,6 +35,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
     private void Awake()
     {
         instance = this;
+        m_ghostList = new List<GameObject>();
     }
 
     void Start()
@@ -43,16 +43,21 @@ public class PlayerKeyboardInput : MonoBehaviour {
         UpdateSelectedGhost(m_selectedGhost);
         m_gameMaster = GameMaster.Instance();
     }
-
+    
     void Update()
     {
-        // Keyboard input to select ghosts
-        if (Input.GetKeyDown(m_ghostKey1))
-            m_gameMaster.UpdateSelectedGhost(m_ghost1);
-        if (Input.GetKeyDown(m_ghostKey2))
-            m_gameMaster.UpdateSelectedGhost(m_ghost2);
-        if (Input.GetKeyDown(m_ghostKey3))
-            m_gameMaster.UpdateSelectedGhost(m_ghost3);
+        if (!m_selectedGhost) // Don't update if no ghost is selected
+            return;
+
+        // Keyboard input to select ghosts, only select ghost if they exist
+        if (Input.GetKeyDown(m_ghostKey1) && m_ghostList.Count > 0)
+            m_gameMaster.UpdateSelectedGhost(m_ghostList[0]);
+
+        else if (Input.GetKeyDown(m_ghostKey2) && m_ghostList.Count > 1)
+            m_gameMaster.UpdateSelectedGhost(m_ghostList[1]);
+
+        else if (Input.GetKeyDown(m_ghostKey3) && m_ghostList.Count > 2)
+            m_gameMaster.UpdateSelectedGhost(m_ghostList[2]);
 
         // Keyboard input to use ghost abilities
         if (m_selectedGhost && !m_GhostAbilityScript.m_abilityUsed) // Check to see if a ghost is selected and they haven't already used an ability
@@ -77,6 +82,20 @@ public class PlayerKeyboardInput : MonoBehaviour {
             {
                 m_GhostAbilityScript.Special();
             }
+        }
+    }
+
+    public void SetGhostList(List<GameObject> m_ghostList)
+    {
+        // Start with clear list
+        m_ghostList.Clear();
+
+        for (int i = 0; i < m_ghostList.Count; i++)
+        {
+            if (i >= s_numGhosts) // Only store up to max amount of supported ghosts
+                break;
+
+            m_ghostList.Add(m_ghostList[i]);
         }
     }
 
