@@ -7,49 +7,70 @@ public class CameraControl : MonoBehaviour
 
     // Use this for initialization
     public Transform m_target;
+    private Vector3 m_targetLastPos;
     public float m_moveSpeed = 2;
 
     float m_radius = 5;
-    float m_angle;
+    float m_angle = 0;
     float mouseDistance = 50;
 
     void Start()
     {
-
+        Focus();
     }
-
+       
     // Update is called once per frame
     void Update()
     {
         MouseScreenPos();
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space))
         {
             Debug.Log("hit");
             Rotate();
+        }
+
+        if(m_target.position != m_targetLastPos)
+        {
+            Focus();
+            m_targetLastPos = m_target.position;
         }
     }
 
     void Rotate()
     {
-        m_angle -= 45;
+        m_angle -= 20 * Time.deltaTime;
+        if (m_angle > 360)
+        {
+            m_angle -= 360;
+        }
+        else if (m_angle < 0)
+        {
+            m_angle += 360;
+        }
+        Focus();
+    }
+
+    void Focus()
+    {
         float x = m_radius * Mathf.Cos(m_angle * Mathf.Deg2Rad);
         float yz = m_radius * Mathf.Sin(m_angle * Mathf.Deg2Rad);
 
-        //transform.eulerAngles += Vector3.up * -45;
-        Vector3 oldpos = transform.position;
-        transform.position =  new Vector3(x, transform.position.y, yz);
+        x += m_target.position.x;
+        yz += m_target.position.z;
+        Debug.Log("x: " + x);
+        Debug.Log("yz :" + yz);
+        
+       /* Vector3 center = transform.position + (transform.forward * m_radius);
+        x += center.x;
+        yz += center.z;*/
+
+        transform.position = new Vector3(x, transform.position.y, yz);
 
 
+       // transform.LookAt(center);
         transform.LookAt(m_target);
+
         transform.eulerAngles = new Vector3(45, transform.eulerAngles.y, transform.eulerAngles.z);
-        if (m_target)
-        {
-
-        }
-        else
-        {
-
-        }
     }
 
     void MouseScreenPos()

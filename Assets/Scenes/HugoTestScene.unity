@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_target: {fileID: 732568523}
-  m_moveSpeed: 2
+  m_moveSpeed: 5
 --- !u!1 &1284143136
 GameObject:
   m_ObjectHideFlags: 0
