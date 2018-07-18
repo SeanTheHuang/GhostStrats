@@ -10,7 +10,7 @@ using UnityEngine;
 public class GhostController : EntityBase {
 
     // States and objects
-    Vector3 m_previousTile;
+    Node m_previousNode;
     CharacterStates m_ghostState, m_oldGhostState;
     GhostAbilityBehaviour m_abilities;
 
@@ -19,16 +19,17 @@ public class GhostController : EntityBase {
     int m_numMovesLeft;
 
     // Path finding
+    Vector3 m_spawnLocation;
     Vector3 m_currentStopPoint;
     List<Vector3> m_pathToFollow;
     bool m_pathFound;
     bool m_performing;
 
     // TEST: stuff to visialize path
-    public Transform m_wayPointPrefab;
-    public Transform m_destinationPrefab;
-    public List<Transform> m_wayPointNodeList;
-    public List<Transform> m_destinationNodeList;
+    public Transform m_confirmedPathPrefab;
+    public Transform m_choosingPathPrefab;
+    public List<Transform> m_confirmedPathBallsList;
+    public List<Transform> m_choosingPathBallsList;
 
     private void Awake()
     {
@@ -37,19 +38,15 @@ public class GhostController : EntityBase {
     private void Initilaize()
     {
         // TEST: intialize waypoint lists
-        m_wayPointNodeList = new List<Transform>();
-        m_destinationNodeList = new List<Transform>();
+        m_confirmedPathBallsList = new List<Transform>();
+        m_choosingPathBallsList = new List<Transform>();
 
         m_ghostState = m_oldGhostState = CharacterStates.IDLE;
         m_abilities = GetComponent<GhostAbilityBehaviour>();
         m_pathToFollow = new List<Vector3>();
         m_performing = false;
-    }
-
-    private void Start()
-    {
-        // Set player position on grid
-        // Set health to max
+        m_previousNode = null;
+        m_spawnLocation = transform.position;
         m_currentHealth = m_maxHealth;
     }
 
@@ -63,11 +60,62 @@ public class GhostController : EntityBase {
     {
     }
 
-    void OnTargetLocation(Vector3 _position)
+    public void ResetChoosingPathNodes()
+    {
+        foreach (Transform t in m_choosingPathBallsList)
+            Destroy(t.gameObject);
+
+        m_choosingPathBallsList.Clear();
+    }
+
+    public void OnConfirmTargetPosition()
+    {
+        m_numMovesLeft -= m_choosingPathBallsList.Count; // Lower total amount of moves for future
+
+        foreach (Transform t in m_choosingPathBallsList)
+        {
+            // Add point for each choosing ball
+            m_pathToFollow.Add(t.position);
+            m_currentStopPoint = t.position;
+
+            // Temp, spawn some nice balls at confirmed location
+            m_confirmedPathBallsList.Add(Instantiate(m_confirmedPathPrefab, t.position, Quaternion.identity));
+
+            // Delete temp path
+            Destroy(t.gameObject);
+        }
+        m_choosingPathBallsList.Clear();
+
+        // Force a new path to be found
+        m_previousNode = null;
+    }
+
+    public void OnTargetLocation(Vector3 _position)
     {
         if (m_numMovesLeft < 1) // Do not look for new path if already selected path to take
             return;
 
+        Node newNode = PathRequestManager.Instance().NodeFromWorldPoint(_position);
+        if (newNode == m_previousNode) // No need to update path
+            return;
+
+        m_previousNode = newNode;
+
+        // Check if possible to move to target position
+        if (!PathRequestManager.Instance().PointIsInGrid(_position))
+            return;
+
+        List<Vector3> pointList = new List<Vector3>();
+        pointList.Add(_position);
+
+        // Check for any ghosts or punks at point
+        if (GameMaster.Instance().GetGhostsAtLocations(pointList, true).Count > 0)
+            return;
+
+        if (GameMaster.Instance().GetPunksAtLocations(pointList).Count > 0)
+            return;
+
+        // Safe to ask path request manager!
         PathRequestManager.RequestPath(m_currentStopPoint, _position, 1, OnPathFound);
     }
 
@@ -77,37 +125,39 @@ public class GhostController : EntityBase {
             return;
 
         m_pathFound = _ifPathFound;
+        int possibleMoveCount = m_numMovesLeft;
 
         if (_ifPathFound) {
-            Debug.Log("Path found for : " + transform.name);
             // Only take max amount of moves possible
+            // Make sure list is clear
+            foreach (Transform t in m_choosingPathBallsList)
+                Destroy(t.gameObject);
+            m_choosingPathBallsList.Clear();
             foreach (Vector3 pathNode in _path) {
-                m_pathToFollow.Add(pathNode);
-                m_numMovesLeft -= 1;
-                m_currentStopPoint = pathNode;
-
-                // TEST: create path node on points where we wanna go
-                if (m_destinationPrefab)
-                {
-                    // Only do this if destination prefabs exist ~
-                    if (m_numMovesLeft < 1 || pathNode == _path[_path.Length - 1]) 
-                        m_destinationNodeList.Add(Instantiate(m_destinationPrefab, pathNode, Quaternion.identity));
-                    else
-                        m_wayPointNodeList.Add(Instantiate(m_wayPointPrefab, pathNode, Quaternion.identity));
-                }
+                m_choosingPathBallsList.Add(Instantiate(m_choosingPathPrefab, pathNode, Quaternion.identity));
+                possibleMoveCount -= 1;
 
                 // Can't move more than this amount
-                if (m_numMovesLeft < 1)
+                if (possibleMoveCount < 1)
                     break;
             }
         }
     }
 
-    public override void SelectingWhereToMove()
+    public override void OnSelected()
     {
         // This Ghost's turn to move!, get where the player wants to move
         m_ghostState = CharacterStates.CHOOSING_WHERE_TO_MOVE;
-        MousePicker.Instance().StartPicking(transform.position, OnTargetLocation, ResetChosenActions);
+        MousePicker.Instance().StartPicking(transform.position, this);
+    }
+
+    public void OnDeselected()
+    {
+        // Get rid of potential path
+        foreach (Transform t in m_choosingPathBallsList)
+            Destroy(t.gameObject);
+
+        m_choosingPathBallsList.Clear();
     }
 
     public void OnStartOfTurn()
@@ -119,21 +169,27 @@ public class GhostController : EntityBase {
         ResetPath();
     }
 
-    void ResetPath()
+    public void ResetPath()
     {
         m_pathToFollow.Clear();
+        m_previousNode = null;
         m_currentStopPoint = transform.position;
         m_numMovesLeft = m_maxMoves;
 
         // TEST: destroy all previous path nodes left
         
-        foreach (Transform t in m_destinationNodeList)
+        foreach (Transform t in m_choosingPathBallsList)
             Destroy(t.gameObject);
-        m_destinationNodeList.Clear();
+        m_choosingPathBallsList.Clear();
 
-        foreach (Transform t in m_wayPointNodeList)
+        foreach (Transform t in m_confirmedPathBallsList)
             Destroy(t.gameObject);
-        m_wayPointNodeList.Clear();
+        m_confirmedPathBallsList.Clear();
+    }
+
+    public Vector3 TargetPoint()
+    {
+        return m_currentStopPoint;
     }
 
     public void ResetChosenActions()

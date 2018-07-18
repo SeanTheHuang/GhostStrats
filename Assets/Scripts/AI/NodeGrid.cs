@@ -80,9 +80,7 @@ public class NodeGrid : MonoBehaviour {
             }
 
         }
-        sw.Stop();
-        Debug.Log("Time taken to check walkable: " + sw.ElapsedMilliseconds + "ms.");
-        
+        sw.Stop();   
     }
 
     void SetClearanceAll()
@@ -97,7 +95,6 @@ public class NodeGrid : MonoBehaviour {
             }
         }
         sw.Stop();
-        Debug.Log("Time taken to set clearance: " + sw.ElapsedMilliseconds + "ms.");
     }
 
     void SetClearance(Node _node)

@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// This class is also responsible for dealing with
+// all requests involving the grid
+
 public class PathRequestManager : MonoBehaviour {
 
     Queue<PathRequest> pathRequestQueue = new Queue<PathRequest>();
@@ -72,6 +75,11 @@ public class PathRequestManager : MonoBehaviour {
         return m_nodeGrid.m_nodeRadius;
     }
 
+    public Node NodeFromWorldPoint(Vector3 _position)
+    {
+        return m_nodeGrid.NodeFromWorldPoint(_position);
+    }
+
     public bool SetNodeState(NodeState _newState, Transform _entityOnTile)
     {
         Node currentNode = m_nodeGrid.NodeFromWorldPoint(_entityOnTile.position);
@@ -94,20 +102,37 @@ public class PathRequestManager : MonoBehaviour {
         return m_nodeGrid.NodeFromWorldPoint(_worldPosition).m_nodeState;
     }
 
-    public List<T> GetObjectsFromListOfPositions<T>(List<Vector3> _worldPositionList, NodeState _type)
+    public Vector3 GridPointFromWorldPos(Vector3 _position)
     {
-        List<T> m_outputList = new List<T>();
-
-        foreach (Vector2 v3 in _worldPositionList) {
-            Node nodeToCheck = m_nodeGrid.NodeFromWorldPoint(v3);
-
-            if (nodeToCheck != null) {
-                if (nodeToCheck.m_nodeState == _type) {
-                    // NOTE: Assuming entity has a controller we are looking for
-                    m_outputList.Add(nodeToCheck.m_entityOnTile.GetComponent<T>());
-                }
-            }
-        }
-        return m_outputList;
+        Vector2 point2D = m_nodeGrid.WorldPosToGrid(_position);
+        return new Vector3(point2D.x, _position.y, point2D.y);
     }
+
+    public bool SetNodeState(NodeState _newState, Vector3 _worldPosition, Transform _entityOnTile)
+    {
+        Node node = m_nodeGrid.NodeFromWorldPoint(_worldPosition);
+
+        if (node == null) // Node does not exist, nothing to set
+            return false;
+
+        node.m_nodeState = _newState;
+        return true;
+    }
+
+    //public List<T> GetObjectsFromListOfPositions<T>(List<Vector3> _worldPositionList, NodeState _type)
+    //{
+    //    List<T> m_outputList = new List<T>();
+
+    //    foreach (Vector2 v3 in _worldPositionList) {
+    //        Node nodeToCheck = m_nodeGrid.NodeFromWorldPoint(v3);
+
+    //        if (nodeToCheck != null) {
+    //            if (nodeToCheck.m_nodeState == _type) {
+    //                // NOTE: Assuming entity has a controller we are looking for
+    //                m_outputList.Add(nodeToCheck.m_entityOnTile.GetComponent<T>());
+    //            }
+    //        }
+    //    }
+    //    return m_outputList;
+    //}
 }

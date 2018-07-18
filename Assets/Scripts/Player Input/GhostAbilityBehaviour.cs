@@ -71,7 +71,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         }
 
         // Check the grid squares to see if there are punks in them
-        List<GameObject> m_punks = m_pathRequestManager.GetObjectsFromListOfPositions<GameObject>(attackpositions, NodeState.PUNK);
+        //List<GameObject> m_punks = m_pathRequestManager.GetObjectsFromListOfPositions<GameObject>(attackpositions, NodeState.PUNK);
 
         // TODO ADD DAMAGING THE LIST OF PUNKS
 
