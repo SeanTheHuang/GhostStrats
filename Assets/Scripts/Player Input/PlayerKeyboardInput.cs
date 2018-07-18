@@ -59,7 +59,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
             m_gameMaster.UpdateSelectedGhost(m_ghostList[2]);
 
         // Keyboard input to use ghost abilities
-        if (m_selectedGhost && !m_GhostAbilityScript.m_abilityUsed) // Check to see if a ghost is selected and they haven't already used an ability
+        if (!m_GhostAbilityScript.m_abilityUsed) // Check to see if the selected ghost has not already used an ability
         {
             // Attack ability used if key pressed and cooldown at 0
             if (Input.GetKeyDown(m_attack) && m_GhostAbilityScript.m_attackCooldownTimer == 0)
