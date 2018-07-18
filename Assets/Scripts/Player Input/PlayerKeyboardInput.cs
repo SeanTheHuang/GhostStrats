@@ -40,7 +40,6 @@ public class PlayerKeyboardInput : MonoBehaviour {
 
     void Start()
     {
-        UpdateSelectedGhost(m_selectedGhost);
         m_gameMaster = GameMaster.Instance();
     }
     
@@ -85,17 +84,17 @@ public class PlayerKeyboardInput : MonoBehaviour {
         }
     }
 
-    public void SetGhostList(List<GameObject> m_ghostList)
+    public void SetGhostList(List<GameObject> ghostList)
     {
         // Start with clear list
         m_ghostList.Clear();
 
-        for (int i = 0; i < m_ghostList.Count; i++)
+        for (int i = 0; i < ghostList.Count; i++)
         {
             if (i >= s_numGhosts) // Only store up to max amount of supported ghosts
                 break;
 
-            m_ghostList.Add(m_ghostList[i]);
+            m_ghostList.Add(ghostList[i]);
         }
     }
 
