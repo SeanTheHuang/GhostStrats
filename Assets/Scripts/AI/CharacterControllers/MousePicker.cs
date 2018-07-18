@@ -6,8 +6,7 @@ using UnityEngine;
 public class MousePicker : MonoBehaviour {
 
     private bool m_isActive;
-    private Action<Vector3> m_setTargetCallback;
-    private Action m_resetCallback;
+    private GhostController m_currentGhost;
 
     private static MousePicker m_instance;
     public LayerMask m_selectionMask;
@@ -27,10 +26,38 @@ public class MousePicker : MonoBehaviour {
         if (!m_isActive)
             return;
 
-        MouseLogic();
+        HoverLogic();
+        MouseClickLogic();
     }
 
-    void MouseLogic()
+    void HoverLogic()
+    {
+        // Shown path will automatically update as player hover over terrain
+        // It will not work if they are hovering over different units
+
+        if (!m_isActive) // Don't do shit if no active
+            return;
+
+        // The ray can only hit players or the ground
+        RaycastHit rayHit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out rayHit, 50, m_selectionMask))
+        {
+            if (rayHit.transform.CompareTag("Entity/Ghost") || rayHit.transform.CompareTag("Entity/Punk"))
+            {
+                m_currentGhost.ResetChoosingPathNodes(); // Delete current potential path
+            }
+            else
+            {
+                // Player wants to move towards this position
+                m_currentGhost.OnTargetLocation(rayHit.point);
+            }
+        }
+        // else, ray did not hit anything important
+    }
+
+    void MouseClickLogic()
     {
         // If [LEFT CLICK] on [GHOST], ghost is now currently selected
         // If [LEFT CLICK] on [PUNK], punk known stats should show up in some UI window
@@ -54,20 +81,19 @@ public class MousePicker : MonoBehaviour {
                 }
                 else {
                     // Player wants to move towards this position
-                    m_setTargetCallback(rayHit.point);
+                    m_currentGhost.OnConfirmTargetPosition();
                 }
             }
             // else, ray did not hit anything important
         }
 
         if (Input.GetButtonDown("Fire2"))
-            m_resetCallback();
+            m_currentGhost.ResetPath();
     }
 
-    public void StartPicking(Vector3 _startPosition, Action<Vector3> _setTargetCallback, Action _resetCallback)
+    public void StartPicking(Vector3 _startPosition, GhostController _currentGhost)
     {
-        m_setTargetCallback = _setTargetCallback;
-        m_resetCallback = _resetCallback;
+        m_currentGhost = _currentGhost;
         m_isActive = true;
     }
 

@@ -10,6 +10,7 @@ public class GameMaster : MonoBehaviour {
 
     List<GhostController> m_ghostList; // List containing all ghosts still alive
     List<PunkController> m_punkList; // List containing all punks still alive
+    GhostController m_currentlySelectedGhost;
     // TODO: List of traps
 
     static GameMaster instance;
@@ -57,7 +58,8 @@ public class GameMaster : MonoBehaviour {
     {
         // Start game by first selecting first ghost in list
         m_KeyBoardInput.UpdateSelectedGhost(m_startGhostArray[0]);
-        m_startGhostArray[0].GetComponent<GhostController>().SelectingWhereToMove();
+        m_ghostList[0].OnSelected();
+        m_currentlySelectedGhost = m_ghostList[0];
 
         // Tell all ghosts its start of turn
         foreach (GhostController gc in m_ghostList)
@@ -67,8 +69,10 @@ public class GameMaster : MonoBehaviour {
     // Tells all the relevant systems that a new ghost has been selected
     public void UpdateSelectedGhost(GameObject newGhost)
     {
+        m_currentlySelectedGhost.OnDeselected();
         m_KeyBoardInput.UpdateSelectedGhost(newGhost);
-        newGhost.GetComponent<GhostController>().SelectingWhereToMove();
+        newGhost.GetComponent<GhostController>().OnSelected();
+        m_currentlySelectedGhost = newGhost.GetComponent<GhostController>();
     }
 
     public List<PunkController> GetPunksAtLocations(List<Vector3> _positions)

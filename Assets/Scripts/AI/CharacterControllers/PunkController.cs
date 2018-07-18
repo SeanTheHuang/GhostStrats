@@ -18,7 +18,7 @@ public class PunkController : EntityBase
     public override void OnEntityHit()
     {
     }
-    public override void SelectingWhereToMove()
+    public override void OnSelected()
     {
     }
     public override void ChooseAction()

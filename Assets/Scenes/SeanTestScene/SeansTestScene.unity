@@ -306,12 +306,12 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
-  m_wayPointPrefab: {fileID: 4147061469472368, guid: a95047ad5a0c4c94a86d746b87e19a1a,
+  m_confirmedPathPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
     type: 2}
-  m_destinationPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
+  m_choosingPathPrefab: {fileID: 4147061469472368, guid: a95047ad5a0c4c94a86d746b87e19a1a,
     type: 2}
-  m_wayPointNodeList: []
-  m_destinationNodeList: []
+  m_confirmedPathBallsList: []
+  m_choosingPathBallsList: []
 --- !u!4 &372676426
 Transform:
   m_ObjectHideFlags: 0
@@ -766,6 +766,9 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_targetmask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!65 &1408123574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -923,12 +926,12 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
-  m_wayPointPrefab: {fileID: 4147061469472368, guid: a95047ad5a0c4c94a86d746b87e19a1a,
+  m_confirmedPathPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
     type: 2}
-  m_destinationPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
+  m_choosingPathPrefab: {fileID: 4147061469472368, guid: a95047ad5a0c4c94a86d746b87e19a1a,
     type: 2}
-  m_wayPointNodeList: []
-  m_destinationNodeList: []
+  m_confirmedPathBallsList: []
+  m_choosingPathBallsList: []
 --- !u!114 &1679437530
 MonoBehaviour:
   m_ObjectHideFlags: 0
