@@ -57,8 +57,8 @@ public class CameraControl : MonoBehaviour
 
         x += m_target.position.x;
         yz += m_target.position.z;
-        Debug.Log("x: " + x);
-        Debug.Log("yz :" + yz);
+       //Debug.Log("x: " + x);
+       //Debug.Log("yz :" + yz);
         
        /* Vector3 center = transform.position + (transform.forward * m_radius);
         x += center.x;
@@ -86,7 +86,7 @@ public class CameraControl : MonoBehaviour
 
         float movspd = m_moveSpeed * Time.deltaTime;
 
-        Vector3 fwrd = Vector3.Normalize(new Vector3(transform.forward.x, transform.position.y, transform.forward.z));
+       // Vector3 fwrd = Vector3.Normalize(new Vector3(transform.forward.x, transform.position.y, transform.forward.z));
 
         Vector3 dir = transform.forward;
         dir.y = 0;
