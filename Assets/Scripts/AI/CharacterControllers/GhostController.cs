@@ -10,6 +10,7 @@ using UnityEngine;
 public class GhostController : EntityBase {
 
     // States and objects
+    Vector3 m_previousTile;
     CharacterStates m_ghostState, m_oldGhostState;
     GhostAbilityBehaviour m_abilities;
 
@@ -43,6 +44,13 @@ public class GhostController : EntityBase {
         m_abilities = GetComponent<GhostAbilityBehaviour>();
         m_pathToFollow = new List<Vector3>();
         m_performing = false;
+    }
+
+    private void Start()
+    {
+        // Set player position on grid
+        // Set health to max
+        m_currentHealth = m_maxHealth;
     }
 
     public override void OnDeath()

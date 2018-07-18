@@ -84,6 +84,16 @@ public class PathRequestManager : MonoBehaviour {
         return true;
     }
 
+    public bool PointIsInGrid(Vector3 _worldPoint)
+    {
+        return (m_nodeGrid.NodeFromWorldPoint(_worldPoint) != null);
+    }
+
+    public NodeState GetNodeState(Vector3 _worldPosition)
+    {
+        return m_nodeGrid.NodeFromWorldPoint(_worldPosition).m_nodeState;
+    }
+
     public List<T> GetObjectsFromListOfPositions<T>(List<Vector3> _worldPositionList, NodeState _type)
     {
         List<T> m_outputList = new List<T>();
