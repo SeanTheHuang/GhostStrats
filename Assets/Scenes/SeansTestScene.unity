@@ -252,6 +252,156 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
+--- !u!1 &372676423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 372676426}
+  - component: {fileID: 372676425}
+  - component: {fileID: 372676424}
+  m_Layer: 0
+  m_Name: TestPlayer (1)
+  m_TagString: Entity/Ghost
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &372676424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372676423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c80b8cbeec3ac0469160082e4150c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_abilityUsed: 0
+  m_attackCooldown: 0
+  m_hideCooldown: 1
+  m_overwatchCooldown: 1
+  m_specialCooldown: 3
+  m_attackCooldownTimer: 0
+  m_hideCooldownTimer: 0
+  m_overwatchCooldownTimer: 0
+  m_specialCooldownTimer: 0
+--- !u!114 &372676425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372676423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d351a7bedfb07184e82b091b07445c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 10
+  m_maxMoves: 5
+  m_moveSpeed: 5
+--- !u!4 &372676426
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372676423}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 478645515}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &478645514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 478645515}
+  - component: {fileID: 478645518}
+  - component: {fileID: 478645517}
+  - component: {fileID: 478645516}
+  m_Layer: 0
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &478645515
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 478645514}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 372676426}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &478645516
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 478645514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &478645517
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 478645514}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 084c2e55cf0b5624cbfaa33dbcb97fa1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &478645518
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 478645514}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &604644229
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +489,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 084c2e55cf0b5624cbfaa33dbcb97fa1, type: 2}
+  - {fileID: 2100000, guid: 1c72bad225afead4b8a790a0c827bf99, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -466,6 +616,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0e45b11d3d28b4d81104f190c8d3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ghostsArray:
+  - {fileID: 372676423}
+  - {fileID: 1679437527}
 --- !u!114 &1086865992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,9 +638,6 @@ MonoBehaviour:
   m_ghostKey1: 49
   m_ghostKey2: 50
   m_ghostKey3: 51
-  m_ghost1: {fileID: 0}
-  m_ghost2: {fileID: 0}
-  m_ghost3: {fileID: 0}
 --- !u!1 &1605835428
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,8 +732,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1679437528}
   - component: {fileID: 1679437529}
+  - component: {fileID: 1679437530}
   m_Layer: 0
-  m_Name: TestPlayer
+  m_Name: TestPlayer (2)
   m_TagString: Entity/Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,7 +752,7 @@ Transform:
   m_Children:
   - {fileID: 933337720}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1679437529
 MonoBehaviour:
@@ -617,3 +768,23 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+--- !u!114 &1679437530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1679437527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c80b8cbeec3ac0469160082e4150c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_abilityUsed: 0
+  m_attackCooldown: 0
+  m_hideCooldown: 1
+  m_overwatchCooldown: 1
+  m_specialCooldown: 3
+  m_attackCooldownTimer: 0
+  m_hideCooldownTimer: 0
+  m_overwatchCooldownTimer: 0
+  m_specialCooldownTimer: 0

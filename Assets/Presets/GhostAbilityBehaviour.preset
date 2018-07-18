@@ -5,10 +5,10 @@ Preset:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PlayerKeyboardInput
+  m_Name: GhostAbilityBehaviour
   m_TargetType:
     m_NativeTypeID: 114
-    m_ManagedTypePPtr: {fileID: 11500000, guid: 1ac01ab5ce762ef4fb1266996d7ab666,
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 1c80b8cbeec3ac0469160082e4150c87,
       type: 3}
     m_ManagedTypeFallback: 
   m_Properties:
@@ -29,34 +29,38 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_selectedGhost
-    value: 
+    propertyPath: m_abilityUsed
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_attack
-    value: 113
+    propertyPath: m_attackCooldown
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_hide
-    value: 119
+    propertyPath: m_hideCooldown
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_overwatch
-    value: 101
+    propertyPath: m_overwatchCooldown
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_special
-    value: 114
+    propertyPath: m_specialCooldown
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_ghostKey1
-    value: 49
+    propertyPath: m_attackCooldownTimer
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_ghostKey2
-    value: 50
+    propertyPath: m_hideCooldownTimer
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_ghostKey3
-    value: 51
+    propertyPath: m_overwatchCooldownTimer
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_specialCooldownTimer
+    value: 0
     objectReference: {fileID: 0}
