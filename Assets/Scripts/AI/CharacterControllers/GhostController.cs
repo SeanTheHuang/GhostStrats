@@ -19,6 +19,7 @@ public class GhostController : EntityBase {
     int m_numMovesLeft;
 
     // Path finding
+    Vector3 m_spawnLocation;
     Vector3 m_currentStopPoint;
     List<Vector3> m_pathToFollow;
     bool m_pathFound;
@@ -44,12 +45,7 @@ public class GhostController : EntityBase {
         m_abilities = GetComponent<GhostAbilityBehaviour>();
         m_pathToFollow = new List<Vector3>();
         m_performing = false;
-    }
-
-    private void Start()
-    {
-        // Set player position on grid
-        // Set health to max
+        m_spawnLocation = transform.position;
         m_currentHealth = m_maxHealth;
     }
 

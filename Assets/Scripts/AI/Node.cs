@@ -6,8 +6,6 @@ using UnityEngine;
 public enum NodeState
 {
     EMPTY,
-    GHOST,
-    PUNK,
     GHOST_TRAP,
     PUNK_TRAP,
     OBSTACLE
