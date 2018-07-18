@@ -20,7 +20,7 @@ public abstract class EntityBase : MonoBehaviour {
     [Range(1, 10)] public int m_maxMoves = 5;
     [Range(1, 30)] public float m_moveSpeed = 5;
 
-    protected float m_currentHealth;
+    protected int m_currentHealth;
 
     public abstract void OnDeath();
     public abstract void OnSpawn();
@@ -28,5 +28,5 @@ public abstract class EntityBase : MonoBehaviour {
     public abstract void OnSelected();
     public abstract void ChooseAction();
 
-    public float GetCurrentHealth() { return m_currentHealth; }
+    public int GetCurrentHealth() { return m_currentHealth; }
 }

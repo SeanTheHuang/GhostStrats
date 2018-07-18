@@ -8,6 +8,8 @@ public class PunkController : EntityBase
     float circleSightRadius = 3;
     float forwardSightAngle = 30;
     float forwardSightRadius = 6;
+    List<Collider> m_Targets = new List<Collider> { };
+    Transform m_prey;
 
     public override void OnDeath()
     {
@@ -27,34 +29,79 @@ public class PunkController : EntityBase
 
     void Sight()
     {
+        m_Targets.Clear();
         Collider[] targets = Physics.OverlapSphere(transform.position, circleSightRadius, m_targetmask);
-        List<Collider> fTargets = new List<Collider> { };
         if (targets.Length != 0)
         {
-            //a target is in the sight range
-            if(targets.Length >= 2)
-            {//multiple target choose best
-                //check health, then check distance
+            for(int i=0; i < targets.Length;i++)
+            {
+                if (SightBehindWall(targets[i].transform) == false)
+                {
+                    m_Targets.Add(targets[i]);
+                }
             }
-
-            
         }
-
+        
         targets = Physics.OverlapSphere(transform.position, forwardSightRadius, m_targetmask);
-        for (int i = 0; i < targets.Length; i++) 
+        for (int i = 0; i < targets.Length; i++)
         {
             Vector2 v1 = new Vector2(transform.forward.x, transform.forward.z);
             Vector2 v2 = new Vector2(targets[i].transform.position.x, targets[i].transform.position.z);
-            if(Vector2.Angle(v1, v2) < forwardSightAngle)
+            if (Vector2.Angle(v1, v2) < forwardSightAngle)
             {
-                fTargets.Add(targets[i]);
+                if (SightBehindWall(targets[i].transform) == false)
+                {
+                    m_Targets.Add(targets[i]);
+                }
             }
         }
+        //for all tickets set them to visble so all punks can attack
+    }
 
-        if (fTargets.Count != 0)
+    bool SightBehindWall(Transform _t)
+    {//checks if there is a wall in the way
+        return (Physics.Linecast(transform.position, _t.position, LayerMask.NameToLayer("Wall")));
+    }
+
+    void ChooseTarget()
+    {
+        if(m_Targets.Count == 0)
         {
-            //target is forward
+            return;
         }
-        
+
+        int lowestHealth = 10000;
+        int index = -1;
+        for (int i = 0; i < m_Targets.Count; i++) 
+        {
+            Transform t = m_Targets[i].transform;
+
+            if (Vector3.Distance(transform.position, t.position) < 5)
+            {//check if they are in a close enough distance
+
+                if (t.GetComponent<GhostController>())
+                {//ghosts
+                    if (t.GetComponent<GhostController>().GetCurrentHealth() < lowestHealth)
+                    {//check for health
+                        lowestHealth = t.GetComponent<GhostController>().GetCurrentHealth();
+                        index = i;
+                    }
+                }
+            }
+            if(index != -1)
+            {
+                m_prey = m_Targets[index].transform;
+            }
+            else
+            {
+                //none found but have been seen //move as close as possible
+            }
+
+            //ghosts
+            //check if they are in range, then check lowest health, then go for closest
+
+
+            //then targets
+        }
     }
 }
