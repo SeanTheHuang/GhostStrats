@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: 720402526}
   - component: {fileID: 720402525}
   - component: {fileID: 720402527}
+  - component: {fileID: 720402528}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -291,6 +292,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0e45b11d3d28b4d81104f190c8d3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ghostsArray:
+  - {fileID: 1542393405}
+  - {fileID: 1428969093}
+  - {fileID: 1881793777}
 --- !u!4 &720402526
 Transform:
   m_ObjectHideFlags: 0
@@ -315,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac01ab5ce762ef4fb1266996d7ab666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_selectedGhost: {fileID: 1542393405}
+  m_selectedGhost: {fileID: 0}
   m_attack: 113
   m_hide: 119
   m_overwatch: 101
@@ -323,9 +328,20 @@ MonoBehaviour:
   m_ghostKey1: 49
   m_ghostKey2: 50
   m_ghostKey3: 51
-  m_ghost1: {fileID: 1542393405}
-  m_ghost2: {fileID: 1428969093}
-  m_ghost3: {fileID: 1881793777}
+--- !u!114 &720402528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 720402524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ae9376c1ab4b84e8de06a3833774d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_selectionMask:
+    serializedVersion: 2
+    m_Bits: 2049
 --- !u!1 &782273552
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,49 +400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdcd06815c47d30489f70df42db56a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frustum:
-    settings:
-      enableVolumes: 1
-      enableVolumesTextureMask: 1
-      enableVolumesNoiseMask: 1
-      enableDirectionalLights: 1
-      enableDirectionalLightsShadows: 1
-      enableSpotLights: 1
-      enableSpotLightsShadows: 1
-      enablePointLights: 1
-      enablePointLightsShadows: 1
-      enableLightsCookies: 1
-      enableOcclusionCulling: 1
-      occlusionCullingAccuracy: 2
-      enableTemporalReprojection: 1
-      temporalReprojectionFactor: 0.9
-      resolution: {x: 496, y: 248, z: 256}
-      farClipPlaneDistance: 50
-      density: 0.1
-      anisotropy: 0.456
-      color: {r: 0.24221218, g: 0.23913191, b: 0.25, a: 1}
-      colorStrength: 0.2
-    _computeMaximumDepthComputeShader: {fileID: 7200000, guid: a5d52c8a306e8b746ab60b306575aa3e,
-      type: 3}
-    _processOcclusionMapShader: {fileID: 4800000, guid: b9b5b0990ea6cfa4d96c89a9c1cec3e9,
-      type: 3}
-    _computeDataComputeShader: {fileID: 7200000, guid: 971d5d94be5bebc44aa6d832c17f5e62,
-      type: 3}
-    _computeAccumulationComputeShader: {fileID: 7200000, guid: 41ac7d79af1f9614ebe54df4f30ac3e0,
-      type: 3}
-  applyAsPostProcess: 1
-  computeMaximumDepthComputeShader: {fileID: 7200000, guid: a5d52c8a306e8b746ab60b306575aa3e,
-    type: 3}
-  processOcclusionMapShader: {fileID: 4800000, guid: b9b5b0990ea6cfa4d96c89a9c1cec3e9,
-    type: 3}
-  computeDataComputeShader: {fileID: 7200000, guid: 971d5d94be5bebc44aa6d832c17f5e62,
-    type: 3}
-  computeAccumulationComputeShader: {fileID: 7200000, guid: 41ac7d79af1f9614ebe54df4f30ac3e0,
-    type: 3}
-  postProcessShader: {fileID: 4800000, guid: 50255fa344dbd814c910fdafc5692b09, type: 3}
-  blueNoiseTexturesArray: {fileID: 18700000, guid: 518b8337a0340444aa49dd0780efa9c2,
-    type: 2}
-  _hasBeenAssigned: 1
 --- !u!81 &945677131
 AudioListener:
   m_ObjectHideFlags: 0
@@ -492,9 +465,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1428969095}
   - component: {fileID: 1428969094}
+  - component: {fileID: 1428969096}
   m_Layer: 0
   m_Name: TestPlayer2
-  m_TagString: Untagged
+  m_TagString: Entity/Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,6 +507,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1428969096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1428969093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d351a7bedfb07184e82b091b07445c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 10
+  m_maxMoves: 5
+  m_moveSpeed: 5
 --- !u!1 &1542393405
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,9 +530,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1542393406}
   - component: {fileID: 1542393407}
+  - component: {fileID: 1542393408}
   m_Layer: 0
   m_Name: TestPlayer1
-  m_TagString: Untagged
+  m_TagString: Entity/Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -583,6 +572,20 @@ MonoBehaviour:
   m_hideCooldownTimer: 0
   m_overwatchCooldownTimer: 0
   m_specialCooldownTimer: 0
+--- !u!114 &1542393408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1542393405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d351a7bedfb07184e82b091b07445c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 10
+  m_maxMoves: 5
+  m_moveSpeed: 5
 --- !u!1 &1689219904
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,9 +837,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1881793779}
   - component: {fileID: 1881793778}
+  - component: {fileID: 1881793780}
   m_Layer: 0
   m_Name: TestPlayer3
-  m_TagString: Untagged
+  m_TagString: Entity/Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -875,6 +879,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1881793780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1881793777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d351a7bedfb07184e82b091b07445c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 10
+  m_maxMoves: 5
+  m_moveSpeed: 5
 --- !u!1 &2115423918
 GameObject:
   m_ObjectHideFlags: 0
