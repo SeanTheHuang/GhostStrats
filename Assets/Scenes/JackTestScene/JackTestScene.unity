@@ -494,7 +494,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 472181823}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -672,10 +672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0e45b11d3d28b4d81104f190c8d3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ghostsArray:
-  - {fileID: 1542393405}
-  - {fileID: 1428969093}
-  - {fileID: 1881793777}
+  m_startGhostArray: []
+  m_startPunkArray: []
 --- !u!4 &720402526
 Transform:
   m_ObjectHideFlags: 0
@@ -1233,7 +1231,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1141101435}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1341,10 +1339,10 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
-  m_wayPointPrefab: {fileID: 0}
-  m_destinationPrefab: {fileID: 0}
-  m_wayPointNodeList: []
-  m_destinationNodeList: []
+  m_confirmedPathPrefab: {fileID: 0}
+  m_choosingPathPrefab: {fileID: 0}
+  m_confirmedPathBallsList: []
+  m_choosingPathBallsList: []
 --- !u!1 &1537212067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1396,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1537212067}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1495,10 +1493,10 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
-  m_wayPointPrefab: {fileID: 0}
-  m_destinationPrefab: {fileID: 0}
-  m_wayPointNodeList: []
-  m_destinationNodeList: []
+  m_confirmedPathPrefab: {fileID: 0}
+  m_choosingPathPrefab: {fileID: 0}
+  m_confirmedPathBallsList: []
+  m_choosingPathBallsList: []
 --- !u!1 &1679098476
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,10 +2135,10 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
-  m_wayPointPrefab: {fileID: 0}
-  m_destinationPrefab: {fileID: 0}
-  m_wayPointNodeList: []
-  m_destinationNodeList: []
+  m_confirmedPathPrefab: {fileID: 0}
+  m_choosingPathPrefab: {fileID: 0}
+  m_confirmedPathBallsList: []
+  m_choosingPathBallsList: []
 --- !u!1 &1990263749
 GameObject:
   m_ObjectHideFlags: 0
