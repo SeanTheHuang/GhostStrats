@@ -262,7 +262,8 @@ GameObject:
   - component: {fileID: 372676426}
   - component: {fileID: 372676425}
   - component: {fileID: 372676424}
-  m_Layer: 0
+  - component: {fileID: 372676427}
+  m_Layer: 11
   m_Name: TestPlayer (1)
   m_TagString: Entity/Ghost
   m_Icon: {fileID: 0}
@@ -303,6 +304,12 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_wayPointPrefab: {fileID: 4147061469472368, guid: a95047ad5a0c4c94a86d746b87e19a1a,
+    type: 2}
+  m_destinationPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
+    type: 2}
+  m_wayPointNodeList: []
+  m_destinationNodeList: []
 --- !u!4 &372676426
 Transform:
   m_ObjectHideFlags: 0
@@ -317,6 +324,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &372676427
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372676423}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &478645514
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +346,6 @@ GameObject:
   - component: {fileID: 478645515}
   - component: {fileID: 478645518}
   - component: {fileID: 478645517}
-  - component: {fileID: 478645516}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -348,18 +366,6 @@ Transform:
   m_Father: {fileID: 372676426}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &478645516
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 478645514}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &478645517
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -441,7 +447,6 @@ GameObject:
   - component: {fileID: 933337720}
   - component: {fileID: 933337723}
   - component: {fileID: 933337722}
-  - component: {fileID: 933337721}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -462,18 +467,6 @@ Transform:
   m_Father: {fileID: 1679437528}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &933337721
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 933337719}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &933337722
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -733,7 +726,8 @@ GameObject:
   - component: {fileID: 1679437528}
   - component: {fileID: 1679437529}
   - component: {fileID: 1679437530}
-  m_Layer: 0
+  - component: {fileID: 1679437531}
+  m_Layer: 11
   m_Name: TestPlayer (2)
   m_TagString: Entity/Ghost
   m_Icon: {fileID: 0}
@@ -768,6 +762,12 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_wayPointPrefab: {fileID: 4147061469472368, guid: a95047ad5a0c4c94a86d746b87e19a1a,
+    type: 2}
+  m_destinationPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
+    type: 2}
+  m_wayPointNodeList: []
+  m_destinationNodeList: []
 --- !u!114 &1679437530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,3 +788,15 @@ MonoBehaviour:
   m_hideCooldownTimer: 0
   m_overwatchCooldownTimer: 0
   m_specialCooldownTimer: 0
+--- !u!65 &1679437531
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1679437527}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}

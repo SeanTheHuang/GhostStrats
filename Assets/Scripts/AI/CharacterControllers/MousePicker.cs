@@ -6,7 +6,8 @@ using UnityEngine;
 public class MousePicker : MonoBehaviour {
 
     private bool m_isActive;
-    private Action<Vector3> m_callBack;
+    private Action<Vector3> m_setTargetCallback;
+    private Action m_resetCallback;
 
     private static MousePicker m_instance;
     public LayerMask m_selectionMask;
@@ -31,8 +32,9 @@ public class MousePicker : MonoBehaviour {
 
     void MouseLogic()
     {
-        // If click on ghost, ghost is now currently selected
-        // If click on ground, currently selected ghost will try move towards it
+        // If [LEFT CLICK] on [GHOST], ghost is now currently selected
+        // If [LEFT CLICK] on [GROUND], currently selected ghost will try move towards it
+        // If player presses [RIGHT CLICK], it will reset their turn action choices
 
         // Default: Left mouse button right now
         if (Input.GetButtonDown("Fire1"))
@@ -44,21 +46,24 @@ public class MousePicker : MonoBehaviour {
             if (Physics.Raycast(ray, out rayHit, 50, m_selectionMask)){
                 if (rayHit.transform.CompareTag("Entity/Ghost")) {
                     // Select that ghost
-                    Debug.Log("Currently selecting ghost:" + rayHit.transform.name);
                     GameMaster.Instance().UpdateSelectedGhost(rayHit.transform.gameObject);
                 }
                 else {
                     // Player wants to move towards this position
-                    m_callBack(rayHit.point);
+                    m_setTargetCallback(rayHit.point);
                 }
             }
             // else, ray did not hit anything important
         }
+
+        if (Input.GetButtonDown("Fire2"))
+            m_resetCallback();
     }
 
-    public void StartPicking(Vector3 _startPosition, Action<Vector3> _callBack)
+    public void StartPicking(Vector3 _startPosition, Action<Vector3> _setTargetCallback, Action _resetCallback)
     {
-        m_callBack = _callBack;
+        m_setTargetCallback = _setTargetCallback;
+        m_resetCallback = _resetCallback;
         m_isActive = true;
     }
 
