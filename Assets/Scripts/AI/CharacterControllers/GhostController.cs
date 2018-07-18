@@ -2,17 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Main point to interact with a ghost object
+// Also controls the movement of the ghost,
+// along with movement & health stats
+
 [SelectionBase]
 public class GhostController : EntityBase {
 
-    private CharacterStates m_ghostState, m_oldGhostState;
+    // States and objects
+    CharacterStates m_ghostState, m_oldGhostState;
+    GhostAbilityBehaviour m_abilities;
 
-    private Vector3 m_positionAtStartOfTurn;
-    private int m_numMovesLeft;
+    // Current stats at start of turn
+    Vector3 m_positionAtStartOfTurn;
+    int m_numMovesLeft;
 
+    // Path finding
+    Vector3 m_currentStopPoint;
     List<Vector3> m_pathToFollow;
     bool m_pathFound;
     bool m_performing;
+
+    // TEST: stuff to visialize path
+    public Transform m_wayPointPrefab;
+    public Transform m_destinationPrefab;
+    public List<Transform> m_wayPointNodeList;
+    public List<Transform> m_destinationNodeList;
 
     private void Awake()
     {
@@ -20,7 +35,12 @@ public class GhostController : EntityBase {
     }
     private void Initilaize()
     {
+        // TEST: intialize waypoint lists
+        m_wayPointNodeList = new List<Transform>();
+        m_destinationNodeList = new List<Transform>();
+
         m_ghostState = m_oldGhostState = CharacterStates.IDLE;
+        m_abilities = GetComponent<GhostAbilityBehaviour>();
         m_pathToFollow = new List<Vector3>();
         m_performing = false;
     }
@@ -40,7 +60,7 @@ public class GhostController : EntityBase {
         if (m_numMovesLeft < 1) // Do not look for new path if already selected path to take
             return;
 
-        PathRequestManager.RequestPath(transform.position, _position, 1, OnPathFound);
+        PathRequestManager.RequestPath(m_currentStopPoint, _position, 1, OnPathFound);
     }
 
     void OnPathFound(Vector3[] _path, bool _ifPathFound)
@@ -51,10 +71,23 @@ public class GhostController : EntityBase {
         m_pathFound = _ifPathFound;
 
         if (_ifPathFound) {
+            Debug.Log("Path found for : " + transform.name);
             // Only take max amount of moves possible
             foreach (Vector3 pathNode in _path) {
                 m_pathToFollow.Add(pathNode);
                 m_numMovesLeft -= 1;
+                m_currentStopPoint = pathNode;
+
+                // TEST: create path node on points where we wanna go
+                if (m_destinationPrefab)
+                {
+                    // Only do this if destination prefabs exist ~
+                    if (m_numMovesLeft < 1 || pathNode == _path[_path.Length - 1]) 
+                        m_destinationNodeList.Add(Instantiate(m_destinationPrefab, pathNode, Quaternion.identity));
+                    else
+                        m_wayPointNodeList.Add(Instantiate(m_wayPointPrefab, pathNode, Quaternion.identity));
+                }
+
                 // Can't move more than this amount
                 if (m_numMovesLeft < 1)
                     break;
@@ -66,16 +99,39 @@ public class GhostController : EntityBase {
     {
         // This Ghost's turn to move!, get where the player wants to move
         m_ghostState = CharacterStates.CHOOSING_WHERE_TO_MOVE;
-        MousePicker.Instance().StartPicking(transform.position, OnTargetLocation);
+        MousePicker.Instance().StartPicking(transform.position, OnTargetLocation, ResetChosenActions);
     }
 
     public void OnStartOfTurn()
     {
-        // Clear the path
-        m_pathToFollow.Clear();
+        // Reset variables
         m_performing = false;
         m_positionAtStartOfTurn = transform.position;
+
+        ResetPath();
+    }
+
+    void ResetPath()
+    {
+        m_pathToFollow.Clear();
+        m_currentStopPoint = transform.position;
         m_numMovesLeft = m_maxMoves;
+
+        // TEST: destroy all previous path nodes left
+        
+        foreach (Transform t in m_destinationNodeList)
+            Destroy(t.gameObject);
+        m_destinationNodeList.Clear();
+
+        foreach (Transform t in m_wayPointNodeList)
+            Destroy(t.gameObject);
+        m_wayPointNodeList.Clear();
+    }
+
+    public void ResetChosenActions()
+    {
+        ResetPath();
+        // TODO: Reset chosen skills
     }
 
     public void OnEndOfTurn()
