@@ -2,31 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FacingDirection
+{
+    North,
+    East,
+    South,
+    West
+};
+
+public enum GhostActionState
+{
+    NONE,
+    OVERSPOOK,
+    HIDE,
+    ABILITY
+}
+
 public class GhostAbilityBehaviour : MonoBehaviour
 {
     PathRequestManager m_pathRequestManager;
 
-    public enum facingDirection
-    {
-        North,
-        East,
-        South,
-        West
-    };
-
     // The direction the ghost is currently facing
-    public facingDirection m_facingDirection;
+    public FacingDirection m_facingDirection;
 
     // Abilities can only be used if the character has not used this one this turn
     public bool m_abilityUsed;
 
     // The number of turns the ghost must wait before they can use the ability again.
+    [Header("Attack Cooldowns")]
     public int m_attackCooldown;
     public int m_hideCooldown;
     public int m_overwatchCooldown;
     public int m_specialCooldown;
 
     // The current number of turns the ghost must wait before they can use the ability again.
+    [Header("Attack Countdown Timers")]
     public int m_attackCooldownTimer;
     public int m_hideCooldownTimer;
     public int m_overwatchCooldownTimer;
@@ -38,7 +48,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     private void Start()
     {
         m_pathRequestManager = PathRequestManager.Instance();
-        m_facingDirection = facingDirection.North;
+        m_facingDirection = FacingDirection.North;
 
         // Convert the attack squares to be equal to the length of a grid square
         for (int i = 0; i < m_attackSquares.Count; ++i)
@@ -52,14 +62,14 @@ public class GhostAbilityBehaviour : MonoBehaviour
         Vector3 rotationModifier = new Vector3(1, 1, 1);
 
         // Modify the attack grid squares dependant on the direction the ghost is facing
-        if (m_facingDirection == facingDirection.East)
+        if (m_facingDirection == FacingDirection.East)
             rotationModifier.z = -1;
-        else if (m_facingDirection == facingDirection.South)
+        else if (m_facingDirection == FacingDirection.South)
         {
             rotationModifier.z = -1;
             rotationModifier.x = -1;
         }
-        else if (m_facingDirection == facingDirection.West)
+        else if (m_facingDirection == FacingDirection.West)
             rotationModifier.x = -1;
 
         // Set all the attack positions to world space
@@ -93,7 +103,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_abilityUsed = true;
     }
 
-    public void Special()
+    public virtual void Special()
     {
         Debug.Log("Ghost Special");
         m_specialCooldown = m_specialCooldownTimer; // Update the timer
