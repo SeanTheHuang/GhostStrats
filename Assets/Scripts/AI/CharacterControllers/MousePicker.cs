@@ -33,6 +33,7 @@ public class MousePicker : MonoBehaviour {
     void MouseLogic()
     {
         // If [LEFT CLICK] on [GHOST], ghost is now currently selected
+        // If [LEFT CLICK] on [PUNK], punk known stats should show up in some UI window
         // If [LEFT CLICK] on [GROUND], currently selected ghost will try move towards it
         // If player presses [RIGHT CLICK], it will reset their turn action choices
 
@@ -47,6 +48,9 @@ public class MousePicker : MonoBehaviour {
                 if (rayHit.transform.CompareTag("Entity/Ghost")) {
                     // Select that ghost
                     GameMaster.Instance().UpdateSelectedGhost(rayHit.transform.gameObject);
+                }
+                else if (rayHit.transform.CompareTag("Entity/Punk")) {
+                    // TODO: should update UI on the punk being selected
                 }
                 else {
                     // Player wants to move towards this position

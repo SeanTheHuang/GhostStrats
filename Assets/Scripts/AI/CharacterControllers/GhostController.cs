@@ -64,6 +64,21 @@ public class GhostController : EntityBase {
         if (m_numMovesLeft < 1) // Do not look for new path if already selected path to take
             return;
 
+        // Check if possible to move to target position
+        if (!PathRequestManager.Instance().PointIsInGrid(_position))
+            return;
+
+        List<Vector3> pointList = new List<Vector3>();
+        pointList.Add(_position);
+
+        // Check for any ghosts or punks at point
+        if (GameMaster.Instance().GetGhostsAtLocations(pointList, true).Count > 0)
+            return;
+
+        if (GameMaster.Instance().GetPunksAtLocations(pointList).Count > 0)
+            return;
+
+        // Path is perfectly clear!
         PathRequestManager.RequestPath(m_currentStopPoint, _position, 1, OnPathFound);
     }
 
@@ -75,7 +90,6 @@ public class GhostController : EntityBase {
         m_pathFound = _ifPathFound;
 
         if (_ifPathFound) {
-            Debug.Log("Path found for : " + transform.name);
             // Only take max amount of moves possible
             foreach (Vector3 pathNode in _path) {
                 m_pathToFollow.Add(pathNode);
@@ -130,6 +144,11 @@ public class GhostController : EntityBase {
         foreach (Transform t in m_wayPointNodeList)
             Destroy(t.gameObject);
         m_wayPointNodeList.Clear();
+    }
+
+    public Vector3 TargetPoint()
+    {
+        return m_currentStopPoint;
     }
 
     public void ResetChosenActions()
