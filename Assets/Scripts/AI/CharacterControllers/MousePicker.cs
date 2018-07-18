@@ -44,7 +44,8 @@ public class MousePicker : MonoBehaviour {
             if (Physics.Raycast(ray, out rayHit, 50, m_selectionMask)){
                 if (rayHit.transform.CompareTag("Entity/Ghost")) {
                     // Select that ghost
-                    // TODO:
+                    Debug.Log("Currently selecting ghost:" + rayHit.transform.name);
+                    GameMaster.Instance().UpdateSelectedGhost(rayHit.transform.gameObject);
                 }
                 else {
                     // Player wants to move towards this position

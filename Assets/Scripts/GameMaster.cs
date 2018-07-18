@@ -45,5 +45,6 @@ public class GameMaster : MonoBehaviour {
     public void UpdateSelectedGhost(GameObject newGhost)
     {
         m_KeyBoardInput.UpdateSelectedGhost(newGhost);
+        newGhost.GetComponent<GhostController>().SelectingWhereToMove();
     }
 }
