@@ -9,6 +9,7 @@ public class PunkController : EntityBase
     float forwardSightAngle = 30;
     float forwardSightRadius = 6;
     List<Collider> m_Targets = new List<Collider> { };
+    Transform m_prey;
 
     public override void OnDeath()
     {
@@ -34,10 +35,13 @@ public class PunkController : EntityBase
         {
             for(int i=0; i < targets.Length;i++)
             {
-                m_Targets.Add(targets[i]);
+                if (SightBehindWall(targets[i].transform) == false)
+                {
+                    m_Targets.Add(targets[i]);
+                }
             }
         }
-        //need to raycast for walls
+        
         targets = Physics.OverlapSphere(transform.position, forwardSightRadius, m_targetmask);
         for (int i = 0; i < targets.Length; i++)
         {
@@ -45,9 +49,18 @@ public class PunkController : EntityBase
             Vector2 v2 = new Vector2(targets[i].transform.position.x, targets[i].transform.position.z);
             if (Vector2.Angle(v1, v2) < forwardSightAngle)
             {
-                m_Targets.Add(targets[i]);
+                if (SightBehindWall(targets[i].transform) == false)
+                {
+                    m_Targets.Add(targets[i]);
+                }
             }
         }
+        //for all tickets set them to visble so all punks can attack
+    }
+
+    bool SightBehindWall(Transform _t)
+    {//checks if there is a wall in the way
+        return (Physics.Linecast(transform.position, _t.position, LayerMask.NameToLayer("Wall")));
     }
 
     void ChooseTarget()
@@ -58,18 +71,25 @@ public class PunkController : EntityBase
         }
 
         int lowestHealth = 10000;
+        int index = -1;
         for (int i = 0; i < m_Targets.Count; i++) 
         {
             Transform t = m_Targets[i].transform;
-            
 
-            if(t.GetComponent<GhostController>())
-            {//ghosts
-                if (t.GetComponent<GhostController>().GetCurrentHealth() < lowestHealth)
-                {//check for health
-                    lowestHealth = t.GetComponent<GhostController>().GetCurrentHealth();
+            if (Vector3.Distance(transform.position, t.position) < 5)
+            {//check if they are in a close enough distance
+
+                if (t.GetComponent<GhostController>())
+                {//ghosts
+                    if (t.GetComponent<GhostController>().GetCurrentHealth() < lowestHealth)
+                    {//check for health
+                        lowestHealth = t.GetComponent<GhostController>().GetCurrentHealth();
+                        index = i;
+                    }
                 }
             }
+            m_prey = m_Targets[index].transform;
+
             //ghosts
             //check if they are in range, then check lowest health, then go for closest
 
