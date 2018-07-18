@@ -88,12 +88,19 @@ public class PunkController : EntityBase
                     }
                 }
             }
-            m_prey = m_Targets[index].transform;
+            if(index != -1)
+            {
+                m_prey = m_Targets[index].transform;
+            }
+            else
+            {
+                //none found but have been seen //move as close as possible
+            }
 
             //ghosts
             //check if they are in range, then check lowest health, then go for closest
 
-            
+
             //then targets
         }
     }
