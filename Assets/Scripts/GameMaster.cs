@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour {
 
-    public GameObject[] m_ghostsArray; // All ghosts that will be in the game
+    public GameObject[] m_startGhostArray; // All ghosts that will be in the game
+    public GameObject[] m_startPunkArray; // All punks at start of game
     PlayerKeyboardInput m_KeyBoardInput;
 
     List<GhostController> m_ghostList; // List containing all ghosts still alive
+    List<PunkController> m_punkList; // List containing all punks still alive
+    // TODO: List of traps
+
     static GameMaster instance;
 
     public static GameMaster Instance()
@@ -19,9 +23,13 @@ public class GameMaster : MonoBehaviour {
     {
         instance = this;
         m_ghostList = new List<GhostController>();
+        m_punkList = new List<PunkController>();
 
-        foreach (GameObject go in m_ghostsArray)
+        foreach (GameObject go in m_startGhostArray)
             m_ghostList.Add(go.GetComponent<GhostController>());
+
+        foreach (GameObject go in m_startPunkArray)
+            m_punkList.Add(go.GetComponent<PunkController>());
     }
 
     void Start()
@@ -39,7 +47,7 @@ public class GameMaster : MonoBehaviour {
     void StartGame()
     {
         // Set list of ghost for keyboard
-        m_KeyBoardInput.SetGhostList(new List<GameObject>(m_ghostsArray));
+        m_KeyBoardInput.SetGhostList(new List<GameObject>(m_startGhostArray));
 
         // TEMP: start game with players turn first
         StartPlayersTurn();
@@ -48,8 +56,8 @@ public class GameMaster : MonoBehaviour {
     void StartPlayersTurn()
     {
         // Start game by first selecting first ghost in list
-        m_KeyBoardInput.UpdateSelectedGhost(m_ghostsArray[0]);
-        m_ghostsArray[0].GetComponent<GhostController>().SelectingWhereToMove();
+        m_KeyBoardInput.UpdateSelectedGhost(m_startGhostArray[0]);
+        m_startGhostArray[0].GetComponent<GhostController>().SelectingWhereToMove();
 
         // Tell all ghosts its start of turn
         foreach (GhostController gc in m_ghostList)
@@ -61,5 +69,54 @@ public class GameMaster : MonoBehaviour {
     {
         m_KeyBoardInput.UpdateSelectedGhost(newGhost);
         newGhost.GetComponent<GhostController>().SelectingWhereToMove();
+    }
+
+    public List<PunkController> GetPunksAtLocations(List<Vector3> _positions)
+    {
+        List<PunkController> punkList = new List<PunkController>();
+
+        // Check each punk against all locations, if they are within one, add to list
+        foreach (PunkController pc in m_punkList)
+        {
+            Node punksNode = PathRequestManager.Instance().NodeFromWorldPoint(pc.transform.position);
+            foreach (Vector3 v3 in _positions)
+            {
+                Node nodeAtPosition = PathRequestManager.Instance().NodeFromWorldPoint(v3);
+                if (punksNode == nodeAtPosition)
+                {
+                    punkList.Add(pc);
+                    break;
+                }
+            }
+        }
+
+        return punkList;
+    }
+
+    public List<GhostController> GetGhostsAtLocations(List<Vector3> _positions, bool _checkFuturePosition = false)
+    {
+        List<GhostController> ghostList = new List<GhostController>();
+
+        // Check each punk against all locations, if they are within one, add to list
+        foreach (GhostController gc in m_ghostList)
+        {
+            Node ghostNode = null;
+            if (_checkFuturePosition)
+                ghostNode = PathRequestManager.Instance().NodeFromWorldPoint(gc.TargetPoint());
+            else
+                ghostNode = PathRequestManager.Instance().NodeFromWorldPoint(gc.transform.position);
+
+            foreach (Vector3 v3 in _positions)
+            {
+                Node pointNode = PathRequestManager.Instance().NodeFromWorldPoint(v3);
+                if (ghostNode == pointNode)
+                {
+                    ghostList.Add(gc);
+                    break;
+                }
+            }
+        }
+
+        return ghostList;
     }
 }

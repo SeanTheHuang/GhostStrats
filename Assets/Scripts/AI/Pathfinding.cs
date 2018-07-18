@@ -115,7 +115,7 @@ public class Pathfinding : MonoBehaviour {
         m_findingPath = false;
 
         sw.Stop();
-        Debug.Log("Time to find path: " + sw.ElapsedMilliseconds + "ms.");
+        //Debug.Log("Time to find path: " + sw.ElapsedMilliseconds + "ms.");
         yield return null;
     }
 

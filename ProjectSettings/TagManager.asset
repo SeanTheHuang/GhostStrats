@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Entity/Ghost
+  - Entity/Punk
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - PostProcessing
   - Wall
   - Unwalkable
-  - Entity/Ghost
-  - Entity/Punk
+  - Entity
+  - 
   - 
   - 
   - 
