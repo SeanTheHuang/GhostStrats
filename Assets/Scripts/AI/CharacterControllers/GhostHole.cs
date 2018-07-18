@@ -22,7 +22,7 @@ public class GhostHole : EntityBase
     {
         //lose health
     }
-    public override void SelectingWhereToMove()
+    public override void OnSelected()
     {
         return; // doesnt move
     }
