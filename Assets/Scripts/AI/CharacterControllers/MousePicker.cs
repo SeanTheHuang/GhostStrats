@@ -100,5 +100,6 @@ public class MousePicker : MonoBehaviour {
     public void StopPicking()
     {
         m_isActive = false;
+        m_currentGhost = null;
     }
 }
