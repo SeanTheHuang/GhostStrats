@@ -34,7 +34,7 @@ public class AbilityBarController : MonoBehaviour {
             DisableCoolDownUIEffects(m_specialUIImage);
     }         
     
-    void EnableCoolDownUIEffects(GameObject uIAbility, int coolDownNumber)
+    public void EnableCoolDownUIEffects(GameObject uIAbility, int coolDownNumber)
     {
         uIAbility.transform.GetChild(0).GetComponent<Image>().enabled = true;
         uIAbility.transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText(coolDownNumber.ToString());

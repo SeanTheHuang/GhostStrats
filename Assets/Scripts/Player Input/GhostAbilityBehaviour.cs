@@ -102,7 +102,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         // Reset aiming direction
         m_aimingDirection = AimingDirection.North;
         m_UIPortrait.GetComponent<GhostPortraitController>().OnSelected();
-        //m_UIAbilityBar.GetComponent<AbilityBarController>().OnSelected(m_attackCooldown, m_hideCooldown, m_overwatchCooldown, m_specialCooldown);
+        m_UIAbilityBar.GetComponent<AbilityBarController>().OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer);
     }
 
     public void UpdateDirection(Vector3 _newDir)

@@ -17,6 +17,7 @@ public class GhostPortraitController : MonoBehaviour {
     public GameObject m_largeHealthBar;
     public GameObject m_highlight;
     public GameObject m_portrait;
+    public GameObject m_specialAbilityIcon;
     private LargeHealthBarController largeHealthBarController;
 
     private RectTransform healthBarRect;
@@ -33,6 +34,8 @@ public class GhostPortraitController : MonoBehaviour {
     public Sprite m_defaultGhostPortrait; // The alive portrait for the ghost
     public Sprite m_respawnGhostPortrait; // The portrait when the ghost is dead and returning to their crystal
     public Sprite m_deadGhostPortrait; // The portrait when the ghosts crystal is destroyed
+
+    public Sprite m_SpecialAbilityIconSprite; // The icon for the ghosts special ability
 
     // Use this for initialization
     void Start() {
@@ -55,16 +58,7 @@ public class GhostPortraitController : MonoBehaviour {
         largeHealthBarController = m_largeHealthBar.GetComponent<LargeHealthBarController>();
         largeHealthBarController.Initalize(m_maxHealth, m_highHealth, m_midHealth, m_lowHealth);
 
-        m_currentHealth /= 2;
         m_originalPosition = transform.position;
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            UpdateHealthBar();
-        }
     }
 
     // Update the ghosts health bar
@@ -88,6 +82,7 @@ public class GhostPortraitController : MonoBehaviour {
     {
         m_highlight.GetComponent<Image>().enabled = true;
         m_largeHealthBar.GetComponent<Image>().enabled = true;
+        m_specialAbilityIcon.GetComponent<Image>().sprite = m_SpecialAbilityIconSprite;
     }
 
     // The Ghost hits 0 hp but has not died
