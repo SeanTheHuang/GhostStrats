@@ -69,6 +69,7 @@ public class GameMaster : MonoBehaviour {
     // Tells all the relevant systems that a new ghost has been selected
     public void UpdateSelectedGhost(GameObject newGhost)
     {
+        Debug.Log("Hello");
         m_currentlySelectedGhost.OnDeselected();
         m_KeyBoardInput.UpdateSelectedGhost(newGhost);
         newGhost.GetComponent<GhostController>().OnSelected();

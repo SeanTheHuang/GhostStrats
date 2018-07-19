@@ -15,6 +15,7 @@ public class GhostPortraitController : MonoBehaviour {
     public GameObject m_ghost;
     public GameObject m_healthBar;
     public GameObject m_largeHealthBar;
+    public GameObject m_highlight;
     private LargeHealthBarController largeHealthBarController;
 
     private RectTransform healthBarRect;
@@ -63,6 +64,18 @@ public class GhostPortraitController : MonoBehaviour {
         StartCoroutine(ShakeUI(1.5f));
 
         largeHealthBarController.UpdateHealthBar(m_currentHealth);
+    }
+
+    public void OnDeselected()
+    {
+        m_highlight.GetComponent<Image>().enabled = false;
+        m_largeHealthBar.GetComponent<Image>().enabled = false;
+    }
+
+    public void OnSelected()
+    {
+        m_highlight.GetComponent<Image>().enabled = true;
+        m_largeHealthBar.GetComponent<Image>().enabled = true;
     }
 
     private IEnumerator LerpHealthBarColor(float time)
