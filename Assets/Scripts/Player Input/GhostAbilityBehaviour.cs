@@ -52,6 +52,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     // The grid squares the ghost attacks in
     [Header("Base affected tiles")]
     public List<Vector3> m_attackSquares;
+    public List<Vector3> m_overspookSquares;
     List<Vector3> m_currentAffectedSquares;
     List<Vector3> m_rotatedAffectedSquares;
 

@@ -708,6 +708,8 @@ MonoBehaviour:
   - {x: -1, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
   - {x: 1, y: 0, z: 1}
+  m_overspookSquares:
+  - {x: 0, y: 0, z: 1}
 --- !u!114 &372676425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1289,6 +1291,10 @@ MonoBehaviour:
   m_healthBar: {fileID: 1428623721}
   m_largeHealthBar: {fileID: 176481853}
   m_highlight: {fileID: 1427342102}
+  m_portrait: {fileID: 0}
+  m_defaultGhostPortrait: {fileID: 0}
+  m_respawnGhostPortrait: {fileID: 0}
+  m_deadGhostPortrait: {fileID: 0}
 --- !u!1 &992661926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1612,10 @@ MonoBehaviour:
   m_healthBar: {fileID: 1385963870}
   m_largeHealthBar: {fileID: 1236846720}
   m_highlight: {fileID: 1966502361}
+  m_portrait: {fileID: 0}
+  m_defaultGhostPortrait: {fileID: 0}
+  m_respawnGhostPortrait: {fileID: 0}
+  m_deadGhostPortrait: {fileID: 0}
 --- !u!1 &1236846720
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,6 +2465,8 @@ MonoBehaviour:
   - {x: -1, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
   - {x: 1, y: 0, z: 1}
+  m_overspookSquares:
+  - {x: 0, y: 0, z: 1}
 --- !u!65 &1679437531
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2728,6 +2740,10 @@ MonoBehaviour:
   m_healthBar: {fileID: 1669881899}
   m_largeHealthBar: {fileID: 64914252}
   m_highlight: {fileID: 1963896539}
+  m_portrait: {fileID: 0}
+  m_defaultGhostPortrait: {fileID: 0}
+  m_respawnGhostPortrait: {fileID: 0}
+  m_deadGhostPortrait: {fileID: 0}
 --- !u!1 &2110215848
 GameObject:
   m_ObjectHideFlags: 0
