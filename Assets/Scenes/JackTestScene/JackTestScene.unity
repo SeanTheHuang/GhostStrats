@@ -640,6 +640,7 @@ MonoBehaviour:
   m_highHealth: {r: 0.31764707, g: 0.8745099, b: 0.34509805, a: 1}
   m_midHealth: {r: 0.8400296, g: 0.8745098, b: 0.3176471, a: 1}
   m_lowHealth: {r: 0.8745098, g: 0.3176471, b: 0.4328496, a: 1}
+  m_shakeIntensity: 5
   m_ghost: {fileID: 1881793777}
   m_healthBar: {fileID: 2074999596}
   m_largeHealthBar: {fileID: 472181823}
@@ -1033,6 +1034,7 @@ MonoBehaviour:
   m_highHealth: {r: 0.31764707, g: 0.8745099, b: 0.34509805, a: 1}
   m_midHealth: {r: 0.8400296, g: 0.8745098, b: 0.3176471, a: 1}
   m_lowHealth: {r: 0.8745098, g: 0.3176471, b: 0.4328496, a: 1}
+  m_shakeIntensity: 5
   m_ghost: {fileID: 1428969093}
   m_healthBar: {fileID: 1679098476}
   m_largeHealthBar: {fileID: 1537212067}
@@ -1922,6 +1924,7 @@ MonoBehaviour:
   m_highHealth: {r: 0.31764707, g: 0.8745099, b: 0.34509805, a: 1}
   m_midHealth: {r: 0.8400296, g: 0.8745098, b: 0.3176471, a: 1}
   m_lowHealth: {r: 0.8745098, g: 0.3176471, b: 0.4328496, a: 1}
+  m_shakeIntensity: 5
   m_ghost: {fileID: 1542393405}
   m_healthBar: {fileID: 2067019263}
   m_largeHealthBar: {fileID: 1141101435}
