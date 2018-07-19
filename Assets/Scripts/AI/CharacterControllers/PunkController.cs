@@ -28,12 +28,13 @@ public class PunkController : EntityBase
         if (Input.GetKeyDown(KeyCode.L))
         {
             Debug.Log("l pressed");
-            Sight();
+            /*Sight();
             if(m_Targets.Count != 0)
             {
                 Debug.Log("targets in sight");
                 Debug.Log(m_Targets[0].gameObject.name);
-            }
+            }*/
+            ChooseLocation();
         }
     }
 
@@ -56,6 +57,7 @@ public class PunkController : EntityBase
 
     public void ChooseLocation()
     {
+        Debug.Log("loc chose");
         Sight();//adds targets
         ChooseTarget();//chooses best target 
 
@@ -70,12 +72,14 @@ public class PunkController : EntityBase
         else
         {
             //search rooms/patrol
+            Debug.Log("else");
         }
 
     }
 
     void OnPathFound(Vector3[] _path, bool _pathFound)
     {
+        Debug.Log("here");
         if (_pathFound)
         {
             m_realPath.Clear();
@@ -88,7 +92,8 @@ public class PunkController : EntityBase
         }
         else
         {
-
+            //im not sure
+            Debug.Log("else ??");
         }
     }
 
