@@ -89,8 +89,11 @@ public class GhostAbilityBehaviour : MonoBehaviour
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
         UpdateDirection((objectPosition - mousePosition));
 
-        if (Input.GetKeyDown(KeyCode.T))
-            Debug.Log(m_aimingDirection);
+        // Confirm target location
+        if (Input.GetButtonDown("Fire1"))
+        {
+            ConfirmDirection();
+        }
     }
 
     public void OnSelected()
@@ -117,9 +120,18 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     AimingDirection UpdateAimingFromDirection(Vector3 _dir)
     {
-        float angle = Mathf.Atan2(_dir.y, _dir.x);
+        float angle = Mathf.Atan2(_dir.x, _dir.y) * Mathf.Rad2Deg;
+        if (angle < 0)
+            angle += 360.0f;
 
-        return AimingDirection.West;
+        if (angle >= 45 && angle <= 135)
+            return AimingDirection.West;
+        else if (angle >= 135 && angle <= 225)
+            return AimingDirection.North;
+        else if (angle >= 225 && angle <= 315)
+            return AimingDirection.East;
+        else
+            return AimingDirection.South;
     }
 
     public void ConfirmDirection()
@@ -129,6 +141,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         MousePicker.Instance().FinishAimingAbility();
         m_attackCooldownTimer = m_attackCooldown; // Update the timer
         m_abilityUsed = true;
+        m_aimingAbility = false;
     }
 
     void UpdateAtackVisuals()
