@@ -213,6 +213,15 @@ public class GhostController : EntityBase {
         if (m_performing) // Just keep doing nothing while performing
             yield return null;
 
+        // Clean up visual stuff
+        foreach (Transform t in m_confirmedPathBallsList)
+            Destroy(t.gameObject);
+        m_confirmedPathBallsList.Clear();
+
+        foreach (Transform t in m_choosingPathBallsList)
+            Destroy(t.gameObject);
+        m_choosingPathBallsList.Clear();
+
         m_performing = true;
         // Start by moving to target location
         m_ghostState = CharacterStates.MOVING;
@@ -228,6 +237,8 @@ public class GhostController : EntityBase {
             }
         }
 
+        // Clean previous stored path
+        m_pathToFollow.Clear();
 
         // Perform selected action (maybe pause and rotate towards target first)
         // TODO:

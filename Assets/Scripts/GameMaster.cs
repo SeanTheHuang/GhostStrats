@@ -36,20 +36,24 @@ public class GameMaster : MonoBehaviour {
     void Start()
     {
         m_KeyBoardInput = PlayerKeyboardInput.Instance();
+
+        // Set list of ghost for keyboard
+        m_KeyBoardInput.SetGhostList(new List<GameObject>(m_startGhostArray));
     }
 
     private void Update()
     {
         // TEST: Just a button to start the game
         if (Input.GetKeyDown(KeyCode.P))
-            StartGame();
+            StartPlayersTurn();
+
+        // TEST: Make all player ghosts move
+        if (Input.GetKeyDown(KeyCode.O))
+            RunPlayersTurn();
     }
 
     void StartGame()
     {
-        // Set list of ghost for keyboard
-        m_KeyBoardInput.SetGhostList(new List<GameObject>(m_startGhostArray));
-
         // TEMP: start game with players turn first
         StartPlayersTurn();
     }
@@ -64,6 +68,17 @@ public class GameMaster : MonoBehaviour {
         // Tell all ghosts its start of turn
         foreach (GhostController gc in m_ghostList)
             gc.OnStartOfTurn();
+    }
+
+    void RunPlayersTurn()
+    {
+        foreach (GhostController gc in m_ghostList)
+        {
+            gc.OnEndOfTurn();
+        }
+
+        // Stop allowing player to select stuff
+        MousePicker.Instance().StopPicking();
     }
 
     // Tells all the relevant systems that a new ghost has been selected
