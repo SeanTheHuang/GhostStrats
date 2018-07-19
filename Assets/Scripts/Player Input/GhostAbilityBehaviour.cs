@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum FacingDirection
+public enum AimingDirection
 {
-    North,
-    East,
-    South,
-    West
+    North = 0,
+    East = 90,
+    South = 180,
+    West = 270
 };
 
 public enum GhostActionState
 {
     NONE,
+    BOO,
     OVERSPOOK,
     HIDE,
     ABILITY
@@ -21,12 +22,15 @@ public enum GhostActionState
 public class GhostAbilityBehaviour : MonoBehaviour
 {
     PathRequestManager m_pathRequestManager;
+    GhostController m_ghostController;
 
-    // The direction the ghost is currently facing
-    public FacingDirection m_facingDirection;
+    public Transform m_attackTilePrefab;
+    List<Transform> m_attackTileList;
 
-    // Abilities can only be used if the character has not used this one this turn
-    public bool m_abilityUsed;
+    GhostActionState m_actionState;
+    AimingDirection m_aimingDirection; // The direction the ghost is currently facing
+    public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
+    bool m_aimingAbility;
 
     // The number of turns the ghost must wait before they can use the ability again.
     [Header("Attack Cooldowns")]
@@ -46,61 +50,176 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public GameObject m_UIAbilityBar;
 
     // The grid squares the ghost attacks in
+    [Header("Base affected tiles")]
     public List<Vector3> m_attackSquares;
+    List<Vector3> m_currentAffectedSquares;
+    List<Vector3> m_rotatedAffectedSquares;
+
+    private void Awake()
+    {
+        m_attackTileList = new List<Transform>();
+        m_ghostController = GetComponent<GhostController>();
+        m_rotatedAffectedSquares = new List<Vector3>();
+        m_actionState = GhostActionState.NONE;
+        m_currentAffectedSquares = m_attackSquares;
+        m_aimingAbility = false;
+    }
 
     private void Start()
     {
         m_pathRequestManager = PathRequestManager.Instance();
-        m_facingDirection = FacingDirection.North;
+        m_aimingDirection = AimingDirection.North;
 
         // Convert the attack squares to be equal to the length of a grid square
         for (int i = 0; i < m_attackSquares.Count; ++i)
         {
-            m_attackSquares[i] = m_attackSquares[i] * m_pathRequestManager.GridSize();
+            m_attackSquares[i] = m_attackSquares[i] * m_pathRequestManager.GridSize() * 2;
         }
+    }
+
+    private void Update()
+    {
+        // Used for aiming ability
+        if (!m_aimingAbility)
+            return;
+
+        // Update point to world
+        Vector3 objectPosition = Camera.main.WorldToScreenPoint(m_ghostController.GetDestinationPosition());
+        objectPosition.z = 0;
+        Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
+        UpdateDirection((objectPosition - mousePosition));
+
+        if (Input.GetKeyDown(KeyCode.T))
+            Debug.Log(m_aimingDirection);
     }
 
     public void OnSelected()
     {
+        // Reset aiming direction
+        m_aimingDirection = AimingDirection.North;
         m_UIPortrait.GetComponent<GhostPortraitController>().OnSelected();
-        m_UIAbilityBar.GetComponent<AbilityBarController>().OnSelected(m_attackCooldown, m_hideCooldown, m_overwatchCooldown, m_specialCooldown);
+        //m_UIAbilityBar.GetComponent<AbilityBarController>().OnSelected(m_attackCooldown, m_hideCooldown, m_overwatchCooldown, m_specialCooldown);
     }
 
-    public void Attack()
+    public void UpdateDirection(Vector3 _newDir)
     {
-        Vector3 rotationModifier = new Vector3(1, 1, 1);
+        // Use dot product and figure out which direction direct facing
+        AimingDirection newDirection = UpdateAimingFromDirection(_newDir);
 
-        // Modify the attack grid squares dependant on the direction the ghost is facing
-        if (m_facingDirection == FacingDirection.East)
-            rotationModifier.z = -1;
-        else if (m_facingDirection == FacingDirection.South)
-        {
-            rotationModifier.z = -1;
-            rotationModifier.x = -1;
-        }
-        else if (m_facingDirection == FacingDirection.West)
-            rotationModifier.x = -1;
+        if (newDirection == m_aimingDirection) // No need to update
+            return;
 
-        // Set all the attack positions to world space
-        List<Vector3> attackpositions = new List<Vector3>();
-        for(int i = 0; i < m_attackSquares.Count; ++i)
-        {
-            attackpositions.Add(new Vector3((m_attackSquares[i].x * rotationModifier.x) + transform.position.x, transform.position.y,
-                                            (m_attackSquares[i].z * rotationModifier.z) + transform.position.z));
-        }
+        // Else, update attack tiles and visuals
+        m_aimingDirection = newDirection;
+        UpdateAttackTiles();
+        UpdateAtackVisuals();
+    }
 
-        // Check the grid squares to see if there are punks in them
-        //List<GameObject> m_punks = m_pathRequestManager.GetObjectsFromListOfPositions<GameObject>(attackpositions, NodeState.PUNK);
+    AimingDirection UpdateAimingFromDirection(Vector3 _dir)
+    {
+        float angle = Mathf.Atan2(_dir.y, _dir.x);
 
-        // TODO ADD DAMAGING THE LIST OF PUNKS
+        return AimingDirection.West;
+    }
 
+    public void ConfirmDirection()
+    {
+        m_ghostController.ClearChoosingPath();
+        m_ghostController.EndMovement();
+        MousePicker.Instance().FinishAimingAbility();
         m_attackCooldownTimer = m_attackCooldown; // Update the timer
         m_abilityUsed = true;
+    }
+
+    void UpdateAtackVisuals()
+    {
+        ClearAttackVisuals();
+        foreach (Vector3 v3 in m_rotatedAffectedSquares)
+        {
+            m_attackTileList.Add(Instantiate(m_attackTilePrefab, v3, Quaternion.identity));
+        }
+    }
+
+    void UpdateAttackTiles()
+    {
+        //Vector3 rotationModifier = new Vector3(1, 1, 1);
+
+        //// Modify the attack grid squares dependant on the direction the ghost is facing
+        //if (m_aimingDirection == AimingDirection.East)
+        //    rotationModifier.z = -1;
+        //else if (m_aimingDirection == AimingDirection.South)
+        //{
+        //    rotationModifier.z = -1;
+        //    rotationModifier.x = -1;
+        //}
+        //else if (m_aimingDirection == AimingDirection.West)
+        //    rotationModifier.x = -1;
+
+        Vector3 pointAtWhichUseSkill = m_ghostController.GetDestinationPosition();
+
+        if (Input.GetKeyDown(KeyCode.T))
+            Debug.Log(m_aimingDirection);
+
+        // Set all the attack positions to world space
+        m_rotatedAffectedSquares.Clear();
+        for (int i = 0; i < m_currentAffectedSquares.Count; ++i)
+        {
+            //m_rotatedAffectedSquares.Add(new Vector3((m_currentAffectedSquares[i].x * rotationModifier.x) + pointAtWhichUseSkill.x, pointAtWhichUseSkill.y,
+            //                                (m_currentAffectedSquares[i].z * rotationModifier.z) + pointAtWhichUseSkill.z));
+            m_rotatedAffectedSquares.Add(Quaternion.AngleAxis((float)m_aimingDirection, Vector3.up) * m_currentAffectedSquares[i] + pointAtWhichUseSkill);
+        }
+    }
+
+    void ClearAttackVisuals()
+    {
+        foreach (Transform t in m_attackTileList)
+            Destroy(t.gameObject);
+        m_attackTileList.Clear();
+    }
+
+    public void PerformAttack()
+    {
+        ClearAttackVisuals();
+    }
+
+    public void StartOfTurn()
+    {
+        m_abilityUsed = false;
+        m_aimingAbility = false;
+        m_actionState = GhostActionState.NONE;
+    }
+
+    public void EndOfTurn()
+    {
+        // Perform attack
+    }
+
+    public void ResetAction()
+    {
+        ClearAttackVisuals();
+        m_actionState = GhostActionState.NONE;
+        m_abilityUsed = false;
+    }
+
+    public void ChooseAttack()
+    {
+        m_actionState = GhostActionState.BOO;
+        m_ghostController.ClearChoosingPath();
+        MousePicker.Instance().PausePicking();
+        m_currentAffectedSquares = m_attackSquares;
+        m_aimingAbility = true;
+
+        // Spawn intial values
+        UpdateAttackTiles();
+        UpdateAtackVisuals();
     }
 
     public void Hide()
     {
         Debug.Log("Ghost Hide");
+        m_actionState = GhostActionState.BOO;
+        m_ghostController.ClearChoosingPath();
+        m_ghostController.EndMovement();
         m_hideCooldownTimer = m_hideCooldown; // Update the timer
         m_abilityUsed = true;
     }
@@ -108,14 +227,13 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public void Overwatch()
     {
         Debug.Log("Ghost Overwatch");
+        m_aimingAbility = true;
         m_overwatchCooldownTimer = m_overwatchCooldown; // Update the timer
-        m_abilityUsed = true;
     }
 
     public virtual void Special()
     {
         Debug.Log("Ghost Special");
         m_specialCooldown = m_specialCooldownTimer; // Update the timer
-        m_abilityUsed = true;
     }
 }

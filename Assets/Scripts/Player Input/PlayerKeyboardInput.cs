@@ -64,7 +64,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
             // Attack ability used if key pressed and cooldown at 0
             if (Input.GetKeyDown(m_attack) && m_GhostAbilityScript.m_attackCooldownTimer == 0)
             {
-                m_GhostAbilityScript.Attack();
+                m_GhostAbilityScript.ChooseAttack();
             }
             // Hide ability used if key pressed and cooldown at 0
             else if (Input.GetKeyDown(m_hide) && m_GhostAbilityScript.m_hideCooldownTimer == 0)

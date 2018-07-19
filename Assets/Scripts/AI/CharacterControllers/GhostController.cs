@@ -33,7 +33,7 @@ public class GhostController : EntityBase {
 
     private void Awake()
     {
-        Initilaize();   
+        Initilaize();
     }
     private void Initilaize()
     {
@@ -48,6 +48,15 @@ public class GhostController : EntityBase {
         m_previousNode = null;
         m_spawnLocation = transform.position;
         m_currentHealth = m_maxHealth;
+    }
+
+    public void ClearChoosingPath()
+    {
+        // Get rid of potential path
+        foreach (Transform t in m_choosingPathBallsList)
+            Destroy(t.gameObject);
+
+        m_choosingPathBallsList.Clear();
     }
 
     public override void OnDeath()
@@ -66,6 +75,29 @@ public class GhostController : EntityBase {
             Destroy(t.gameObject);
 
         m_choosingPathBallsList.Clear();
+    }
+
+    public void UpdateSkillDirection(Vector3 _point)
+    {
+        m_abilities.UpdateDirection(_point);
+    }
+
+    public void ConfirmSkillDirection()
+    {
+        m_abilities.ConfirmDirection();
+    }
+
+    public Vector3 GetDestinationPosition()
+    {
+        if (m_pathToFollow.Count > 0)
+            return m_pathToFollow[m_pathToFollow.Count - 1];
+        else
+            return transform.position;
+    }
+
+    public void EndMovement()
+    {
+        m_numMovesLeft = 0;
     }
 
     public void OnConfirmTargetPosition()
@@ -156,11 +188,7 @@ public class GhostController : EntityBase {
 
     public void OnDeselected()
     {
-        // Get rid of potential path
-        foreach (Transform t in m_choosingPathBallsList)
-            Destroy(t.gameObject);
-
-        m_choosingPathBallsList.Clear();
+        ClearChoosingPath();
 
         // Update the UI
         GetComponent<GhostAbilityBehaviour>().m_UIPortrait.GetComponent<GhostPortraitController>().OnDeselected();
@@ -173,9 +201,12 @@ public class GhostController : EntityBase {
         m_positionAtStartOfTurn = transform.position;
 
         ResetPath();
+
+        // Tell ability manager
+        m_abilities.StartOfTurn();
     }
 
-    public void ResetPath()
+    void ResetPath()
     {
         m_pathToFollow.Clear();
         m_previousNode = null;
@@ -183,7 +214,7 @@ public class GhostController : EntityBase {
         m_numMovesLeft = m_maxMoves;
 
         // TEST: destroy all previous path nodes left
-        
+
         foreach (Transform t in m_choosingPathBallsList)
             Destroy(t.gameObject);
         m_choosingPathBallsList.Clear();
@@ -191,6 +222,11 @@ public class GhostController : EntityBase {
         foreach (Transform t in m_confirmedPathBallsList)
             Destroy(t.gameObject);
         m_confirmedPathBallsList.Clear();
+    }
+    public void ResetAction()
+    {
+        ResetPath();
+        m_abilities.ResetAction();
     }
 
     public Vector3 TargetPoint()
@@ -200,7 +236,7 @@ public class GhostController : EntityBase {
 
     public void ResetChosenActions()
     {
-        ResetPath();
+        ResetAction();
         // TODO: Reset chosen skills
     }
 
@@ -248,6 +284,7 @@ public class GhostController : EntityBase {
 
         // Perform selected action (maybe pause and rotate towards target first)
         // TODO:
+        m_abilities.EndOfTurn();
 
         m_performing = false;
         yield return null;
