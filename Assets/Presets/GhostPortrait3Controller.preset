@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: GhostPortrait3Controller
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 7466f3c2fdf1e2748b84ad2a8137fc3e,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_highHealth.r
+    value: 0.31764707
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_highHealth.g
+    value: 0.8745099
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_highHealth.b
+    value: 0.34509805
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_highHealth.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_midHealth.r
+    value: 0.8400296
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_midHealth.g
+    value: 0.8745098
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_midHealth.b
+    value: 0.3176471
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_midHealth.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_lowHealth.r
+    value: 0.8745098
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_lowHealth.g
+    value: 0.3176471
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_lowHealth.b
+    value: 0.4328496
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_lowHealth.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_shakeIntensity
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ghost
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_healthBar
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_largeHealthBar
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_highlight
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_portrait
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_specialAbilityIcon
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_defaultGhostPortrait
+    value: 
+    objectReference: {fileID: 21300000, guid: b5b54075163b43c46a461fec6380e7b6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: m_respawnGhostPortrait
+    value: 
+    objectReference: {fileID: 21300002, guid: b5b54075163b43c46a461fec6380e7b6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: m_deadGhostPortrait
+    value: 
+    objectReference: {fileID: 21300004, guid: b5b54075163b43c46a461fec6380e7b6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: m_SpecialAbilityIconSprite
+    value: 
+    objectReference: {fileID: 21300032, guid: 4e9fc6b5047a6fa4baa84cc385d145f1, type: 3}
