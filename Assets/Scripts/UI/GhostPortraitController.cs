@@ -16,6 +16,7 @@ public class GhostPortraitController : MonoBehaviour {
     public GameObject m_healthBar;
     public GameObject m_largeHealthBar;
     public GameObject m_highlight;
+    public GameObject m_portrait;
     private LargeHealthBarController largeHealthBarController;
 
     private RectTransform healthBarRect;
@@ -28,6 +29,10 @@ public class GhostPortraitController : MonoBehaviour {
     private float m_currentHealth; // The current health of the ghost
     private float m_currentHealthBar; // The current health the bar is set to
     private float m_healthToBarWidth; // The constant that converts the current health to bar length
+
+    public Sprite m_defaultGhostPortrait; // The alive portrait for the ghost
+    public Sprite m_respawnGhostPortrait; // The portrait when the ghost is dead and returning to their crystal
+    public Sprite m_deadGhostPortrait; // The portrait when the ghosts crystal is destroyed
 
     // Use this for initialization
     void Start() {
@@ -83,6 +88,24 @@ public class GhostPortraitController : MonoBehaviour {
     {
         m_highlight.GetComponent<Image>().enabled = true;
         m_largeHealthBar.GetComponent<Image>().enabled = true;
+    }
+
+    // The Ghost hits 0 hp but has not died
+    public void OnGhostSoftDeath()
+    {
+        m_portrait.GetComponent<Image>().sprite = m_respawnGhostPortrait;
+    }
+
+    // The ghosts crystal has been destroyed, ghost fully died
+    public void OnGhostHardDeath()
+    {
+        m_portrait.GetComponent<Image>().sprite = m_deadGhostPortrait;
+    }
+
+    // The ghost has respawned again
+    public void OnGhostRespawn()
+    {
+        m_portrait.GetComponent<Image>().sprite = m_defaultGhostPortrait;
     }
 
     private IEnumerator LerpHealthBarColor(float time)
