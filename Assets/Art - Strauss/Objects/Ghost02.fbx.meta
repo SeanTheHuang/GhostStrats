@@ -10,6 +10,8 @@ ModelImporter:
     100008: pCube42
     100010: pCube43
     100012: pCube44
+    100014: pCube77
+    100016: pCube81
     400000: //RootNode
     400002: pCube30
     400004: pCube35
@@ -17,6 +19,8 @@ ModelImporter:
     400008: pCube42
     400010: pCube43
     400012: pCube44
+    400014: pCube77
+    400016: pCube81
     2100000: LargeGhostBody
     2100002: LargeGhostCeramics
     2300000: pCube30
@@ -25,18 +29,24 @@ ModelImporter:
     2300006: pCube42
     2300008: pCube43
     2300010: pCube44
+    2300012: pCube77
+    2300014: pCube81
     3300000: pCube30
     3300002: pCube35
     3300004: pCube38
     3300006: pCube42
     3300008: pCube43
     3300010: pCube44
+    3300012: pCube77
+    3300014: pCube81
     4300000: pCube30
     4300002: pCube35
     4300004: pCube38
     4300006: pCube42
     4300008: pCube43
     4300010: pCube44
+    4300012: pCube77
+    4300014: pCube81
   externalObjects: {}
   materials:
     importMaterials: 1

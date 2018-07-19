@@ -9,9 +9,14 @@ public class GhostPortraitController : MonoBehaviour {
     public Color m_midHealth;
     public Color m_lowHealth;
 
+    private Vector3 m_originalPosition; // Used during 'camera shake' of the UI element
+    public float m_shakeIntensity;
+
     public GameObject m_ghost;
     public GameObject m_healthBar;
     public GameObject m_largeHealthBar;
+    public GameObject m_highlight;
+    public GameObject m_portrait;
     private LargeHealthBarController largeHealthBarController;
 
     private RectTransform healthBarRect;
@@ -25,8 +30,19 @@ public class GhostPortraitController : MonoBehaviour {
     private float m_currentHealthBar; // The current health the bar is set to
     private float m_healthToBarWidth; // The constant that converts the current health to bar length
 
+    public Sprite m_defaultGhostPortrait; // The alive portrait for the ghost
+    public Sprite m_respawnGhostPortrait; // The portrait when the ghost is dead and returning to their crystal
+    public Sprite m_deadGhostPortrait; // The portrait when the ghosts crystal is destroyed
+
     // Use this for initialization
     void Start() {
+        // Set as in active if the ghost does not exist
+        if (m_ghost == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         m_maxHealth = m_ghost.GetComponent<GhostController>().m_maxHealth;
         m_currentHealth = m_maxHealth;
         m_currentHealthBar = m_maxHealth;
@@ -40,11 +56,12 @@ public class GhostPortraitController : MonoBehaviour {
         largeHealthBarController.Initalize(m_maxHealth, m_highHealth, m_midHealth, m_lowHealth);
 
         m_currentHealth /= 2;
+        m_originalPosition = transform.position;
     }
 
     private void Update()
     {
-        if(Input.anyKeyDown)
+        if(Input.GetKeyDown(KeyCode.Z))
         {
             UpdateHealthBar();
         }
@@ -56,8 +73,39 @@ public class GhostPortraitController : MonoBehaviour {
         //m_currentHealth = m_ghost.GetComponent<GhostController>().GetCurrentHealth();
         StartCoroutine(LerpHealthBar(1.5f));
         StartCoroutine(LerpHealthBarColor(1.5f));
+        StartCoroutine(ShakeUI(1.5f));
 
         largeHealthBarController.UpdateHealthBar(m_currentHealth);
+    }
+
+    public void OnDeselected()
+    {
+        m_highlight.GetComponent<Image>().enabled = false;
+        m_largeHealthBar.GetComponent<Image>().enabled = false;
+    }
+
+    public void OnSelected()
+    {
+        m_highlight.GetComponent<Image>().enabled = true;
+        m_largeHealthBar.GetComponent<Image>().enabled = true;
+    }
+
+    // The Ghost hits 0 hp but has not died
+    public void OnGhostSoftDeath()
+    {
+        m_portrait.GetComponent<Image>().sprite = m_respawnGhostPortrait;
+    }
+
+    // The ghosts crystal has been destroyed, ghost fully died
+    public void OnGhostHardDeath()
+    {
+        m_portrait.GetComponent<Image>().sprite = m_deadGhostPortrait;
+    }
+
+    // The ghost has respawned again
+    public void OnGhostRespawn()
+    {
+        m_portrait.GetComponent<Image>().sprite = m_defaultGhostPortrait;
     }
 
     private IEnumerator LerpHealthBarColor(float time)
@@ -100,5 +148,22 @@ public class GhostPortraitController : MonoBehaviour {
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    private IEnumerator ShakeUI(float time)
+    {
+        float elapsedTime = 0;
+
+        while (elapsedTime < time)
+        {
+            Vector3 randomPosition = new Vector3(Random.Range(0, m_shakeIntensity), Random.Range(0, m_shakeIntensity), 0);
+
+            transform.position = m_originalPosition + randomPosition;
+
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        transform.position = m_originalPosition;
     }
 }

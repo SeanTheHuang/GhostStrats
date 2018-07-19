@@ -9,7 +9,32 @@ public class PunkController : EntityBase
     float forwardSightAngle = 30;
     float forwardSightRadius = 6;
     List<Collider> m_Targets = new List<Collider> { };
-    Transform m_prey;
+    Transform m_prey, m_oldPrey;
+    int m_wallMask;
+
+    Node previousNode;
+    List<Vector3> m_pointList, m_realPath;
+
+    int m_movesPerformed;
+    private void Awake()
+    {
+        m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
+        m_realPath = new List<Vector3> { };
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("l pressed");
+            /*Sight();
+            if(m_Targets.Count != 0)
+            {
+                Debug.Log("targets in sight");
+                Debug.Log(m_Targets[0].gameObject.name);
+            }*/
+            ChooseLocation();
+        }
+    }
 
     public override void OnDeath()
     {
@@ -25,6 +50,96 @@ public class PunkController : EntityBase
     }
     public override void ChooseAction()
     {
+        
+    }
+
+    public void ChooseLocation()
+    {
+        Debug.Log("loc chose");
+        Sight();//adds targets
+        ChooseTarget();//chooses best target 
+
+        if(m_prey)
+        {//FOUND A TARGET MOVE TOWARDS IT
+            previousNode = PathRequestManager.Instance().NodeFromWorldPoint(m_prey.position);
+            m_pointList = new List<Vector3>();
+            m_pointList.Add(m_prey.position);
+            PathRequestManager.RequestPath(transform.position, m_prey.position, 1, OnPathFound);
+            StartCoroutine(FollowPath());
+        }
+        else
+        {
+            //search rooms/patrol
+            //if seen a ghost recently, head to the closest room patrol spot
+            //else cycle between room patrols looking for things.
+
+            //attentions - noise, last seen ghost, other people 
+
+            Debug.Log("else");
+        }
+
+    }
+
+    void OnPathFound(Vector3[] _path, bool _pathFound)
+    {
+        Debug.Log("here");
+        if (_pathFound)
+        {
+            m_realPath.Clear();
+            for (int i = 0; i < _path.Length - 1; i++) 
+            {
+                m_realPath.Add(_path[i]);
+
+            }
+            
+        }
+        else
+        {
+            //im not sure
+            Debug.Log("else ??");
+        }
+    }
+
+    IEnumerator FollowPath()
+    {
+        for (int i = 0; i < m_realPath.Count; i++)
+        {
+            while (true)
+            {
+                Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[i], m_moveSpeed * Time.deltaTime);
+
+                if(newPos == transform.position)
+                {
+                    break;//reached point
+                }
+                else
+                {
+                    transform.position = newPos;
+                }
+
+                yield return null;
+            }
+
+            m_movesPerformed++;
+
+            if (m_movesPerformed == m_maxMoves)
+            {//end if used up all moves // moved as far as possible
+                break;
+            }
+
+            m_oldPrey = m_prey;
+            Sight();
+            ChooseTarget();
+
+            if(m_prey != m_oldPrey)
+            {//choose a new path
+                PathRequestManager.RequestPath(transform.position, m_prey.position, 1, OnPathFound);
+                i = 0;//reset for-loop
+            }
+        }
+
+        //the attack if possible
+        yield return null;
     }
 
     void Sight()
@@ -56,15 +171,26 @@ public class PunkController : EntityBase
             }
         }
         //for all tickets set them to visble so all punks can attack
+        foreach (Collider t in m_Targets)
+        {
+            if (t.transform.GetComponent<GhostController>())
+            {
+                t.transform.GetComponent<GhostController>().SeenbyPunk();
+            }
+
+            
+        }
+
     }
 
     bool SightBehindWall(Transform _t)
     {//checks if there is a wall in the way
-        return (Physics.Linecast(transform.position, _t.position, LayerMask.NameToLayer("Wall")));
+        return (Physics.Linecast(transform.position, _t.position, m_wallMask));
     }
 
     void ChooseTarget()
     {
+        m_prey = null;
         if(m_Targets.Count == 0)
         {
             return;
