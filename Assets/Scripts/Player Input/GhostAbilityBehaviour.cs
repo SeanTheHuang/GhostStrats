@@ -43,6 +43,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public int m_specialCooldownTimer;
 
     public GameObject m_UIPortrait;
+    public GameObject m_UIAbilityBar;
 
     // The grid squares the ghost attacks in
     public List<Vector3> m_attackSquares;
@@ -57,6 +58,12 @@ public class GhostAbilityBehaviour : MonoBehaviour
         {
             m_attackSquares[i] = m_attackSquares[i] * m_pathRequestManager.GridSize();
         }
+    }
+
+    public void OnSelected()
+    {
+        m_UIPortrait.GetComponent<GhostPortraitController>().OnSelected();
+        m_UIAbilityBar.GetComponent<AbilityBarController>().OnSelected(m_attackCooldown, m_hideCooldown, m_overwatchCooldown, m_specialCooldown);
     }
 
     public void Attack()

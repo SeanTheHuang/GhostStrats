@@ -151,7 +151,7 @@ public class GhostController : EntityBase {
         MousePicker.Instance().StartPicking(transform.position, this);
 
         // Update the UI
-        GetComponent<GhostAbilityBehaviour>().m_UIPortrait.GetComponent<GhostPortraitController>().OnSelected();
+        GetComponent<GhostAbilityBehaviour>().OnSelected();
     }
 
     public void OnDeselected()
