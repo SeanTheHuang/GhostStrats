@@ -31,6 +31,13 @@ public class GhostPortraitController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        // Set as in active if the ghost does not exist
+        if (m_ghost == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         m_maxHealth = m_ghost.GetComponent<GhostController>().m_maxHealth;
         m_currentHealth = m_maxHealth;
         m_currentHealthBar = m_maxHealth;
