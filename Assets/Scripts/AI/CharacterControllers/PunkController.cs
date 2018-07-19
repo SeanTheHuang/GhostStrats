@@ -10,6 +10,24 @@ public class PunkController : EntityBase
     float forwardSightRadius = 6;
     List<Collider> m_Targets = new List<Collider> { };
     Transform m_prey;
+    int m_wallMask;
+    private void Awake()
+    {
+        m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("l pressed");
+            Sight();
+            if(m_Targets.Count != 0)
+            {
+                Debug.Log("targets in sight");
+                Debug.Log(m_Targets[0].gameObject.name);
+            }
+        }
+    }
 
     public override void OnDeath()
     {
@@ -56,11 +74,12 @@ public class PunkController : EntityBase
             }
         }
         //for all tickets set them to visble so all punks can attack
+        
     }
 
     bool SightBehindWall(Transform _t)
     {//checks if there is a wall in the way
-        return (Physics.Linecast(transform.position, _t.position, LayerMask.NameToLayer("Wall")));
+        return (Physics.Linecast(transform.position, _t.position, m_wallMask));
     }
 
     void ChooseTarget()
