@@ -149,6 +149,9 @@ public class GhostController : EntityBase {
         // This Ghost's turn to move!, get where the player wants to move
         m_ghostState = CharacterStates.CHOOSING_WHERE_TO_MOVE;
         MousePicker.Instance().StartPicking(transform.position, this);
+
+        // Update the UI
+        GetComponent<GhostAbilityBehaviour>().m_UIPortrait.GetComponent<GhostPortraitController>().OnSelected();
     }
 
     public void OnDeselected()
@@ -158,6 +161,9 @@ public class GhostController : EntityBase {
             Destroy(t.gameObject);
 
         m_choosingPathBallsList.Clear();
+
+        // Update the UI
+        GetComponent<GhostAbilityBehaviour>().m_UIPortrait.GetComponent<GhostPortraitController>().OnDeselected();
     }
 
     public void OnStartOfTurn()

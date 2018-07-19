@@ -9,9 +9,13 @@ public class GhostPortraitController : MonoBehaviour {
     public Color m_midHealth;
     public Color m_lowHealth;
 
+    private Vector3 m_originalPosition; // Used during 'camera shake' of the UI element
+    public float m_shakeIntensity;
+
     public GameObject m_ghost;
     public GameObject m_healthBar;
     public GameObject m_largeHealthBar;
+    public GameObject m_highlight;
     private LargeHealthBarController largeHealthBarController;
 
     private RectTransform healthBarRect;
@@ -40,11 +44,12 @@ public class GhostPortraitController : MonoBehaviour {
         largeHealthBarController.Initalize(m_maxHealth, m_highHealth, m_midHealth, m_lowHealth);
 
         m_currentHealth /= 2;
+        m_originalPosition = transform.position;
     }
 
     private void Update()
     {
-        if(Input.anyKeyDown)
+        if(Input.GetKeyDown(KeyCode.Z))
         {
             UpdateHealthBar();
         }
@@ -56,8 +61,21 @@ public class GhostPortraitController : MonoBehaviour {
         //m_currentHealth = m_ghost.GetComponent<GhostController>().GetCurrentHealth();
         StartCoroutine(LerpHealthBar(1.5f));
         StartCoroutine(LerpHealthBarColor(1.5f));
+        StartCoroutine(ShakeUI(1.5f));
 
         largeHealthBarController.UpdateHealthBar(m_currentHealth);
+    }
+
+    public void OnDeselected()
+    {
+        m_highlight.GetComponent<Image>().enabled = false;
+        m_largeHealthBar.GetComponent<Image>().enabled = false;
+    }
+
+    public void OnSelected()
+    {
+        m_highlight.GetComponent<Image>().enabled = true;
+        m_largeHealthBar.GetComponent<Image>().enabled = true;
     }
 
     private IEnumerator LerpHealthBarColor(float time)
@@ -100,5 +118,22 @@ public class GhostPortraitController : MonoBehaviour {
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    private IEnumerator ShakeUI(float time)
+    {
+        float elapsedTime = 0;
+
+        while (elapsedTime < time)
+        {
+            Vector3 randomPosition = new Vector3(Random.Range(0, m_shakeIntensity), Random.Range(0, m_shakeIntensity), 0);
+
+            transform.position = m_originalPosition + randomPosition;
+
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        transform.position = m_originalPosition;
     }
 }

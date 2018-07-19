@@ -42,6 +42,8 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public int m_overwatchCooldownTimer;
     public int m_specialCooldownTimer;
 
+    public GameObject m_UIPortrait;
+
     // The grid squares the ghost attacks in
     public List<Vector3> m_attackSquares;
 
