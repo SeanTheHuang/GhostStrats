@@ -13,6 +13,15 @@ public enum CharacterStates
     TRANSFORMED
 }
 
+public enum PunkStates
+{
+    IDLE,
+    MOVING,
+    HUNTING,
+    RUNNING,
+    DEAD
+}
+
 public abstract class EntityBase : MonoBehaviour {
 
     [Header("Base Stats")]
