@@ -18,6 +18,8 @@ public class GhostController : EntityBase {
     Vector3 m_positionAtStartOfTurn;
     int m_numMovesLeft;
 
+    bool m_OutofSight;
+
     // Path finding
     Vector3 m_spawnLocation;
     Vector3 m_currentStopPoint;
@@ -48,6 +50,7 @@ public class GhostController : EntityBase {
         m_previousNode = null;
         m_spawnLocation = transform.position;
         m_currentHealth = m_maxHealth;
+        m_OutofSight = true;
     }
 
     public void ClearChoosingPath()
@@ -288,5 +291,10 @@ public class GhostController : EntityBase {
 
         m_performing = false;
         yield return null;
+    }
+
+    public void SeenbyPunk()
+    {
+        m_OutofSight = false;
     }
 }

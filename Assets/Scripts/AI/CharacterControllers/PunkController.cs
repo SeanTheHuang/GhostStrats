@@ -16,8 +16,6 @@ public class PunkController : EntityBase
     List<Vector3> m_pointList, m_realPath;
 
     int m_movesPerformed;
-
-    bool moving = false;
     private void Awake()
     {
         m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
@@ -72,6 +70,11 @@ public class PunkController : EntityBase
         else
         {
             //search rooms/patrol
+            //if seen a ghost recently, head to the closest room patrol spot
+            //else cycle between room patrols looking for things.
+
+            //attentions - noise, last seen ghost, other people 
+
             Debug.Log("else");
         }
 
@@ -168,7 +171,16 @@ public class PunkController : EntityBase
             }
         }
         //for all tickets set them to visble so all punks can attack
-        
+        foreach (Collider t in m_Targets)
+        {
+            if (t.transform.GetComponent<GhostController>())
+            {
+                t.transform.GetComponent<GhostController>().SeenbyPunk();
+            }
+
+            
+        }
+
     }
 
     bool SightBehindWall(Transform _t)
