@@ -23,6 +23,11 @@ public class PlayerKeyboardInput : MonoBehaviour {
     public KeyCode m_ghostKey1;
     public KeyCode m_ghostKey2;
     public KeyCode m_ghostKey3;
+    
+    // The keycode for opening the pause menu
+    public KeyCode m_openPauseMenu;
+    public GameObject m_pauseMenu;
+    private bool m_gamePaused;
 
     // The ghosts associated to the keyboard buttons 1,2,3
     private List<GameObject> m_ghostList;
@@ -41,11 +46,22 @@ public class PlayerKeyboardInput : MonoBehaviour {
     void Start()
     {
         m_gameMaster = GameMaster.Instance();
+        m_gameMaster.m_onPause += onPause;
+        m_gameMaster.m_onPlay += onPlay;
     }
     
     void Update()
     {
-        if (!m_selectedGhost) // Don't update if no ghost is selected
+        // Pause the game and open the pause menu
+        if (Input.GetKeyDown(m_openPauseMenu))
+        {
+            if (m_gamePaused)
+                m_gameMaster.Play();
+            else
+                m_gameMaster.Pause();
+        }
+        
+        if (!m_selectedGhost || m_gamePaused) // Don't update if no ghost is selected or the game is paused
             return;
 
         // Keyboard input to select ghosts, only select ghost if they exist
@@ -102,5 +118,17 @@ public class PlayerKeyboardInput : MonoBehaviour {
     {
         m_selectedGhost = newGhost;
         m_GhostAbilityScript = newGhost.GetComponent<GhostAbilityBehaviour>();
+    }
+
+    void onPlay()
+    {
+        m_pauseMenu.SetActive(false);
+        m_gamePaused = false;
+    }
+
+    void onPause()
+    {
+        m_pauseMenu.SetActive(true);
+        m_gamePaused = true;
     }
 }

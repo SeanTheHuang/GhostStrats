@@ -37,6 +37,7 @@ public class GhostController : EntityBase {
     {
         Initilaize();
     }
+
     private void Initilaize()
     {
         // TEST: intialize waypoint lists

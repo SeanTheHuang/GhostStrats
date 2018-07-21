@@ -13,6 +13,12 @@ public class GameMaster : MonoBehaviour {
     GhostController m_currentlySelectedGhost;
     // TODO: List of traps
 
+    // The delegate events for when the game is played/paused
+    public delegate void OnPlay();
+    public delegate void OnPause();
+    public event OnPlay m_onPlay;
+    public event OnPause m_onPause;
+
     static GameMaster instance;
 
     public static GameMaster Instance()
@@ -137,5 +143,25 @@ public class GameMaster : MonoBehaviour {
         }
 
         return ghostList;
+    }
+
+    public void Play()
+    {
+        // Stop allowing player to select stuff
+        if (MousePicker.Instance().m_currentGhost != null)
+            MousePicker.Instance().PausePicking();
+
+        // Play the game
+        m_onPlay();
+    }
+
+    public void Pause()
+    {
+        // Stop allowing player to select stuff
+        if (MousePicker.Instance().m_currentGhost != null)
+            MousePicker.Instance().ResumePicking();
+
+        // Pause the game
+        m_onPause();
     }
 }
