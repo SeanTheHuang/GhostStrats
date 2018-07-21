@@ -30,7 +30,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     GhostActionState m_actionState;
     AimingDirection m_aimingDirection; // The direction the ghost is currently facing
     public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
-    bool m_aimingAbility;
+    bool m_aimingAbility; // If the player is aiming their ability
 
     // The number of turns the ghost must wait before they can use the ability again.
     [Header("Attack Cooldowns")]
@@ -103,6 +103,15 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_aimingDirection = AimingDirection.North;
         m_UIPortrait.GetComponent<GhostPortraitController>().OnSelected();
         m_UIAbilityBar.GetComponent<AbilityBarController>().OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, false, false);
+    }
+
+    // Reset action variables if one has not been chosen yet
+    public void OnDeselect()
+    {
+        if (m_abilityUsed)
+            return;
+
+        ResetAction();
     }
 
     public void UpdateDirection(Vector3 _newDir)
@@ -213,6 +222,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         ClearAttackVisuals();
         m_actionState = GhostActionState.NONE;
         m_abilityUsed = false;
+        m_aimingAbility = false;
     }
 
     public void ChooseAttack()

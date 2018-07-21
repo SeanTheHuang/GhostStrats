@@ -179,4 +179,81 @@ public class Pathfinding : MonoBehaviour {
     }
 
     public bool FindingPath() { return m_findingPath; }
+
+    public Vector3[] FindPathImmediate(Vector3 startPos, Vector3 targetPos, int clearance)
+    {
+        Vector3[] wayPoints = new Vector3[0];
+
+        // Wait for grid to be ready
+        while (!grid.GridReady())
+            return wayPoints;
+
+        Stopwatch sw = new Stopwatch();
+        sw.Start();
+
+        startPos = transform.InverseTransformPoint(startPos);
+        targetPos = transform.InverseTransformPoint(targetPos);
+
+        //Debug.Log("Start Position: " + startPos);
+        //Debug.Log("End Position  : " + endPos);
+
+        bool pathFound = false;
+
+        //Convert co-ords to nodes
+        Node startNode = grid.NodeFromWorldPoint(startPos);
+        Node targetNode = grid.NodeFromWorldPoint(targetPos);
+
+        if (startNode.Walkable && targetNode.Walkable)
+        {
+            Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
+            HashSet<Node> closedSet = new HashSet<Node>();
+
+            openSet.Add(startNode);
+
+            while (openSet.Count > 0)
+            {
+                Node currentNode = openSet.RemoveFirst();
+                closedSet.Add(currentNode);
+
+                if (currentNode == targetNode)  //Path found!
+                {
+                    pathFound = true;
+                    break;
+                }
+
+                foreach (Node n in grid.GetNeighbours(currentNode))
+                {
+                    if (!n.Walkable || closedSet.Contains(n) || (n.clearance < clearance && n != targetNode))
+                    {
+                        continue;
+                    }
+
+                    int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, n);
+
+                    if (newMovementCostToNeighbour < n.gCost || !openSet.Contains(n))
+                    {
+                        n.gCost = newMovementCostToNeighbour;
+                        n.hCost = GetDistance(n, targetNode);
+                        n.parent = currentNode;
+
+                        if (!openSet.Contains(n))
+                        {
+                            openSet.Add(n);
+                        }
+                        else
+                        {
+                            openSet.UpdateItem(n);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        if (pathFound)
+            wayPoints = RetracePath(startNode, targetNode, clearance, targetPos);
+
+        sw.Stop();
+        return wayPoints;
+    }
 }

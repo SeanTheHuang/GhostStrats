@@ -43,8 +43,8 @@ public class AbilityBarController : MonoBehaviour {
         {
             m_moveUIHighlightImage.GetComponent<Image>().enabled = true;
         }
-    }         
-    
+    }
+
     public void EnableCoolDownUIEffects(GameObject uIAbility, int coolDownNumber)
     {
         uIAbility.transform.GetChild(0).GetComponent<Image>().enabled = true;

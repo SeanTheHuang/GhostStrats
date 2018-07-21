@@ -199,6 +199,7 @@ public class GhostController : EntityBase {
     public void OnDeselected()
     {
         ClearChoosingPath();
+        m_abilities.OnDeselect();
 
         // Update the UI
         GetComponent<GhostAbilityBehaviour>().m_UIPortrait.GetComponent<GhostPortraitController>().OnDeselected();
