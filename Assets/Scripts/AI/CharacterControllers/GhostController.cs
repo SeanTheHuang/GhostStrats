@@ -17,6 +17,7 @@ public class GhostController : EntityBase {
     // Current stats at start of turn
     Vector3 m_positionAtStartOfTurn;
     int m_numMovesLeft;
+    public bool m_abilityUsed;
 
     bool m_OutofSight;
 
@@ -209,7 +210,7 @@ public class GhostController : EntityBase {
         // Reset variables
         m_performing = false;
         m_positionAtStartOfTurn = transform.position;
-
+        m_abilityUsed = false;
         ResetPath();
 
         // Tell ability manager

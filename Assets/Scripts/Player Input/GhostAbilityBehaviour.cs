@@ -23,13 +23,14 @@ public class GhostAbilityBehaviour : MonoBehaviour
 {
     PathRequestManager m_pathRequestManager;
     GhostController m_ghostController;
+    GameMaster m_gameMaster;
 
     public Transform m_attackTilePrefab;
     List<Transform> m_attackTileList;
 
     GhostActionState m_actionState;
     AimingDirection m_aimingDirection; // The direction the ghost is currently facing
-    public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
+    //public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     bool m_aimingAbility;
 
     // The number of turns the ghost must wait before they can use the ability again.
@@ -70,6 +71,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     {
         m_pathRequestManager = PathRequestManager.Instance();
         m_aimingDirection = AimingDirection.North;
+        m_gameMaster = GameMaster.Instance();
 
         // Convert the attack squares to be equal to the length of a grid square
         for (int i = 0; i < m_attackSquares.Count; ++i)
@@ -95,6 +97,19 @@ public class GhostAbilityBehaviour : MonoBehaviour
         {
             ConfirmDirection();
         }
+    }
+
+    // Sets the ability to be used. Tells the GameMaster to check if all abilities have been used 
+    void AbilityUsed()
+    {
+        m_ghostController.m_abilityUsed = true;
+        m_gameMaster.CheckAllPlayerActionsUsed();
+    }
+
+    void AbilityUnused()
+    {
+        m_ghostController.m_abilityUsed = false;
+        m_gameMaster.ResetEndTurnPrompt();
     }
 
     public void OnSelected()
@@ -141,7 +156,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_ghostController.EndMovement();
         MousePicker.Instance().FinishAimingAbility();
         m_attackCooldownTimer = m_attackCooldown; // Update the timer
-        m_abilityUsed = true;
+        AbilityUsed();
         m_aimingAbility = false;
     }
 
@@ -198,7 +213,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public void StartOfTurn()
     {
-        m_abilityUsed = false;
+        AbilityUnused();
         m_aimingAbility = false;
         m_actionState = GhostActionState.NONE;
     }
@@ -212,7 +227,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     {
         ClearAttackVisuals();
         m_actionState = GhostActionState.NONE;
-        m_abilityUsed = false;
+        AbilityUnused();
     }
 
     public void ChooseAttack()
@@ -235,7 +250,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_ghostController.ClearChoosingPath();
         m_ghostController.EndMovement();
         m_hideCooldownTimer = m_hideCooldown; // Update the timer
-        m_abilityUsed = true;
+        AbilityUsed();
     }
 
     public void Overwatch()
