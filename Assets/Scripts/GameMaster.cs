@@ -20,6 +20,7 @@ public class GameMaster : MonoBehaviour {
     public event OnPause m_onPause;
 
     public GameObject m_AnnouncementBannerImage;
+    public GameObject m_EndTurnPromptImage;
 
     static GameMaster instance;
 
@@ -172,5 +173,24 @@ public class GameMaster : MonoBehaviour {
 
         // Pause the game
         m_onPause();
+    }
+
+    // Cycle over all the ghosts. If all their actions have been used display a prompt to the player to end the turn
+    public void CheckAllPlayerActionsUsed()
+    {
+        foreach (GhostController gc in m_ghostList)
+        {
+            if(!gc.m_abilityUsed)
+                return;
+        }
+
+        m_EndTurnPromptImage.GetComponent<EndTurnPromptController>().Appear();
+    }
+
+    // If the end turn prompt is visible, make it disappear
+    public void ResetEndTurnPrompt()
+    {
+        if (m_EndTurnPromptImage.GetComponent<EndTurnPromptController>().m_visible)
+            m_EndTurnPromptImage.GetComponent<EndTurnPromptController>().Disappear();
     }
 }

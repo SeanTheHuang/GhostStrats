@@ -465,7 +465,6 @@ MonoBehaviour:
   m_moveOutDelay: 0
   m_fadeOutTime: 1
   m_moveSpeed: 1
-  m_EndPositionOffset: 1
 --- !u!1 &149124275
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +941,7 @@ GameObject:
   - component: {fileID: 238965188}
   - component: {fileID: 238965191}
   - component: {fileID: 238965190}
-  - component: {fileID: 238965189}
+  - component: {fileID: 238965192}
   m_Layer: 5
   m_Name: EndTurnPromptBanner
   m_TagString: Untagged
@@ -969,22 +968,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -337}
   m_SizeDelta: {x: 1, y: 165}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &238965189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 238965187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668e4daa085ed12468cf64b91b951126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_fadeInTime: 1.5
-  m_moveOutDelay: 0
-  m_fadeOutTime: 1
-  m_moveSpeed: 1
-  m_EndPositionOffset: -1
 --- !u!114 &238965190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1018,6 +1001,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 238965187}
+--- !u!114 &238965192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 238965187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5811580e660d341baa6cda17655f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fadeInTime: 1
+  m_fadeOutTime: 1
+  m_moveSpeed: 0
+  m_visible: 0
 --- !u!1 &257718037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,6 +2846,7 @@ MonoBehaviour:
   - {fileID: 817404011}
   m_startPunkArray: []
   m_AnnouncementBannerImage: {fileID: 71058378}
+  m_EndTurnPromptImage: {fileID: 238965187}
 --- !u!4 &720402526
 Transform:
   m_ObjectHideFlags: 0
@@ -3161,6 +3160,7 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_abilityUsed: 0
   m_confirmedPathPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
     type: 2}
   m_choosingPathPrefab: {fileID: 4147061469472368, guid: a95047ad5a0c4c94a86d746b87e19a1a,
@@ -3180,7 +3180,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackTilePrefab: {fileID: 4341749014162540, guid: 1ef86f20732078c4eb075d6878d934a1,
     type: 2}
-  m_abilityUsed: 0
   m_attackCooldown: 0
   m_hideCooldown: 1
   m_overwatchCooldown: 1
@@ -3702,7 +3701,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 382.3, y: 84.3}
+  m_SizeDelta: {x: 923.5, y: 84.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997010933
 MonoBehaviour:
@@ -3723,7 +3722,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Press space to end turn
+  m_text: Press space to confirm moves
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3750,14 +3749,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 76
-  m_fontSizeBase: 76
+  m_fontSize: 46
+  m_fontSizeBase: 46
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3768,7 +3767,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3791,12 +3790,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 997010933}
-    characterCount: 23
+    characterCount: 28
     spriteCount: 0
     spaceCount: 4
     wordCount: 5
     linkCount: 0
-    lineCount: 3
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -4673,7 +4672,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackTilePrefab: {fileID: 4341749014162540, guid: 1ef86f20732078c4eb075d6878d934a1,
     type: 2}
-  m_abilityUsed: 0
   m_attackCooldown: 0
   m_hideCooldown: 1
   m_overwatchCooldown: 1
@@ -4717,6 +4715,7 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_abilityUsed: 0
   m_confirmedPathPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
     type: 2}
   m_choosingPathPrefab: {fileID: 4147061469472368, guid: a95047ad5a0c4c94a86d746b87e19a1a,
@@ -5363,7 +5362,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackTilePrefab: {fileID: 4341749014162540, guid: 1ef86f20732078c4eb075d6878d934a1,
     type: 2}
-  m_abilityUsed: 0
   m_attackCooldown: 0
   m_hideCooldown: 1
   m_overwatchCooldown: 1
@@ -5393,6 +5391,7 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_abilityUsed: 0
   m_confirmedPathPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
     type: 2}
   m_choosingPathPrefab: {fileID: 4147061469472368, guid: a95047ad5a0c4c94a86d746b87e19a1a,

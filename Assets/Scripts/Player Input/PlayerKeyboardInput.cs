@@ -10,6 +10,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
     // Abilities can only be used if the character is selected
     public GameObject m_selectedGhost;
     GhostAbilityBehaviour m_GhostAbilityScript;
+    GhostController m_GhostController;
 
     GameMaster m_gameMaster;
 
@@ -75,7 +76,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
             m_gameMaster.UpdateSelectedGhost(m_ghostList[2]);
 
         // Keyboard input to use ghost abilities
-        if (!m_GhostAbilityScript.m_abilityUsed) // Check to see if the selected ghost has not already used an ability
+        if (!m_GhostController.m_abilityUsed) // Check to see if the selected ghost has not already used an ability
         {
             // Attack ability used if key pressed and cooldown at 0
             if (Input.GetKeyDown(m_attack) && m_GhostAbilityScript.m_attackCooldownTimer == 0)
@@ -118,6 +119,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
     {
         m_selectedGhost = newGhost;
         m_GhostAbilityScript = newGhost.GetComponent<GhostAbilityBehaviour>();
+        m_GhostController = newGhost.GetComponent<GhostController>();
     }
 
     void onPlay()
