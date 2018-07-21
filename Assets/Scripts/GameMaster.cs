@@ -77,6 +77,7 @@ public class GameMaster : MonoBehaviour {
         foreach (GhostController gc in m_ghostList)
             gc.OnStartOfTurn();
 
+        // Trigger the announcement that its the player's turn to appear on the UI
         m_AnnouncementBannerImage.GetComponent<AnnouncementBannerController>().Appear();
     }
 
