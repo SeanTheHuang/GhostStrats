@@ -103,6 +103,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     // Sets the ability to be used. Tells the GameMaster to check if all abilities have been used 
     void AbilityUsed()
     {
+        m_abilityUsed = true;
         m_ghostController.m_abilityUsed = true;
         m_gameMaster.CheckAllPlayerActionsUsed();
     }
@@ -162,9 +163,11 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public void ConfirmDirection()
     {
-        m_ghostController.ClearChoosingPath();
         m_ghostController.EndMovement();
         MousePicker.Instance().FinishAimingAbility();
+        Debug.Log("Confirmed ability targets!");
+        foreach (Vector3 v3 in m_rotatedAffectedSquares)
+            Debug.Log(v3);
         m_attackCooldownTimer = m_attackCooldown; // Update the timer
         AbilityUsed();
         m_aimingAbility = false;
@@ -257,19 +260,28 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public void Hide()
     {
+        ClearAttackVisuals();
+
         Debug.Log("Ghost Hide");
-        m_actionState = GhostActionState.BOO;
+        m_actionState = GhostActionState.HIDE;
         m_ghostController.ClearChoosingPath();
         m_ghostController.EndMovement();
         m_hideCooldownTimer = m_hideCooldown; // Update the timer
+        m_aimingAbility = false;
         AbilityUsed();
     }
 
     public void Overwatch()
     {
-        Debug.Log("Ghost Overwatch");
+        m_actionState = GhostActionState.OVERSPOOK;
+        m_ghostController.ClearChoosingPath();
+        MousePicker.Instance().PausePicking();
+        m_currentAffectedSquares = m_overspookSquares;
         m_aimingAbility = true;
-        m_overwatchCooldownTimer = m_overwatchCooldown; // Update the timer
+
+        // Spawn intial values
+        UpdateAttackTiles();
+        UpdateAtackVisuals();
     }
 
     public virtual void Special()
