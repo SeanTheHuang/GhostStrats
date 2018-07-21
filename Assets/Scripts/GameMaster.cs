@@ -19,6 +19,8 @@ public class GameMaster : MonoBehaviour {
     public event OnPlay m_onPlay;
     public event OnPause m_onPause;
 
+    public GameObject m_AnnouncementBannerImage;
+
     static GameMaster instance;
 
     public static GameMaster Instance()
@@ -74,6 +76,8 @@ public class GameMaster : MonoBehaviour {
         // Tell all ghosts its start of turn
         foreach (GhostController gc in m_ghostList)
             gc.OnStartOfTurn();
+
+        m_AnnouncementBannerImage.GetComponent<AnnouncementBannerController>().Appear();
     }
 
     void RunPlayersTurn()
