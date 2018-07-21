@@ -101,6 +101,12 @@ public class GhostAbilityBehaviour : MonoBehaviour
         {
             ConfirmDirection();
         }
+        else if (Input.GetButtonDown("Fire2"))
+        {
+            // Right click = cancel ability selection
+            ResetAction();
+            MousePicker.Instance().FinishAimingAbility();
+        }
     }
 
     // Sets the ability to be used. Tells the GameMaster to check if all abilities have been used 
@@ -239,6 +245,10 @@ public class GhostAbilityBehaviour : MonoBehaviour
                 PerformOverwatch();
 
                 break;
+            case GhostActionState.HIDE:
+                PerformHide();
+
+                break;
             case GhostActionState.ABILITY:
                 PerformSpecialAbility();
 
@@ -262,6 +272,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     void PerformAttack()
     {
         ClearAttackVisuals();
+        m_attackCooldownTimer = m_attackCooldown;
 
         // Rotate player visuals and then attack these squares
         Vector3 attackDir = AverageAimDirection();
@@ -272,9 +283,15 @@ public class GhostAbilityBehaviour : MonoBehaviour
             pc.OnEntityHit(m_baseAttackDamage);
     }
 
+    void PerformHide()
+    {
+        m_hideCooldownTimer = m_hideCooldown; // Update the timer
+    }
+
     void PerformOverwatch()
     {
         ClearAttackVisuals();
+        m_overwatchCooldownTimer = m_overwatchCooldown;
 
         // Rotate player visuals
         Vector3 lookDir = AverageAimDirection();
@@ -283,6 +300,8 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     protected virtual void PerformSpecialAbility()
     {
+        ClearAttackVisuals();
+        m_specialCooldownTimer = m_specialCooldown;
         // TODO in child classes
     }
 
@@ -325,9 +344,9 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         Debug.Log("Ghost Hide");
         m_actionState = GhostActionState.HIDE;
+        MousePicker.Instance().FinishAimingAbility(); // Just incase aiming doesn't come back
         m_ghostController.ClearChoosingPath();
         m_ghostController.EndMovement();
-        m_hideCooldownTimer = m_hideCooldown; // Update the timer
         m_aimingAbility = false;
         AbilityUsed();
     }
