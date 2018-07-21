@@ -42,8 +42,9 @@ public class PunkController : EntityBase
     public override void OnSpawn()
     {
     }
-    public override void OnEntityHit()
+    public override void OnEntityHit(int _damage)
     {
+        Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
     }
     public override void OnSelected()
     {

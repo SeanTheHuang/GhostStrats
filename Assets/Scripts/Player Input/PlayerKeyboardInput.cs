@@ -86,17 +86,17 @@ public class PlayerKeyboardInput : MonoBehaviour {
             // Hide ability used if key pressed and cooldown at 0
             else if (Input.GetKeyDown(m_hide) && m_GhostAbilityScript.m_hideCooldownTimer == 0)
             {
-                m_GhostAbilityScript.Hide();
+                m_GhostAbilityScript.ChooseHide();
             }
             // Overwatch ability used if key pressed and cooldown at 0
             else if (Input.GetKeyDown(m_overwatch) && m_GhostAbilityScript.m_overwatchCooldownTimer == 0)
             {
-                m_GhostAbilityScript.Overwatch();
+                m_GhostAbilityScript.ChooseOverwatch();
             }
             // Special ability used if key pressed and cooldown at 0
             else if (Input.GetKeyDown(m_special) && m_GhostAbilityScript.m_specialCooldownTimer == 0)
             {
-                m_GhostAbilityScript.Special();
+                m_GhostAbilityScript.ChooseSpecial();
             }
         }
     }

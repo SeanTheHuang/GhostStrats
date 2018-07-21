@@ -18,9 +18,13 @@ public class GhostHole : EntityBase
     public override void OnSpawn()
     {
     }
-    public override void OnEntityHit()
+    public override void OnEntityHit(int _damage)
     {
         //lose health
+        m_currentHealth -= _damage;
+        Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
+
+        //TODO: death actions
     }
     public override void OnSelected()
     {

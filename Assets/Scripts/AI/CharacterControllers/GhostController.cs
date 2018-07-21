@@ -55,54 +55,18 @@ public class GhostController : EntityBase {
         m_OutofSight = true;
     }
 
-    public void ClearChoosingPath()
-    {
-        // Get rid of potential path
-        foreach (Transform t in m_choosingPathBallsList)
-            Destroy(t.gameObject);
-
-        m_choosingPathBallsList.Clear();
-    }
+    #region EVENT_FUNCTIONS
 
     public override void OnDeath()
     {
     }
+
     public override void OnSpawn()
     {
     }
-    public override void OnEntityHit()
-    {
-    }
 
-    public void ResetChoosingPathNodes()
+    public override void OnEntityHit(int _damage)
     {
-        foreach (Transform t in m_choosingPathBallsList)
-            Destroy(t.gameObject);
-
-        m_choosingPathBallsList.Clear();
-    }
-
-    public void UpdateSkillDirection(Vector3 _point)
-    {
-        m_abilities.UpdateDirection(_point);
-    }
-
-    public void ConfirmSkillDirection()
-    {
-        m_abilities.ConfirmDirection();
-    }
-
-    public Vector3 GetDestinationPosition()
-    {
-        if (m_pathToFollow.Count > 0)
-            return m_pathToFollow[m_pathToFollow.Count - 1];
-        else
-            return transform.position;
-    }
-
-    public void EndMovement()
-    {
-        m_numMovesLeft = 0;
     }
 
     public void OnConfirmTargetPosition()
@@ -127,7 +91,7 @@ public class GhostController : EntityBase {
         m_previousNode = null;
 
         // Update the UI
-        if(m_numMovesLeft == 0)
+        if (m_numMovesLeft == 0)
             GetComponent<GhostAbilityBehaviour>().m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(true);
         else
             GetComponent<GhostAbilityBehaviour>().m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(false);
@@ -170,13 +134,15 @@ public class GhostController : EntityBase {
         m_pathFound = _ifPathFound;
         int possibleMoveCount = m_numMovesLeft;
 
-        if (_ifPathFound) {
+        if (_ifPathFound)
+        {
             // Only take max amount of moves possible
             // Make sure list is clear
             foreach (Transform t in m_choosingPathBallsList)
                 Destroy(t.gameObject);
             m_choosingPathBallsList.Clear();
-            foreach (Vector3 pathNode in _path) {
+            foreach (Vector3 pathNode in _path)
+            {
                 m_choosingPathBallsList.Add(Instantiate(m_choosingPathPrefab, pathNode, Quaternion.identity));
                 possibleMoveCount -= 1;
 
@@ -218,6 +184,54 @@ public class GhostController : EntityBase {
         m_abilities.StartOfTurn();
     }
 
+    public void OnEndOfTurn()
+    {
+        // Move here, and perform chosen action
+        StartCoroutine(PerformAction());
+    }
+
+    public void ClearChoosingPath()
+    {
+        // Get rid of potential path
+        foreach (Transform t in m_choosingPathBallsList)
+            Destroy(t.gameObject);
+
+        m_choosingPathBallsList.Clear();
+    }
+
+    #endregion
+
+    public void ResetChoosingPathNodes()
+    {
+        foreach (Transform t in m_choosingPathBallsList)
+            Destroy(t.gameObject);
+
+        m_choosingPathBallsList.Clear();
+    }
+
+    public void UpdateSkillDirection(Vector3 _point)
+    {
+        m_abilities.UpdateDirection(_point);
+    }
+
+    public void ConfirmSkillDirection()
+    {
+        m_abilities.ConfirmDirection();
+    }
+
+    public Vector3 GetDestinationPosition()
+    {
+        if (m_pathToFollow.Count > 0)
+            return m_pathToFollow[m_pathToFollow.Count - 1];
+        else
+            return transform.position;
+    }
+
+    public void EndMovement()
+    {
+        m_numMovesLeft = 0;
+    }
+
     void ResetPath()
     {
         m_pathToFollow.Clear();
@@ -252,11 +266,7 @@ public class GhostController : EntityBase {
         // TODO: Reset chosen skills
     }
 
-    public void OnEndOfTurn()
-    {
-        // Move here, and perform chosen action
-        StartCoroutine(PerformAction());
-    }
+    
 
     public override void ChooseAction()
     {
@@ -276,18 +286,35 @@ public class GhostController : EntityBase {
             Destroy(t.gameObject);
         m_choosingPathBallsList.Clear();
 
+        // Character intial rotation
+        if (m_pathToFollow.Count > 0)
+        {
+            Vector3 dir = m_pathToFollow[0] - transform.position;
+            dir.y = 0;
+            transform.rotation = Quaternion.LookRotation(dir);
+        }
+
         m_performing = true;
         // Start by moving to target location
         m_ghostState = CharacterStates.MOVING;
-        foreach (Vector3 wayPoint in m_pathToFollow) {
+        for (int i = 0; i < m_pathToFollow.Count; i++) {
             while (true) {
-                Vector3 newPosition = Vector3.MoveTowards(transform.position, wayPoint, m_moveSpeed * Time.deltaTime);
+                Vector3 newPosition = Vector3.MoveTowards(transform.position, m_pathToFollow[i], m_moveSpeed * Time.deltaTime);
                 if (newPosition == transform.position) // Reached point, move onto next!
+                {
+                    if (i + 1 < m_pathToFollow.Count)
+                    {
+                        // Update rotation
+                        Vector3 dir = m_pathToFollow[i+1] - transform.position;
+                        dir.y = 0;
+                        transform.rotation = Quaternion.LookRotation(dir);
+                    }
                     break;
+                }
                 else
                     transform.position = newPosition; // Not reached, move the player!
 
-                yield return null;
+                yield return null; // Move over a number of frames
             }
         }
 
@@ -295,7 +322,6 @@ public class GhostController : EntityBase {
         m_pathToFollow.Clear();
 
         // Perform selected action (maybe pause and rotate towards target first)
-        // TODO:
         m_abilities.EndOfTurn();
 
         m_performing = false;

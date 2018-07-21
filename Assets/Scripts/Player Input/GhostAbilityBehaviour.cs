@@ -58,6 +58,9 @@ public class GhostAbilityBehaviour : MonoBehaviour
     List<Vector3> m_currentAffectedSquares;
     List<Vector3> m_rotatedAffectedSquares;
 
+    [Header("Ability strength")]
+    public int m_baseAttackDamage = 2;
+
     private void Awake()
     {
         m_attackTileList = new List<Transform>();
@@ -166,8 +169,6 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_ghostController.EndMovement();
         MousePicker.Instance().FinishAimingAbility();
         Debug.Log("Confirmed ability targets!");
-        foreach (Vector3 v3 in m_rotatedAffectedSquares)
-            Debug.Log(v3);
         m_attackCooldownTimer = m_attackCooldown; // Update the timer
         AbilityUsed();
         m_aimingAbility = false;
@@ -219,11 +220,6 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_attackTileList.Clear();
     }
 
-    public void PerformAttack()
-    {
-        ClearAttackVisuals();
-    }
-
     public void StartOfTurn()
     {
         AbilityUnused();
@@ -233,7 +229,23 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public void EndOfTurn()
     {
-        // Perform attack
+        switch (m_actionState)
+        {
+            case GhostActionState.BOO:
+                PerformAttack();
+
+                break;
+            case GhostActionState.OVERSPOOK:
+                PerformOverwatch();
+
+                break;
+            case GhostActionState.ABILITY:
+                PerformSpecialAbility();
+
+                break;
+            default:
+                break;
+        }
     }
 
     public void ResetAction()
@@ -244,6 +256,55 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_aimingAbility = false;
         AbilityUnused();
     }
+
+    #region PERFORM_ABILTY_REGION
+
+    void PerformAttack()
+    {
+        ClearAttackVisuals();
+
+        // Rotate player visuals and then attack these squares
+        Vector3 attackDir = AverageAimDirection();
+        transform.rotation = Quaternion.LookRotation(attackDir);
+
+        List<PunkController> affectedPunks = GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares);
+        foreach (PunkController pc in affectedPunks)
+            pc.OnEntityHit(m_baseAttackDamage);
+    }
+
+    void PerformOverwatch()
+    {
+        ClearAttackVisuals();
+
+        // Rotate player visuals
+        Vector3 lookDir = AverageAimDirection();
+        transform.rotation = Quaternion.LookRotation(lookDir);
+    }
+
+    protected virtual void PerformSpecialAbility()
+    {
+        // TODO in child classes
+    }
+
+    protected Vector3 AverageAimDirection()
+    {
+        Vector3 attackDir = Vector3.zero;
+
+        if (m_rotatedAffectedSquares.Count < 1)
+            return attackDir;
+
+        // Collect all together
+        foreach (Vector3 targetPos in m_rotatedAffectedSquares)
+            attackDir += targetPos;
+
+        // Remove y-component, and normalize
+        attackDir.y = 0;
+        return attackDir.normalized;
+    }
+
+    #endregion
+
+    #region CHOOSE_ABILITY_REGION
 
     public void ChooseAttack()
     {
@@ -258,7 +319,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         UpdateAtackVisuals();
     }
 
-    public void Hide()
+    public void ChooseHide()
     {
         ClearAttackVisuals();
 
@@ -271,7 +332,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         AbilityUsed();
     }
 
-    public void Overwatch()
+    public void ChooseOverwatch()
     {
         m_actionState = GhostActionState.OVERSPOOK;
         m_ghostController.ClearChoosingPath();
@@ -284,9 +345,11 @@ public class GhostAbilityBehaviour : MonoBehaviour
         UpdateAtackVisuals();
     }
 
-    public virtual void Special()
+    public virtual void ChooseSpecial()
     {
         Debug.Log("Ghost Special");
         m_specialCooldown = m_specialCooldownTimer; // Update the timer
     }
+
+    #endregion
 }
