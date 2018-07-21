@@ -124,6 +124,12 @@ public class GhostController : EntityBase {
 
         // Force a new path to be found
         m_previousNode = null;
+
+        // Update the UI
+        if(m_numMovesLeft == 0)
+            GetComponent<GhostAbilityBehaviour>().m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(true);
+        else
+            GetComponent<GhostAbilityBehaviour>().m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(false);
     }
 
     public void OnTargetLocation(Vector3 _position)
