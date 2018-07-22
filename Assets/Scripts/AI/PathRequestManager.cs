@@ -108,6 +108,27 @@ public class PathRequestManager : MonoBehaviour {
         return new Vector3(point2D.x, _position.y, point2D.y);
     }
 
+    public bool PositionIsWalkable(Vector3 _position)
+    {
+        Node node = m_nodeGrid.NodeFromWorldPoint(_position);
+
+        if (node == null)
+            return false;
+
+        return (node.Walkable);
+    }
+
+    public void TogglePositionWalkable(Vector3 _position, bool _newState)
+    {
+        Node node = m_nodeGrid.NodeFromWorldPoint(_position);
+
+        if (node == null)
+            return;
+
+        if (node.WalkabilityIsLocked)
+            node.Walkable = _newState;
+    }
+
     //public List<T> GetObjectsFromListOfPositions<T>(List<Vector3> _worldPositionList, NodeState _type)
     //{
     //    List<T> m_outputList = new List<T>();

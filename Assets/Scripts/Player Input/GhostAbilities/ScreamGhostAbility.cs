@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScreamGhostAbility : MonoBehaviour {
+public class ScreamGhostAbility : GhostAbilityBehaviour {
+    [Range(0, 10)]
+    public int m_screamDamage = 1;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    protected override void PerformSpecialAbility()
+    {
+        base.PerformSpecialAbility();
+        // TODO: Get all punks and deal X damage to them
+
+        // TODO: Notify all punks of scream
+    }
+
+    public override void ChooseSpecial()
+    {
+        base.ChooseSpecial();
+        ImmediateConfirmAbility();
+    }
 }
