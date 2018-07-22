@@ -16,7 +16,7 @@ public class GhostController : EntityBase {
 
     // Current stats at start of turn
     Vector3 m_positionAtStartOfTurn;
-    int m_numMovesLeft;
+    public int m_numMovesLeft;
     public bool m_abilityUsed;
 
     bool m_OutofSight;
@@ -92,9 +92,9 @@ public class GhostController : EntityBase {
 
         // Update the UI
         if (m_numMovesLeft == 0)
-            GetComponent<GhostAbilityBehaviour>().m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(true);
+            m_abilities.m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(true);
         else
-            GetComponent<GhostAbilityBehaviour>().m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(false);
+            m_abilities.m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(false);
     }
 
     public void OnTargetLocation(Vector3 _position)
@@ -169,7 +169,7 @@ public class GhostController : EntityBase {
         m_abilities.OnDeselect();
 
         // Update the UI
-        GetComponent<GhostAbilityBehaviour>().m_UIPortrait.GetComponent<GhostPortraitController>().OnDeselected();
+        m_abilities.m_UIPortrait.GetComponent<GhostPortraitController>().OnDeselected();
     }
 
     public void OnStartOfTurn()

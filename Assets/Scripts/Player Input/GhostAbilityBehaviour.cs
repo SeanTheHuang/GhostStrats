@@ -50,6 +50,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public GameObject m_UIPortrait;
     public GameObject m_UIAbilityBar;
+    AbilityBarController m_UIAbilityBarCntrl;
 
     // The grid squares the ghost attacks in
     [Header("Base affected tiles")]
@@ -76,6 +77,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_pathRequestManager = PathRequestManager.Instance();
         m_aimingDirection = AimingDirection.North;
         m_gameMaster = GameMaster.Instance();
+        m_UIAbilityBarCntrl = m_UIAbilityBar.GetComponent<AbilityBarController>();
 
         // Convert the attack squares to be equal to the length of a grid square
         for (int i = 0; i < m_attackSquares.Count; ++i)
@@ -115,12 +117,14 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_abilityUsed = true;
         m_ghostController.m_abilityUsed = true;
         m_gameMaster.CheckAllPlayerActionsUsed();
+        m_UIAbilityBarCntrl.AbilityUsed();
     }
 
     void AbilityUnused()
     {
         m_ghostController.m_abilityUsed = false;
         m_gameMaster.ResetEndTurnPrompt();
+        m_UIAbilityBarCntrl.ResetTurn();
     }
 
     public void OnSelected()
@@ -128,7 +132,17 @@ public class GhostAbilityBehaviour : MonoBehaviour
         // Reset aiming direction
         m_aimingDirection = AimingDirection.North;
         m_UIPortrait.GetComponent<GhostPortraitController>().OnSelected();
-        m_UIAbilityBar.GetComponent<AbilityBarController>().OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, false, false);
+
+        // Reset Ability Bar
+        bool movedUsed = true;
+        if (m_ghostController.m_numMovesLeft > 0)
+            movedUsed = false;
+
+        bool someMoveUsed = false;
+        if (m_ghostController.m_maxMoves > m_ghostController.m_numMovesLeft)
+            someMoveUsed = true;
+
+        m_UIAbilityBarCntrl.OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, movedUsed, someMoveUsed, m_abilityUsed);
     }
 
     // Reset action variables if one has not been chosen yet

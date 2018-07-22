@@ -11,38 +11,63 @@ public class AbilityBarController : MonoBehaviour {
     public GameObject m_overwatchUIImage;
     public GameObject m_specialUIImage;
 
-    public GameObject m_moveUIHighlightImage;
-    public GameObject m_undoUIHighlightImage;
-    public GameObject m_attackUIHighlightImage;
-    public GameObject m_hideUIHighlightImage;
-    public GameObject m_overwatchUIHighlightImage;
-    public GameObject m_specialUIHighlightImage;
+    public GameObject m_moveUIHighlight;
+    public GameObject m_undoUIHighlight;
+    public GameObject m_attackUIHighlight;
+    public GameObject m_hideUIHighlight;
+    public GameObject m_overwatchUIHighlight;
+    public GameObject m_specialUIHighlight;
 
-    void updateAbilityIcon(bool abilityUsed, int coolDownTimer, GameObject abilityUIObject, GameObject highlightImage)
+    private Image m_moveUIHighlightImage;
+    private Image m_undoUIHighlightImage;
+    private Image m_attackUIHighlightImage;
+    private Image m_hideUIHighlightImage;
+    private Image m_overwatchUIHighlightImage;
+    private Image m_specialUIHighlightImage;
+
+    private void Start()
+    {
+        m_moveUIHighlightImage = m_moveUIHighlight.GetComponent<Image>();
+        m_undoUIHighlightImage = m_undoUIHighlight.GetComponent<Image>();
+        m_attackUIHighlightImage = m_attackUIHighlight.GetComponent<Image>();
+        m_hideUIHighlightImage = m_hideUIHighlight.GetComponent<Image>();
+        m_overwatchUIHighlightImage = m_overwatchUIHighlight.GetComponent<Image>();
+        m_specialUIHighlightImage = m_specialUIHighlight.GetComponent<Image>();
+    }
+
+    void updateAbilityIcon(bool abilityUsed, int coolDownTimer, GameObject abilityUIObject, Image highlightImage)
     {
         if (coolDownTimer > 0)
         {
             EnableCoolDownUIEffects(abilityUIObject, coolDownTimer);
-            highlightImage.GetComponent<Image>().enabled = false;
+            highlightImage.enabled = false;
         }
         else
         {
             DisableCoolDownUIEffects(m_attackUIImage);
-            highlightImage.GetComponent<Image>().enabled = !abilityUsed;
+            highlightImage.enabled = !abilityUsed;
         }
     }
 
-    public void OnSelected(int attackCooldownTimer, int hideCooldownTimer, int overwatchCooldownTimer, int specialCooldownTimer, bool moveUsed, bool abilityUsed)
+    public void OnSelected(int attackCooldownTimer, int hideCooldownTimer, int overwatchCooldownTimer, int specialCooldownTimer, bool moveUsed, bool someMoveUsed, bool abilityUsed)
     {
+        // Reset Ability Highlights
         updateAbilityIcon(abilityUsed, attackCooldownTimer, m_attackUIImage, m_attackUIHighlightImage);
         updateAbilityIcon(abilityUsed, hideCooldownTimer, m_hideUIImage, m_hideUIHighlightImage);
         updateAbilityIcon(abilityUsed, overwatchCooldownTimer, m_overwatchUIImage, m_overwatchUIHighlightImage);
         updateAbilityIcon(abilityUsed, specialCooldownTimer, m_specialUIImage, m_specialUIHighlightImage);
 
+        // Reset Move Highlight
         if(!moveUsed)
-        {
-            m_moveUIHighlightImage.GetComponent<Image>().enabled = true;
-        }
+            m_moveUIHighlightImage.enabled = true;
+        else
+            m_moveUIHighlightImage.enabled = false;
+
+        // Reset Undo Highlight
+        if(someMoveUsed || !m_attackUIHighlightImage.enabled)
+            m_undoUIHighlightImage.enabled = true;
+        else
+            m_undoUIHighlightImage.enabled = false;
     }
 
     public void EnableCoolDownUIEffects(GameObject uIAbility, int coolDownNumber)
@@ -61,28 +86,28 @@ public class AbilityBarController : MonoBehaviour {
     public void MoveUsed(bool allMovementUsed)
     {
         if(allMovementUsed)
-            m_moveUIHighlightImage.GetComponent<Image>().enabled = false;
-        m_undoUIHighlightImage.GetComponent<Image>().enabled = true;
+            m_moveUIHighlightImage.enabled = false;
+        m_undoUIHighlightImage.enabled = true;
     }
 
     // Called when the ghost has used their ability. Sets the highlight to turn off
     public void AbilityUsed()
     {
-        m_attackUIHighlightImage.GetComponent<Image>().enabled = false;
-        m_hideUIHighlightImage.GetComponent<Image>().enabled = false;
-        m_overwatchUIHighlightImage.GetComponent<Image>().enabled = false;
-        m_specialUIHighlightImage.GetComponent<Image>().enabled = false;
-        m_undoUIHighlightImage.GetComponent<Image>().enabled = true;
+        m_attackUIHighlightImage.enabled = false;
+        m_hideUIHighlightImage.enabled = false;
+        m_overwatchUIHighlightImage.enabled = false;
+        m_specialUIHighlightImage.enabled = false;
+        m_undoUIHighlightImage.enabled = true;
     }
 
     public void ResetTurn()
     {
-       m_attackUIHighlightImage.GetComponent<Image>().enabled = true;
-       m_hideUIHighlightImage.GetComponent<Image>().enabled = true;
-       m_overwatchUIHighlightImage.GetComponent<Image>().enabled = true;
-       m_specialUIHighlightImage.GetComponent<Image>().enabled = true;
+       m_attackUIHighlightImage.enabled = true;
+       m_hideUIHighlightImage.enabled = true;
+       m_overwatchUIHighlightImage.enabled = true;
+       m_specialUIHighlightImage.enabled = true;
 
-        m_moveUIHighlightImage.GetComponent<Image>().enabled = true;
-        m_undoUIHighlightImage.GetComponent<Image>().enabled = false;
+       m_moveUIHighlightImage.enabled = true;
+       m_undoUIHighlightImage.enabled = false;
     }
 }

@@ -524,12 +524,12 @@ MonoBehaviour:
   m_hideUIImage: {fileID: 26086925}
   m_overwatchUIImage: {fileID: 1138775668}
   m_specialUIImage: {fileID: 1764687833}
-  m_moveUIHighlightImage: {fileID: 462136196}
-  m_undoUIHighlightImage: {fileID: 718735836}
-  m_attackUIHighlightImage: {fileID: 153217930}
-  m_hideUIHighlightImage: {fileID: 1795742911}
-  m_overwatchUIHighlightImage: {fileID: 1333776976}
-  m_specialUIHighlightImage: {fileID: 1071879876}
+  m_moveUIHighlight: {fileID: 462136196}
+  m_undoUIHighlight: {fileID: 718735836}
+  m_attackUIHighlight: {fileID: 153217930}
+  m_hideUIHighlight: {fileID: 1795742911}
+  m_overwatchUIHighlight: {fileID: 1333776976}
+  m_specialUIHighlight: {fileID: 1071879876}
 --- !u!1 &153217930
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,6 +3160,7 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_numMovesLeft: 0
   m_abilityUsed: 0
   m_confirmedPathPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
     type: 2}
@@ -3180,6 +3181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackTilePrefab: {fileID: 4341749014162540, guid: 1ef86f20732078c4eb075d6878d934a1,
     type: 2}
+  m_abilityUsed: 0
   m_attackCooldown: 0
   m_hideCooldown: 1
   m_overwatchCooldown: 1
@@ -3195,6 +3197,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 1}
   - {x: -1, y: 0, z: 1}
   m_overspookSquares: []
+  m_baseAttackDamage: 2
 --- !u!4 &817404014
 Transform:
   m_ObjectHideFlags: 0
@@ -4672,6 +4675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackTilePrefab: {fileID: 4341749014162540, guid: 1ef86f20732078c4eb075d6878d934a1,
     type: 2}
+  m_abilityUsed: 0
   m_attackCooldown: 0
   m_hideCooldown: 1
   m_overwatchCooldown: 1
@@ -4687,6 +4691,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 1}
   - {x: -1, y: 0, z: 1}
   m_overspookSquares: []
+  m_baseAttackDamage: 2
 --- !u!4 &1428969095
 Transform:
   m_ObjectHideFlags: 0
@@ -4715,6 +4720,7 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_numMovesLeft: 0
   m_abilityUsed: 0
   m_confirmedPathPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
     type: 2}
@@ -5362,6 +5368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackTilePrefab: {fileID: 4341749014162540, guid: 1ef86f20732078c4eb075d6878d934a1,
     type: 2}
+  m_abilityUsed: 0
   m_attackCooldown: 0
   m_hideCooldown: 1
   m_overwatchCooldown: 1
@@ -5377,6 +5384,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 1}
   - {x: -1, y: 0, z: 1}
   m_overspookSquares: []
+  m_baseAttackDamage: 2
 --- !u!114 &1542393408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5391,6 +5399,7 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_numMovesLeft: 0
   m_abilityUsed: 0
   m_confirmedPathPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
     type: 2}
