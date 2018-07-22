@@ -97,7 +97,8 @@ public class GameMaster : MonoBehaviour {
     public void UpdateSelectedGhost(GameObject newGhost)
     {
         // Don't update system if newly select ghost is the same
-        if (newGhost == m_currentlySelectedGhost.gameObject)
+        if (newGhost == m_currentlySelectedGhost.gameObject
+         || newGhost == null)
             return;
 
         m_currentlySelectedGhost.OnDeselected();
@@ -180,7 +181,7 @@ public class GameMaster : MonoBehaviour {
     {
         foreach (GhostController gc in m_ghostList)
         {
-            if(!gc.m_abilityUsed)
+            if(!gc.m_abilityUsed && gc != null)
                 return;
         }
 
