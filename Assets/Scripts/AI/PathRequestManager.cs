@@ -125,8 +125,13 @@ public class PathRequestManager : MonoBehaviour {
         if (node == null)
             return;
 
-        if (node.WalkabilityIsLocked)
+        Debug.Log("GOT HERE");
+
+        if (!node.WalkabilityIsLocked)
+        {
+            Debug.Log("Locking node at: " + _position);
             node.Walkable = _newState;
+        }
     }
 
     //public List<T> GetObjectsFromListOfPositions<T>(List<Vector3> _worldPositionList, NodeState _type)

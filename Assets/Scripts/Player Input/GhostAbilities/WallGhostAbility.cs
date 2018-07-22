@@ -15,6 +15,26 @@ public class WallGhostAbility : GhostAbilityBehaviour {
     {
         base.PerformSpecialAbility();
 
+        // Apply shitty direction correction
+        switch (m_aimingDirection)
+        {
+            case AimingDirection.North:
+                transform.rotation = Quaternion.LookRotation(Vector3.forward);
+                break;
+            case AimingDirection.East:
+                transform.rotation = Quaternion.LookRotation(Vector3.right);
+                break;
+            case AimingDirection.South:
+                transform.rotation = Quaternion.LookRotation(Vector3.back);
+                break;
+            case AimingDirection.West:
+                transform.rotation = Quaternion.LookRotation(Vector3.left);
+                break;
+            default:
+                break;
+
+        }
+
         // TODO: Turn into ghost wall
 
         // Block off current path

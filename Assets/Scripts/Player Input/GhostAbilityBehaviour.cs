@@ -29,7 +29,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     List<Transform> m_attackTileList;
 
     GhostActionState m_actionState;
-    AimingDirection m_aimingDirection; // The direction the ghost is currently facing
+    protected AimingDirection m_aimingDirection; // The direction the ghost is currently facing
     public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     //public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     bool m_aimingAbility; // If the player is aiming their ability
@@ -303,6 +303,14 @@ public class GhostAbilityBehaviour : MonoBehaviour
         AbilityUnused();
     }
 
+    protected void RotateTowardsAbilityDir()
+    {
+        // Rotate player visuals and then attack these squares
+        Vector3 attackDir = AverageAimDirection();
+        transform.rotation = Quaternion.LookRotation(attackDir);
+    }
+
+
     #region PERFORM_ABILTY_REGION
 
     void PerformAttack()
@@ -310,9 +318,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         ClearAttackVisuals();
         m_attackCooldownTimer = m_attackCooldown;
 
-        // Rotate player visuals and then attack these squares
-        Vector3 attackDir = AverageAimDirection();
-        transform.rotation = Quaternion.LookRotation(attackDir);
+        RotateTowardsAbilityDir();
 
         List<PunkController> affectedPunks = GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares);
         foreach (PunkController pc in affectedPunks)

@@ -18,6 +18,7 @@ public class MonsterGhostAbility : GhostAbilityBehaviour {
     protected override void PerformSpecialAbility()
     {
         base.PerformSpecialAbility();
+        RotateTowardsAbilityDir();
 
         // Check if any punks on tiles, affected tiles and damage them
         List<PunkController> punkList = GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares);
