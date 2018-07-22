@@ -29,6 +29,10 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_currentGhost
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_selectionMask.m_Bits
     value: 2049
     objectReference: {fileID: 0}

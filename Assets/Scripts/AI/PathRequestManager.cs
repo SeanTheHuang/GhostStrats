@@ -108,17 +108,6 @@ public class PathRequestManager : MonoBehaviour {
         return new Vector3(point2D.x, _position.y, point2D.y);
     }
 
-    public bool SetNodeState(NodeState _newState, Vector3 _worldPosition, Transform _entityOnTile)
-    {
-        Node node = m_nodeGrid.NodeFromWorldPoint(_worldPosition);
-
-        if (node == null) // Node does not exist, nothing to set
-            return false;
-
-        node.m_nodeState = _newState;
-        return true;
-    }
-
     //public List<T> GetObjectsFromListOfPositions<T>(List<Vector3> _worldPositionList, NodeState _type)
     //{
     //    List<T> m_outputList = new List<T>();

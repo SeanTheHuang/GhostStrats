@@ -56,6 +56,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     [Header("Base affected tiles")]
     public List<Vector3> m_attackSquares;
     public List<Vector3> m_overspookSquares;
+    public List<Vector3> m_specialSkillSquares;
     List<Vector3> m_currentAffectedSquares;
     List<Vector3> m_rotatedAffectedSquares;
 
@@ -381,7 +382,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public virtual void ChooseSpecial()
     {
         Debug.Log("Ghost Special");
-        m_specialCooldown = m_specialCooldownTimer; // Update the timer
+        m_actionState = GhostActionState.ABILITY;
     }
 
     #endregion
