@@ -41,3 +41,27 @@ PresetManager:
     defaultPresets:
     - m_Preset: {fileID: 2655988077585873504, guid: 4835b2a74c1c2bb48917721a56327540,
         type: 2}
+  - type:
+      m_NativeTypeID: 114
+      m_ManagedTypePPtr: {fileID: 11500000, guid: adc43f1447439ee4fb78da94a8592ee7,
+        type: 3}
+      m_ManagedTypeFallback: 
+    defaultPresets:
+    - m_Preset: {fileID: 2655988077585873504, guid: 8afbb95ceae6e374284f41b23e60f65b,
+        type: 2}
+  - type:
+      m_NativeTypeID: 114
+      m_ManagedTypePPtr: {fileID: 11500000, guid: f7a3bf591a6c6ad478818316e0457d3d,
+        type: 3}
+      m_ManagedTypeFallback: 
+    defaultPresets:
+    - m_Preset: {fileID: 2655988077585873504, guid: 31ca6f5c8b6bebb4aaef0de470996e5e,
+        type: 2}
+  - type:
+      m_NativeTypeID: 114
+      m_ManagedTypePPtr: {fileID: 11500000, guid: ad3717fee16182640b84fd2ded9012a7,
+        type: 3}
+      m_ManagedTypeFallback: 
+    defaultPresets:
+    - m_Preset: {fileID: 2655988077585873504, guid: 4ec0583c79b992446b9c6ab37235ca8b,
+        type: 2}
