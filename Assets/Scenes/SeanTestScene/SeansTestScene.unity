@@ -1484,6 +1484,7 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_numMovesLeft: 0
   m_abilityUsed: 0
   m_confirmedPathPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
     type: 2}
@@ -3542,12 +3543,12 @@ MonoBehaviour:
   m_hideUIImage: {fileID: 273712814}
   m_overwatchUIImage: {fileID: 642116975}
   m_specialUIImage: {fileID: 1562827330}
-  m_moveUIHighlightImage: {fileID: 949198731}
-  m_undoUIHighlightImage: {fileID: 230433986}
-  m_attackUIHighlightImage: {fileID: 342059230}
-  m_hideUIHighlightImage: {fileID: 1445610417}
-  m_overwatchUIHighlightImage: {fileID: 1165409587}
-  m_specialUIHighlightImage: {fileID: 1160494177}
+  m_moveUIHighlight: {fileID: 949198731}
+  m_undoUIHighlight: {fileID: 230433986}
+  m_attackUIHighlight: {fileID: 342059230}
+  m_hideUIHighlight: {fileID: 1445610417}
+  m_overwatchUIHighlight: {fileID: 1165409587}
+  m_specialUIHighlight: {fileID: 1160494177}
 --- !u!1 &807341952
 GameObject:
   m_ObjectHideFlags: 0
@@ -6076,6 +6077,7 @@ MonoBehaviour:
   m_maxHealth: 10
   m_maxMoves: 5
   m_moveSpeed: 5
+  m_numMovesLeft: 0
   m_abilityUsed: 0
   m_confirmedPathPrefab: {fileID: 4544757672385418, guid: d885c496b76cfbc4e8b1a0c3aa31498f,
     type: 2}
