@@ -11,7 +11,7 @@ enum MouseMode
 public class MousePicker : MonoBehaviour {
 
     private MouseMode m_mouseMode;
-    private GhostController m_currentGhost;
+    public GhostController m_currentGhost;
 
     private static MousePicker m_instance;
     public LayerMask m_selectionMask;
@@ -113,6 +113,7 @@ public class MousePicker : MonoBehaviour {
         {
             m_currentGhost.ResetAction();
             m_mouseMode = MouseMode.MOVEMENT;
+            m_currentGhost.GetComponent<GhostAbilityBehaviour>().m_UIAbilityBar.GetComponent<AbilityBarController>().ResetTurn();
         }
     }
 

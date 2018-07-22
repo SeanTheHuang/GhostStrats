@@ -23,6 +23,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 {
     PathRequestManager m_pathRequestManager;
     GhostController m_ghostController;
+    GameMaster m_gameMaster;
 
     public Transform m_attackTilePrefab;
     List<Transform> m_attackTileList;
@@ -30,7 +31,8 @@ public class GhostAbilityBehaviour : MonoBehaviour
     GhostActionState m_actionState;
     AimingDirection m_aimingDirection; // The direction the ghost is currently facing
     public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
-    bool m_aimingAbility;
+    //public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
+    bool m_aimingAbility; // If the player is aiming their ability
 
     // The number of turns the ghost must wait before they can use the ability again.
     [Header("Attack Cooldowns")]
@@ -48,13 +50,18 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public GameObject m_UIPortrait;
     public GameObject m_UIAbilityBar;
+    AbilityBarController m_UIAbilityBarCntrl;
 
     // The grid squares the ghost attacks in
     [Header("Base affected tiles")]
     public List<Vector3> m_attackSquares;
     public List<Vector3> m_overspookSquares;
-    List<Vector3> m_currentAffectedSquares;
-    List<Vector3> m_rotatedAffectedSquares;
+    public List<Vector3> m_specialSkillSquares;
+    protected List<Vector3> m_currentAffectedSquares;
+    protected List<Vector3> m_rotatedAffectedSquares;
+
+    [Header("Ability strength")]
+    public int m_baseAttackDamage = 2;
 
     private void Awake()
     {
@@ -70,6 +77,8 @@ public class GhostAbilityBehaviour : MonoBehaviour
     {
         m_pathRequestManager = PathRequestManager.Instance();
         m_aimingDirection = AimingDirection.North;
+        m_gameMaster = GameMaster.Instance();
+        m_UIAbilityBarCntrl = m_UIAbilityBar.GetComponent<AbilityBarController>();
 
         // Convert the attack squares to be equal to the length of a grid square
         for (int i = 0; i < m_attackSquares.Count; ++i)
@@ -95,6 +104,28 @@ public class GhostAbilityBehaviour : MonoBehaviour
         {
             ConfirmDirection();
         }
+        else if (Input.GetButtonDown("Fire2"))
+        {
+            // Right click = cancel ability selection
+            ResetAction();
+            MousePicker.Instance().FinishAimingAbility();
+        }
+    }
+
+    // Sets the ability to be used. Tells the GameMaster to check if all abilities have been used 
+    void AbilityUsed()
+    {
+        m_abilityUsed = true;
+        m_ghostController.m_abilityUsed = true;
+        m_gameMaster.CheckAllPlayerActionsUsed();
+        m_UIAbilityBarCntrl.AbilityUsed();
+    }
+
+    void AbilityUnused()
+    {
+        m_ghostController.m_abilityUsed = false;
+        m_gameMaster.ResetEndTurnPrompt();
+        m_UIAbilityBarCntrl.ResetTurn();
     }
 
     public void OnSelected()
@@ -102,7 +133,26 @@ public class GhostAbilityBehaviour : MonoBehaviour
         // Reset aiming direction
         m_aimingDirection = AimingDirection.North;
         m_UIPortrait.GetComponent<GhostPortraitController>().OnSelected();
-        m_UIAbilityBar.GetComponent<AbilityBarController>().OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer);
+
+        // Reset Ability Bar
+        bool movedUsed = true;
+        if (m_ghostController.m_numMovesLeft > 0)
+            movedUsed = false;
+
+        bool someMoveUsed = false;
+        if (m_ghostController.m_maxMoves > m_ghostController.m_numMovesLeft)
+            someMoveUsed = true;
+
+        m_UIAbilityBarCntrl.OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, movedUsed, someMoveUsed, m_abilityUsed);
+    }
+
+    // Reset action variables if one has not been chosen yet
+    public void OnDeselect()
+    {
+        if (m_abilityUsed)
+            return;
+
+        ResetAction();
     }
 
     public void UpdateDirection(Vector3 _newDir)
@@ -137,12 +187,33 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public void ConfirmDirection()
     {
-        m_ghostController.ClearChoosingPath();
         m_ghostController.EndMovement();
         MousePicker.Instance().FinishAimingAbility();
+        Debug.Log("Confirmed ability targets!");
         m_attackCooldownTimer = m_attackCooldown; // Update the timer
-        m_abilityUsed = true;
+        AbilityUsed();
         m_aimingAbility = false;
+    }
+
+    protected void StartAimingAbility()
+    {
+        m_ghostController.ClearChoosingPath();
+        MousePicker.Instance().PausePicking();
+        m_aimingAbility = true;
+
+        // Spawn intial values
+        UpdateAttackTiles();
+        UpdateAtackVisuals();
+    }
+
+    protected void ImmediateConfirmAbility()
+    {
+        MousePicker.Instance().FinishAimingAbility(); // Just incase aiming doesn't come back
+        m_ghostController.ClearChoosingPath();
+        m_ghostController.EndMovement();
+        m_aimingAbility = false;
+        ClearAttackVisuals();
+        AbilityUsed();
     }
 
     void UpdateAtackVisuals()
@@ -191,21 +262,36 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_attackTileList.Clear();
     }
 
-    public void PerformAttack()
+    public virtual void StartOfTurn()
     {
-        ClearAttackVisuals();
-    }
-
-    public void StartOfTurn()
-    {
-        m_abilityUsed = false;
+        AbilityUnused();
         m_aimingAbility = false;
         m_actionState = GhostActionState.NONE;
     }
 
     public void EndOfTurn()
     {
-        // Perform attack
+        switch (m_actionState)
+        {
+            case GhostActionState.BOO:
+                PerformAttack();
+
+                break;
+            case GhostActionState.OVERSPOOK:
+                PerformOverwatch();
+
+                break;
+            case GhostActionState.HIDE:
+                PerformHide();
+
+                break;
+            case GhostActionState.ABILITY:
+                PerformSpecialAbility();
+
+                break;
+            default:
+                break;
+        }
     }
 
     public void ResetAction()
@@ -213,41 +299,93 @@ public class GhostAbilityBehaviour : MonoBehaviour
         ClearAttackVisuals();
         m_actionState = GhostActionState.NONE;
         m_abilityUsed = false;
+        m_aimingAbility = false;
+        AbilityUnused();
     }
+
+    #region PERFORM_ABILTY_REGION
+
+    void PerformAttack()
+    {
+        ClearAttackVisuals();
+        m_attackCooldownTimer = m_attackCooldown;
+
+        // Rotate player visuals and then attack these squares
+        Vector3 attackDir = AverageAimDirection();
+        transform.rotation = Quaternion.LookRotation(attackDir);
+
+        List<PunkController> affectedPunks = GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares);
+        foreach (PunkController pc in affectedPunks)
+            pc.OnEntityHit(m_baseAttackDamage);
+    }
+
+    void PerformHide()
+    {
+        m_hideCooldownTimer = m_hideCooldown; // Update the timer
+    }
+
+    void PerformOverwatch()
+    {
+        ClearAttackVisuals();
+        m_overwatchCooldownTimer = m_overwatchCooldown;
+
+        // Rotate player visuals
+        Vector3 lookDir = AverageAimDirection();
+        transform.rotation = Quaternion.LookRotation(lookDir);
+    }
+
+    protected virtual void PerformSpecialAbility()
+    {
+        ClearAttackVisuals();
+        m_specialCooldownTimer = m_specialCooldown;
+    }
+
+    protected Vector3 AverageAimDirection()
+    {
+        Vector3 attackDir = Vector3.zero;
+
+        if (m_rotatedAffectedSquares.Count < 1)
+            return attackDir;
+
+        // Collect all together
+        foreach (Vector3 targetPos in m_rotatedAffectedSquares)
+            attackDir += targetPos;
+
+        // Remove y-component, and normalize
+        attackDir.y = 0;
+        return attackDir.normalized;
+    }
+
+    #endregion
+
+    #region CHOOSE_ABILITY_REGION
 
     public void ChooseAttack()
     {
         m_actionState = GhostActionState.BOO;
-        m_ghostController.ClearChoosingPath();
-        MousePicker.Instance().PausePicking();
         m_currentAffectedSquares = m_attackSquares;
-        m_aimingAbility = true;
-
-        // Spawn intial values
-        UpdateAttackTiles();
-        UpdateAtackVisuals();
+        StartAimingAbility();
     }
 
-    public void Hide()
+    public void ChooseHide()
     {
         Debug.Log("Ghost Hide");
-        m_actionState = GhostActionState.BOO;
-        m_ghostController.ClearChoosingPath();
-        m_ghostController.EndMovement();
-        m_hideCooldownTimer = m_hideCooldown; // Update the timer
-        m_abilityUsed = true;
+        m_actionState = GhostActionState.HIDE;
+        ImmediateConfirmAbility();
     }
 
-    public void Overwatch()
+    public void ChooseOverwatch()
     {
-        Debug.Log("Ghost Overwatch");
-        m_aimingAbility = true;
-        m_overwatchCooldownTimer = m_overwatchCooldown; // Update the timer
+        m_actionState = GhostActionState.OVERSPOOK;
+        m_currentAffectedSquares = m_overspookSquares;
+        StartAimingAbility();
     }
 
-    public virtual void Special()
+    public virtual void ChooseSpecial()
     {
         Debug.Log("Ghost Special");
-        m_specialCooldown = m_specialCooldownTimer; // Update the timer
+        m_actionState = GhostActionState.ABILITY;
     }
+
+    #endregion
 }

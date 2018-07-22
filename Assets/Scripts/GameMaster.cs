@@ -13,6 +13,15 @@ public class GameMaster : MonoBehaviour {
     GhostController m_currentlySelectedGhost;
     // TODO: List of traps
 
+    // The delegate events for when the game is played/paused
+    public delegate void OnPlay();
+    public delegate void OnPause();
+    public event OnPlay m_onPlay;
+    public event OnPause m_onPause;
+
+    public GameObject m_AnnouncementBannerImage;
+    public GameObject m_EndTurnPromptImage;
+
     static GameMaster instance;
 
     public static GameMaster Instance()
@@ -68,6 +77,9 @@ public class GameMaster : MonoBehaviour {
         // Tell all ghosts its start of turn
         foreach (GhostController gc in m_ghostList)
             gc.OnStartOfTurn();
+
+        // Trigger the announcement that its the player's turn to appear on the UI
+        m_AnnouncementBannerImage.GetComponent<AnnouncementBannerController>().Appear();
     }
 
     void RunPlayersTurn()
@@ -84,6 +96,11 @@ public class GameMaster : MonoBehaviour {
     // Tells all the relevant systems that a new ghost has been selected
     public void UpdateSelectedGhost(GameObject newGhost)
     {
+        // Don't update system if newly select ghost is the same
+        if (newGhost == m_currentlySelectedGhost.gameObject
+         || newGhost == null)
+            return;
+
         m_currentlySelectedGhost.OnDeselected();
         m_KeyBoardInput.UpdateSelectedGhost(newGhost);
         newGhost.GetComponent<GhostController>().OnSelected();
@@ -137,5 +154,44 @@ public class GameMaster : MonoBehaviour {
         }
 
         return ghostList;
+    }
+
+    public void Play()
+    {
+        // Stop allowing player to select stuff
+        if (MousePicker.Instance().m_currentGhost != null)
+            MousePicker.Instance().PausePicking();
+
+        // Play the game
+        m_onPlay();
+    }
+
+    public void Pause()
+    {
+        // Stop allowing player to select stuff
+        if (MousePicker.Instance().m_currentGhost != null)
+            MousePicker.Instance().ResumePicking();
+
+        // Pause the game
+        m_onPause();
+    }
+
+    // Cycle over all the ghosts. If all their actions have been used display a prompt to the player to end the turn
+    public void CheckAllPlayerActionsUsed()
+    {
+        foreach (GhostController gc in m_ghostList)
+        {
+            if(!gc.m_abilityUsed && gc != null)
+                return;
+        }
+
+        m_EndTurnPromptImage.GetComponent<EndTurnPromptController>().Appear();
+    }
+
+    // If the end turn prompt is visible, make it disappear
+    public void ResetEndTurnPrompt()
+    {
+        if (m_EndTurnPromptImage.GetComponent<EndTurnPromptController>().m_visible)
+            m_EndTurnPromptImage.GetComponent<EndTurnPromptController>().Disappear();
     }
 }
