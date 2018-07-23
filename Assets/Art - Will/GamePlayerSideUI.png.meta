@@ -3,21 +3,21 @@ guid: 845fcea384fb0284d92caef8c5dea779
 TextureImporter:
   fileIDToRecycleName:
     21300000: PlayerUICornerButton1
-    21300002: GamePlayerSideUI_1
-    21300004: GamePlayerSideUI_2
+    21300002: PlayerUICornerButton2
+    21300004: PlayerUICornerButton3
     21300006: GamePlayerSideUI_3
-    21300008: GamePlayerSideUI_4
-    21300010: GamePlayerSideUI_5
-    21300012: GamePlayerSideUI_6
-    21300014: GamePlayerSideUI_7
-    21300016: GamePlayerSideUI_8
-    21300018: GamePlayerSideUI_9
-    21300020: GamePlayerSideUI_10
-    21300022: GamePlayerSideUI_11
-    21300024: GamePlayerSideUI_12
-    21300026: GamePlayerSideUI_13
-    21300028: GamePlayerSideUI_14
-    21300030: GamePlayerSideUI_15
+    21300008: PlayerUISideFrame
+    21300010: Ghost1_Normal
+    21300012: Ghost2_Normal
+    21300014: Ghost3_Normal
+    21300016: Ghost4_Normal
+    21300018: PlayerUIFrameHP
+    21300020: Ghost1_Greyed
+    21300022: Ghost2_Greyed
+    21300024: Ghost3_Greyed
+    21300026: Ghost4_Greyed
+    21300028: PlayerUIFrameHPBack
+    21300030: PlayerUISlotHP
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -118,7 +118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_1
+      name: PlayerUICornerButton2
       rect:
         serializedVersion: 2
         x: 183
@@ -138,7 +138,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_2
+      name: PlayerUICornerButton3
       rect:
         serializedVersion: 2
         x: 285
@@ -178,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_4
+      name: PlayerUISideFrame
       rect:
         serializedVersion: 2
         x: 78
@@ -198,7 +198,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_5
+      name: Ghost1_Normal
       rect:
         serializedVersion: 2
         x: 451
@@ -218,7 +218,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_6
+      name: Ghost2_Normal
       rect:
         serializedVersion: 2
         x: 748
@@ -238,7 +238,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_7
+      name: Ghost3_Normal
       rect:
         serializedVersion: 2
         x: 1048
@@ -258,7 +258,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_8
+      name: Ghost4_Normal
       rect:
         serializedVersion: 2
         x: 1350
@@ -278,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_9
+      name: PlayerUIFrameHP
       rect:
         serializedVersion: 2
         x: 63
@@ -298,7 +298,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_10
+      name: Ghost1_Greyed
       rect:
         serializedVersion: 2
         x: 451
@@ -318,7 +318,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_11
+      name: Ghost2_Greyed
       rect:
         serializedVersion: 2
         x: 748
@@ -338,7 +338,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_12
+      name: Ghost3_Greyed
       rect:
         serializedVersion: 2
         x: 1048
@@ -358,7 +358,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_13
+      name: Ghost4_Greyed
       rect:
         serializedVersion: 2
         x: 1350
@@ -378,7 +378,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_14
+      name: PlayerUIFrameHPBack
       rect:
         serializedVersion: 2
         x: 68
@@ -398,7 +398,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_15
+      name: PlayerUISlotHP
       rect:
         serializedVersion: 2
         x: 72
