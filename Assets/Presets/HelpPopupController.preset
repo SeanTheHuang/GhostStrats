@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: HelpPopupController
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 5c8502397d996c948b33671fc2e441f1,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_helperPopup
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_popupDelayTime
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textHeaders.Array.size
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textHeaders.Array.data[0]
+    value: Move
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textHeaders.Array.data[1]
+    value: Undo
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textHeaders.Array.data[2]
+    value: Boo!
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textHeaders.Array.data[3]
+    value: Hide in Plain Sight
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textHeaders.Array.data[4]
+    value: Watch and Wait
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textHeaders.Array.data[5]
+    value: Become Wall
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textHeaders.Array.data[6]
+    value: Ann's Abhorrent Doll
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textHeaders.Array.data[7]
+    value: Ringing Scream
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textHeaders.Array.data[8]
+    value: Devouring Wail
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textBodies.Array.size
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textBodies.Array.data[0]
+    value: Move the ghost.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textBodies.Array.data[1]
+    value: Undo any previously selected actions.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textBodies.Array.data[2]
+    value: Scare any punks inside the spook area.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textBodies.Array.data[3]
+    value: Become invisible for a turn.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textBodies.Array.data[4]
+    value: Scare and stun any punks that move inside the spook area.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textBodies.Array.data[5]
+    value: Become a wall for a turn that blocks movement.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textBodies.Array.data[6]
+    value: Drop a doll that scares and stuns any punks that walk onto it.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textBodies.Array.data[7]
+    value: Scare and draw in punks.
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_textBodies.Array.data[8]
+    value: Scare and push away any punk inside the spook area.
+    objectReference: {fileID: 0}
