@@ -824,8 +824,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_startGhostArray:
   - {fileID: 1007325982}
-  - {fileID: 1078701683}
   - {fileID: 1521338430}
+  - {fileID: 1078701683}
   m_startPunkArray: []
   m_startGhostHoles: []
   m_AnnouncementBannerImage: {fileID: 71058378}
@@ -1077,12 +1077,12 @@ Prefab:
         type: 2}
       propertyPath: m_ghost
       value: 
-      objectReference: {fileID: 1521338430}
+      objectReference: {fileID: 1078701683}
     - target: {fileID: 114564504683573710, guid: a6814f9035a53cc43973d1f00a2804f5,
         type: 2}
       propertyPath: m_ghost
       value: 
-      objectReference: {fileID: 1078701683}
+      objectReference: {fileID: 1521338430}
     - target: {fileID: 114998923280382464, guid: a6814f9035a53cc43973d1f00a2804f5,
         type: 2}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1349,6 +1349,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 850911686}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &939411214 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1399102688143740, guid: a6814f9035a53cc43973d1f00a2804f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 828642245}
 --- !u!1 &945677129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,6 +1471,10 @@ MonoBehaviour:
   m_attackTilePrefab: {fileID: 4341749014162540, guid: 1ef86f20732078c4eb075d6878d934a1,
     type: 2}
   m_abilityUsed: 0
+  m_UIPortrait: {fileID: 1799339454}
+  m_UIAbilityBar: {fileID: 149124275}
+  m_specialAbilityIconImage: {fileID: 21300028, guid: 4e9fc6b5047a6fa4baa84cc385d145f1,
+    type: 3}
   m_attackCooldown: 0
   m_hideCooldown: 1
   m_overwatchCooldown: 1
@@ -1474,8 +1483,6 @@ MonoBehaviour:
   m_hideCooldownTimer: 0
   m_overwatchCooldownTimer: 0
   m_specialCooldownTimer: 0
-  m_UIPortrait: {fileID: 1799339454}
-  m_UIAbilityBar: {fileID: 149124275}
   m_attackSquares:
   - {x: -1, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
@@ -1568,6 +1575,10 @@ MonoBehaviour:
   m_attackTilePrefab: {fileID: 4341749014162540, guid: 1ef86f20732078c4eb075d6878d934a1,
     type: 2}
   m_abilityUsed: 0
+  m_UIPortrait: {fileID: 543830936}
+  m_UIAbilityBar: {fileID: 149124275}
+  m_specialAbilityIconImage: {fileID: 21300032, guid: 4e9fc6b5047a6fa4baa84cc385d145f1,
+    type: 3}
   m_attackCooldown: 0
   m_hideCooldown: 1
   m_overwatchCooldown: 1
@@ -1576,8 +1587,6 @@ MonoBehaviour:
   m_hideCooldownTimer: 0
   m_overwatchCooldownTimer: 0
   m_specialCooldownTimer: 0
-  m_UIPortrait: {fileID: 543830936}
-  m_UIAbilityBar: {fileID: 149124275}
   m_attackSquares:
   - {x: -1, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
@@ -1637,7 +1646,7 @@ Transform:
   m_Children:
   - {fileID: 834600255}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1114450119
 GameObject:
@@ -1820,6 +1829,10 @@ MonoBehaviour:
   m_attackTilePrefab: {fileID: 4341749014162540, guid: 1ef86f20732078c4eb075d6878d934a1,
     type: 2}
   m_abilityUsed: 0
+  m_UIPortrait: {fileID: 939411214}
+  m_UIAbilityBar: {fileID: 149124275}
+  m_specialAbilityIconImage: {fileID: 21300030, guid: 4e9fc6b5047a6fa4baa84cc385d145f1,
+    type: 3}
   m_attackCooldown: 0
   m_hideCooldown: 1
   m_overwatchCooldown: 1
@@ -1828,8 +1841,6 @@ MonoBehaviour:
   m_hideCooldownTimer: 0
   m_overwatchCooldownTimer: 0
   m_specialCooldownTimer: 0
-  m_UIPortrait: {fileID: 543830936}
-  m_UIAbilityBar: {fileID: 149124275}
   m_attackSquares:
   - {x: -1, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
@@ -1885,7 +1896,7 @@ Transform:
   m_Children:
   - {fileID: 1814736094}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1663694861
 GameObject:
