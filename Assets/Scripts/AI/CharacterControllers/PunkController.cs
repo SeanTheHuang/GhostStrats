@@ -197,6 +197,13 @@ public class PunkController : EntityBase
 
     IEnumerator FollowPath()
     {
+        if(m_realPath.Count > 0)
+        {
+            Vector3 dir = m_realPath[0] - transform.position;
+            dir.y = 0;
+            transform.rotation = Quaternion.LookRotation(dir);
+        }
+
         for (int i = 0; i < m_realPath.Count; i++)
         {
             while (true)
@@ -205,6 +212,13 @@ public class PunkController : EntityBase
 
                 if(newPos == transform.position)
                 {
+                    if (i + 1 < m_realPath.Count)
+                    {
+                        Vector3 dir = m_realPath[i + 1] - transform.position;
+                        dir.y = 0;
+                        transform.rotation = Quaternion.LookRotation(dir);
+                    }
+
                     break;//reached point
                 }
                 else
