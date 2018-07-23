@@ -14,8 +14,16 @@ public class PunkController : EntityBase
 
     Node previousNode;
     List<Vector3> m_pointList, m_realPath;
+    public PunkHiveMind m_hiveMind;
 
     int m_movesPerformed;
+
+    Transform m_roomToExplore;
+    Transform m_lastRoomExplored;
+
+    public int m_attackRange = 0;
+    public int m_attackDamage = 0;
+
     private void Awake()
     {
         m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
@@ -54,19 +62,46 @@ public class PunkController : EntityBase
         
     }
 
+    public void OnStartOfTurn()
+    {
+        m_movesPerformed = 0;
+        if(transform == m_roomToExplore)
+        {
+            ChooseNewRoom();
+            
+        }
+    }
+
+    public void ActionPhase()
+    {
+        ChooseLocation();
+        if(m_prey)
+        {
+            if(Vector3.Distance(transform.position,m_prey.position) <= m_attackRange)
+            {
+                //Attack
+                //face them
+                m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage);
+            }
+        }
+    }
+
+    public void OnEndOfTurn()
+    {
+
+    }
+
+
     public void ChooseLocation()
     {
         Debug.Log("loc chose");
         Sight();//adds targets
         ChooseTarget();//chooses best target 
 
+        Transform wheretogo = transform;//assigning value so unity not angry
         if(m_prey)
         {//FOUND A TARGET MOVE TOWARDS IT
-            previousNode = PathRequestManager.Instance().NodeFromWorldPoint(m_prey.position);
-            m_pointList = new List<Vector3>();
-            m_pointList.Add(m_prey.position);
-            PathRequestManager.RequestPath(transform.position, m_prey.position, 1, OnPathFound);
-            StartCoroutine(FollowPath());
+            wheretogo = m_prey;
         }
         else
         {
@@ -75,11 +110,40 @@ public class PunkController : EntityBase
             //else cycle between room patrols looking for things.
 
             //attentions - noise, last seen ghost, other people 
+            if(m_hiveMind.m_Noises.Count != 0)
+            {
+                float distance = 10000;
+                for(int i = 0; i < m_hiveMind.m_Noises.Count; i++)
+                {
+                    float d = Vector3.Distance(transform.position, m_hiveMind.m_Noises[i].m_center.position);
+                    if (d < distance)
+                    {
+                        wheretogo = m_hiveMind.m_Noises[i].m_center;
+                    }
+                }
+
+                wheretogo.position = new Vector3(wheretogo.position.x + Random.Range(-4, 4),
+                    wheretogo.position.y,
+                    wheretogo.position.z + Random.Range(-4, 4));//randomise the sound pos a bit
+            }
+            else if (transform != m_roomToExplore)
+            {
+                wheretogo = m_roomToExplore;
+            }
+            else if (transform == m_roomToExplore)
+            {
+                ChooseNewRoom();
+                wheretogo = m_roomToExplore;
+            }
 
             Debug.Log("else");
         }
 
+        previousNode = PathRequestManager.Instance().NodeFromWorldPoint(wheretogo.position);
+        PathRequestManager.RequestPath(transform.position, wheretogo.position, 1, OnPathFound);
+        StartCoroutine(FollowPath());
     }
+
 
     void OnPathFound(Vector3[] _path, bool _pathFound)
     {
@@ -90,9 +154,7 @@ public class PunkController : EntityBase
             for (int i = 0; i < _path.Length - 1; i++) 
             {
                 m_realPath.Add(_path[i]);
-
             }
-            
         }
         else
         {
@@ -171,7 +233,7 @@ public class PunkController : EntityBase
                 }
             }
         }
-        //for all tickets set them to visble so all punks can attack
+        //for all targets set them to visble so all punks can attack
         foreach (Collider t in m_Targets)
         {
             if (t.transform.GetComponent<GhostController>())
@@ -214,7 +276,14 @@ public class PunkController : EntityBase
                         index = i;
                     }
                 }
+                else if(t.GetComponent<GhostHole>())
+                {//spawners
+                    index = i;
+                    break;
+                }
+                
             }
+
             if(index != -1)
             {
                 m_prey = m_Targets[index].transform;
@@ -229,6 +298,20 @@ public class PunkController : EntityBase
 
 
             //then targets
+        }
+    }
+
+    void ChooseNewRoom()
+    {
+        //dont use this for the first room
+        m_lastRoomExplored = m_roomToExplore;
+        while (true)
+        {
+            m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0, m_hiveMind.m_HouseLocations.Count)];
+            if(m_roomToExplore != m_lastRoomExplored)
+            {
+                break;
+            }
         }
     }
 }
