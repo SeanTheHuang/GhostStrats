@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    enum CameraState
+    {
+        FREE,
+        ZOOMED_OUT,
+        FOLLOW
+    }
+
+    public static CameraControl Instance
+    { get; private set; }
+
 
     // Use this for initialization
+    [Header("Transform targets")]
+    public Transform m_overviewShot;
     public Transform m_target;
     private Vector3 m_targetLastPos;
     public float m_moveSpeed = 2;
@@ -13,6 +25,11 @@ public class CameraControl : MonoBehaviour
     float m_radius = 5;
     float m_angle = 0;
     float mouseDistance = 50;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -23,17 +40,22 @@ public class CameraControl : MonoBehaviour
     void Update()
     {
         MouseScreenPos();
-        if(Input.GetKey(KeyCode.Space))
-        {
-            Debug.Log("hit");
-            Rotate();
-        }
+        //if(Input.GetKey(KeyCode.Space))
+        //{
+        //    Debug.Log("hit");
+        //    Rotate();
+        //}
 
         if(m_target.position != m_targetLastPos)
         {
             Focus();
             m_targetLastPos = m_target.position;
         }
+    }
+
+    void MoveTowardsFunction()
+    {
+        
     }
 
     void Rotate()
