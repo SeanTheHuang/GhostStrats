@@ -65,13 +65,62 @@ public class GameMaster : MonoBehaviour {
         // TEST: Make all player ghosts move
         if (Input.GetKeyDown(KeyCode.O))
             RunPlayersTurn();
+
+        if (Input.GetKeyDown(KeyCode.I))
+            PunkStartTurn();
     }
+
 
     void StartGame()
     {
         // TEMP: start game with players turn first
         StartPlayersTurn();
     }
+
+    #region END_GAME_FUNCTIONS
+
+    void CheckEndGameState()
+    {
+        bool ghostsAlive = false;
+        bool punksAlive = m_punkList.Count > 0;
+
+        // Check if theres any ghost spawners left
+        foreach (GhostHole gh in m_ghostHoleList)
+        {
+            if (gh.HoleIsAlive)
+            {
+                ghostsAlive = true;
+                break;
+            }
+        }
+
+        if (!punksAlive && !ghostsAlive)
+            OnGameDraw();
+        else if (!punksAlive && ghostsAlive)
+            OnPlayerWon();
+        else if (punksAlive && !ghostsAlive)
+            OnPlayerLose();
+        // else, game is stil running
+    }
+
+    void OnGameDraw()
+    {
+        // TODO
+    }
+
+    void OnPlayerWon()
+    {
+        // TODO
+    }
+
+    void OnPlayerLose()
+    {
+        // TODO
+    }
+
+    #endregion  
+
+    #region GHOST_TURN_FUNCTIONS
 
     void GhostStartTurn()
     {
@@ -124,6 +173,32 @@ public class GameMaster : MonoBehaviour {
         MousePicker.Instance().StopPicking();
     }
 
+    #endregion
+
+    #region PUNK_TURN_FUNCTIONS
+
+    void PunkStartTurn()
+    {
+        StartCoroutine(PunkAnimation());
+    }
+
+    IEnumerator PunkAnimation()
+    {
+        foreach (PunkController pc in m_punkList)
+        {
+            Camera.main.GetComponent<CameraControl>().m_target = pc.transform;
+            pc.DoTurn();
+
+            while(pc.m_finishedMoving == false)
+            {
+                yield return null;
+            }
+        }
+        yield return null;
+    }
+
+    #endregion
+
     // Tells all the relevant systems that a new ghost has been selected
     public void UpdateSelectedGhost(GameObject newGhost)
     {
@@ -137,6 +212,8 @@ public class GameMaster : MonoBehaviour {
         newGhost.GetComponent<GhostController>().OnSelected();
         m_currentlySelectedGhost = newGhost.GetComponent<GhostController>();
     }
+
+    #region CHECK_FOR_ENTITIES
 
     public List<PunkController> GetPunksAtLocations(List<Vector3> _positions)
     {
@@ -186,6 +263,31 @@ public class GameMaster : MonoBehaviour {
 
         return ghostList;
     }
+
+    public List<GhostHole> GetGhostsAtLocations(List<Vector3> _positions)
+    {
+        List<GhostHole> holeList = new List<GhostHole>();
+
+        // Check each punk against all locations, if they are within one, add to list
+        foreach (GhostHole gh in m_ghostHoleList)
+        {
+            Node holeNode = PathRequestManager.Instance().NodeFromWorldPoint(gh.transform.position);
+
+            foreach (Vector3 v3 in _positions)
+            {
+                Node pointNode = PathRequestManager.Instance().NodeFromWorldPoint(v3);
+                if (holeNode == pointNode)
+                {
+                    holeList.Add(gh);
+                    break;
+                }
+            }
+        }
+
+        return holeList;
+    }
+
+    #endregion  
 
     public void Play()
     {

@@ -15,6 +15,11 @@ public class GhostHole : EntityBase
     public Transform m_targetPosition;
     bool m_ghostIsAlive;
 
+    public bool HoleIsAlive
+    {
+        get { return m_currentHealth > 0; }
+    }
+
     private void Awake()
     {
         m_maxMoves = 0;

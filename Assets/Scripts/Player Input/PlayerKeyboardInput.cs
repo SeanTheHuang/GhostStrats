@@ -13,6 +13,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
     GhostController m_GhostController;
 
     GameMaster m_gameMaster;
+    HelpPopupController m_helpPopUp;
 
     // The keycodes that let the player use a ghosts abilities
     public KeyCode m_attack;
@@ -47,6 +48,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
     void Start()
     {
         m_gameMaster = GameMaster.Instance();
+        m_helpPopUp = HelpPopupController.Instance();
         m_gameMaster.m_onPause += onPause;
         m_gameMaster.m_onPlay += onPlay;
     }
@@ -120,6 +122,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
         m_selectedGhost = newGhost;
         m_GhostAbilityScript = newGhost.GetComponent<GhostAbilityBehaviour>();
         m_GhostController = newGhost.GetComponent<GhostController>();
+        m_helpPopUp.UpdateGhostSelected(newGhost);
     }
 
     void onPlay()
