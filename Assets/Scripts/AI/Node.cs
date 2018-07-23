@@ -26,6 +26,9 @@ public class Node : IHeapItem<Node>
     public NodeState m_nodeState;
     public Transform m_entityOnTile;
 
+    public bool WalkabilityIsLocked // This position is always blocked off
+    { get; private set; }
+
     public bool Walkable;
     public Vector3 WorldPosition;
     int heapIndex;
@@ -38,6 +41,7 @@ public class Node : IHeapItem<Node>
         gridY = _gridY;
         m_nodeState = NodeState.EMPTY;
         m_entityOnTile = null;
+        WalkabilityIsLocked = !_walkable;
     }
 
     public int fCost
