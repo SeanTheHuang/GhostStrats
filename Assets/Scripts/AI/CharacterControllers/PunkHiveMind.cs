@@ -48,5 +48,6 @@ public class PunkHiveMind : MonoBehaviour
             m_center = tr,
             m_CoolDown = Random.Range(2, 4)
         };
+        m_Noises.Add(n);
     }
 }

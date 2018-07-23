@@ -28,6 +28,7 @@ public class PunkController : EntityBase
     {
         m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
         m_realPath = new List<Vector3> { };
+        m_roomToExplore = m_hiveMind.m_HouseLocations[0];
     }
     private void Update()
     {
@@ -40,7 +41,7 @@ public class PunkController : EntityBase
                 Debug.Log("targets in sight");
                 Debug.Log(m_Targets[0].gameObject.name);
             }*/
-            ChooseLocation();
+            DoTurn();
         }
     }
 
@@ -62,7 +63,16 @@ public class PunkController : EntityBase
         
     }
 
-    public void OnStartOfTurn()
+    public void DoTurn()
+    {
+        OnStartOfTurn();
+        ActionPhase();
+        OnEndOfTurn();
+        //Debug.Log("PunkTurnEnd");
+    }
+
+
+     void OnStartOfTurn()
     {
         m_movesPerformed = 0;
         if(transform == m_roomToExplore)
@@ -72,21 +82,23 @@ public class PunkController : EntityBase
         }
     }
 
-    public void ActionPhase()
+     void ActionPhase()
     {
         ChooseLocation();
         if(m_prey)
         {
-            if(Vector3.Distance(transform.position,m_prey.position) <= m_attackRange)
+            
+            if(Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2 (m_prey.position.x,m_prey.position.z)) <= m_attackRange)
             {
                 //Attack
                 //face them
                 m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage);
+                Debug.Log("attacked entity");
             }
         }
     }
 
-    public void OnEndOfTurn()
+     void OnEndOfTurn()
     {
 
     }
@@ -94,7 +106,7 @@ public class PunkController : EntityBase
 
     public void ChooseLocation()
     {
-        Debug.Log("loc chose");
+        //Debug.Log("loc chose");
         Sight();//adds targets
         ChooseTarget();//chooses best target 
 
@@ -102,6 +114,7 @@ public class PunkController : EntityBase
         if(m_prey)
         {//FOUND A TARGET MOVE TOWARDS IT
             wheretogo = m_prey;
+            Debug.Log("going for target");
         }
         else
         {
@@ -126,17 +139,18 @@ public class PunkController : EntityBase
                     wheretogo.position.y,
                     wheretogo.position.z + Random.Range(-4, 4));//randomise the sound pos a bit
             }
-            else if (transform != m_roomToExplore)
+            else if (transform.position != m_roomToExplore.position)
             {
+                //Debug.Log("hasnt arrived: roomtoEx=" + m_roomToExplore.position);
                 wheretogo = m_roomToExplore;
             }
-            else if (transform == m_roomToExplore)
+            else if (transform.position == m_roomToExplore.position)
             {
+                Debug.Log("atloc");
                 ChooseNewRoom();
                 wheretogo = m_roomToExplore;
             }
 
-            Debug.Log("else");
         }
 
         previousNode = PathRequestManager.Instance().NodeFromWorldPoint(wheretogo.position);
@@ -151,15 +165,26 @@ public class PunkController : EntityBase
         if (_pathFound)
         {
             m_realPath.Clear();
-            for (int i = 0; i < _path.Length - 1; i++) 
+            if (m_prey)
             {
-                m_realPath.Add(_path[i]);
+                for (int i = 0; i < _path.Length - 1; i++)
+                {
+                    m_realPath.Add(_path[i]);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < _path.Length; i++)
+                {
+                    m_realPath.Add(_path[i]);
+                }
             }
         }
         else
         {
             //im not sure
             Debug.Log("else ??");
+
         }
     }
 
@@ -287,6 +312,7 @@ public class PunkController : EntityBase
             if(index != -1)
             {
                 m_prey = m_Targets[index].transform;
+                Debug.Log("foundtarget");
             }
             else
             {
@@ -313,5 +339,9 @@ public class PunkController : EntityBase
                 break;
             }
         }
+        Vector3 pos = m_roomToExplore.position;
+        pos.x += Random.Range(-1, 2);
+        pos.z += Random.Range(-1, 2);
+        m_roomToExplore.position = pos;
     }
 }

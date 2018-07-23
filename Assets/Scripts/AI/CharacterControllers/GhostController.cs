@@ -129,6 +129,7 @@ public class GhostController : EntityBase {
 
     public override void OnEntityHit(int _damage)
     {
+        Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
     }
 
     public void OnConfirmTargetPosition()
