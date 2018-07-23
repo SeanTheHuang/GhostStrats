@@ -5,14 +5,14 @@ using UnityEngine;
 public class PunkController : EntityBase
 {
     public LayerMask m_targetmask;
-    float circleSightRadius = 3;
-    float forwardSightAngle = 30;
-    float forwardSightRadius = 6;
+    public float circleSightRadius = 1.5f;
+    public float forwardSightAngle = 30;
+    public float forwardSightRadius = 4;
     List<Collider> m_Targets = new List<Collider> { };
     Transform m_prey, m_oldPrey;
     int m_wallMask;
 
-    Node previousNode;
+    //Node previousNode;
     List<Vector3> m_pointList, m_realPath;
     public PunkHiveMind m_hiveMind;
 
@@ -78,35 +78,44 @@ public class PunkController : EntityBase
     }
 
 
-     void OnStartOfTurn()
+    void OnStartOfTurn()
     {
         m_movesPerformed = 0;
-        if(transform.position == m_roomToExplore)
+        if (transform.position == m_roomToExplore)
         {
             ChooseNewRoom();
-            
+
         }
     }
 
-     void ActionPhase()
+    void ActionPhase()
     {
         ChooseLocation();
-        if(m_prey)
+        if (m_prey)
         {
-            
-            if(Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2 (m_prey.position.x,m_prey.position.z)) <= m_attackRange)
+
+            if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(m_prey.position.x, m_prey.position.z)) <= m_attackRange)
             {
                 //Attack
                 //face them
+                
+                if(m_attackRange > 1)
+                {
+                    if(SightBehindWall(m_prey))
+                    {
+                        return;
+                    }
+
+                }
                 m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage);
                 Debug.Log("attacked entity");
             }
         }
     }
 
-     void OnEndOfTurn()
+    void OnEndOfTurn()
     {
-        
+
     }
 
 
@@ -141,9 +150,7 @@ public class PunkController : EntityBase
                     }
                 }
 
-                wheretogo = new Vector3(wheretogo.x + Random.Range(-4, 4),
-                    wheretogo.y,
-                    wheretogo.z + Random.Range(-4, 4));//randomise the sound pos a bit
+                wheretogo = RandPosAroundWall(wheretogo);//randomise the sound pos a bit
             }
             else if (transform.position != m_roomToExplore)
             {
@@ -159,14 +166,14 @@ public class PunkController : EntityBase
 
         }
 
-        previousNode = PathRequestManager.Instance().NodeFromWorldPoint(wheretogo);
+        //previousNode = PathRequestManager.Instance().NodeFromWorldPoint(wheretogo);
         PathRequestManager.RequestPath(transform.position, wheretogo, 1, OnPathFound);
         v3debug = wheretogo;
 
         StartCoroutine(FollowPath());
     }
 
-
+    
     void OnPathFound(Vector3[] _path, bool _pathFound)
     {
         if (_pathFound)
@@ -282,6 +289,7 @@ public class PunkController : EntityBase
         //for all targets set them to visble so all punks can attack
         foreach (Collider t in m_Targets)
         {
+            Debug.Log("target seen");
             if (t.transform.GetComponent<GhostController>())
             {
                 t.transform.GetComponent<GhostController>().SeenbyPunk();
@@ -364,5 +372,21 @@ public class PunkController : EntityBase
         pos.x += Random.Range(-1, 2);
         pos.z += Random.Range(-1, 2);
         m_roomToExplore = pos;
+    }
+
+    Vector3 RandPosAroundWall(Vector3 _v)
+    {
+        while (true)
+        {
+            Vector3 vcopy = _v;
+            Vector2 v2 = Random.insideUnitCircle * 4;
+            Vector3 v3 = new Vector3(Mathf.RoundToInt(v2.x), 0, Mathf.RoundToInt(v2.y));
+            vcopy += v3;
+
+            if (PathRequestManager.Instance().PositionIsWalkable(vcopy))
+            {
+                return vcopy;
+            }
+        }
     }
 }
