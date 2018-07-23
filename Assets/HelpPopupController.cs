@@ -62,7 +62,8 @@ public class HelpPopupController : MonoBehaviour
 
     // Update is called once per frame
     public void MouseEnter(int abilityType)
-    {    
+    {
+        Debug.Log("GOT HERE");
         if (!m_mouseEntered)
         {
             m_mouseEnterTime = Time.time;

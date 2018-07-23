@@ -46,6 +46,13 @@ public class GhostAbilityBehaviour : MonoBehaviour
     //public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     bool m_aimingAbility; // If the player is aiming their ability
 
+    [Header("UI Dependencies")]
+    public GameObject m_UIPortrait;
+    public GameObject m_UIAbilityBar;
+    AbilityBarController m_UIAbilityBarCntrl;
+    public Sprite m_specialAbilityIconImage; // The Icon image for the ghosts special ability
+    GhostPortraitController ghostPortraitController;
+
     // The number of turns the ghost must wait before they can use the ability again.
     [Header("Attack Cooldowns")]
     public int m_attackCooldown;
@@ -59,10 +66,6 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public int m_hideCooldownTimer;
     public int m_overwatchCooldownTimer;
     public int m_specialCooldownTimer;
-
-    public GameObject m_UIPortrait;
-    public GameObject m_UIAbilityBar;
-    AbilityBarController m_UIAbilityBarCntrl;
 
     // The grid squares the ghost attacks in
     [Header("Base affected tiles")]
@@ -98,6 +101,9 @@ public class GhostAbilityBehaviour : MonoBehaviour
             m_attackSquares[i] = m_attackSquares[i] * m_pathRequestManager.GridSize() * 2;
         }
         SetGhostType();
+
+        ghostPortraitController = m_UIPortrait.GetComponent<GhostPortraitController>();
+        ghostPortraitController.m_SpecialAbilityIconSprite = m_specialAbilityIconImage;
     }
 
     protected virtual void SetGhostType()
@@ -136,7 +142,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_abilityUsed = true;
         m_ghostController.m_abilityUsed = true;
         m_gameMaster.CheckAllPlayerActionsUsed();
-        m_UIAbilityBarCntrl.AbilityUsed();
+        m_UIAbilityBarCntrl.AbilityUsed(m_actionState);
     }
 
     void AbilityUnused()
@@ -150,7 +156,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     {
         // Reset aiming direction
         m_aimingDirection = AimingDirection.North;
-        m_UIPortrait.GetComponent<GhostPortraitController>().OnSelected();
+        ghostPortraitController.OnSelected();
 
         // Reset Ability Bar
         bool movedUsed = true;
@@ -161,7 +167,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         if (m_ghostController.m_maxMoves > m_ghostController.m_numMovesLeft)
             someMoveUsed = true;
 
-        m_UIAbilityBarCntrl.OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, movedUsed, someMoveUsed, m_abilityUsed);
+        m_UIAbilityBarCntrl.OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, movedUsed, someMoveUsed, m_actionState);
     }
 
     // Reset action variables if one has not been chosen yet
@@ -373,7 +379,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         // Collect all together
         foreach (Vector3 targetPos in m_rotatedAffectedSquares)
-            attackDir += targetPos;
+            attackDir += (targetPos - transform.position);
 
         // Remove y-component, and normalize
         attackDir.y = 0;

@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    enum CameraState
+    {
+        FREE,
+        ZOOMED_OUT,
+        FOLLOW
+    }
+
+    public static CameraControl Instance
+    { get; private set; }
+
 
     // Use this for initialization
+    [Header("Transform targets")]
+    public Transform m_overviewShot;
     public Transform m_target;
     private Vector3 m_targetLastPos;
     public float m_moveSpeed = 2;
@@ -14,26 +26,37 @@ public class CameraControl : MonoBehaviour
     float m_angle = 0;
     float mouseDistance = 50;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         Focus();
     }
        
     // Update is called once per frame
-    void Update()
-    {
-        MouseScreenPos();
-        if(Input.GetKey(KeyCode.Space))
-        {
-            Debug.Log("hit");
-            Rotate();
-        }
+    //void Update()
+    //{
+    //    MouseScreenPos();
+    //    //if(Input.GetKey(KeyCode.Space))
+    //    //{
+    //    //    Debug.Log("hit");
+    //    //    Rotate();
+    //    //}
+    //    if (!m_target)
+    //        return;
+    //    if(m_target.position != m_targetLastPos)
+    //    {
+    //        Focus();
+    //        m_targetLastPos = m_target.position;
+    //    }
+    //}
 
-        if(m_target.position != m_targetLastPos)
-        {
-            Focus();
-            m_targetLastPos = m_target.position;
-        }
+    void MoveTowardsFunction()
+    {
+        
     }
 
     void Rotate()
@@ -52,6 +75,7 @@ public class CameraControl : MonoBehaviour
 
     void Focus()
     {
+        return;
         float x = m_radius * Mathf.Cos(m_angle * Mathf.Deg2Rad);
         float yz = m_radius * Mathf.Sin(m_angle * Mathf.Deg2Rad);
 

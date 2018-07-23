@@ -11,6 +11,53 @@ ModelImporter:
     100010: pCube26
     100012: pCube27
     100014: pCube6
+    100016: Ghost01_Root
+    100018: Hair00
+    100020: Hair01
+    100022: Hair02
+    100024: Hair03
+    100026: Hair04
+    100028: Hair05
+    100030: Hair06_END
+    100032: Head
+    100034: L_Hand
+    100036: L_Hand_END
+    100038: L_Index00
+    100040: L_Index01
+    100042: L_Index02_END
+    100044: L_Ring00
+    100046: L_Ring01
+    100048: L_Ring02_END
+    100050: L_Thumb00
+    100052: L_Thumb00_END
+    100054: L_Thumb01
+    100056: Orb00
+    100058: Orb00_END
+    100060: Orb01
+    100062: Orb01_END
+    100064: Orb02
+    100066: Orb_END
+    100068: pCube82
+    100070: R_Hand
+    100072: R_Hand_END
+    100074: R_Index00
+    100076: R_Index01
+    100078: R_Index02_END
+    100080: R_Ring00
+    100082: R_Ring01
+    100084: R_Ring02_END
+    100086: R_Thumb00
+    100088: R_Thumb00_END
+    100090: R_Thumb01
+    100092: Tail00
+    100094: Tail01
+    100096: Tail02
+    100098: Tail03
+    100100: Tail07
+    100102: Tail08_END
+    100104: Tails04
+    100106: Tails05
+    100108: Tails06
     400000: //RootNode
     400002: pCube20
     400004: pCube23
@@ -19,6 +66,53 @@ ModelImporter:
     400010: pCube26
     400012: pCube27
     400014: pCube6
+    400016: Ghost01_Root
+    400018: Hair00
+    400020: Hair01
+    400022: Hair02
+    400024: Hair03
+    400026: Hair04
+    400028: Hair05
+    400030: Hair06_END
+    400032: Head
+    400034: L_Hand
+    400036: L_Hand_END
+    400038: L_Index00
+    400040: L_Index01
+    400042: L_Index02_END
+    400044: L_Ring00
+    400046: L_Ring01
+    400048: L_Ring02_END
+    400050: L_Thumb00
+    400052: L_Thumb00_END
+    400054: L_Thumb01
+    400056: Orb00
+    400058: Orb00_END
+    400060: Orb01
+    400062: Orb01_END
+    400064: Orb02
+    400066: Orb_END
+    400068: pCube82
+    400070: R_Hand
+    400072: R_Hand_END
+    400074: R_Index00
+    400076: R_Index01
+    400078: R_Index02_END
+    400080: R_Ring00
+    400082: R_Ring01
+    400084: R_Ring02_END
+    400086: R_Thumb00
+    400088: R_Thumb00_END
+    400090: R_Thumb01
+    400092: Tail00
+    400094: Tail01
+    400096: Tail02
+    400098: Tail03
+    400100: Tail07
+    400102: Tail08_END
+    400104: Tails04
+    400106: Tails05
+    400108: Tails06
     2100000: AverageGhostBody
     2100002: AverageGhostCeramics
     2300000: pCube20
@@ -28,6 +122,7 @@ ModelImporter:
     2300008: pCube26
     2300010: pCube27
     2300012: pCube6
+    2300014: pCube82
     3300000: pCube20
     3300002: pCube23
     3300004: pCube24
@@ -35,6 +130,7 @@ ModelImporter:
     3300008: pCube26
     3300010: pCube27
     3300012: pCube6
+    3300014: pCube82
     4300000: pCube6
     4300002: pCube20
     4300004: pCube23
@@ -42,6 +138,7 @@ ModelImporter:
     4300008: pCube25
     4300010: pCube26
     4300012: pCube27
+    4300014: pCube82
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -61,7 +158,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
+    importConstraints: 1
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
