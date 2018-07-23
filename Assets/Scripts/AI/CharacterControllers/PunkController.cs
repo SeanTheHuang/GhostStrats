@@ -18,17 +18,20 @@ public class PunkController : EntityBase
 
     int m_movesPerformed;
 
-    Transform m_roomToExplore;
-    Transform m_lastRoomExplored;
+    Vector3 m_roomToExplore;
+    Vector3 m_lastRoomExplored;
 
     public int m_attackRange = 0;
     public int m_attackDamage = 0;
+    [HideInInspector]
+    public bool m_finishedMoving = false;
 
+    Vector3 v3debug;
     private void Awake()
     {
         m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
         m_realPath = new List<Vector3> { };
-        m_roomToExplore = m_hiveMind.m_HouseLocations[0];
+        m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0,m_hiveMind.m_HouseLocations.Count)];
     }
     private void Update()
     {
@@ -41,7 +44,7 @@ public class PunkController : EntityBase
                 Debug.Log("targets in sight");
                 Debug.Log(m_Targets[0].gameObject.name);
             }*/
-            DoTurn();
+            //DoTurn();
         }
     }
 
@@ -65,7 +68,10 @@ public class PunkController : EntityBase
 
     public void DoTurn()
     {
+        m_finishedMoving = false;
         OnStartOfTurn();
+        
+
         ActionPhase();
         OnEndOfTurn();
         //Debug.Log("PunkTurnEnd");
@@ -100,7 +106,7 @@ public class PunkController : EntityBase
 
      void OnEndOfTurn()
     {
-
+        
     }
 
 
@@ -146,7 +152,7 @@ public class PunkController : EntityBase
             }
             else if (transform.position == m_roomToExplore.position)
             {
-                Debug.Log("atloc");
+                Debug.Log("reached destination");
                 ChooseNewRoom();
                 wheretogo = m_roomToExplore;
             }
@@ -155,13 +161,14 @@ public class PunkController : EntityBase
 
         previousNode = PathRequestManager.Instance().NodeFromWorldPoint(wheretogo.position);
         PathRequestManager.RequestPath(transform.position, wheretogo.position, 1, OnPathFound);
+        v3debug = wheretogo.position;
+
         StartCoroutine(FollowPath());
     }
 
 
     void OnPathFound(Vector3[] _path, bool _pathFound)
     {
-        Debug.Log("here");
         if (_pathFound)
         {
             m_realPath.Clear();
@@ -183,7 +190,7 @@ public class PunkController : EntityBase
         else
         {
             //im not sure
-            Debug.Log("else ??");
+            Debug.Log("Path not found : " + v3debug);
 
         }
     }
@@ -225,8 +232,8 @@ public class PunkController : EntityBase
                 i = 0;//reset for-loop
             }
         }
-
         //the attack if possible
+        m_finishedMoving = true;
         yield return null;
     }
 
