@@ -1902,6 +1902,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1219024474
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.53729963
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8433915
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e73241f871eea704090cb2c6056bc126, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1223902739 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1795966429424728, guid: a6814f9035a53cc43973d1f00a2804f5,
@@ -3205,48 +3247,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1992449628}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1999831791
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -14.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.53729963
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.8433915
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777633941871410, guid: e73241f871eea704090cb2c6056bc126, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e73241f871eea704090cb2c6056bc126, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &2051331510 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1329420687550246, guid: a6814f9035a53cc43973d1f00a2804f5,

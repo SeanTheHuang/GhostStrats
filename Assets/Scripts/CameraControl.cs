@@ -22,6 +22,10 @@ public class CameraControl : MonoBehaviour
     private Vector3 m_targetPosition;
     private Vector3 m_initialTargetPosition;
 
+    [Header("Camera Limits")]
+    public Vector2 m_lowerLimits;
+    public Vector2 m_upperLimits;
+
     [Header("Others")]
     public float m_lerpValue = 50;
     public float m_cameraPanSpeed = 3;
@@ -70,7 +74,7 @@ public class CameraControl : MonoBehaviour
             m_cameraState = CameraState.FREE;
     }
 
-    #region CAMERA_LOGIC
+    #region CAMERA_MOVE_LOGIC
 
     void ZoomOutLogic()
     {
@@ -80,6 +84,8 @@ public class CameraControl : MonoBehaviour
         // Move towards overview position and rotation
         transform.position = Vector3.Lerp(transform.position, m_overviewShotTransform.position, m_lerpValue * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, m_overviewShotTransform.rotation, m_lerpValue * Time.deltaTime);
+
+        ClampCameraPosition();
     }
 
     void FollowLogic()
@@ -91,6 +97,8 @@ public class CameraControl : MonoBehaviour
         Vector3 targetPos = m_targetTransform.position + m_cameraOffset;
         transform.position = Vector3.Lerp(transform.position, targetPos, m_lerpValue * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, m_initialRotation, m_lerpValue * Time.deltaTime);
+
+        ClampCameraPosition();
     }
 
     void FreeCameraLogic()
@@ -101,6 +109,7 @@ public class CameraControl : MonoBehaviour
         Vector3 targetPos = m_targetPosition + m_cameraOffset;
         transform.position = Vector3.Lerp(transform.position, targetPos, m_lerpValue * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, m_initialRotation, m_lerpValue * Time.deltaTime);
+        ClampCameraPosition();
 
         // Added function: Press [F1] to reset to original target
         if (Input.GetKeyDown(KeyCode.F1))
@@ -123,6 +132,14 @@ public class CameraControl : MonoBehaviour
             m_targetPosition.z -= m_cameraPanSpeed * Time.deltaTime;
         else if (mousePosY >= Screen.height - mouseDistFromEdgeOfScreen)
             m_targetPosition.z += m_cameraPanSpeed * Time.deltaTime;
+    }
+
+    void ClampCameraPosition()
+    {
+        float xVal = Mathf.Clamp(transform.position.x, m_lowerLimits.x, m_upperLimits.x);
+        float zVal = Mathf.Clamp(transform.position.z, m_lowerLimits.y, m_upperLimits.y);
+
+        transform.position = new Vector3(xVal, transform.position.y, zVal);
     }
 
     #endregion

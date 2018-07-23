@@ -139,6 +139,8 @@ public class GameMaster : MonoBehaviour {
                 while (!gh.m_respawnAnimationDone)
                     yield return null;
             }
+
+            yield return new WaitForSeconds(0.6f); // Small delay after respawn to gauge dafuq happened
         }
 
         // After spawn animation, time to start players turn
@@ -164,13 +166,20 @@ public class GameMaster : MonoBehaviour {
 
     void RunPlayersTurn()
     {
+        // Stop allowing player to select stuff
+        MousePicker.Instance().StopPicking();
+        StartCoroutine(GhostEndTurnAnimation());
+    }
+
+    IEnumerator GhostEndTurnAnimation()
+    {
+        CameraControl.Instance.SetOverviewMode();
+        yield return new WaitForSeconds(0.5f); // Wait a bit before playing animation
+
         foreach (GhostController gc in m_ghostList)
         {
             gc.OnEndOfTurn();
         }
-
-        // Stop allowing player to select stuff
-        MousePicker.Instance().StopPicking();
     }
 
     #endregion
