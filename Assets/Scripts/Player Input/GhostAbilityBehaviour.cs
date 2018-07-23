@@ -136,7 +136,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_abilityUsed = true;
         m_ghostController.m_abilityUsed = true;
         m_gameMaster.CheckAllPlayerActionsUsed();
-        m_UIAbilityBarCntrl.AbilityUsed();
+        m_UIAbilityBarCntrl.AbilityUsed(m_actionState);
     }
 
     void AbilityUnused()
@@ -161,7 +161,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         if (m_ghostController.m_maxMoves > m_ghostController.m_numMovesLeft)
             someMoveUsed = true;
 
-        m_UIAbilityBarCntrl.OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, movedUsed, someMoveUsed, m_abilityUsed);
+        m_UIAbilityBarCntrl.OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, movedUsed, someMoveUsed, m_actionState);
     }
 
     // Reset action variables if one has not been chosen yet
