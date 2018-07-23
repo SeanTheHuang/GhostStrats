@@ -113,7 +113,7 @@ public class MousePicker : MonoBehaviour {
         {
             m_currentGhost.ResetAction();
             m_mouseMode = MouseMode.MOVEMENT;
-            m_currentGhost.GetComponent<GhostAbilityBehaviour>().m_UIAbilityBar.GetComponent<AbilityBarController>().ResetTurn();
+            m_currentGhost.GetComponent<GhostUi>().ResetTurn();
         }
     }
 
