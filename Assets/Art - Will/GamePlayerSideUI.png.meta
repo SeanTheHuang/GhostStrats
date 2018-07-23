@@ -5,7 +5,7 @@ TextureImporter:
     21300000: PlayerUICornerButton1
     21300002: PlayerUICornerButton2
     21300004: PlayerUICornerButton3
-    21300006: GamePlayerSideUI_3
+    21300006: PlayerSideUINumber4
     21300008: PlayerUISideFrame
     21300010: Ghost1_Normal
     21300012: Ghost2_Normal
@@ -18,6 +18,23 @@ TextureImporter:
     21300026: Ghost4_Greyed
     21300028: PlayerUIFrameHPBack
     21300030: PlayerUISlotHP
+    21300032: PlayerSideUINumber1
+    21300034: PlayerSideUINumber2
+    21300036: PlayerSideUINumber3
+    21300038: PlayerSideMainFrame
+    21300040: Ghost1Normal
+    21300042: Ghost2Normal
+    21300044: Ghost3Normal
+    21300046: Ghost4Normal
+    21300048: PlayerSideHPFrame1
+    21300050: Ghost1Greyed
+    21300052: Ghost2Greyed
+    21300054: Ghost3Greyed
+    21300056: Ghost4Greyed
+    21300058: PlayerSideHPBack
+    21300060: PlayerSideHPSlot
+    21300062: PlayerSideHPFrame2
+    21300064: PlayerSideHPBar
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -98,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerUICornerButton1
+      name: PlayerSideUINumber1
       rect:
         serializedVersion: 2
         x: 81
@@ -112,13 +129,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dbc9141f635a9646bb9bc4e8c500edb
+      spriteID: 2428898457874d04f8fe87ad5badf2db
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerUICornerButton2
+      name: PlayerSideUINumber2
       rect:
         serializedVersion: 2
         x: 183
@@ -132,13 +149,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f60c46fb8acbf349adf2ae7733625b2
+      spriteID: f4afb21c2a998b54ba90bc05ed361ff6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerUICornerButton3
+      name: PlayerSideUINumber3
       rect:
         serializedVersion: 2
         x: 285
@@ -152,13 +169,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cb94e357b9555943bdf77da4169b6ab
+      spriteID: 813cb2155fb062742b01d8b77c692f0a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePlayerSideUI_3
+      name: PlayerSideUINumber4
       rect:
         serializedVersion: 2
         x: 384
@@ -172,13 +189,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b671de65806cee645bb4d1754be79a42
+      spriteID: 22122e8d0a3f812489a70807f0e833c9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerUISideFrame
+      name: PlayerSideMainFrame
       rect:
         serializedVersion: 2
         x: 78
@@ -192,13 +209,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c31bb0879bbb11d4d937f0b3b2d2f3bb
+      spriteID: 219417140336b3446a589d8bebfa7d03
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ghost1_Normal
+      name: Ghost1Normal
       rect:
         serializedVersion: 2
         x: 451
@@ -212,13 +229,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3d2a2b602b611f4ab018faa39f7876d
+      spriteID: 9ece61a38cc0dbc449638811f7929188
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ghost2_Normal
+      name: Ghost2Normal
       rect:
         serializedVersion: 2
         x: 748
@@ -232,13 +249,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7abf76550e239747bd461cb437b89b3
+      spriteID: c74c5f6e117b21b459d548624fc7b5ee
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ghost3_Normal
+      name: Ghost3Normal
       rect:
         serializedVersion: 2
         x: 1048
@@ -252,13 +269,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc0a056bf94a468409c5b9a141e7ef92
+      spriteID: 853f9e4ed12812e408c18572ffe241f5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ghost4_Normal
+      name: Ghost4Normal
       rect:
         serializedVersion: 2
         x: 1350
@@ -272,13 +289,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17949ce9e1dd18a4783c2c4918ba494d
+      spriteID: 5c12439af9d7ce6458c2ffb0d4dea6b1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerUIFrameHP
+      name: PlayerSideHPFrame1
       rect:
         serializedVersion: 2
         x: 63
@@ -292,13 +309,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba9c61e11ca672c4d9f5f4bbd7d29811
+      spriteID: 7fc3164526e4af94f95313db55103b76
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ghost1_Greyed
+      name: Ghost1Greyed
       rect:
         serializedVersion: 2
         x: 451
@@ -312,13 +329,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 757aed904502a3d4eb7a6705bccc93ab
+      spriteID: 3173dc800e102924db544c1532ce80d1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ghost2_Greyed
+      name: Ghost2Greyed
       rect:
         serializedVersion: 2
         x: 748
@@ -332,13 +349,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf105a14cf804c749a4751a30e2f2eb4
+      spriteID: c0e5d59ebd0e6f046a799bcbf65862f6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ghost3_Greyed
+      name: Ghost3Greyed
       rect:
         serializedVersion: 2
         x: 1048
@@ -352,13 +369,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87343d843af25e44697065969ab43294
+      spriteID: aae80086986c96d4d9d4e4b13195b81d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ghost4_Greyed
+      name: Ghost4Greyed
       rect:
         serializedVersion: 2
         x: 1350
@@ -372,13 +389,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a36a6aae6164bcd4fb7cacf91a579b0c
+      spriteID: 3954bb6a057bee545b7b93f74de3536e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerUIFrameHPBack
+      name: PlayerSideHPBack
       rect:
         serializedVersion: 2
         x: 68
@@ -392,13 +409,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba47a768f935cfb499ae7fb7e5321961
+      spriteID: fdd7ca9930986d845a516ee2b77985a3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerUISlotHP
+      name: PlayerSideHPSlot
       rect:
         serializedVersion: 2
         x: 72
@@ -412,7 +429,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0bb20ce66ab8154ca4e058e3df1a916
+      spriteID: 64115f32cf51cd749ae2914faa291306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerSideHPFrame2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 270
+        width: 352
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9150df4ebc8684793713f56f37e39b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerSideHPBar
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 205
+        width: 351
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff881aea1ae222b42a324234e0e2b7db
       vertices: []
       indices: 
       edges: []
