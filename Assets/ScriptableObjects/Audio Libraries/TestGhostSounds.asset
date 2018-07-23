@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c033b5f9561c45543b122fcfa364f75b, type: 3}
   m_Name: TestGhostSounds
   m_EditorClassIdentifier: 
+  m_pitch:
+    minValue: 0.8506571
+    maxValue: 1.1612906
   m_audioClips: []
-  m_pitchOffset: 0.1
