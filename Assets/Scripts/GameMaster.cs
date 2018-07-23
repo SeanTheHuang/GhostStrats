@@ -65,6 +65,9 @@ public class GameMaster : MonoBehaviour {
         // TEST: Make all player ghosts move
         if (Input.GetKeyDown(KeyCode.O))
             RunPlayersTurn();
+
+        if (Input.GetKeyDown(KeyCode.I))
+            PunkStartTurn();
     }
 
     void StartGame()
@@ -122,6 +125,34 @@ public class GameMaster : MonoBehaviour {
 
         // Stop allowing player to select stuff
         MousePicker.Instance().StopPicking();
+    }
+
+    void PunkStartTurn()
+    {
+        StartCoroutine(PunkAnimation());
+    }
+    void RunPunksTurn()
+    {
+       /* foreach(PunkController pc in m_punkList)
+        {
+            Camera.main.GetComponent<CameraControl>().m_target = pc.transform;
+            pc.DoTurn();
+        }*/
+    }
+
+    IEnumerator PunkAnimation()
+    {
+        foreach (PunkController pc in m_punkList)
+        {
+            Camera.main.GetComponent<CameraControl>().m_target = pc.transform;
+            pc.DoTurn();
+
+            while(pc.m_finishedMoving == false)
+            {
+                yield return null;
+            }
+        }
+        yield return null;
     }
 
     // Tells all the relevant systems that a new ghost has been selected
