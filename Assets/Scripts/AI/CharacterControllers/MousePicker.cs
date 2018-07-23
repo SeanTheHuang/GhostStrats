@@ -48,7 +48,7 @@ public class MousePicker : MonoBehaviour {
         {
             if (m_mouseMode == MouseMode.MOVEMENT)
             {
-                if (rayHit.transform.CompareTag("Entity/Ghost") || rayHit.transform.CompareTag("Entity/Punk"))
+                if (rayHit.transform.CompareTag("Entity/Ghost") || rayHit.transform.CompareTag("Entity/Punk") || rayHit.transform.CompareTag("Entity/GhostRelic"))
                 {
                     m_currentGhost.ResetChoosingPathNodes(); // Delete current potential path
                 }

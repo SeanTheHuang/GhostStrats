@@ -6,8 +6,10 @@ public class GameMaster : MonoBehaviour {
 
     public GameObject[] m_startGhostArray; // All ghosts that will be in the game
     public GameObject[] m_startPunkArray; // All punks at start of game
+    public GhostHole[] m_startGhostHoles; // All starting ghost holes
     PlayerKeyboardInput m_KeyBoardInput;
 
+    List<GhostHole> m_ghostHoleList; // List containing all living ghost relics
     List<GhostController> m_ghostList; // List containing all ghosts still alive
     List<PunkController> m_punkList; // List containing all punks still alive
     GhostController m_currentlySelectedGhost;
@@ -34,12 +36,16 @@ public class GameMaster : MonoBehaviour {
         instance = this;
         m_ghostList = new List<GhostController>();
         m_punkList = new List<PunkController>();
+        m_ghostHoleList = new List<GhostHole>();
 
         foreach (GameObject go in m_startGhostArray)
             m_ghostList.Add(go.GetComponent<GhostController>());
 
         foreach (GameObject go in m_startPunkArray)
             m_punkList.Add(go.GetComponent<PunkController>());
+
+        foreach (GhostHole gh in m_startGhostHoles)
+            m_ghostHoleList.Add(gh);
     }
 
     void Start()
@@ -54,7 +60,7 @@ public class GameMaster : MonoBehaviour {
     {
         // TEST: Just a button to start the game
         if (Input.GetKeyDown(KeyCode.P))
-            StartPlayersTurn();
+            GhostStartTurn();
 
         // TEST: Make all player ghosts move
         if (Input.GetKeyDown(KeyCode.O))
@@ -65,6 +71,31 @@ public class GameMaster : MonoBehaviour {
     {
         // TEMP: start game with players turn first
         StartPlayersTurn();
+    }
+
+    void GhostStartTurn()
+    {
+        StartCoroutine(GhostSpawnAnimation());
+    }
+
+    IEnumerator GhostSpawnAnimation()
+    {
+        // Tell all ghost relics, start of turn
+        foreach (GhostHole gh in m_ghostHoleList)
+        {
+            if (gh.GhostSpawnLogic())
+            {
+                //TODO: Make camera follow spawned ghost
+
+                while (!gh.m_respawnAnimationDone)
+                    yield return null;
+            }
+        }
+
+        // After spawn animation, time to start players turn
+        StartPlayersTurn();
+
+        yield return null;
     }
 
     void StartPlayersTurn()

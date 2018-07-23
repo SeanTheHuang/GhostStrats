@@ -108,6 +108,11 @@ public class PathRequestManager : MonoBehaviour {
         return new Vector3(point2D.x, _position.y, point2D.y);
     }
 
+    public Vector3[] GetPathImmediate(Vector3 _startPos, Vector3 _endPos, int _clearance)
+    {
+        return pathfinding.FindPathImmediate(_startPos, _endPos, _clearance);
+    }
+
     public bool PositionIsWalkable(Vector3 _position)
     {
         Node node = m_nodeGrid.NodeFromWorldPoint(_position);

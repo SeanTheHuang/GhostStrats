@@ -71,16 +71,16 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_actionState = GhostActionState.NONE;
         m_currentAffectedSquares = m_attackSquares;
         m_aimingAbility = false;
+
+        m_aimingDirection = AimingDirection.North;
+        m_UIAbilityBarCntrl = m_UIAbilityBar.GetComponent<AbilityBarController>();
     }
 
     private void Start()
     {
-        m_pathRequestManager = PathRequestManager.Instance();
-        m_aimingDirection = AimingDirection.North;
-        m_gameMaster = GameMaster.Instance();
-        m_UIAbilityBarCntrl = m_UIAbilityBar.GetComponent<AbilityBarController>();
-
         // Convert the attack squares to be equal to the length of a grid square
+        m_pathRequestManager = PathRequestManager.Instance();
+        m_gameMaster = GameMaster.Instance();
         for (int i = 0; i < m_attackSquares.Count; ++i)
         {
             m_attackSquares[i] = m_attackSquares[i] * m_pathRequestManager.GridSize() * 2;

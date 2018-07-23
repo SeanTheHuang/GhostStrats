@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Entity/Ghost
   - Entity/Punk
+  - Entity/GhostRelic
   layers:
   - Default
   - TransparentFX
