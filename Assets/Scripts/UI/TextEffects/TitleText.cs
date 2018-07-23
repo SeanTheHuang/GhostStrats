@@ -34,15 +34,6 @@ public class TitleText : MonoBehaviour {
         StartCoroutine(TextAnimation());
     }
 
-    private void Update()
-    {
-        // TEST CODE
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            InitializeAndStart("TEST BOI YO");
-        }
-    }
-
     IEnumerator TextAnimation()
     {
         Vector3 startPoint = transform.position - m_moveOffset;
