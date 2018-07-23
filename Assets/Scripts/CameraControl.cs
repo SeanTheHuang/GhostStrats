@@ -20,6 +20,7 @@ public class CameraControl : MonoBehaviour
     public Transform m_overviewShotTransform;
     public Transform m_targetTransform;
     private Vector3 m_targetPosition;
+    private Vector3 m_initialTargetPosition;
 
     [Header("Others")]
     public float m_lerpValue = 50;
@@ -38,6 +39,9 @@ public class CameraControl : MonoBehaviour
         Instance = this;
         m_cameraState = CameraState.ZOOMED_OUT;
         m_initialRotation = transform.rotation;
+
+        // Ensure can move overview transform easily
+        m_overviewShotTransform.SetParent(null);
     }
 
     private void Update()
@@ -97,6 +101,10 @@ public class CameraControl : MonoBehaviour
         Vector3 targetPos = m_targetPosition + m_cameraOffset;
         transform.position = Vector3.Lerp(transform.position, targetPos, m_lerpValue * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, m_initialRotation, m_lerpValue * Time.deltaTime);
+
+        // Added function: Press [F1] to reset to original target
+        if (Input.GetKeyDown(KeyCode.F1))
+            m_targetPosition = m_initialTargetPosition;
     }
 
     void UpdateTargetPosition()
@@ -104,7 +112,17 @@ public class CameraControl : MonoBehaviour
         float mousePosY = Input.mousePosition.y;
         float mousePosX = Input.mousePosition.x;
 
-        
+        // X dir pan
+        if (mousePosX <= mouseDistFromEdgeOfScreen)
+            m_targetPosition.x -= m_cameraPanSpeed * Time.deltaTime;
+        else if (mousePosX >= Screen.width - mouseDistFromEdgeOfScreen)
+            m_targetPosition.x += m_cameraPanSpeed * Time.deltaTime;
+
+        // Y dir pan
+        if (mousePosY <= mouseDistFromEdgeOfScreen)
+            m_targetPosition.z -= m_cameraPanSpeed * Time.deltaTime;
+        else if (mousePosY >= Screen.height - mouseDistFromEdgeOfScreen)
+            m_targetPosition.z += m_cameraPanSpeed * Time.deltaTime;
     }
 
     #endregion
@@ -116,7 +134,7 @@ public class CameraControl : MonoBehaviour
 
     public void SetFreeMode(Vector3 _initialTarget)
     {
-        m_targetPosition = _initialTarget;
+        m_targetPosition = m_initialTargetPosition = _initialTarget;
         m_cameraState = CameraState.FREE;
     }
 

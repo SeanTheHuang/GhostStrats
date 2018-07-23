@@ -186,7 +186,7 @@ public class GameMaster : MonoBehaviour {
     {
         foreach (PunkController pc in m_punkList)
         {
-            Camera.main.GetComponent<CameraControl>().m_target = pc.transform;
+            Camera.main.GetComponent<CameraControl>().SetFollowMode(pc.transform);
             pc.DoTurn();
 
             while(pc.m_finishedMoving == false)
