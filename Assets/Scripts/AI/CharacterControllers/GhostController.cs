@@ -13,11 +13,17 @@ public class GhostController : EntityBase {
     Node m_previousNode;
     CharacterStates m_ghostState, m_oldGhostState;
     GhostAbilityBehaviour m_abilities;
+    public GhostHole m_ghostSpawner;
 
     // Current stats at start of turn
     Vector3 m_positionAtStartOfTurn;
     public int m_numMovesLeft;
     public bool m_abilityUsed;
+
+    public bool GhostIsAlive
+    {
+        get; private set;
+    }
 
     bool m_OutofSight;
 
@@ -59,14 +65,80 @@ public class GhostController : EntityBase {
 
     public override void OnDeath()
     {
+        if (m_ghostSpawner)
+            m_ghostSpawner.OnGhostDeath();
     }
 
     public override void OnSpawn()
     {
     }
 
+    public void MoveToPositionImmediate(Vector3 _targetPosition)
+    {
+        StartCoroutine(MoveToLocation(_targetPosition));
+    }
+
+    IEnumerator MoveToLocation(Vector3 _targetPosition)
+    {
+        Vector3[] path = PathRequestManager.Instance().GetPathImmediate(transform.position, _targetPosition, 1);
+
+        // Initial rotation
+        if (path.Length > 0)
+        {
+            // Update rotation
+            Vector3 dir = path[0] - transform.position;
+            dir.y = 0;
+            transform.rotation = Quaternion.LookRotation(dir);
+        }
+
+        for (int i = 0; i < path.Length; i++)
+        {
+            while (true)
+            {
+                Vector3 newPosition = Vector3.MoveTowards(transform.position, path[i], m_moveSpeed * Time.deltaTime);
+                if (newPosition == transform.position) // Reached point, move onto next!
+                {
+                    if (i + 1 < path.Length)
+                    {
+                        // Update rotation
+                        Vector3 dir = path[i + 1] - transform.position;
+                        dir.y = 0;
+                        transform.rotation = Quaternion.LookRotation(dir);
+                    }
+                    break;
+                }
+                else
+                    transform.position = newPosition; // Not reached, move the player!
+
+                yield return null; // Move over a number of frames
+            }
+        }
+
+        m_ghostSpawner.m_respawnAnimationDone = true;
+        yield return null;
+    }
+
+    public void HideGhost()
+    {
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        GhostIsAlive = false;
+
+        foreach (MeshRenderer rend in renderers)
+            rend.enabled = false;
+    }
+
+    public void ShowGhost()
+    {
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        GhostIsAlive = true;
+
+        foreach (MeshRenderer rend in renderers)
+            rend.enabled = true;
+    }
+
     public override void OnEntityHit(int _damage)
     {
+        Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
     }
 
     public void OnConfirmTargetPosition()

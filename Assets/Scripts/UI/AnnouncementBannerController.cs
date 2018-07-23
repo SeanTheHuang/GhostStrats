@@ -9,7 +9,6 @@ public class AnnouncementBannerController : MonoBehaviour {
     public float m_fadeInTime; // The time it takes for the object to fade in
     public float m_moveOutDelay; // The delay in time it takes for the object to being fading out after it has fully faded in
     public float m_fadeOutTime; // The time it takes for the object to fade out
-    public float m_moveSpeed; // The speed which the banner moves each frame when fading in/out
     private float m_startPosition;
 
     Image m_image;
@@ -34,7 +33,8 @@ public class AnnouncementBannerController : MonoBehaviour {
     private IEnumerator FadeIn()
     {
         float elapsedTime = 0;
-        m_centreScreenPosition = (Screen.height / 2) + (Screen.height / 4);
+        m_centreScreenPosition = (Screen.height / 2) + (Screen.height / 3);
+        m_startPosition = m_rectTransform.position.y;
 
         while (elapsedTime < m_fadeInTime)
         {

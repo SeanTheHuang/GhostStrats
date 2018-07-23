@@ -41,7 +41,7 @@ public class Node : IHeapItem<Node>
         gridY = _gridY;
         m_nodeState = NodeState.EMPTY;
         m_entityOnTile = null;
-        WalkabilityIsLocked = !Walkable;
+        WalkabilityIsLocked = !_walkable;
     }
 
     public int fCost

@@ -8,7 +8,6 @@ public class EndTurnPromptController : MonoBehaviour {
 
     public float m_fadeInTime; // The time it takes for the object to fade in
     public float m_fadeOutTime; // The time it takes for the object to fade out
-    public float m_moveSpeed; // The speed which the banner moves each frame when fading in/out
     private float m_startPosition;
     public bool m_visible;
 
@@ -43,6 +42,7 @@ public class EndTurnPromptController : MonoBehaviour {
 
     private IEnumerator FadeIn()
     {
+        m_startPosition = m_rectTransform.position.y;
         float elapsedTime = 0;
 
         while ((elapsedTime < m_fadeInTime) && m_visible)

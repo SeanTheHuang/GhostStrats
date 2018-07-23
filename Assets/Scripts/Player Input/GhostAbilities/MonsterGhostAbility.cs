@@ -7,6 +7,11 @@ public class MonsterGhostAbility : GhostAbilityBehaviour {
     [Range (0,10)]
     public int m_monsterDamage = 4;
 
+    protected override void SetGhostType()
+    {
+        m_ghostType = GhostType.MONSTER;
+    }
+
     public override void ChooseSpecial()
     {
         // Start picking direction to attack.
@@ -18,6 +23,7 @@ public class MonsterGhostAbility : GhostAbilityBehaviour {
     protected override void PerformSpecialAbility()
     {
         base.PerformSpecialAbility();
+        RotateTowardsAbilityDir();
 
         // Check if any punks on tiles, affected tiles and damage them
         List<PunkController> punkList = GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares);

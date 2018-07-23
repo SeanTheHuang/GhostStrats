@@ -6,6 +6,11 @@ public class ScreamGhostAbility : GhostAbilityBehaviour {
     [Range(0, 10)]
     public int m_screamDamage = 1;
 
+    protected override void SetGhostType()
+    {
+        m_ghostType = GhostType.SCREAMER;
+    }
+
     protected override void PerformSpecialAbility()
     {
         base.PerformSpecialAbility();

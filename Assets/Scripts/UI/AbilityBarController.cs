@@ -18,12 +18,22 @@ public class AbilityBarController : MonoBehaviour {
     public GameObject m_overwatchUIHighlight;
     public GameObject m_specialUIHighlight;
 
+    public GameObject m_attackUIAbilityUsedHighlight;
+    public GameObject m_hideUIAbilityUsedHighlight;
+    public GameObject m_overwatchUIAbilityUsedHighlight;
+    public GameObject m_specialUIAbilityUsedHighlight;
+
     private Image m_moveUIHighlightImage;
     private Image m_undoUIHighlightImage;
     private Image m_attackUIHighlightImage;
     private Image m_hideUIHighlightImage;
     private Image m_overwatchUIHighlightImage;
     private Image m_specialUIHighlightImage;
+
+    private Image m_attackUIAbilityUsedHighlightImage;
+    private Image m_hideUIAbilityUsedHighlightImage;
+    private Image m_overwatchUIAbilityUsedHighlightImage;
+    private Image m_specialUIAbilityUsedHighlightImage;
 
     private void Start()
     {
@@ -33,9 +43,14 @@ public class AbilityBarController : MonoBehaviour {
         m_hideUIHighlightImage = m_hideUIHighlight.GetComponent<Image>();
         m_overwatchUIHighlightImage = m_overwatchUIHighlight.GetComponent<Image>();
         m_specialUIHighlightImage = m_specialUIHighlight.GetComponent<Image>();
+
+        m_attackUIAbilityUsedHighlightImage = m_attackUIAbilityUsedHighlight.GetComponent<Image>();
+        m_hideUIAbilityUsedHighlightImage = m_hideUIAbilityUsedHighlight.GetComponent<Image>();
+        m_overwatchUIAbilityUsedHighlightImage = m_overwatchUIAbilityUsedHighlight.GetComponent<Image>();
+        m_specialUIAbilityUsedHighlightImage = m_specialUIAbilityUsedHighlight.GetComponent<Image>();
     }
 
-    void updateAbilityIcon(bool abilityUsed, int coolDownTimer, GameObject abilityUIObject, Image highlightImage)
+    void updateAbilityIcon(GhostActionState ghostActionState, int coolDownTimer, GameObject abilityUIObject, Image highlightImage)
     {
         if (coolDownTimer > 0)
         {
@@ -45,17 +60,42 @@ public class AbilityBarController : MonoBehaviour {
         else
         {
             DisableCoolDownUIEffects(m_attackUIImage);
-            highlightImage.enabled = !abilityUsed;
+            if(ghostActionState != GhostActionState.NONE)
+            {
+                highlightImage.enabled = false;
+                setAbilityHighlight(ghostActionState);
+            }
+            else
+                highlightImage.enabled = true;
         }
     }
 
-    public void OnSelected(int attackCooldownTimer, int hideCooldownTimer, int overwatchCooldownTimer, int specialCooldownTimer, bool moveUsed, bool someMoveUsed, bool abilityUsed)
+    // Sets the highlight on a ability that has been used by the ghost
+    void setAbilityHighlight(GhostActionState actionState)
     {
+        if (actionState == GhostActionState.BOO)
+            m_attackUIAbilityUsedHighlightImage.enabled = true;
+        else if (actionState == GhostActionState.HIDE)
+            m_hideUIAbilityUsedHighlightImage.enabled = true;
+        else if (actionState == GhostActionState.OVERSPOOK)
+            m_overwatchUIAbilityUsedHighlightImage.enabled = true;
+        else if (actionState == GhostActionState.ABILITY)
+            m_specialUIAbilityUsedHighlightImage.enabled = true;
+    }
+
+    public void OnSelected(int attackCooldownTimer, int hideCooldownTimer, int overwatchCooldownTimer, int specialCooldownTimer, bool moveUsed, bool someMoveUsed, GhostActionState actionState)
+    {
+        // Reset ability used highlight
+        m_attackUIAbilityUsedHighlightImage.enabled = false;
+        m_hideUIAbilityUsedHighlightImage.enabled = false;
+        m_overwatchUIAbilityUsedHighlightImage.enabled = false;
+        m_specialUIAbilityUsedHighlightImage.enabled = false;
+
         // Reset Ability Highlights
-        updateAbilityIcon(abilityUsed, attackCooldownTimer, m_attackUIImage, m_attackUIHighlightImage);
-        updateAbilityIcon(abilityUsed, hideCooldownTimer, m_hideUIImage, m_hideUIHighlightImage);
-        updateAbilityIcon(abilityUsed, overwatchCooldownTimer, m_overwatchUIImage, m_overwatchUIHighlightImage);
-        updateAbilityIcon(abilityUsed, specialCooldownTimer, m_specialUIImage, m_specialUIHighlightImage);
+        updateAbilityIcon(actionState, attackCooldownTimer, m_attackUIImage, m_attackUIHighlightImage);
+        updateAbilityIcon(actionState, hideCooldownTimer, m_hideUIImage, m_hideUIHighlightImage);
+        updateAbilityIcon(actionState, overwatchCooldownTimer, m_overwatchUIImage, m_overwatchUIHighlightImage);
+        updateAbilityIcon(actionState, specialCooldownTimer, m_specialUIImage, m_specialUIHighlightImage);
 
         // Reset Move Highlight
         if(!moveUsed)
@@ -91,13 +131,17 @@ public class AbilityBarController : MonoBehaviour {
     }
 
     // Called when the ghost has used their ability. Sets the highlight to turn off
-    public void AbilityUsed()
+    public void AbilityUsed(GhostActionState actionState)
     {
+        // Stop the ability from being highlighted
         m_attackUIHighlightImage.enabled = false;
         m_hideUIHighlightImage.enabled = false;
         m_overwatchUIHighlightImage.enabled = false;
         m_specialUIHighlightImage.enabled = false;
         m_undoUIHighlightImage.enabled = true;
+
+        // Apply the highlight on the ability that has been used
+        setAbilityHighlight(actionState);
     }
 
     public void ResetTurn()
@@ -106,6 +150,11 @@ public class AbilityBarController : MonoBehaviour {
        m_hideUIHighlightImage.enabled = true;
        m_overwatchUIHighlightImage.enabled = true;
        m_specialUIHighlightImage.enabled = true;
+
+       m_attackUIAbilityUsedHighlightImage.enabled = false;
+       m_hideUIAbilityUsedHighlightImage.enabled = false;
+       m_overwatchUIAbilityUsedHighlightImage.enabled = false;
+       m_specialUIAbilityUsedHighlightImage.enabled = false;
 
        m_moveUIHighlightImage.enabled = true;
        m_undoUIHighlightImage.enabled = false;
