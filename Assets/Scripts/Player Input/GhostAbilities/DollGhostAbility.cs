@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class DollGhostAbility : GhostAbilityBehaviour {
 
+    protected override void SetGhostType()
+    {
+        m_ghostType = GhostType.DOLLER;
+    }
+
     public override void ChooseSpecial()
     {
         base.ChooseSpecial();
