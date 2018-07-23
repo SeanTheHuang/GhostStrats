@@ -8,10 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c033b5f9561c45543b122fcfa364f75b, type: 3}
-  m_Name: TestGhostSounds
+  m_Script: {fileID: 11500000, guid: 556055b49736a09409b8db534e14a099, type: 3}
+  m_Name: New Effect Text Template
   m_EditorClassIdentifier: 
-  m_pitch:
-    minValue: 0.9673887
-    maxValue: 1.4336643
-  m_audioClips: []
+  m_text: <sprite=1>SAMPLE TEXT!!
+  m_baseColor: {r: 1, g: 1, b: 1, a: 1}
+  m_outlineColor: {r: 1, g: 1, b: 1, a: 1}
