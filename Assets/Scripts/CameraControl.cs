@@ -37,21 +37,22 @@ public class CameraControl : MonoBehaviour
     }
        
     // Update is called once per frame
-    void Update()
-    {
-        MouseScreenPos();
-        //if(Input.GetKey(KeyCode.Space))
-        //{
-        //    Debug.Log("hit");
-        //    Rotate();
-        //}
-
-        if(m_target.position != m_targetLastPos)
-        {
-            Focus();
-            m_targetLastPos = m_target.position;
-        }
-    }
+    //void Update()
+    //{
+    //    MouseScreenPos();
+    //    //if(Input.GetKey(KeyCode.Space))
+    //    //{
+    //    //    Debug.Log("hit");
+    //    //    Rotate();
+    //    //}
+    //    if (!m_target)
+    //        return;
+    //    if(m_target.position != m_targetLastPos)
+    //    {
+    //        Focus();
+    //        m_targetLastPos = m_target.position;
+    //    }
+    //}
 
     void MoveTowardsFunction()
     {
@@ -74,6 +75,7 @@ public class CameraControl : MonoBehaviour
 
     void Focus()
     {
+        return;
         float x = m_radius * Mathf.Cos(m_angle * Mathf.Deg2Rad);
         float yz = m_radius * Mathf.Sin(m_angle * Mathf.Deg2Rad);
 
