@@ -82,6 +82,15 @@ public class GhostController : EntityBase {
     {
         Vector3[] path = PathRequestManager.Instance().GetPathImmediate(transform.position, _targetPosition, 1);
 
+        // Initial rotation
+        if (path.Length > 0)
+        {
+            // Update rotation
+            Vector3 dir = path[0] - transform.position;
+            dir.y = 0;
+            transform.rotation = Quaternion.LookRotation(dir);
+        }
+
         for (int i = 0; i < path.Length; i++)
         {
             while (true)
@@ -89,7 +98,7 @@ public class GhostController : EntityBase {
                 Vector3 newPosition = Vector3.MoveTowards(transform.position, path[i], m_moveSpeed * Time.deltaTime);
                 if (newPosition == transform.position) // Reached point, move onto next!
                 {
-                    if (i + 1 < m_pathToFollow.Count)
+                    if (i + 1 < path.Length)
                     {
                         // Update rotation
                         Vector3 dir = path[i + 1] - transform.position;

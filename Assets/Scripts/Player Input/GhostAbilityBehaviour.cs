@@ -373,7 +373,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         // Collect all together
         foreach (Vector3 targetPos in m_rotatedAffectedSquares)
-            attackDir += targetPos;
+            attackDir += (targetPos - transform.position);
 
         // Remove y-component, and normalize
         attackDir.y = 0;
