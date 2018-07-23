@@ -10,6 +10,15 @@ public enum AimingDirection
     West = 270
 };
 
+public enum GhostType
+{
+    NULL,
+    WALLER,
+    DOLLER,
+    MONSTER,
+    SCREAMER
+}
+
 public enum GhostActionState
 {
     NONE,
@@ -27,6 +36,9 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public Transform m_attackTilePrefab;
     List<Transform> m_attackTileList;
+
+    public GhostType m_ghostType
+    { get; protected set; }
 
     GhostActionState m_actionState;
     protected AimingDirection m_aimingDirection; // The direction the ghost is currently facing
@@ -85,6 +97,12 @@ public class GhostAbilityBehaviour : MonoBehaviour
         {
             m_attackSquares[i] = m_attackSquares[i] * m_pathRequestManager.GridSize() * 2;
         }
+        SetGhostType();
+    }
+
+    protected virtual void SetGhostType()
+    {
+        m_ghostType = GhostType.NULL;
     }
 
     private void Update()

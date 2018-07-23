@@ -7,6 +7,11 @@ public class MonsterGhostAbility : GhostAbilityBehaviour {
     [Range (0,10)]
     public int m_monsterDamage = 4;
 
+    protected override void SetGhostType()
+    {
+        m_ghostType = GhostType.MONSTER;
+    }
+
     public override void ChooseSpecial()
     {
         // Start picking direction to attack.

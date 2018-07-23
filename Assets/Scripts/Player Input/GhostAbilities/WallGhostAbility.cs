@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class WallGhostAbility : GhostAbilityBehaviour {
 
+    protected override void SetGhostType()
+    {
+        m_ghostType = GhostType.WALLER;
+    }
+
     public override void ChooseSpecial()
     {
         base.ChooseSpecial();
