@@ -46,12 +46,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     //public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     bool m_aimingAbility; // If the player is aiming their ability
 
-    [Header("UI Dependencies")]
-    public GameObject m_UIPortrait;
-    public GameObject m_UIAbilityBar;
-    AbilityBarController m_UIAbilityBarCntrl;
-    public Sprite m_specialAbilityIconImage; // The Icon image for the ghosts special ability
-    GhostPortraitController ghostPortraitController;
+    private GhostUi m_ghostUI;
 
     // The number of turns the ghost must wait before they can use the ability again.
     [Header("Attack Cooldowns")]
@@ -88,7 +83,6 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_aimingAbility = false;
 
         m_aimingDirection = AimingDirection.North;
-        m_UIAbilityBarCntrl = m_UIAbilityBar.GetComponent<AbilityBarController>();
     }
 
     private void Start()
@@ -102,8 +96,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         }
         SetGhostType();
 
-        ghostPortraitController = m_UIPortrait.GetComponent<GhostPortraitController>();
-        ghostPortraitController.m_SpecialAbilityIconSprite = m_specialAbilityIconImage;
+        m_ghostUI = GetComponent<GhostUi>();
     }
 
     protected virtual void SetGhostType()
@@ -142,21 +135,20 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_abilityUsed = true;
         m_ghostController.m_abilityUsed = true;
         m_gameMaster.CheckAllPlayerActionsUsed();
-        m_UIAbilityBarCntrl.AbilityUsed(m_actionState);
+        m_ghostUI.AbilityUsed(m_actionState);
     }
 
     void AbilityUnused()
     {
         m_ghostController.m_abilityUsed = false;
         m_gameMaster.ResetEndTurnPrompt();
-        m_UIAbilityBarCntrl.ResetTurn();
+        m_ghostUI.AbilityUnused();
     }
 
     public void OnSelected()
     {
         // Reset aiming direction
         m_aimingDirection = AimingDirection.North;
-        ghostPortraitController.OnSelected();
 
         // Reset Ability Bar
         bool movedUsed = true;
@@ -167,7 +159,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         if (m_ghostController.m_maxMoves > m_ghostController.m_numMovesLeft)
             someMoveUsed = true;
 
-        m_UIAbilityBarCntrl.OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, movedUsed, someMoveUsed, m_actionState);
+        m_ghostUI.OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, movedUsed, someMoveUsed, m_actionState);
     }
 
     // Reset action variables if one has not been chosen yet

@@ -14,6 +14,7 @@ public class GhostController : EntityBase {
     CharacterStates m_ghostState, m_oldGhostState;
     GhostAbilityBehaviour m_abilities;
     public GhostHole m_ghostSpawner;
+    private GhostUi m_GhostUI;
 
     // Current stats at start of turn
     Vector3 m_positionAtStartOfTurn;
@@ -53,6 +54,7 @@ public class GhostController : EntityBase {
 
         m_ghostState = m_oldGhostState = CharacterStates.IDLE;
         m_abilities = GetComponent<GhostAbilityBehaviour>();
+        m_GhostUI = GetComponent<GhostUi>();
         m_pathToFollow = new List<Vector3>();
         m_performing = false;
         m_previousNode = null;
@@ -162,11 +164,7 @@ public class GhostController : EntityBase {
         // Force a new path to be found
         m_previousNode = null;
 
-        // Update the UI
-        if (m_numMovesLeft == 0)
-            m_abilities.m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(true);
-        else
-            m_abilities.m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(false);
+        m_GhostUI.MoveUsed(m_numMovesLeft);
     }
 
     public void OnTargetLocation(Vector3 _position)
@@ -243,7 +241,7 @@ public class GhostController : EntityBase {
         m_abilities.OnDeselect();
 
         // Update the UI
-        m_abilities.m_UIPortrait.GetComponent<GhostPortraitController>().OnDeselected();
+        m_GhostUI.OnDeselected();
     }
 
     public void OnStartOfTurn()
