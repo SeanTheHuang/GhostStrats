@@ -232,6 +232,21 @@ public class GhostAbilityBehaviour : MonoBehaviour
         AbilityUsed();
     }
 
+    public bool IsOverwatchingPosition(PunkController _punk)
+    {
+        if (m_actionState != GhostActionState.OVERSPOOK)
+            return false;
+
+        float gridSize = PathRequestManager.Instance().GridSize();
+        if ((_punk.transform.position - m_rotatedAffectedSquares[0]).sqrMagnitude < gridSize * gridSize)
+        {
+            // Attack punk and return true
+            _punk.OnEntityHit(m_baseAttackDamage);
+            return true;
+        }
+
+        return false;
+    }
     void UpdateAtackVisuals()
     {
         ClearAttackVisuals();
