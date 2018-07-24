@@ -87,7 +87,7 @@ public class HelpPopupController : MonoBehaviour
 
     public void UpdateGhostSelected(GameObject selectedGhost)
     {
-        Debug.Log(selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType);
+        //Debug.Log(selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType);
         if (selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType == GhostType.WALLER)
             m_ghostSelectedOffset = 0;
         if (selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType == GhostType.DOLLER)
