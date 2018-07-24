@@ -50,4 +50,9 @@ public class PunkHiveMind : MonoBehaviour
         };
         m_Noises.Add(n);
     }
+
+    public void RemovePunk(Transform tr)
+    {
+        m_PunkLocations.Remove(tr);
+    }
 }
