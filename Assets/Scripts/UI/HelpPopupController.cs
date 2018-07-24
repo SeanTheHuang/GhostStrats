@@ -61,7 +61,7 @@ public class HelpPopupController : MonoBehaviour
 
 
     // Update is called once per frame
-    public void p(int abilityType)
+    public void MouseEnter(int abilityType)
     {
         if (!m_mouseEntered)
         {
@@ -86,14 +86,16 @@ public class HelpPopupController : MonoBehaviour
 
     public void UpdateGhostSelected(GameObject selectedGhost)
     {
+        GhostAbilityBehaviour m_ghostAbilityBehaviour = selectedGhost.GetComponent<GhostAbilityBehaviour>();
+
         //Debug.Log(selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType);
-        if (selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType == GhostType.WALLER)
+        if (m_ghostAbilityBehaviour.m_ghostType == GhostType.WALLER)
             m_ghostSelectedOffset = 0;
-        if (selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType == GhostType.DOLLER)
+        else if (m_ghostAbilityBehaviour.m_ghostType == GhostType.DOLLER)
             m_ghostSelectedOffset = 1;
-        if (selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType == GhostType.SCREAMER)
+        else if (m_ghostAbilityBehaviour.m_ghostType == GhostType.SCREAMER)
             m_ghostSelectedOffset = 2;
-        if (selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType == GhostType.MONSTER)
+        else if (m_ghostAbilityBehaviour.m_ghostType == GhostType.MONSTER)
             m_ghostSelectedOffset = 3;
 
         //Update the pop text
