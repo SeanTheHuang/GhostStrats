@@ -313,6 +313,13 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_specialCooldownTimer = Mathf.Clamp(m_specialCooldownTimer - 1, 0, 1000);
     }
 
+    public void OnHit()
+    {
+        if (m_actionState == GhostActionState.OVERSPOOK)
+            // Stop overwatching
+            m_actionState = GhostActionState.NONE;
+    }
+
     public void EndOfTurn()
     {
         switch (m_actionState)

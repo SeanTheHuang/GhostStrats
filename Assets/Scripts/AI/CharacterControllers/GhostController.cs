@@ -159,6 +159,7 @@ public class GhostController : EntityBase {
         Vector3 dir = _positionOfHitter - transform.position;
         dir.y = 0;
         transform.rotation = Quaternion.LookRotation(dir);
+        m_abilities.OnHit();
 
         if (m_currentHealth < 1)
         {
