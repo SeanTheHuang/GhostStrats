@@ -61,11 +61,12 @@ public class Pathfinding : MonoBehaviour {
         Node startNode = grid.NodeFromWorldPoint(startPos);
         Node targetNode = grid.NodeFromWorldPoint(endPos);
 
-        if (startNode.Walkable && targetNode.Walkable)
+        // NOTE, this means path can start from non-walkable state
+        Debug.Log("GOT HERE");
+        if (targetNode.Walkable)
         {
             Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
             HashSet<Node> closedSet = new HashSet<Node>();
-
             openSet.Add(startNode);
 
             while (openSet.Count > 0)
@@ -85,7 +86,7 @@ public class Pathfinding : MonoBehaviour {
                     {
                         continue;
                     }
-
+                    
                     int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, n);
 
                     if (newMovementCostToNeighbour < n.gCost || !openSet.Contains(n))
@@ -203,7 +204,7 @@ public class Pathfinding : MonoBehaviour {
         Node startNode = grid.NodeFromWorldPoint(startPos);
         Node targetNode = grid.NodeFromWorldPoint(targetPos);
 
-        if (startNode.Walkable && targetNode.Walkable)
+        if (targetNode.Walkable)
         {
             Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
             HashSet<Node> closedSet = new HashSet<Node>();
