@@ -60,21 +60,18 @@ public class GameMaster : MonoBehaviour {
     {
         // TEST: Just a button to start the game
         if (Input.GetKeyDown(KeyCode.P))
-            GhostStartTurn();
+            StartGame();
 
         // TEST: Make all player ghosts move
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.Space))
             RunPlayersTurn();
-
-        if (Input.GetKeyDown(KeyCode.I))
-            PunkStartTurn();
     }
 
 
     void StartGame()
     {
         // TEMP: start game with players turn first
-        StartPlayersTurn();
+        PunkStartTurn();
     }
 
     #region END_GAME_FUNCTIONS
@@ -180,6 +177,27 @@ public class GameMaster : MonoBehaviour {
         {
             gc.OnEndOfTurn();
         }
+
+        // Wait for all ghosts to finish action, then start punks turn
+        while (true)
+        {
+            bool ghostsStillMoving = false;
+            foreach (GhostController gc in m_ghostList)
+            {
+                if (gc.m_performing)
+                {
+                    ghostsStillMoving = true;
+                    break;
+                }
+            }
+
+            if (!ghostsStillMoving)
+                break;
+            else
+                yield return null;
+        }
+
+        PunkStartTurn();
     }
 
     #endregion
@@ -203,6 +221,7 @@ public class GameMaster : MonoBehaviour {
                 yield return null;
             }
         }
+        GhostStartTurn();
         yield return null;
     }
 
