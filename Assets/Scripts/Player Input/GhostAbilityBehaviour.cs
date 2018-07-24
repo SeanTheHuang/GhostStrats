@@ -232,6 +232,21 @@ public class GhostAbilityBehaviour : MonoBehaviour
         AbilityUsed();
     }
 
+    public bool IsOverwatchingPosition(PunkController _punk)
+    {
+        if (m_actionState != GhostActionState.OVERSPOOK)
+            return false;
+
+        float gridSize = PathRequestManager.Instance().GridSize();
+        if ((_punk.transform.position - m_rotatedAffectedSquares[0]).sqrMagnitude < gridSize * gridSize)
+        {
+            // Attack punk and return true
+            _punk.OnEntityHit(m_baseAttackDamage);
+            return true;
+        }
+
+        return false;
+    }
     void UpdateAtackVisuals()
     {
         ClearAttackVisuals();
@@ -280,9 +295,26 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public virtual void StartOfTurn()
     {
+        switch (m_actionState)
+        {
+            case GhostActionState.HIDE:
+                m_ghostController.m_OutofSight = false;
+                break;
+        }
+
         AbilityUnused();
         m_aimingAbility = false;
         m_actionState = GhostActionState.NONE;
+
+        LowerCooldown();
+    }
+
+    void LowerCooldown()
+    {
+        m_attackCooldownTimer = Mathf.Clamp(m_attackCooldownTimer - 1, 0, 1000);
+        m_hideCooldownTimer = Mathf.Clamp(m_hideCooldownTimer - 1, 0, 1000);
+        m_overwatchCooldownTimer = Mathf.Clamp(m_overwatchCooldownTimer - 1, 0, 1000);
+        m_specialCooldownTimer = Mathf.Clamp(m_specialCooldownTimer - 1, 0, 1000);
     }
 
     public void EndOfTurn()
@@ -343,6 +375,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     void PerformHide()
     {
+        m_ghostController.m_OutofSight = true;
         m_hideCooldownTimer = m_hideCooldown; // Update the timer
     }
 

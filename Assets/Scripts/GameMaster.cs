@@ -220,7 +220,7 @@ public class GameMaster : MonoBehaviour {
             Camera.main.GetComponent<CameraControl>().SetFollowMode(pc.transform);
             pc.DoTurn();
 
-            while(pc.m_finishedMoving == false)
+            while (pc.m_finishedMoving == false)
             {
                 yield return null;
             }
@@ -230,6 +230,32 @@ public class GameMaster : MonoBehaviour {
     }
 
     #endregion
+
+    #region ON_ENTITY_DEATH
+
+    public void RemoveGhostHole(GhostHole _holeWhichDied)
+    {
+        m_ghostHoleList.Remove(_holeWhichDied);
+    }
+
+    public void RemovePunk(PunkController _punkController)
+    {
+        m_punkList.Remove(_punkController);
+    }
+
+    #endregion
+
+    public bool PunkHitOverwatch(PunkController _pc)
+    {
+        bool overwatchHit = false;
+        foreach (GhostController gc in m_ghostList)
+        {
+            if (gc.IsOverwatchingPosition(_pc))
+                overwatchHit = true;
+        }
+
+        return overwatchHit;
+    }
 
     // Tells all the relevant systems that a new ghost has been selected
     public void UpdateSelectedGhost(GameObject newGhost)

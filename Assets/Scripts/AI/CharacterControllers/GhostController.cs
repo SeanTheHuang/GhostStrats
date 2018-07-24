@@ -30,7 +30,7 @@ public class GhostController : EntityBase {
         get; private set;
     }
 
-    bool m_OutofSight;
+    public bool m_OutofSight;
 
     // Path finding
     Vector3 m_spawnLocation;
@@ -63,7 +63,7 @@ public class GhostController : EntityBase {
         m_previousNode = null;
         m_spawnLocation = transform.position;
         m_currentHealth = m_maxHealth;
-        m_OutofSight = true;
+        m_OutofSight = false;
         m_ghostAnimator = transform.Find("Model").GetComponent<Animator>();
     }
 
@@ -146,15 +146,16 @@ public class GhostController : EntityBase {
     {
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
 
-        m_currentHealth -= _damage;
+        m_currentHealth = Mathf.Clamp(m_currentHealth - _damage, 0, 1000);
 
-        if (m_currentHealth < 0)
-            m_currentHealth = 0;
-
-        if (m_currentHealth == 0)
+        if (m_currentHealth < 1)
         {
             if (m_ghostAnimator != null)
                 m_ghostAnimator.SetTrigger("Death");
+
+            if (m_ghostSpawner)
+                m_ghostSpawner.OnGhostDeath();
+
             GhostIsAlive = false;
         }
         else
@@ -296,6 +297,19 @@ public class GhostController : EntityBase {
 
     #endregion
 
+    public bool IsOverwatchingPosition(PunkController _punk)
+    {
+        if (m_abilities.IsOverwatchingPosition(_punk))
+        {
+            if (m_ghostAnimator)
+                m_ghostAnimator.SetTrigger("Attack");
+
+            return true;
+        }
+
+        return false;
+    }
+
     public void ResetChoosingPathNodes()
     {
         foreach (Transform t in m_choosingPathBallsList)
@@ -360,8 +374,6 @@ public class GhostController : EntityBase {
         ResetAction();
         // TODO: Reset chosen skills
     }
-
-    
 
     public override void ChooseAction()
     {
