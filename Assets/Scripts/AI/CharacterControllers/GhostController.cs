@@ -30,7 +30,7 @@ public class GhostController : EntityBase {
         get; private set;
     }
 
-    bool m_OutofSight;
+    public bool m_OutofSight;
 
     // Path finding
     Vector3 m_spawnLocation;
@@ -63,7 +63,7 @@ public class GhostController : EntityBase {
         m_previousNode = null;
         m_spawnLocation = transform.position;
         m_currentHealth = m_maxHealth;
-        m_OutofSight = true;
+        m_OutofSight = false;
         m_ghostAnimator = transform.Find("Model").GetComponent<Animator>();
     }
 
