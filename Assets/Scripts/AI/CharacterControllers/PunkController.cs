@@ -127,7 +127,7 @@ public class PunkController : EntityBase
         if(m_prey)
         {//FOUND A TARGET MOVE TOWARDS IT
             wheretogo = m_prey.position;
-            Debug.Log("going for target");
+            //Debug.Log("going for target");
         }
         else
         {
@@ -152,7 +152,7 @@ public class PunkController : EntityBase
             }
             else if (transform.position == m_roomToExplore)
             {
-                Debug.Log("reached destination");
+                //Debug.Log("reached destination");
                 ChooseNewRoom();
                 wheretogo = m_roomToExplore;
             }
@@ -285,7 +285,7 @@ public class PunkController : EntityBase
                     }
                 }
                 m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage);
-                Debug.Log("attacked entity");
+                //Debug.Log("attacked entity");
             }
         }
         m_state = PunkStates.IDLE;
@@ -383,7 +383,7 @@ public class PunkController : EntityBase
         //for all targets set them to visble so all punks can attack
         foreach (Collider t in m_Targets)
         {
-            Debug.Log("target seen");
+            //Debug.Log("target seen");
             if (t.transform.GetComponent<GhostController>())
             {
                 t.transform.GetComponent<GhostController>().SeenbyPunk();
@@ -435,7 +435,7 @@ public class PunkController : EntityBase
             if(index != -1)
             {
                 m_prey = m_Targets[index].transform;
-                Debug.Log("foundtarget");
+                //Debug.Log("foundtarget");
             }
             else
             {
