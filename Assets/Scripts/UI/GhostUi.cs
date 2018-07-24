@@ -15,11 +15,14 @@ public class GhostUi : MonoBehaviour
 
     private Image m_portraitImage;
 
+    private SpriteRenderer m_selectedCircle;
+
     private void Awake()
     {
         m_UIAbilityBarCntrl = m_UIAbilityBar.GetComponent<AbilityBarController>();
         ghostPortraitController = m_UIPortrait.GetComponent<GhostPortraitController>();
         m_portraitImage = m_UIPortrait.transform.Find("PortraitImage").GetComponent<Image>();
+        m_selectedCircle = transform.Find("SelectedCircle").GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -42,11 +45,13 @@ public class GhostUi : MonoBehaviour
     {
         ghostPortraitController.OnSelected();
         m_UIAbilityBarCntrl.OnSelected(attackCooldownTimer, hideCooldownTimer, overwatchCooldownTimer, specialCooldownTimer, moveUsed, someMoveUsed, actionState);
+        m_selectedCircle.enabled = true;
     }
 
     public void OnDeselected()
     {
         ghostPortraitController.OnDeselected();
+        m_selectedCircle.enabled = false;
     }
 
     public void MoveUsed(int numMovesLeft)
