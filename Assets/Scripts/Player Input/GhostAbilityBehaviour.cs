@@ -241,7 +241,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         if ((_punk.transform.position - m_rotatedAffectedSquares[0]).sqrMagnitude < gridSize * gridSize)
         {
             // Attack punk and return true
-            _punk.OnEntityHit(m_baseAttackDamage);
+            _punk.OnEntityHit(m_baseAttackDamage, transform.position);
             return true;
         }
 
@@ -313,6 +313,13 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_specialCooldownTimer = Mathf.Clamp(m_specialCooldownTimer - 1, 0, 1000);
     }
 
+    public void OnHit()
+    {
+        if (m_actionState == GhostActionState.OVERSPOOK)
+            // Stop overwatching
+            m_actionState = GhostActionState.NONE;
+    }
+
     public void EndOfTurn()
     {
         switch (m_actionState)
@@ -366,7 +373,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         List<PunkController> affectedPunks = GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares);
         foreach (PunkController pc in affectedPunks)
-            pc.OnEntityHit(m_baseAttackDamage);
+            pc.OnEntityHit(m_baseAttackDamage, transform.position);
     }
 
     void PerformHide()

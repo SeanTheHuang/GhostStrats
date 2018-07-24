@@ -74,13 +74,20 @@ public class GhostHole : EntityBase
         m_currentReviveTime = m_baseReviveTime;
     }
 
-    public override void OnEntityHit(int _damage)
+    public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
     {
         //lose health
         m_currentHealth -= _damage;
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
 
         //TODO: death actions
+        if (m_currentHealth < 1)
+        {
+            GameMaster.Instance().RemoveGhostHole(this);
+            Destroy(gameObject);
+            if (m_linkedGhost)
+                m_linkedGhost.HideGhost();
+        }
     }
     public override void OnSelected()
     {

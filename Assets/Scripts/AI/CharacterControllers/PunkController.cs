@@ -78,9 +78,14 @@ public class PunkController : EntityBase
     public override void OnSpawn()
     {
     }
-    public override void OnEntityHit(int _damage)
+    public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
     {
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
+
+        Vector3 dir = _positionOfHitter - transform.position;
+        dir.y = 0;
+        transform.rotation = Quaternion.LookRotation(dir);
+
         m_currentHealth -= _damage;
         if(m_currentHealth == 0 && m_state != PunkStates.DEAD)
         {
@@ -336,7 +341,7 @@ public class PunkController : EntityBase
                         return;
                     }
                 }
-                m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage);
+                m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage, transform.position);
                 //Debug.Log("attacked entity");
             }
         }
