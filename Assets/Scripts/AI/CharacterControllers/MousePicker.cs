@@ -5,7 +5,8 @@ using UnityEngine;
 enum MouseMode
 {
     INACTIVE,
-    MOVEMENT
+    MOVEMENT,
+    OVERUI
 }
 
 public class MousePicker : MonoBehaviour {
@@ -16,6 +17,8 @@ public class MousePicker : MonoBehaviour {
     private static MousePicker m_instance;
     public LayerMask m_selectionMask;
 
+    private HelpPopupController m_helpPopupController;
+
     public static MousePicker Instance()
     {
         return m_instance;
@@ -24,11 +27,18 @@ public class MousePicker : MonoBehaviour {
     {
         m_instance = this;
         m_mouseMode = MouseMode.INACTIVE;
+        m_helpPopupController = GetComponent<HelpPopupController>();
     }
 
     private void Update()
     {
-        if (m_mouseMode == MouseMode.INACTIVE)
+        if (m_mouseMode == MouseMode.MOVEMENT && m_helpPopupController.m_mouseEntered)
+            m_mouseMode = MouseMode.OVERUI;
+
+        if (m_mouseMode == MouseMode.OVERUI && !m_helpPopupController.m_mouseEntered)
+            m_mouseMode = MouseMode.MOVEMENT;
+
+        if (m_mouseMode == MouseMode.INACTIVE || m_mouseMode == MouseMode.OVERUI)
             return;
 
         HoverLogic();
