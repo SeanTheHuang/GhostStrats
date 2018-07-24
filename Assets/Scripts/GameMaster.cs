@@ -26,6 +26,8 @@ public class GameMaster : MonoBehaviour {
 
     static GameMaster instance;
 
+    public bool m_playersTurn;
+
     public static GameMaster Instance()
     {
         return instance;
@@ -148,6 +150,7 @@ public class GameMaster : MonoBehaviour {
 
     void StartPlayersTurn()
     {
+        m_playersTurn = true;
         // Start game by first selecting first ghost in list
         m_KeyBoardInput.UpdateSelectedGhost(m_startGhostArray[0]);
         m_ghostList[0].OnSelected();
@@ -164,6 +167,8 @@ public class GameMaster : MonoBehaviour {
     void RunPlayersTurn()
     {
         // Stop allowing player to select stuff
+        m_playersTurn = false;
+        m_currentlySelectedGhost.OnDeselected();
         MousePicker.Instance().StopPicking();
         StartCoroutine(GhostEndTurnAnimation());
     }
