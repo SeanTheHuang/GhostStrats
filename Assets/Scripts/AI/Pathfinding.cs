@@ -62,7 +62,6 @@ public class Pathfinding : MonoBehaviour {
         Node targetNode = grid.NodeFromWorldPoint(endPos);
 
         // NOTE, this means path can start from non-walkable state
-        Debug.Log("GOT HERE");
         if (targetNode.Walkable)
         {
             Heap<Node> openSet = new Heap<Node>(grid.MaxSize);

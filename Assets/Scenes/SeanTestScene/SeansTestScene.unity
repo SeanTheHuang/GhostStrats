@@ -2279,8 +2279,8 @@ MonoBehaviour:
   forwardSightAngle: 30
   forwardSightRadius: 6
   m_hiveMind: {fileID: 1086865993}
-  m_attackRange: 0
-  m_attackDamage: 0
+  m_attackRange: 1
+  m_attackDamage: 2
   m_finishedMoving: 0
 --- !u!65 &1408123574
 BoxCollider:
