@@ -233,16 +233,33 @@ public class PunkController : EntityBase
 
     void MovetoNode()
     {
-        if(m_realPath.Count == 0)
+        if (m_pathIndex == 0)
         {
-            m_state = PunkStates.ATTACK;
-            return;
-        }
-        else if (m_realPath.Count > 0 && m_pathIndex == 0) 
-        {
-            Vector3 dir = m_realPath[0] - transform.position;
-            dir.y = 0;
-            transform.rotation = Quaternion.LookRotation(dir);
+            if (GameMaster.Instance().PunkHitOverwatch(this))
+            {
+                EndTurn();
+                return;
+            }
+            if(PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
+            {
+                OnEntityHit(m_hiveMind.m_TrapDamage);
+                PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
+                EndTurn();
+                return;
+            }
+
+            if (m_realPath.Count == 0)
+            {
+                m_state = PunkStates.ATTACK;
+                return;
+            }
+            else if (m_realPath.Count > 0)
+            {
+                Vector3 dir = m_realPath[0] - transform.position;
+                dir.y = 0;
+                transform.rotation = Quaternion.LookRotation(dir);
+            }
+
         }
 
 
@@ -252,6 +269,13 @@ public class PunkController : EntityBase
         {
             if (GameMaster.Instance().PunkHitOverwatch(this))
             {
+                EndTurn();
+                return;
+            }
+            if (PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
+            {
+                OnEntityHit(m_hiveMind.m_TrapDamage);
+                PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 EndTurn();
                 return;
             }
@@ -325,6 +349,7 @@ public class PunkController : EntityBase
         m_state = PunkStates.IDLE;
         m_finishedMoving = true;
     }
+
    /* IEnumerator FollowPath()
     {
         if(m_realPath.Count > 0)

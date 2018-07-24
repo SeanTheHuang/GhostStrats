@@ -14,6 +14,7 @@ public class PunkHiveMind : MonoBehaviour
     // Use this for initialization
     public List<Transform> m_HouseLocations;
     public List<Transform> m_PunkLocations;
+    public int m_TrapDamage = 4;
 
     [HideInInspector]
     public List<Transform> m_KnownGhostHoles;
