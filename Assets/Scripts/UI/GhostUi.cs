@@ -62,4 +62,9 @@ public class GhostUi : MonoBehaviour
     {
         m_UIAbilityBarCntrl.ResetTurn();
     }
+
+    public void updateHealthbar(int currentHealth)
+    {
+        ghostPortraitController.UpdateHealthBar(currentHealth);
+    }
 }
