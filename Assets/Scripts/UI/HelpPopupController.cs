@@ -17,7 +17,7 @@ public class HelpPopupController : MonoBehaviour
     public bool m_mouseEntered;
     private float m_mouseEnterTime;
     private bool m_popUpEnabled;
-    private int m_abilityType; // 0 = move, 1 = Undo, 2 = Attack, 3 = Hide, 4 = Overwatch, 5 = Special
+    private int m_abilityType; // 0 = move, 1 = Undo, 2 = Attack, 3 = Hide, 4 = Overwatch, 5 = Special, 9 = Monster Portrait, 10 = Wall Portrait, 11 = DollDropper Portrait
     private int m_ghostSelectedOffset; // As ghosts have different ability. Offset needed in the list when a special is highlighted
 
     // The title texts for the pop up
