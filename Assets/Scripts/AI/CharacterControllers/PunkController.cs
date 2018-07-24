@@ -38,6 +38,7 @@ public class PunkController : EntityBase
         m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0,m_hiveMind.m_HouseLocations.Count)].position;
         //m_roomToExplore = m_hiveMind.m_HouseLocations[0].position;
         m_state = PunkStates.IDLE;
+        m_currentHealth = m_maxHealth;
 
     }
     private void Update()
@@ -80,9 +81,11 @@ public class PunkController : EntityBase
     public override void OnEntityHit(int _damage)
     {
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
+        m_currentHealth -= _damage;
         if(m_currentHealth == 0 && m_state != PunkStates.DEAD)
         {
             m_hiveMind.RemovePunk(transform);
+            GameMaster.Instance().RemovePunk(this);
             m_state = PunkStates.DEAD;
             Destroy(gameObject);
         }
@@ -472,7 +475,7 @@ public class PunkController : EntityBase
                 {//spawners
                     if(t.GetComponent<GhostHole>().GetCurrentHealth() < lowestHealth)
                     {
-                        lowestHealth = t.GetComponent<GhostController>().GetCurrentHealth();
+                        lowestHealth = t.GetComponent<GhostHole>().GetCurrentHealth();
                         index = i;
                     }
                 }
