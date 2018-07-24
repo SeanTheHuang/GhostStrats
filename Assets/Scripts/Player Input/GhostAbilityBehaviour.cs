@@ -40,7 +40,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public GhostType m_ghostType
     { get; protected set; }
 
-    GhostActionState m_actionState;
+    protected GhostActionState m_actionState;
     protected AimingDirection m_aimingDirection; // The direction the ghost is currently facing
     public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     //public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
@@ -295,12 +295,8 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public virtual void StartOfTurn()
     {
-        switch (m_actionState)
-        {
-            case GhostActionState.HIDE:
-                m_ghostController.m_OutofSight = false;
-                break;
-        }
+        if (m_actionState == GhostActionState.HIDE)
+            m_ghostController.m_OutofSight = false;
 
         AbilityUnused();
         m_aimingAbility = false;
