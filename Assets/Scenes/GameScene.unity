@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
+  m_IndirectSpecularColor: {r: 0.1810614, g: 0.226635, b: 0.30729187, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -156,6 +156,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (86)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -333,6 +337,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0808ffd14dd2fa14ba91aad3e23612e9, type: 3}
   m_PrefabInternal: {fileID: 11227620}
+--- !u!1 &13485614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 13485615}
+  - component: {fileID: 13485616}
+  m_Layer: 0
+  m_Name: Point Light (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &13485615
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13485614}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.266551, y: -6.2906084, z: 19.914495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &13485616
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13485614}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 4.995033
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &13892381
 Prefab:
   m_ObjectHideFlags: 0
@@ -442,6 +511,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -492,6 +565,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (80)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -674,6 +751,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -740,6 +821,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -1216,6 +1301,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -1332,6 +1421,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -1518,6 +1611,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -1568,6 +1665,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (107)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -2103,6 +2204,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (151)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -2211,6 +2316,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (127)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -2493,6 +2602,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (149)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -2744,6 +2857,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (118)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -2751,6 +2868,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_PrefabInternal: {fileID: 81714441}
+--- !u!1 &82302546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 82302547}
+  - component: {fileID: 82302548}
+  m_Layer: 0
+  m_Name: Point Light (19)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &82302547
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 82302546}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.9334488, y: -6.2906084, z: 22.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &82302548
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 82302546}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.0583572
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &82994751
 Prefab:
   m_ObjectHideFlags: 0
@@ -2852,6 +3034,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -2859,6 +3045,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_PrefabInternal: {fileID: 83604574}
+--- !u!1 &86087919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 86087920}
+  - component: {fileID: 86087921}
+  m_Layer: 0
+  m_Name: Point Light (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &86087920
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 86087919}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.873449, y: -6.2906084, z: 6.434495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &86087921
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 86087919}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.0583572
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &86534890
 Prefab:
   m_ObjectHideFlags: 0
@@ -3122,6 +3373,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (74)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -3374,6 +3629,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -3381,6 +3640,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_PrefabInternal: {fileID: 100031837}
+--- !u!1 &102116429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 102116430}
+  - component: {fileID: 102116431}
+  m_Layer: 0
+  m_Name: Point Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &102116430
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 102116429}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.023449, y: -6.2906084, z: 2.0344954}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &102116431
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 102116429}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 5.7844324
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &102359662
 Prefab:
   m_ObjectHideFlags: 0
@@ -4169,6 +4493,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (154)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -4393,6 +4721,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -4443,6 +4775,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (121)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -4513,6 +4849,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
   m_IsPrefabParent: 0
@@ -4575,6 +4915,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -4625,6 +4969,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -5015,6 +5363,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (98)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -5081,6 +5433,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -5491,6 +5847,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -5607,6 +5967,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -5722,6 +6086,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3413ff92d237c4046a63b0dcfa56e0c4, type: 3}
   m_PrefabInternal: {fileID: 160519792}
+--- !u!1 &161660984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 161660985}
+  - component: {fileID: 161660986}
+  m_Layer: 0
+  m_Name: Point Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &161660985
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161660984}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.6365511, y: -6.2906084, z: 19.914495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &161660986
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161660984}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 4.995033
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &163253629
 Prefab:
   m_ObjectHideFlags: 0
@@ -5765,6 +6194,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -5951,6 +6384,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -6237,6 +6674,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (135)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -7350,6 +7791,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (79)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -7628,6 +8073,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (111)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -7678,6 +8127,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -8025,71 +8478,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2ee10c99eb5aff94384688a0e97307d5, type: 3}
   m_PrefabInternal: {fileID: 240554587}
---- !u!1 &240572500
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 240572502}
-  - component: {fileID: 240572501}
-  m_Layer: 0
-  m_Name: Spotlight_Window (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &240572501
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 240572500}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 0
-  m_Color: {r: 0.7254902, g: 0.8705883, b: 0.9960785, a: 1}
-  m_Intensity: 1.5
-  m_Range: 10
-  m_SpotAngle: 67.1
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 2800000, guid: bd15d894dbc751c4290a0c4ebbdc3ea7, type: 3}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &240572502
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 240572500}
-  m_LocalRotation: {x: 0.4081227, y: 0.0000009164213, z: 0.000000771135, w: 0.9129271}
-  m_LocalPosition: {x: -8.02, y: 1.6, z: -17.723}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 131.82599, y: -180, z: -180}
 --- !u!1001 &240952632
 Prefab:
   m_ObjectHideFlags: 0
@@ -8245,6 +8633,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (112)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -8311,6 +8703,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -8670,6 +9066,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -9018,6 +9418,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (47)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -9083,6 +9487,56 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3413ff92d237c4046a63b0dcfa56e0c4, type: 3}
   m_PrefabInternal: {fileID: 277201713}
+--- !u!1 &281102980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 281102981}
+  m_Layer: 0
+  m_Name: LIGHTS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &281102981
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 281102980}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.746551, y: 8.2106085, z: -15.824495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1753507352}
+  - {fileID: 102116430}
+  - {fileID: 617850208}
+  - {fileID: 161660985}
+  - {fileID: 13485615}
+  - {fileID: 556825315}
+  - {fileID: 1985704188}
+  - {fileID: 86087920}
+  - {fileID: 1098646559}
+  - {fileID: 687859819}
+  - {fileID: 1212643778}
+  - {fileID: 2016908756}
+  - {fileID: 1676755817}
+  - {fileID: 974866548}
+  - {fileID: 2082052920}
+  - {fileID: 593954643}
+  - {fileID: 419956584}
+  - {fileID: 1967546464}
+  - {fileID: 518531361}
+  - {fileID: 82302547}
+  - {fileID: 741872476}
+  - {fileID: 754513854}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &281580618
 Prefab:
   m_ObjectHideFlags: 0
@@ -9126,6 +9580,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (114)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -9466,6 +9924,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -9739,7 +10201,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2ee10c99eb5aff94384688a0e97307d5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
+      objectReference: {fileID: 2100000, guid: f86498b49b9de3f46ad9bbbec1b75936, type: 2}
     - target: {fileID: 100000, guid: 2ee10c99eb5aff94384688a0e97307d5, type: 3}
       propertyPath: m_Name
       value: Betweener (114)
@@ -9918,6 +10380,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (70)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -10297,6 +10763,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -10571,6 +11041,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (57)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -11162,6 +11636,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (75)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -11718,6 +12196,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -11946,6 +12428,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (63)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -12213,6 +12699,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (57)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -12367,6 +12857,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (94)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -12641,6 +13135,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (141)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -12772,6 +13270,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2ab2723dc246b134a9350fb198182d87, type: 3}
   m_PrefabInternal: {fileID: 419668630}
+--- !u!1 &419956583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 419956584}
+  - component: {fileID: 419956585}
+  m_Layer: 0
+  m_Name: Point Light (16)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &419956584
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 419956583}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.66, y: -7.07, z: 0.66}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &419956585
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 419956583}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 1.9895582
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &425882933
 Prefab:
   m_ObjectHideFlags: 0
@@ -13166,7 +13729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &433876702
 Light:
   m_ObjectHideFlags: 0
@@ -13177,7 +13740,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.31
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -13209,13 +13772,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 433876701}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.4694691, y: -0.035541385, z: 0.4762962, w: 0.7426153}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 46.981003, y: 35.319, z: 81.106}
 --- !u!1001 &436750375
 Prefab:
   m_ObjectHideFlags: 0
@@ -13317,6 +13880,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (146)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -13545,6 +14112,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -13916,6 +14487,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -14701,71 +15276,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3413ff92d237c4046a63b0dcfa56e0c4, type: 3}
   m_PrefabInternal: {fileID: 476535224}
---- !u!1 &479355503
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 479355505}
-  - component: {fileID: 479355504}
-  m_Layer: 0
-  m_Name: Spotlight_Window
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &479355504
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 479355503}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 0
-  m_Color: {r: 0.7254902, g: 0.8705883, b: 0.9960785, a: 1}
-  m_Intensity: 1.5
-  m_Range: 10
-  m_SpotAngle: 67.1
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 2800000, guid: bd15d894dbc751c4290a0c4ebbdc3ea7, type: 3}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &479355505
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 479355503}
-  m_LocalRotation: {x: 0.28858733, y: 0.6455366, z: -0.2885854, w: 0.64553726}
-  m_LocalPosition: {x: -16.79, y: 1.6, z: -4.985}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 131.82599, y: -90, z: -180}
 --- !u!1001 &481657618
 Prefab:
   m_ObjectHideFlags: 0
@@ -14809,6 +15319,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (67)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -15145,6 +15659,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (113)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -15547,6 +16065,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.001
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -15705,6 +16227,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (109)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -15975,6 +16501,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -15982,6 +16512,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_PrefabInternal: {fileID: 516612245}
+--- !u!1 &518531360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 518531361}
+  - component: {fileID: 518531362}
+  m_Layer: 0
+  m_Name: Point Light (18)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &518531361
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 518531360}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.19, y: -7.07, z: 14.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &518531362
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 518531360}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.2587798
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &523456114
 Prefab:
   m_ObjectHideFlags: 0
@@ -16099,6 +16694,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -16362,6 +16961,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (51)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -16536,6 +17139,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (140)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -16664,6 +17271,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
   m_IsPrefabParent: 0
@@ -16772,6 +17383,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (44)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -16934,6 +17549,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (59)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -16984,6 +17603,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -17130,6 +17753,71 @@ Transform:
   m_Father: {fileID: 356413376}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &556825314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 556825315}
+  - component: {fileID: 556825316}
+  m_Layer: 0
+  m_Name: Point Light (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &556825315
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 556825314}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15.18655, y: -6.2906084, z: 12.434495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &556825316
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 556825314}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 4.995033
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &562754110
 Prefab:
   m_ObjectHideFlags: 0
@@ -17173,6 +17861,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -17223,6 +17915,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -17327,6 +18023,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (60)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -17377,6 +18077,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (161)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -17578,6 +18282,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -18061,6 +18769,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (104)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -18181,6 +18893,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -18305,6 +19021,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
   m_IsPrefabParent: 0
@@ -18312,6 +19032,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
   m_PrefabInternal: {fileID: 592735047}
+--- !u!1 &593954642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 593954643}
+  - component: {fileID: 593954644}
+  m_Layer: 0
+  m_Name: Point Light (15)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &593954643
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593954642}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.34, y: -7.07, z: 7.79}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &593954644
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593954642}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 1.9895582
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &595166904
 Prefab:
   m_ObjectHideFlags: 0
@@ -19066,6 +19851,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2ab2723dc246b134a9350fb198182d87, type: 3}
   m_PrefabInternal: {fileID: 617513058}
+--- !u!1 &617850207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 617850208}
+  - component: {fileID: 617850209}
+  m_Layer: 0
+  m_Name: Point Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &617850208
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 617850207}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.023449, y: -6.2906084, z: 12.414495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &617850209
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 617850207}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 5.7844324
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &623171944
 Prefab:
   m_ObjectHideFlags: 0
@@ -19229,6 +20079,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -19565,6 +20419,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -19735,6 +20593,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -19839,6 +20701,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -19947,6 +20813,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (92)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -20109,6 +20979,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (65)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -20283,6 +21157,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -20345,6 +21223,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -20712,6 +21594,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: cc83691d5c3f91a49969ad976bd5d3d9, type: 3}
   m_PrefabInternal: {fileID: 687467916}
+--- !u!1 &687859818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 687859819}
+  - component: {fileID: 687859820}
+  m_Layer: 0
+  m_Name: Point Light (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &687859819
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 687859818}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5334492, y: -6.2906084, z: 9.684496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &687859820
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 687859818}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.0583572
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &689736910
 Prefab:
   m_ObjectHideFlags: 0
@@ -21412,6 +22359,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (85)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -21516,6 +22467,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (62)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -21984,6 +22939,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -22103,6 +23062,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2ab2723dc246b134a9350fb198182d87, type: 3}
   m_PrefabInternal: {fileID: 734225619}
+--- !u!1 &741872475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 741872476}
+  - component: {fileID: 741872477}
+  m_Layer: 0
+  m_Name: Point Light (20)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741872476
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 741872475}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.49, y: -6.2906084, z: 22.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &741872477
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 741872475}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.0583572
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &744990425
 Prefab:
   m_ObjectHideFlags: 0
@@ -22266,6 +23290,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (130)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -22374,6 +23402,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (143)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -22489,6 +23521,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2ee10c99eb5aff94384688a0e97307d5, type: 3}
   m_PrefabInternal: {fileID: 753874915}
+--- !u!1 &754513853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 754513854}
+  - component: {fileID: 754513855}
+  m_Layer: 0
+  m_Name: Point Light (21)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &754513854
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 754513853}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.179999, y: -6.2906084, z: 22.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &754513855
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 754513853}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.0583572
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &755664717
 Prefab:
   m_ObjectHideFlags: 0
@@ -22590,6 +23687,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (90)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -22660,6 +23761,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -22710,6 +23815,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -22922,6 +24031,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (87)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -23099,71 +24212,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 636d1f3f0e31509489bbd7769b7f705b, type: 3}
   m_PrefabInternal: {fileID: 777864436}
---- !u!1 &779336783
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 779336785}
-  - component: {fileID: 779336784}
-  m_Layer: 0
-  m_Name: Spotlight_Window (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &779336784
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 779336783}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 0
-  m_Color: {r: 0.7254902, g: 0.8705883, b: 0.9960785, a: 1}
-  m_Intensity: 1.5
-  m_Range: 10
-  m_SpotAngle: 67.1
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 2800000, guid: bd15d894dbc751c4290a0c4ebbdc3ea7, type: 3}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &779336785
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 779336783}
-  m_LocalRotation: {x: 0.4081227, y: 0.0000009164213, z: 0.000000771135, w: 0.9129271}
-  m_LocalPosition: {x: -14.02, y: 1.6, z: -17.723}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 131.82599, y: -180, z: -180}
 --- !u!1001 &781159406
 Prefab:
   m_ObjectHideFlags: 0
@@ -23223,6 +24271,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -23671,6 +24723,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (132)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -23833,6 +24889,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -24297,6 +25357,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -24351,6 +25415,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -24521,6 +25589,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -24683,6 +25755,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (119)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -25422,6 +26498,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (157)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -25878,6 +26958,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -26226,6 +27310,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (77)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -26438,6 +27526,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -26828,6 +27920,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -26956,6 +28052,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -27006,6 +28106,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (152)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -27168,6 +28272,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (105)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -27458,6 +28566,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -27523,71 +28635,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3413ff92d237c4046a63b0dcfa56e0c4, type: 3}
   m_PrefabInternal: {fileID: 929921021}
---- !u!1 &933513325
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 933513327}
-  - component: {fileID: 933513326}
-  m_Layer: 0
-  m_Name: Spotlight_Window (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &933513326
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 933513325}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 0
-  m_Color: {r: 0.7254902, g: 0.8705883, b: 0.9960785, a: 1}
-  m_Intensity: 1.5
-  m_Range: 10
-  m_SpotAngle: 67.1
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 2800000, guid: bd15d894dbc751c4290a0c4ebbdc3ea7, type: 3}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &933513327
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 933513325}
-  m_LocalRotation: {x: 0.4081227, y: 0.0000009164213, z: 0.000000771135, w: 0.9129271}
-  m_LocalPosition: {x: -0.026, y: 1.6, z: -8.737}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 131.82599, y: -180, z: -180}
 --- !u!1001 &934783063
 Prefab:
   m_ObjectHideFlags: 0
@@ -27631,6 +28678,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (81)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -27681,6 +28732,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (134)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -27731,6 +28786,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (61)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -28114,71 +29173,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 537628dafcdc1194180b4d537bd3d476, type: 3}
   m_PrefabInternal: {fileID: 950479179}
---- !u!1 &950624017
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 950624019}
-  - component: {fileID: 950624018}
-  m_Layer: 0
-  m_Name: Point Light (11)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &950624018
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 950624017}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 0.48584908, g: 0.731097, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 4.14
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &950624019
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 950624017}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 10.96, y: 1.84, z: -3.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 24
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &952799471
 Prefab:
   m_ObjectHideFlags: 0
@@ -28458,6 +29452,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (66)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -28659,6 +29657,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 4657fada9c4aff248988d4acecc252f9, type: 3}
   m_PrefabInternal: {fileID: 971415668}
+--- !u!1 &974866547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 974866548}
+  - component: {fileID: 974866549}
+  m_Layer: 0
+  m_Name: Point Light (13)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &974866548
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 974866547}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.15, y: -7.07, z: 10.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &974866549
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 974866547}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 1.9895582
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &974871662
 GameObject:
   m_ObjectHideFlags: 0
@@ -28916,71 +29979,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 1d9671f559f36544da2db5dee58a6adc, type: 3}
   m_PrefabInternal: {fileID: 980136537}
---- !u!1 &980789537
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 980789539}
-  - component: {fileID: 980789538}
-  m_Layer: 0
-  m_Name: Spotlight_Window (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &980789538
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 980789537}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 0
-  m_Color: {r: 0.7254902, g: 0.8705883, b: 0.9960785, a: 1}
-  m_Intensity: 1.5
-  m_Range: 10
-  m_SpotAngle: 67.1
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 2800000, guid: bd15d894dbc751c4290a0c4ebbdc3ea7, type: 3}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &980789539
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 980789537}
-  m_LocalRotation: {x: 0.28858733, y: 0.6455366, z: -0.2885854, w: 0.64553726}
-  m_LocalPosition: {x: -16.79, y: 1.6, z: -15.98}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 131.82599, y: -90, z: -180}
 --- !u!1001 &981566393
 Prefab:
   m_ObjectHideFlags: 0
@@ -29144,6 +30142,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -29198,6 +30200,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -29356,6 +30362,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -29468,6 +30478,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -29518,6 +30532,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (145)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -29568,6 +30586,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (125)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -29784,6 +30806,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (164)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -29838,6 +30864,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -30008,6 +31038,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -30069,71 +31103,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2ee10c99eb5aff94384688a0e97307d5, type: 3}
   m_PrefabInternal: {fileID: 1029254227}
---- !u!1 &1035494171
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1035494173}
-  - component: {fileID: 1035494172}
-  m_Layer: 0
-  m_Name: Point Light (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1035494172
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1035494171}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 0.48627448, g: 0.9070463, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 4.67
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1035494173
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1035494171}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -11.73, y: 1.84, z: 1.35}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1036685361
 Prefab:
   m_ObjectHideFlags: 0
@@ -30339,6 +31308,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (78)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -30563,6 +31536,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (69)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -31230,6 +32207,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (83)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -31280,6 +32261,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (103)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -31438,6 +32423,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (133)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -31739,71 +32728,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3413ff92d237c4046a63b0dcfa56e0c4, type: 3}
   m_PrefabInternal: {fileID: 1079987906}
---- !u!1 &1080545908
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1080545910}
-  - component: {fileID: 1080545909}
-  m_Layer: 0
-  m_Name: Point Light (10)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1080545909
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1080545908}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 0.48584908, g: 0.731097, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 4.14
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1080545910
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1080545908}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 6.41, y: 1.84, z: 3.83}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 23
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1081418615
 Prefab:
   m_ObjectHideFlags: 0
@@ -32013,6 +32937,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -32128,6 +33056,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2ee10c99eb5aff94384688a0e97307d5, type: 3}
   m_PrefabInternal: {fileID: 1095355142}
+--- !u!1 &1098646558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1098646559}
+  - component: {fileID: 1098646560}
+  m_Layer: 0
+  m_Name: Point Light (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1098646559
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1098646558}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.1834488, y: -6.2906084, z: 5.0344954}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1098646560
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1098646558}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.5034266
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &1100017591
 Prefab:
   m_ObjectHideFlags: 0
@@ -32349,6 +33342,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (167)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -32790,6 +33787,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (54)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -32840,6 +33841,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (139)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -33083,71 +34088,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2ee10c99eb5aff94384688a0e97307d5, type: 3}
   m_PrefabInternal: {fileID: 1141863661}
---- !u!1 &1145118419
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1145118421}
-  - component: {fileID: 1145118420}
-  m_Layer: 0
-  m_Name: Point Light (9)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1145118420
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1145118419}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 0.7254902, g: 0.8705883, b: 0.9960785, a: 1}
-  m_Intensity: 2
-  m_Range: 4.14
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1145118421
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1145118419}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -0.22, y: 1.84, z: 3.83}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1147020989
 GameObject:
   m_ObjectHideFlags: 0
@@ -33330,6 +34270,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180.00002
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
   m_IsPrefabParent: 0
@@ -33507,71 +34451,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3413ff92d237c4046a63b0dcfa56e0c4, type: 3}
   m_PrefabInternal: {fileID: 1152662313}
---- !u!1 &1155011365
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1155011367}
-  - component: {fileID: 1155011366}
-  m_Layer: 0
-  m_Name: Point Light (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1155011366
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1155011365}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 0.48584908, g: 0.731097, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 1.5212917
-  m_SpotAngle: 46.09
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1155011367
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1155011365}
-  m_LocalRotation: {x: -0.000002086266, y: -0.7071079, z: 0.70710576, w: 0.0000020862722}
-  m_LocalPosition: {x: -6.65, y: 0.91, z: -6.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 26
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1001 &1155916168
 Prefab:
   m_ObjectHideFlags: 0
@@ -33967,6 +34846,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (72)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -35231,6 +36114,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -35470,6 +36357,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 636d1f3f0e31509489bbd7769b7f705b, type: 3}
   m_PrefabInternal: {fileID: 1212376435}
+--- !u!1 &1212643777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1212643778}
+  - component: {fileID: 1212643779}
+  m_Layer: 0
+  m_Name: Point Light (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1212643778
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1212643777}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.653448, y: -6.2906084, z: 6.434495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1212643779
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1212643777}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.0583572
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &1212897187
 Prefab:
   m_ObjectHideFlags: 0
@@ -35791,6 +36743,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (122)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -36007,6 +36963,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -36142,6 +37102,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (76)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -36216,6 +37180,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -36556,6 +37524,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -36722,6 +37694,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -36792,6 +37768,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -36842,6 +37822,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (124)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -37166,6 +38150,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -37274,6 +38262,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (131)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -37448,6 +38440,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -37498,6 +38494,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (160)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -37738,6 +38738,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -38070,6 +39074,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (84)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -38232,6 +39240,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (50)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -38363,71 +39375,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 636d1f3f0e31509489bbd7769b7f705b, type: 3}
   m_PrefabInternal: {fileID: 1326405882}
---- !u!1 &1327230014
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1327230016}
-  - component: {fileID: 1327230015}
-  m_Layer: 0
-  m_Name: Point Light (8)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1327230015
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1327230014}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 0.48584908, g: 0.731097, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 4.67
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1327230016
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1327230014}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -19.14, y: 1.84, z: 1.35}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1331263651
 Prefab:
   m_ObjectHideFlags: 0
@@ -38471,6 +39418,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (56)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -38900,6 +39851,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (56)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -39294,6 +40249,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (159)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -39546,6 +40505,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -39704,6 +40667,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (162)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -39824,6 +40791,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -40094,6 +41065,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -40148,6 +41123,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -40252,6 +41231,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (117)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -40704,6 +41687,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -40940,6 +41927,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (142)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -41098,6 +42089,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (68)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -41213,71 +42208,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 698ac5a5d060127498c5f40a549c950f, type: 3}
   m_PrefabInternal: {fileID: 1434831615}
---- !u!1 &1435224926
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1435224928}
-  - component: {fileID: 1435224927}
-  m_Layer: 0
-  m_Name: Point Light (12)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1435224927
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1435224926}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 0.48584908, g: 0.731097, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 3.73
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1435224928
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1435224926}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -1.03, y: 1.84, z: -5.86}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 25
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1439566628
 Prefab:
   m_ObjectHideFlags: 0
@@ -41321,6 +42251,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (148)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -41483,6 +42417,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (106)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -41533,6 +42471,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (52)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -41750,6 +42692,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -41858,6 +42804,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -42020,6 +42970,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -42144,6 +43098,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 48.174004
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -42252,6 +43210,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -42557,6 +43519,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (156)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -42959,6 +43925,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (110)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -43291,6 +44261,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (150)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -43573,6 +44547,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (137)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -44623,6 +45601,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -44971,6 +45953,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 48.174004
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -45122,6 +46108,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -45396,6 +46386,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (165)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -45786,6 +46780,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (45)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -45898,6 +46896,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -45952,6 +46954,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Window (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bcfc2df0417d6a44a8b46fb4d2d7fa1, type: 3}
   m_IsPrefabParent: 0
@@ -46002,6 +47008,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (136)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -46056,6 +47066,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (59)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -46122,6 +47136,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -46172,6 +47190,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (147)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -46554,6 +47576,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (95)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -46670,6 +47696,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -46902,6 +47932,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (73)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -47381,6 +48415,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (93)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -47431,6 +48469,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (115)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -47481,6 +48523,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (158)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -47535,6 +48581,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (54)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -47671,6 +48721,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -47887,6 +48941,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -48253,6 +49311,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2ee10c99eb5aff94384688a0e97307d5, type: 3}
   m_PrefabInternal: {fileID: 1670980363}
+--- !u!1 &1676755816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1676755817}
+  - component: {fileID: 1676755818}
+  m_Layer: 0
+  m_Name: Point Light (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1676755817
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1676755816}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5334492, y: -6.2906084, z: 18.504496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1676755818
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1676755816}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.0583572
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &1676881799
 Prefab:
   m_ObjectHideFlags: 0
@@ -48586,6 +49709,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (44)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -48652,6 +49779,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -48976,6 +50107,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (49)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -49080,6 +50215,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (99)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -49150,6 +50289,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -49200,6 +50343,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (101)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -49428,6 +50575,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -49706,6 +50857,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (144)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -50391,6 +51546,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (97)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -50398,6 +51557,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_PrefabInternal: {fileID: 1753472103}
+--- !u!1 &1753507351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1753507352}
+  - component: {fileID: 1753507353}
+  m_Layer: 0
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1753507352
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753507351}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.023449, y: -6.2906084, z: 18.024496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1753507353
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753507351}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 5.7844324
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &1754915202
 Prefab:
   m_ObjectHideFlags: 0
@@ -50966,6 +52190,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -51244,6 +52472,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (155)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -51352,6 +52584,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -51630,6 +52866,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (71)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -51684,6 +52924,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -52310,6 +53554,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (100)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -53404,6 +54652,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -54033,71 +55285,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 57f280721b3a0ae4e80ddf20409ec654, type: 3}
   m_PrefabInternal: {fileID: 1881207468}
---- !u!1 &1883716238
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1883716239}
-  - component: {fileID: 1883716240}
-  m_Layer: 0
-  m_Name: Point Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1883716239
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1883716238}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -12.38, y: 1.84, z: -14.59}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &1883716240
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1883716238}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 0.7254902, g: 0.8705883, b: 0.9960785, a: 1}
-  m_Intensity: 2
-  m_Range: 4.53
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!1001 &1884996752
 Prefab:
   m_ObjectHideFlags: 0
@@ -54281,6 +55468,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -54335,6 +55526,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (59)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -54899,6 +56094,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -55085,6 +56284,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -55433,6 +56636,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -55541,6 +56748,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (166)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -55548,71 +56759,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_PrefabInternal: {fileID: 1943781696}
---- !u!1 &1945902142
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1945902144}
-  - component: {fileID: 1945902143}
-  m_Layer: 0
-  m_Name: Point Light (13)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1945902143
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1945902142}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 0.48627448, g: 0.9070463, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 4.67
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1945902144
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1945902142}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -11.73, y: 1.84, z: -3.76}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 27
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1948847243
 Prefab:
   m_ObjectHideFlags: 0
@@ -55710,6 +56856,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (89)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -55884,6 +57034,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (128)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -55934,6 +57088,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (102)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -56541,6 +57699,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0808ffd14dd2fa14ba91aad3e23612e9, type: 3}
   m_PrefabInternal: {fileID: 1966955056}
+--- !u!1 &1967546463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1967546464}
+  - component: {fileID: 1967546465}
+  m_Layer: 0
+  m_Name: Point Light (17)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1967546464
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1967546463}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.09, y: -7.07, z: 14.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1967546465
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1967546463}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.9063928
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &1970406596
 Prefab:
   m_ObjectHideFlags: 0
@@ -56938,6 +58161,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (82)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -56945,6 +58172,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_PrefabInternal: {fileID: 1980275390}
+--- !u!1 &1985704187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1985704188}
+  - component: {fileID: 1985704189}
+  m_Layer: 0
+  m_Name: Point Light (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1985704188
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1985704187}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.506551, y: -6.2906084, z: 9.724495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1985704189
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1985704187}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.8016233
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &1989115149
 Prefab:
   m_ObjectHideFlags: 0
@@ -57150,6 +58442,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -57648,6 +58944,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -57771,6 +59071,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2ab2723dc246b134a9350fb198182d87, type: 3}
   m_PrefabInternal: {fileID: 2015859730}
+--- !u!1 &2016908755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2016908756}
+  - component: {fileID: 2016908757}
+  m_Layer: 0
+  m_Name: Point Light (11)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2016908756
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2016908755}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5334492, y: -6.2906084, z: 14.444495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &2016908757
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2016908755}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 3.0583572
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &2017057369
 Prefab:
   m_ObjectHideFlags: 0
@@ -58119,6 +59484,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (116)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -58173,6 +59542,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (63)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -58943,6 +60316,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (163)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -59051,6 +60428,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -59101,6 +60482,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (96)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -59225,6 +60610,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Wall (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -59275,6 +60664,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (138)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -59731,6 +61124,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (91)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -59738,6 +61135,71 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_PrefabInternal: {fileID: 2081953223}
+--- !u!1 &2082052919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2082052920}
+  - component: {fileID: 2082052921}
+  m_Layer: 0
+  m_Name: Point Light (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2082052920
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2082052919}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.51, y: -7.07, z: 5.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281102981}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &2082052921
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2082052919}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.5
+  m_Range: 1.9895582
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &2084797659
 Prefab:
   m_ObjectHideFlags: 0
@@ -59781,6 +61243,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (88)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -59889,6 +61355,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -59955,6 +61425,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -60709,6 +62183,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
@@ -60813,6 +62291,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -61041,6 +62523,10 @@ Prefab:
       propertyPath: m_Name
       value: Hallway_Floor (153)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12d81497a077bdc459b3dcea765ec5da, type: 3}
   m_IsPrefabParent: 0
@@ -61529,6 +63015,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16737cb873b37a841831d018c9adfb7f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
   m_IsPrefabParent: 0
