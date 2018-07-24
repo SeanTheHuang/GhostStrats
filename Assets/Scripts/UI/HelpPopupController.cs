@@ -14,10 +14,10 @@ public class HelpPopupController : MonoBehaviour
 
     public float m_popupDelayTime;
 
-    private bool m_mouseEntered;
+    public bool m_mouseEntered;
     private float m_mouseEnterTime;
     private bool m_popUpEnabled;
-    private int m_abilityType; // 0 = move, 1 = Undo, 2 = Attack, 3 = Hide, 4 = Overwatch, 5 = Special
+    private int m_abilityType; // 0 = move, 1 = Undo, 2 = Attack, 3 = Hide, 4 = Overwatch, 5 = Special, 9 = Monster Portrait, 10 = Wall Portrait, 11 = DollDropper Portrait
     private int m_ghostSelectedOffset; // As ghosts have different ability. Offset needed in the list when a special is highlighted
 
     // The title texts for the pop up
@@ -63,7 +63,6 @@ public class HelpPopupController : MonoBehaviour
     // Update is called once per frame
     public void MouseEnter(int abilityType)
     {
-        Debug.Log("GOT HERE");
         if (!m_mouseEntered)
         {
             m_mouseEnterTime = Time.time;
@@ -87,14 +86,16 @@ public class HelpPopupController : MonoBehaviour
 
     public void UpdateGhostSelected(GameObject selectedGhost)
     {
-        Debug.Log(selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType);
-        if (selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType == GhostType.WALLER)
+        GhostAbilityBehaviour m_ghostAbilityBehaviour = selectedGhost.GetComponent<GhostAbilityBehaviour>();
+
+        //Debug.Log(selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType);
+        if (m_ghostAbilityBehaviour.m_ghostType == GhostType.WALLER)
             m_ghostSelectedOffset = 0;
-        if (selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType == GhostType.DOLLER)
+        else if (m_ghostAbilityBehaviour.m_ghostType == GhostType.DOLLER)
             m_ghostSelectedOffset = 1;
-        if (selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType == GhostType.SCREAMER)
+        else if (m_ghostAbilityBehaviour.m_ghostType == GhostType.SCREAMER)
             m_ghostSelectedOffset = 2;
-        if (selectedGhost.GetComponent<GhostAbilityBehaviour>().m_ghostType == GhostType.MONSTER)
+        else if (m_ghostAbilityBehaviour.m_ghostType == GhostType.MONSTER)
             m_ghostSelectedOffset = 3;
 
         //Update the pop text

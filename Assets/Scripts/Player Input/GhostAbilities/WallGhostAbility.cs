@@ -51,10 +51,15 @@ public class WallGhostAbility : GhostAbilityBehaviour {
     {
         base.StartOfTurn();
 
-        // TODO: Turn back to normal ghost
 
         // Clear up path where wall was
-        foreach (Vector3 v3 in m_rotatedAffectedSquares)
-            PathRequestManager.Instance().TogglePositionWalkable(v3, true);
+        if (m_actionState == GhostActionState.ABILITY)
+        {
+            // Clean up ability
+            foreach (Vector3 v3 in m_rotatedAffectedSquares)
+                PathRequestManager.Instance().TogglePositionWalkable(v3, true);
+
+            // TODO: Turn back to normal ghost
+        }
     }
 }

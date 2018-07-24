@@ -1,0 +1,364 @@
+fileFormatVersion: 2
+guid: 4f17463c1bda8c54dac1be1fe02da52a
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Doll
+    100002: Doll_END
+    100004: //RootNode
+    100006: Ghost03_Root
+    100008: Head
+    100010: Hood00
+    100012: Hood01
+    100014: Hood02
+    100016: Hood03
+    100018: Hood04
+    100020: Hood05
+    100022: Hood06_END
+    100024: L_Hand
+    100026: L_Hand_END
+    100028: L_Index00
+    100030: L_Index01
+    100032: L_Index02_END
+    100034: L_Ring00
+    100036: L_Ring01
+    100038: L_Ring02_END
+    100040: L_Thumb00
+    100042: L_Thumb01
+    100044: L_Thumb02_END
+    100046: Orb00
+    100048: Orb00_END
+    100050: Orb01
+    100052: Orb01_END
+    100054: Orb02
+    100056: Orb02_END
+    100058: pCube84
+    100060: R_Hand
+    100062: R_Hand_END
+    100064: R_Index00
+    100066: R_Index01
+    100068: R_Index02_END
+    100070: R_Ring00
+    100072: R_Ring01
+    100074: R_Ring02_END
+    100076: R_Thumb00
+    100078: R_Thumb01
+    100080: R_Thumb02_END
+    100082: Tail00
+    100084: Tail01
+    100086: Tail02
+    100088: Tail03
+    100090: Tail04
+    100092: Tail05
+    100094: Tail06
+    100096: Tail07_END
+    400000: Doll
+    400002: Doll_END
+    400004: //RootNode
+    400006: Ghost03_Root
+    400008: Head
+    400010: Hood00
+    400012: Hood01
+    400014: Hood02
+    400016: Hood03
+    400018: Hood04
+    400020: Hood05
+    400022: Hood06_END
+    400024: L_Hand
+    400026: L_Hand_END
+    400028: L_Index00
+    400030: L_Index01
+    400032: L_Index02_END
+    400034: L_Ring00
+    400036: L_Ring01
+    400038: L_Ring02_END
+    400040: L_Thumb00
+    400042: L_Thumb01
+    400044: L_Thumb02_END
+    400046: Orb00
+    400048: Orb00_END
+    400050: Orb01
+    400052: Orb01_END
+    400054: Orb02
+    400056: Orb02_END
+    400058: pCube84
+    400060: R_Hand
+    400062: R_Hand_END
+    400064: R_Index00
+    400066: R_Index01
+    400068: R_Index02_END
+    400070: R_Ring00
+    400072: R_Ring01
+    400074: R_Ring02_END
+    400076: R_Thumb00
+    400078: R_Thumb01
+    400080: R_Thumb02_END
+    400082: Tail00
+    400084: Tail01
+    400086: Tail02
+    400088: Tail03
+    400090: Tail04
+    400092: Tail05
+    400094: Tail06
+    400096: Tail07_END
+    2100000: SmallGhostDetails
+    2100002: SmallGhostCeramics
+    2100004: SmallGhostBody
+    4300000: pCube84
+    7400000: Idle
+    7400002: Attack
+    7400004: Animations
+    7400006: Damage
+    7400008: Death
+    7400010: Respawn
+    9500000: //RootNode
+    13700000: pCube84
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 64
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Animations
+      takeName: Take 001
+      firstFrame: 65
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Damage
+      takeName: Take 001
+      firstFrame: 120
+      lastFrame: 159
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 160
+      lastFrame: 199
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Respawn
+      takeName: Take 001
+      firstFrame: 200
+      lastFrame: 239
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556055b49736a09409b8db534e14a099, type: 3}
+  m_Name: Stunned
+  m_EditorClassIdentifier: 
+  m_iconText: <sprite=3>
+  m_followUpText: STUNNED
+  m_textMaterial: {fileID: 2100000, guid: 74878a29d0fd3cd4cb706bf077fe7160, type: 2}

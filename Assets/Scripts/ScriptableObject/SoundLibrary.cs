@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Audio/SoundLibrary")]
 public class SoundLibrary : ScriptableObject {
 
-
-    public float m_pitchOffset = 0.1f;
+    [MinMaxRange(0, 3)]
+    public RangedFloat m_pitch;
     public AudioClip[] m_audioClips;
 
     public void PlaySound(AudioSource _source)
@@ -17,7 +17,7 @@ public class SoundLibrary : ScriptableObject {
             return;
         }
         
-        _source.pitch = Random.Range(1 - m_pitchOffset, 1 + m_pitchOffset);
+        _source.pitch = Random.Range(m_pitch.minValue, m_pitch.maxValue);
 
         int index = Random.Range(0, m_audioClips.Length);
         _source.PlayOneShot(m_audioClips[index]);

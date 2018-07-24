@@ -26,6 +26,8 @@ public class GameMaster : MonoBehaviour {
 
     static GameMaster instance;
 
+    public bool m_playersTurn;
+
     public static GameMaster Instance()
     {
         return instance;
@@ -60,21 +62,18 @@ public class GameMaster : MonoBehaviour {
     {
         // TEST: Just a button to start the game
         if (Input.GetKeyDown(KeyCode.P))
-            GhostStartTurn();
+            StartGame();
 
         // TEST: Make all player ghosts move
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.Space))
             RunPlayersTurn();
-
-        if (Input.GetKeyDown(KeyCode.I))
-            PunkStartTurn();
     }
 
 
     void StartGame()
     {
         // TEMP: start game with players turn first
-        StartPlayersTurn();
+        PunkStartTurn();
     }
 
     #region END_GAME_FUNCTIONS
@@ -139,6 +138,8 @@ public class GameMaster : MonoBehaviour {
                 while (!gh.m_respawnAnimationDone)
                     yield return null;
             }
+
+            yield return new WaitForSeconds(0.6f); // Small delay after respawn to gauge dafuq happened
         }
 
         // After spawn animation, time to start players turn
@@ -149,6 +150,7 @@ public class GameMaster : MonoBehaviour {
 
     void StartPlayersTurn()
     {
+        m_playersTurn = true;
         // Start game by first selecting first ghost in list
         m_KeyBoardInput.UpdateSelectedGhost(m_startGhostArray[0]);
         m_ghostList[0].OnSelected();
@@ -164,13 +166,43 @@ public class GameMaster : MonoBehaviour {
 
     void RunPlayersTurn()
     {
+        // Stop allowing player to select stuff
+        m_playersTurn = false;
+        m_currentlySelectedGhost.OnDeselected();
+        MousePicker.Instance().StopPicking();
+        StartCoroutine(GhostEndTurnAnimation());
+    }
+
+    IEnumerator GhostEndTurnAnimation()
+    {
+        CameraControl.Instance.SetOverviewMode();
+        yield return new WaitForSeconds(0.5f); // Wait a bit before playing animation
+
         foreach (GhostController gc in m_ghostList)
         {
             gc.OnEndOfTurn();
         }
 
-        // Stop allowing player to select stuff
-        MousePicker.Instance().StopPicking();
+        // Wait for all ghosts to finish action, then start punks turn
+        while (true)
+        {
+            bool ghostsStillMoving = false;
+            foreach (GhostController gc in m_ghostList)
+            {
+                if (gc.m_performing)
+                {
+                    ghostsStillMoving = true;
+                    break;
+                }
+            }
+
+            if (!ghostsStillMoving)
+                break;
+            else
+                yield return null;
+        }
+
+        PunkStartTurn();
     }
 
     #endregion
@@ -189,15 +221,42 @@ public class GameMaster : MonoBehaviour {
             Camera.main.GetComponent<CameraControl>().SetFollowMode(pc.transform);
             pc.DoTurn();
 
-            while(pc.m_finishedMoving == false)
+            while (pc.m_finishedMoving == false)
             {
                 yield return null;
             }
         }
+        GhostStartTurn();
         yield return null;
     }
 
     #endregion
+
+    #region ON_ENTITY_DEATH
+
+    public void RemoveGhostHole(GhostHole _holeWhichDied)
+    {
+        m_ghostHoleList.Remove(_holeWhichDied);
+    }
+
+    public void RemovePunk(PunkController _punkController)
+    {
+        m_punkList.Remove(_punkController);
+    }
+
+    #endregion
+
+    public bool PunkHitOverwatch(PunkController _pc)
+    {
+        bool overwatchHit = false;
+        foreach (GhostController gc in m_ghostList)
+        {
+            if (gc.IsOverwatchingPosition(_pc))
+                overwatchHit = true;
+        }
+
+        return overwatchHit;
+    }
 
     // Tells all the relevant systems that a new ghost has been selected
     public void UpdateSelectedGhost(GameObject newGhost)

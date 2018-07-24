@@ -17,8 +17,7 @@ public enum PunkStates
 {
     IDLE,
     MOVING,
-    HUNTING,
-    RUNNING,
+    ATTACK,
     DEAD
 }
 
@@ -33,7 +32,7 @@ public abstract class EntityBase : MonoBehaviour {
 
     public abstract void OnDeath();
     public abstract void OnSpawn();
-    public abstract void OnEntityHit(int _damage);
+    public abstract void OnEntityHit(int _damage, Vector3 _positionOfHitter);
     public abstract void OnSelected();
     public abstract void ChooseAction();
 

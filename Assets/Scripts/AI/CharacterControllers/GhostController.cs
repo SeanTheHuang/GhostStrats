@@ -14,25 +14,29 @@ public class GhostController : EntityBase {
     CharacterStates m_ghostState, m_oldGhostState;
     GhostAbilityBehaviour m_abilities;
     public GhostHole m_ghostSpawner;
+    private GhostUi m_ghostUI;
+    private Animator m_ghostAnimator;
 
     // Current stats at start of turn
     Vector3 m_positionAtStartOfTurn;
     public int m_numMovesLeft;
     public bool m_abilityUsed;
-
+    
+    public bool m_performing
+    { get; private set; }
+    
     public bool GhostIsAlive
     {
         get; private set;
     }
 
-    bool m_OutofSight;
+    public bool m_OutofSight;
 
     // Path finding
     Vector3 m_spawnLocation;
     Vector3 m_currentStopPoint;
     List<Vector3> m_pathToFollow;
     bool m_pathFound;
-    bool m_performing;
 
     // TEST: stuff to visialize path
     public Transform m_confirmedPathPrefab;
@@ -53,12 +57,14 @@ public class GhostController : EntityBase {
 
         m_ghostState = m_oldGhostState = CharacterStates.IDLE;
         m_abilities = GetComponent<GhostAbilityBehaviour>();
+        m_ghostUI = GetComponent<GhostUi>();
         m_pathToFollow = new List<Vector3>();
         m_performing = false;
         m_previousNode = null;
         m_spawnLocation = transform.position;
         m_currentHealth = m_maxHealth;
-        m_OutofSight = true;
+        m_OutofSight = false;
+        m_ghostAnimator = transform.Find("Model").GetComponent<Animator>();
     }
 
     #region EVENT_FUNCTIONS
@@ -121,24 +127,57 @@ public class GhostController : EntityBase {
     public void HideGhost()
     {
         MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        SkinnedMeshRenderer[] sm_renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         GhostIsAlive = false;
 
         foreach (MeshRenderer rend in renderers)
+            rend.enabled = false;
+
+        foreach (SkinnedMeshRenderer rend in sm_renderers)
             rend.enabled = false;
     }
 
     public void ShowGhost()
     {
         MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        SkinnedMeshRenderer[] sm_renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         GhostIsAlive = true;
 
         foreach (MeshRenderer rend in renderers)
             rend.enabled = true;
+
+        foreach (SkinnedMeshRenderer rend in sm_renderers)
+            rend.enabled = true;
     }
 
-    public override void OnEntityHit(int _damage)
+    public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
     {
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
+
+        m_currentHealth = Mathf.Clamp(m_currentHealth - _damage, 0, 1000);
+
+        Vector3 dir = _positionOfHitter - transform.position;
+        dir.y = 0;
+        transform.rotation = Quaternion.LookRotation(dir);
+        m_abilities.OnHit();
+
+        if (m_currentHealth < 1)
+        {
+            if (m_ghostAnimator != null)
+                m_ghostAnimator.SetTrigger("Death");
+
+            if (m_ghostSpawner)
+                m_ghostSpawner.OnGhostDeath();
+
+            GhostIsAlive = false;
+        }
+        else
+        {
+            if (m_ghostAnimator != null)
+                m_ghostAnimator.SetTrigger("Damaged");
+        }
+
+        m_ghostUI.updateHealthbar(m_currentHealth);
     }
 
     public void OnConfirmTargetPosition()
@@ -162,11 +201,7 @@ public class GhostController : EntityBase {
         // Force a new path to be found
         m_previousNode = null;
 
-        // Update the UI
-        if (m_numMovesLeft == 0)
-            m_abilities.m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(true);
-        else
-            m_abilities.m_UIAbilityBar.GetComponent<AbilityBarController>().MoveUsed(false);
+        m_ghostUI.MoveUsed(m_numMovesLeft);
     }
 
     public void OnTargetLocation(Vector3 _position)
@@ -227,6 +262,8 @@ public class GhostController : EntityBase {
 
     public override void OnSelected()
     {
+        CameraControl.Instance.SetFreeMode(transform.position);
+
         // This Ghost's turn to move!, get where the player wants to move
         m_ghostState = CharacterStates.CHOOSING_WHERE_TO_MOVE;
         MousePicker.Instance().StartPicking(transform.position, this);
@@ -241,7 +278,7 @@ public class GhostController : EntityBase {
         m_abilities.OnDeselect();
 
         // Update the UI
-        m_abilities.m_UIPortrait.GetComponent<GhostPortraitController>().OnDeselected();
+        m_ghostUI.OnDeselected();
     }
 
     public void OnStartOfTurn()
@@ -272,6 +309,19 @@ public class GhostController : EntityBase {
     }
 
     #endregion
+
+    public bool IsOverwatchingPosition(PunkController _punk)
+    {
+        if (m_abilities.IsOverwatchingPosition(_punk))
+        {
+            if (m_ghostAnimator)
+                m_ghostAnimator.SetTrigger("Attack");
+
+            return true;
+        }
+
+        return false;
+    }
 
     public void ResetChoosingPathNodes()
     {
@@ -338,8 +388,6 @@ public class GhostController : EntityBase {
         // TODO: Reset chosen skills
     }
 
-    
-
     public override void ChooseAction()
     {
     }
@@ -348,6 +396,8 @@ public class GhostController : EntityBase {
     {
         if (m_performing) // Just keep doing nothing while performing
             yield return null;
+
+        m_performing = true;
 
         // Clean up visual stuff
         foreach (Transform t in m_confirmedPathBallsList)
@@ -366,7 +416,6 @@ public class GhostController : EntityBase {
             transform.rotation = Quaternion.LookRotation(dir);
         }
 
-        m_performing = true;
         // Start by moving to target location
         m_ghostState = CharacterStates.MOVING;
         for (int i = 0; i < m_pathToFollow.Count; i++) {

@@ -14,6 +14,7 @@ public class PunkHiveMind : MonoBehaviour
     // Use this for initialization
     public List<Transform> m_HouseLocations;
     public List<Transform> m_PunkLocations;
+    public int m_TrapDamage = 4;
 
     [HideInInspector]
     public List<Transform> m_KnownGhostHoles;
@@ -49,5 +50,10 @@ public class PunkHiveMind : MonoBehaviour
             m_CoolDown = Random.Range(2, 4)
         };
         m_Noises.Add(n);
+    }
+
+    public void RemovePunk(Transform tr)
+    {
+        m_PunkLocations.Remove(tr);
     }
 }

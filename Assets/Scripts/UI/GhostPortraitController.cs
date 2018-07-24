@@ -20,8 +20,12 @@ public class GhostPortraitController : MonoBehaviour {
     public GameObject m_specialAbilityIcon;
     private LargeHealthBarController largeHealthBarController;
 
-    private RectTransform healthBarRect;
-    private Image m_HealthBarImage;
+    private Image m_healthBarImage;
+
+    private Image m_specialAbilityImage;
+    private Image m_largeHealthBarImage;
+    private Image m_highlightImage;
+    private Image m_portraitImage;
 
     private float m_healthBarMaxWidth; // The width of the health bar when at 100%
     private float m_healthBarCurrentWidth; // The current width of the healthbar
@@ -37,6 +41,8 @@ public class GhostPortraitController : MonoBehaviour {
 
     public Sprite m_SpecialAbilityIconSprite; // The icon for the ghosts special ability
 
+    private GameMaster m_gameMaster;
+
     // Use this for initialization
     void Start() {
         // Set as in active if the ghost does not exist
@@ -51,22 +57,28 @@ public class GhostPortraitController : MonoBehaviour {
         m_currentHealthBar = m_maxHealth;
 
         m_healthBarMaxWidth = m_healthBar.GetComponent<RectTransform>().rect.width;
-        m_HealthBarImage = m_healthBar.GetComponent<Image>();
-        healthBarRect = m_healthBar.GetComponent<RectTransform>();
+        m_healthBarImage = m_healthBar.GetComponent<Image>();
         m_healthToBarWidth = m_healthBar.GetComponent<RectTransform>().rect.width / m_maxHealth;
 
         largeHealthBarController = m_largeHealthBar.GetComponent<LargeHealthBarController>();
         largeHealthBarController.Initalize(m_maxHealth, m_highHealth, m_midHealth, m_lowHealth);
 
+        m_portraitImage = m_portrait.GetComponent<Image>();
+        m_highlightImage = m_highlight.GetComponent<Image>();
+        m_specialAbilityImage = m_specialAbilityIcon.GetComponent<Image>();
+        m_largeHealthBarImage = m_largeHealthBar.GetComponent<Image>();
+
         m_originalPosition = transform.position;
+
+        m_gameMaster = GameMaster.Instance();
     }
 
     // Update the ghosts health bar
-    public void UpdateHealthBar()
+    public void UpdateHealthBar(int newHealth)
     {
-        //m_currentHealth = m_ghost.GetComponent<GhostController>().GetCurrentHealth();
+        m_currentHealth = newHealth;
         StartCoroutine(LerpHealthBar(1.5f));
-        StartCoroutine(LerpHealthBarColor(1.5f));
+        //StartCoroutine(LerpHealthBarColor(1.5f));
         StartCoroutine(ShakeUI(1.5f));
 
         largeHealthBarController.UpdateHealthBar(m_currentHealth);
@@ -74,33 +86,33 @@ public class GhostPortraitController : MonoBehaviour {
 
     public void OnDeselected()
     {
-        m_highlight.GetComponent<Image>().enabled = false;
-        m_largeHealthBar.GetComponent<Image>().enabled = false;
+        m_highlightImage.enabled = false;
+        m_largeHealthBarImage.enabled = false;
     }
 
     public void OnSelected()
     {
-        m_highlight.GetComponent<Image>().enabled = true;
-        m_largeHealthBar.GetComponent<Image>().enabled = true;
-        m_specialAbilityIcon.GetComponent<Image>().sprite = m_SpecialAbilityIconSprite;
+        m_highlightImage.enabled = true;
+        m_largeHealthBarImage.enabled = true;
+        m_specialAbilityImage.sprite = m_SpecialAbilityIconSprite;
     }
 
     // The Ghost hits 0 hp but has not died
     public void OnGhostSoftDeath()
     {
-        m_portrait.GetComponent<Image>().sprite = m_respawnGhostPortrait;
+        m_portraitImage.sprite = m_respawnGhostPortrait;
     }
 
     // The ghosts crystal has been destroyed, ghost fully died
     public void OnGhostHardDeath()
     {
-        m_portrait.GetComponent<Image>().sprite = m_deadGhostPortrait;
+        m_portraitImage.sprite = m_deadGhostPortrait;
     }
 
     // The ghost has respawned again
     public void OnGhostRespawn()
     {
-        m_portrait.GetComponent<Image>().sprite = m_defaultGhostPortrait;
+        m_portraitImage.sprite = m_defaultGhostPortrait;
     }
 
     private IEnumerator LerpHealthBarColor(float time)
@@ -112,7 +124,7 @@ public class GhostPortraitController : MonoBehaviour {
             yield return null;
 
         Color newBarColor;
-        Color oldBarColor = m_HealthBarImage.color;
+        Color oldBarColor = m_healthBarImage.color;
         if (m_currentHealth > m_maxHealth * 0.5f)
             newBarColor = m_highHealth;
         else if (m_currentHealth > m_maxHealth * 0.25f)
@@ -125,7 +137,7 @@ public class GhostPortraitController : MonoBehaviour {
         while (elapsedTime < time)
         {
             Color lerpColor = Color.Lerp(oldBarColor, newBarColor, (elapsedTime / time));
-            m_HealthBarImage.color = lerpColor;
+            m_healthBarImage.color = lerpColor;
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
@@ -137,16 +149,18 @@ public class GhostPortraitController : MonoBehaviour {
 
         while (elapsedTime < time)
         {
-            float width = Mathf.Lerp(m_currentHealthBar, m_currentHealth, (elapsedTime / time)) * m_healthToBarWidth;
-            m_healthBar.transform.position = new Vector2(m_healthBar.transform.position.x - ((healthBarRect.rect.width - width) / 2), m_healthBar.transform.position.y);
-            healthBarRect.sizeDelta = new Vector2(width, healthBarRect.rect.height);
+            float width = Mathf.Lerp(m_currentHealthBar, m_currentHealth, (elapsedTime / time)) / m_maxHealth;
+            m_healthBarImage.fillAmount = width;
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+
+        m_currentHealthBar = m_currentHealth;
     }
 
     private IEnumerator ShakeUI(float time)
     {
+        m_originalPosition = transform.position;
         float elapsedTime = 0;
 
         while (elapsedTime < time)
@@ -160,5 +174,11 @@ public class GhostPortraitController : MonoBehaviour {
         }
 
         transform.position = m_originalPosition;
+    }
+
+    public void SelectGhostWithMouseClick()
+    {
+        if(m_gameMaster.m_playersTurn)
+            m_gameMaster.UpdateSelectedGhost(m_ghost);
     }
 }

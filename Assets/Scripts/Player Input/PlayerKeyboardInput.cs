@@ -64,7 +64,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
                 m_gameMaster.Pause();
         }
         
-        if (!m_selectedGhost || m_gamePaused) // Don't update if no ghost is selected or the game is paused
+        if (!m_gameMaster.m_playersTurn || m_gamePaused) // Don't update if no ghost is selected or the game is paused
             return;
 
         // Keyboard input to select ghosts, only select ghost if they exist

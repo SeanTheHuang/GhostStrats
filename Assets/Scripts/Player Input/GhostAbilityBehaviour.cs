@@ -40,18 +40,13 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public GhostType m_ghostType
     { get; protected set; }
 
-    GhostActionState m_actionState;
+    protected GhostActionState m_actionState;
     protected AimingDirection m_aimingDirection; // The direction the ghost is currently facing
     public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     //public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     bool m_aimingAbility; // If the player is aiming their ability
 
-    [Header("UI Dependencies")]
-    public GameObject m_UIPortrait;
-    public GameObject m_UIAbilityBar;
-    AbilityBarController m_UIAbilityBarCntrl;
-    public Sprite m_specialAbilityIconImage; // The Icon image for the ghosts special ability
-    GhostPortraitController ghostPortraitController;
+    private GhostUi m_ghostUI;
 
     // The number of turns the ghost must wait before they can use the ability again.
     [Header("Attack Cooldowns")]
@@ -88,7 +83,6 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_aimingAbility = false;
 
         m_aimingDirection = AimingDirection.North;
-        m_UIAbilityBarCntrl = m_UIAbilityBar.GetComponent<AbilityBarController>();
     }
 
     private void Start()
@@ -102,8 +96,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         }
         SetGhostType();
 
-        ghostPortraitController = m_UIPortrait.GetComponent<GhostPortraitController>();
-        ghostPortraitController.m_SpecialAbilityIconSprite = m_specialAbilityIconImage;
+        m_ghostUI = GetComponent<GhostUi>();
     }
 
     protected virtual void SetGhostType()
@@ -142,21 +135,20 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_abilityUsed = true;
         m_ghostController.m_abilityUsed = true;
         m_gameMaster.CheckAllPlayerActionsUsed();
-        m_UIAbilityBarCntrl.AbilityUsed(m_actionState);
+        m_ghostUI.AbilityUsed(m_actionState);
     }
 
     void AbilityUnused()
     {
         m_ghostController.m_abilityUsed = false;
         m_gameMaster.ResetEndTurnPrompt();
-        m_UIAbilityBarCntrl.ResetTurn();
+        m_ghostUI.AbilityUnused();
     }
 
     public void OnSelected()
     {
         // Reset aiming direction
         m_aimingDirection = AimingDirection.North;
-        ghostPortraitController.OnSelected();
 
         // Reset Ability Bar
         bool movedUsed = true;
@@ -167,7 +159,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         if (m_ghostController.m_maxMoves > m_ghostController.m_numMovesLeft)
             someMoveUsed = true;
 
-        m_UIAbilityBarCntrl.OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, movedUsed, someMoveUsed, m_actionState);
+        m_ghostUI.OnSelected(m_attackCooldownTimer, m_hideCooldownTimer, m_overwatchCooldownTimer, m_specialCooldownTimer, movedUsed, someMoveUsed, m_actionState);
     }
 
     // Reset action variables if one has not been chosen yet
@@ -240,6 +232,21 @@ public class GhostAbilityBehaviour : MonoBehaviour
         AbilityUsed();
     }
 
+    public bool IsOverwatchingPosition(PunkController _punk)
+    {
+        if (m_actionState != GhostActionState.OVERSPOOK)
+            return false;
+
+        float gridSize = PathRequestManager.Instance().GridSize();
+        if ((_punk.transform.position - m_rotatedAffectedSquares[0]).sqrMagnitude < gridSize * gridSize)
+        {
+            // Attack punk and return true
+            _punk.OnEntityHit(m_baseAttackDamage, transform.position);
+            return true;
+        }
+
+        return false;
+    }
     void UpdateAtackVisuals()
     {
         ClearAttackVisuals();
@@ -288,9 +295,29 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public virtual void StartOfTurn()
     {
+        if (m_actionState == GhostActionState.HIDE)
+            m_ghostController.m_OutofSight = false;
+
         AbilityUnused();
         m_aimingAbility = false;
         m_actionState = GhostActionState.NONE;
+
+        LowerCooldown();
+    }
+
+    void LowerCooldown()
+    {
+        m_attackCooldownTimer = Mathf.Clamp(m_attackCooldownTimer - 1, 0, 1000);
+        m_hideCooldownTimer = Mathf.Clamp(m_hideCooldownTimer - 1, 0, 1000);
+        m_overwatchCooldownTimer = Mathf.Clamp(m_overwatchCooldownTimer - 1, 0, 1000);
+        m_specialCooldownTimer = Mathf.Clamp(m_specialCooldownTimer - 1, 0, 1000);
+    }
+
+    public void OnHit()
+    {
+        if (m_actionState == GhostActionState.OVERSPOOK)
+            // Stop overwatching
+            m_actionState = GhostActionState.NONE;
     }
 
     public void EndOfTurn()
@@ -346,11 +373,12 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         List<PunkController> affectedPunks = GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares);
         foreach (PunkController pc in affectedPunks)
-            pc.OnEntityHit(m_baseAttackDamage);
+            pc.OnEntityHit(m_baseAttackDamage, transform.position);
     }
 
     void PerformHide()
     {
+        m_ghostController.m_OutofSight = true;
         m_hideCooldownTimer = m_hideCooldown; // Update the timer
     }
 
