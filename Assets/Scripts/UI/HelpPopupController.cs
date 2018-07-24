@@ -14,7 +14,7 @@ public class HelpPopupController : MonoBehaviour
 
     public float m_popupDelayTime;
 
-    private bool m_mouseEntered;
+    public bool m_mouseEntered;
     private float m_mouseEnterTime;
     private bool m_popUpEnabled;
     private int m_abilityType; // 0 = move, 1 = Undo, 2 = Attack, 3 = Hide, 4 = Overwatch, 5 = Special
@@ -61,9 +61,8 @@ public class HelpPopupController : MonoBehaviour
 
 
     // Update is called once per frame
-    public void MouseEnter(int abilityType)
+    public void p(int abilityType)
     {
-        Debug.Log("GOT HERE");
         if (!m_mouseEntered)
         {
             m_mouseEnterTime = Time.time;
