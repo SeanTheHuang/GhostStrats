@@ -21,7 +21,10 @@ public class GhostController : EntityBase {
     Vector3 m_positionAtStartOfTurn;
     public int m_numMovesLeft;
     public bool m_abilityUsed;
-
+    
+    public bool m_performing
+    { get; private set; }
+    
     public bool GhostIsAlive
     {
         get; private set;
@@ -34,7 +37,6 @@ public class GhostController : EntityBase {
     Vector3 m_currentStopPoint;
     List<Vector3> m_pathToFollow;
     bool m_pathFound;
-    bool m_performing;
 
     // TEST: stuff to visialize path
     public Transform m_confirmedPathPrefab;
@@ -370,6 +372,8 @@ public class GhostController : EntityBase {
         if (m_performing) // Just keep doing nothing while performing
             yield return null;
 
+        m_performing = true;
+
         // Clean up visual stuff
         foreach (Transform t in m_confirmedPathBallsList)
             Destroy(t.gameObject);
@@ -387,7 +391,6 @@ public class GhostController : EntityBase {
             transform.rotation = Quaternion.LookRotation(dir);
         }
 
-        m_performing = true;
         // Start by moving to target location
         m_ghostState = CharacterStates.MOVING;
         for (int i = 0; i < m_pathToFollow.Count; i++) {
