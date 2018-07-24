@@ -58,6 +58,11 @@ public class PunkController : EntityBase
                     Attack();
                     break;
                 }
+            case PunkStates.DEAD:
+                {
+                    //do nothing
+                    break;
+                }
             default:
                 Debug.Log("ERROR IN  PUNK STATES");
                 break;
@@ -75,6 +80,12 @@ public class PunkController : EntityBase
     public override void OnEntityHit(int _damage)
     {
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
+        if(m_currentHealth == 0 && m_state != PunkStates.DEAD)
+        {
+            m_hiveMind.RemovePunk(transform);
+            m_state = PunkStates.DEAD;
+            Destroy(gameObject);
+        }
     }
     public override void OnSelected()
     {
@@ -224,17 +235,31 @@ public class PunkController : EntityBase
             m_state = PunkStates.ATTACK;
             return;
         }
-        if (m_pathIndex  + 1 < m_realPath.Count)
+        else if (m_realPath.Count > 0 && m_pathIndex == 0) 
         {
-            Vector3 dir = m_realPath[m_pathIndex + 1] - transform.position;
+            Vector3 dir = m_realPath[0] - transform.position;
             dir.y = 0;
             transform.rotation = Quaternion.LookRotation(dir);
         }
 
+
         Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[m_pathIndex], m_moveSpeed * Time.deltaTime);
+
         if (transform.position == m_realPath[m_pathIndex])
         {
-            //Debug.Break();
+            if (GameMaster.Instance().PunkHitOverwatch(this))
+            {
+                EndTurn();
+                return;
+            }
+
+            if (m_pathIndex + 1 < m_realPath.Count)
+            {
+                Vector3 dir = m_realPath[m_pathIndex + 1] - transform.position;
+                dir.y = 0;
+                transform.rotation = Quaternion.LookRotation(dir);
+            }
+
             m_pathIndex++;
             if(m_pathIndex == m_realPath.Count)
             {
@@ -288,10 +313,15 @@ public class PunkController : EntityBase
                 //Debug.Log("attacked entity");
             }
         }
+        EndTurn();
+    }
+
+
+    void EndTurn()
+    {
         m_state = PunkStates.IDLE;
         m_finishedMoving = true;
     }
-
    /* IEnumerator FollowPath()
     {
         if(m_realPath.Count > 0)
@@ -362,7 +392,8 @@ public class PunkController : EntityBase
             {
                 if (targets[i].GetComponent<GhostController>())
                 {
-                    if (targets[i].GetComponent<GhostController>().GhostIsAlive == false)
+                    if (targets[i].GetComponent<GhostController>().GhostIsAlive == false
+                        || targets[i].GetComponent<GhostController>().m_OutofSight == true)//check for out of sight
                     {
                         continue;
                     }
@@ -379,7 +410,8 @@ public class PunkController : EntityBase
         {
             if (targets[i].GetComponent<GhostController>())
             {
-                if (targets[i].GetComponent<GhostController>().GhostIsAlive == false)
+                if (targets[i].GetComponent<GhostController>().GhostIsAlive == false
+                    || targets[i].GetComponent<GhostController>().m_OutofSight == true)
                 {
                     continue;
                 }
@@ -395,16 +427,14 @@ public class PunkController : EntityBase
             }
         }
         //for all targets set them to visble so all punks can attack
-        foreach (Collider t in m_Targets)
+       /* foreach (Collider t in m_Targets)
         {
             //Debug.Log("target seen");
             if (t.transform.GetComponent<GhostController>())
             {
                 t.transform.GetComponent<GhostController>().SeenbyPunk();
             }
-
-            
-        }
+        }*/
 
     }
 
@@ -440,8 +470,15 @@ public class PunkController : EntityBase
                 }
                 else if(t.GetComponent<GhostHole>())
                 {//spawners
-                    index = i;
-                    break;
+                    if(t.GetComponent<GhostHole>().GetCurrentHealth() < lowestHealth)
+                    {
+                        lowestHealth = t.GetComponent<GhostController>().GetCurrentHealth();
+                        index = i;
+                    }
+                }
+                else
+                {
+                    Debug.Log("BUG: PUNK Targeting not ghost or hole");
                 }
                 
             }
@@ -451,16 +488,6 @@ public class PunkController : EntityBase
                 m_prey = m_Targets[index].transform;
                 //Debug.Log("foundtarget");
             }
-            else
-            {
-                //none found but have been seen //move as close as possible
-            }
-
-            //ghosts
-            //check if they are in range, then check lowest health, then go for closest
-
-
-            //then targets
         }
     }
 
