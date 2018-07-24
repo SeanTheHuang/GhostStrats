@@ -360,9 +360,12 @@ public class PunkController : EntityBase
         {
             for (int i = 0; i < targets.Length; i++) 
             {
-                if(targets[i].GetComponent<GhostController>().GhostIsAlive == false)
+                if (targets[i].GetComponent<GhostController>())
                 {
-                    continue;
+                    if (targets[i].GetComponent<GhostController>().GhostIsAlive == false)
+                    {
+                        continue;
+                    }
                 }
                 if (SightBehindWall(targets[i].transform) == false)
                 {
@@ -374,9 +377,12 @@ public class PunkController : EntityBase
         targets = Physics.OverlapSphere(transform.position, forwardSightRadius, m_targetmask);
         for (int i = 0; i < targets.Length; i++)
         {
-            if (targets[i].GetComponent<GhostController>().GhostIsAlive == false)
+            if (targets[i].GetComponent<GhostController>())
             {
-                continue;
+                if (targets[i].GetComponent<GhostController>().GhostIsAlive == false)
+                {
+                    continue;
+                }
             }
             Vector2 v1 = new Vector2(transform.forward.x, transform.forward.z);
             Vector2 v2 = new Vector2(targets[i].transform.position.x, targets[i].transform.position.z);
