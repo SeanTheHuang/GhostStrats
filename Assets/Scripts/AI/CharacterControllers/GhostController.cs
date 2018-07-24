@@ -14,7 +14,8 @@ public class GhostController : EntityBase {
     CharacterStates m_ghostState, m_oldGhostState;
     GhostAbilityBehaviour m_abilities;
     public GhostHole m_ghostSpawner;
-    private GhostUi m_GhostUI;
+    private GhostUi m_ghostUI;
+    private Animator m_ghostAnimator;
 
     // Current stats at start of turn
     Vector3 m_positionAtStartOfTurn;
@@ -54,13 +55,14 @@ public class GhostController : EntityBase {
 
         m_ghostState = m_oldGhostState = CharacterStates.IDLE;
         m_abilities = GetComponent<GhostAbilityBehaviour>();
-        m_GhostUI = GetComponent<GhostUi>();
+        m_ghostUI = GetComponent<GhostUi>();
         m_pathToFollow = new List<Vector3>();
         m_performing = false;
         m_previousNode = null;
         m_spawnLocation = transform.position;
         m_currentHealth = m_maxHealth;
         m_OutofSight = true;
+        m_ghostAnimator = transform.Find("Model").GetComponent<Animator>();
     }
 
     #region EVENT_FUNCTIONS
@@ -141,6 +143,25 @@ public class GhostController : EntityBase {
     public override void OnEntityHit(int _damage)
     {
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
+
+        m_currentHealth -= _damage;
+
+        if (m_currentHealth < 0)
+            m_currentHealth = 0;
+
+        if (m_currentHealth == 0)
+        {
+            if (m_ghostAnimator != null)
+                m_ghostAnimator.SetTrigger("Death");
+            GhostIsAlive = false;
+        }
+        else
+        {
+            if (m_ghostAnimator != null)
+                m_ghostAnimator.SetTrigger("Damaged");
+        }
+
+        m_ghostUI.updateHealthbar(m_currentHealth);
     }
 
     public void OnConfirmTargetPosition()
@@ -164,7 +185,7 @@ public class GhostController : EntityBase {
         // Force a new path to be found
         m_previousNode = null;
 
-        m_GhostUI.MoveUsed(m_numMovesLeft);
+        m_ghostUI.MoveUsed(m_numMovesLeft);
     }
 
     public void OnTargetLocation(Vector3 _position)
@@ -225,7 +246,7 @@ public class GhostController : EntityBase {
 
     public override void OnSelected()
     {
-        CameraControl.Instance.SetFreeMode(transform.position);
+        //CameraControl.Instance.SetFreeMode(transform.position);
 
         // This Ghost's turn to move!, get where the player wants to move
         m_ghostState = CharacterStates.CHOOSING_WHERE_TO_MOVE;
@@ -241,7 +262,7 @@ public class GhostController : EntityBase {
         m_abilities.OnDeselect();
 
         // Update the UI
-        m_GhostUI.OnDeselected();
+        m_ghostUI.OnDeselected();
     }
 
     public void OnStartOfTurn()
