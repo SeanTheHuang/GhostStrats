@@ -41,6 +41,8 @@ public class GhostPortraitController : MonoBehaviour {
 
     public Sprite m_SpecialAbilityIconSprite; // The icon for the ghosts special ability
 
+    private GameMaster m_gameMaster;
+
     // Use this for initialization
     void Start() {
         // Set as in active if the ghost does not exist
@@ -67,6 +69,8 @@ public class GhostPortraitController : MonoBehaviour {
         m_largeHealthBarImage = m_largeHealthBar.GetComponent<Image>();
 
         m_originalPosition = transform.position;
+
+        m_gameMaster = GameMaster.Instance();
     }
 
     // Update the ghosts health bar
@@ -170,5 +174,11 @@ public class GhostPortraitController : MonoBehaviour {
         }
 
         transform.position = m_originalPosition;
+    }
+
+    public void SelectGhostWithMouseClick()
+    {
+        if(m_gameMaster.m_playersTurn)
+            m_gameMaster.UpdateSelectedGhost(m_ghost);
     }
 }
