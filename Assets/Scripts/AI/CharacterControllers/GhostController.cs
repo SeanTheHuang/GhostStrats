@@ -127,18 +127,26 @@ public class GhostController : EntityBase {
     public void HideGhost()
     {
         MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        SkinnedMeshRenderer[] sm_renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         GhostIsAlive = false;
 
         foreach (MeshRenderer rend in renderers)
+            rend.enabled = false;
+
+        foreach (SkinnedMeshRenderer rend in sm_renderers)
             rend.enabled = false;
     }
 
     public void ShowGhost()
     {
         MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        SkinnedMeshRenderer[] sm_renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         GhostIsAlive = true;
 
         foreach (MeshRenderer rend in renderers)
+            rend.enabled = true;
+
+        foreach (SkinnedMeshRenderer rend in sm_renderers)
             rend.enabled = true;
     }
 

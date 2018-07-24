@@ -27,7 +27,8 @@ public class CameraControl : MonoBehaviour
     public Vector2 m_upperLimits;
 
     [Header("Others")]
-    public float m_lerpValue = 50;
+    public float m_lerpValue = 8;
+    public float m_freeMoveLerpVal = 35;
     public float m_cameraPanSpeed = 3;
     public float mouseDistFromEdgeOfScreen = 20;
     public Vector3 m_cameraOffset;
@@ -103,7 +104,7 @@ public class CameraControl : MonoBehaviour
         if (m_lockCameraMovement)
         {
             Vector3 v3 = m_initialTargetPosition + m_cameraOffset;
-            transform.position = Vector3.Lerp(transform.position, v3, m_lerpValue * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, v3, m_freeMoveLerpVal * Time.deltaTime);
             return;
         }
 
