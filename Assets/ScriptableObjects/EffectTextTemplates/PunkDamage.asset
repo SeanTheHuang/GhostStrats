@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 556055b49736a09409b8db534e14a099, type: 3}
-  m_Name: GhostDamaged
+  m_Name: PunkDamage
   m_EditorClassIdentifier: 
-  m_text: <sprite=1>SAMPLE TEXT!!
-  m_baseColor: {r: 0.8867924, g: 0.32208964, b: 0.7511378, a: 1}
-  m_outlineColor: {r: 0.9150943, g: 0.7208526, b: 0.9049873, a: 1}
+  m_iconText: <sprite=1>
+  m_followUpText: DAMAGE
+  m_textMaterial: {fileID: 2100000, guid: 2b1f2795e75418946af0b79f67b6e590, type: 2}
