@@ -17,8 +17,7 @@ public enum PunkStates
 {
     IDLE,
     MOVING,
-    HUNTING,
-    RUNNING,
+    ATTACK,
     DEAD
 }
 
