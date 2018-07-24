@@ -168,6 +168,7 @@ public class GameMaster : MonoBehaviour {
     {
         // Stop allowing player to select stuff
         m_playersTurn = false;
+        m_currentlySelectedGhost.OnDeselected();
         MousePicker.Instance().StopPicking();
         StartCoroutine(GhostEndTurnAnimation());
     }
