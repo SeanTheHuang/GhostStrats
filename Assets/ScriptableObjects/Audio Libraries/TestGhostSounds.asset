@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: TestGhostSounds
   m_EditorClassIdentifier: 
   m_pitch:
-    minValue: 0.8506571
-    maxValue: 1.1612906
+    minValue: 0.9673887
+    maxValue: 1.4336643
   m_audioClips: []
