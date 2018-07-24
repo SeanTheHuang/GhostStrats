@@ -35,8 +35,8 @@ public class PunkController : EntityBase
     {
         m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
         m_realPath = new List<Vector3> { };
-       // m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0,m_hiveMind.m_HouseLocations.Count)].position;
-        m_roomToExplore = m_hiveMind.m_HouseLocations[0].position;
+        m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0,m_hiveMind.m_HouseLocations.Count)].position;
+        //m_roomToExplore = m_hiveMind.m_HouseLocations[0].position;
         m_state = PunkStates.IDLE;
 
     }
@@ -110,33 +110,6 @@ public class PunkController : EntityBase
     void ActionPhase()
     {
         ChooseLocation();
-
-        /*if (m_prey)
-        {
-            if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(m_prey.position.x, m_prey.position.z)) <= m_attackRange)
-            {
-                //Attack
-                //face them
-                
-                if(m_attackRange > 1)
-                {
-                    if(SightBehindWall(m_prey))
-                    {
-                        return;
-                    }
-                }
-                m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage);
-                Debug.Log("attacked entity");
-            }
-        }
-        else
-        {
-            if(m_maxMoves != m_movesPerformed)
-            {
-                Debug.Log("moves to go");
-               // ChooseLocation();
-            }
-        }*/
     }
 
     void OnEndOfTurn()
@@ -223,7 +196,7 @@ public class PunkController : EntityBase
                 }
             }
 
-            for(int i = m_realPath.Count -1; i > -1; i--)
+            for(int i = m_realPath.Count -1; i > -1; i--)//removes 
             {
                 for (int j = 0; j < m_hiveMind.m_PunkLocations.Count; j++) 
                 {
@@ -251,6 +224,13 @@ public class PunkController : EntityBase
             m_state = PunkStates.ATTACK;
             return;
         }
+        if (m_pathIndex  + 1 < m_realPath.Count)
+        {
+            Vector3 dir = m_realPath[m_pathIndex + 1] - transform.position;
+            dir.y = 0;
+            transform.rotation = Quaternion.LookRotation(dir);
+        }
+
         Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[m_pathIndex], m_moveSpeed * Time.deltaTime);
         if (transform.position == m_realPath[m_pathIndex])
         {
@@ -287,6 +267,10 @@ public class PunkController : EntityBase
     {
         if (m_prey)
         {
+            Vector3 dir = m_prey.position - transform.position;
+            dir.y = 0;
+            transform.rotation = Quaternion.LookRotation(dir);
+
             if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
                 new Vector2(m_prey.position.x, m_prey.position.z)) <= m_attackRange)
             {
@@ -308,7 +292,7 @@ public class PunkController : EntityBase
         m_finishedMoving = true;
     }
 
-    IEnumerator FollowPath()
+   /* IEnumerator FollowPath()
     {
         if(m_realPath.Count > 0)
         {//rotation
@@ -365,7 +349,7 @@ public class PunkController : EntityBase
 
         m_finishedMoving = true;
         yield return null;
-    }
+    }*/
 
 
     void Sight()
