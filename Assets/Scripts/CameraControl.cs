@@ -31,6 +31,7 @@ public class CameraControl : MonoBehaviour
     public float m_cameraPanSpeed = 3;
     public float mouseDistFromEdgeOfScreen = 20;
     public Vector3 m_cameraOffset;
+    public bool m_lockCameraMovement = false;
 
     Quaternion m_initialRotation;
 
@@ -84,8 +85,6 @@ public class CameraControl : MonoBehaviour
         // Move towards overview position and rotation
         transform.position = Vector3.Lerp(transform.position, m_overviewShotTransform.position, m_lerpValue * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, m_overviewShotTransform.rotation, m_lerpValue * Time.deltaTime);
-
-        ClampCameraPosition();
     }
 
     void FollowLogic()
@@ -97,15 +96,19 @@ public class CameraControl : MonoBehaviour
         Vector3 targetPos = m_targetTransform.position + m_cameraOffset;
         transform.position = Vector3.Lerp(transform.position, targetPos, m_lerpValue * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, m_initialRotation, m_lerpValue * Time.deltaTime);
-
-        ClampCameraPosition();
     }
 
     void FreeCameraLogic()
     {
+        if (m_lockCameraMovement)
+        {
+            Vector3 v3 = m_initialTargetPosition + m_cameraOffset;
+            transform.position = Vector3.Lerp(transform.position, v3, m_lerpValue * Time.deltaTime);
+            return;
+        }
+
         // Move towards current target position, update target position as mouse touches the screen edges
         UpdateTargetPosition();
-
         Vector3 targetPos = m_targetPosition + m_cameraOffset;
         transform.position = Vector3.Lerp(transform.position, targetPos, m_lerpValue * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, m_initialRotation, m_lerpValue * Time.deltaTime);

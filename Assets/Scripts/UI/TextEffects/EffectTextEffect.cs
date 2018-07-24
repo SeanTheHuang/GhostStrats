@@ -75,7 +75,7 @@ public class EffectTextEffect : MonoBehaviour {
 
             // Scale
             float newScale = Mathf.Clamp(transform.localScale.x - (m_shrinkRate * Time.deltaTime), 0, 1000);
-            transform.localScale = new Vector3(newScale, newScale, newScale);
+            transform.localScale = new Vector3(newScale, newScale, newScale);   
 
             m_TMPro.color = new Color(m_TMPro.color.r, m_TMPro.color.g, m_TMPro.color.b, m_TMPro.color.a - (Time.deltaTime / spinDuration));
             yield return null;

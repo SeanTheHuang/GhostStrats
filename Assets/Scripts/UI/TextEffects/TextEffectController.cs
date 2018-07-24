@@ -7,7 +7,8 @@ public enum TextEffectTypes
 {
     GHOST_DAMAGE,
     PUNK_DAMAGE,
-    STUNNED
+    STUNNED,
+    RESPAWN
 }
 
 [System.Serializable]
@@ -47,7 +48,7 @@ public class TextEffectController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            PlayEffectText(Vector3.zero, (TextEffectTypes)Random.Range(0, 3), Random.Range(0, 5));
+            PlayEffectText(Vector3.zero, (TextEffectTypes)Random.Range(0, 4), Random.Range(0, 5));
         }
     }
 
