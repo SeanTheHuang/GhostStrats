@@ -150,11 +150,15 @@ public class GhostController : EntityBase {
             rend.enabled = true;
     }
 
-    public override void OnEntityHit(int _damage)
+    public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
     {
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
 
         m_currentHealth = Mathf.Clamp(m_currentHealth - _damage, 0, 1000);
+
+        Vector3 dir = _positionOfHitter - transform.position;
+        dir.y = 0;
+        transform.rotation = Quaternion.LookRotation(dir);
 
         if (m_currentHealth < 1)
         {

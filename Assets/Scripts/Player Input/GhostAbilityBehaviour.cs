@@ -241,7 +241,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         if ((_punk.transform.position - m_rotatedAffectedSquares[0]).sqrMagnitude < gridSize * gridSize)
         {
             // Attack punk and return true
-            _punk.OnEntityHit(m_baseAttackDamage);
+            _punk.OnEntityHit(m_baseAttackDamage, transform.position);
             return true;
         }
 
@@ -366,7 +366,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         List<PunkController> affectedPunks = GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares);
         foreach (PunkController pc in affectedPunks)
-            pc.OnEntityHit(m_baseAttackDamage);
+            pc.OnEntityHit(m_baseAttackDamage, transform.position);
     }
 
     void PerformHide()

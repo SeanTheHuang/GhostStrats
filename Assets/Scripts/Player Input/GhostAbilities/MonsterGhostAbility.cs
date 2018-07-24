@@ -28,6 +28,6 @@ public class MonsterGhostAbility : GhostAbilityBehaviour {
         // Check if any punks on tiles, affected tiles and damage them
         List<PunkController> punkList = GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares);
         foreach (PunkController pc in punkList)
-            pc.OnEntityHit(m_monsterDamage);
+            pc.OnEntityHit(m_monsterDamage, transform.position);
     }
 }
