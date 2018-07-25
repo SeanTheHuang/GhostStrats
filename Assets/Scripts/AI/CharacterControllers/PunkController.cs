@@ -231,7 +231,8 @@ public class PunkController : EntityBase
         else
         {
             //im not sure
-            Debug.Log("Path not found : " + v3debug);
+            Debug.Log(name+ ": Path not found : " + v3debug);
+            Debug.Break();
 
         }
     }
@@ -537,8 +538,8 @@ public class PunkController : EntityBase
             }
         }
         Vector3 pos = m_roomToExplore;
-        pos.x += Random.Range(-1, 2);
-        pos.z += Random.Range(-1, 2);
+        pos.x += Random.Range(-1, 1);
+        pos.z += Random.Range(-1, 1);
         m_roomToExplore = pos;
     }
 

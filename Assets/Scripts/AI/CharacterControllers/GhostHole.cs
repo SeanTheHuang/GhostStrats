@@ -26,6 +26,7 @@ public class GhostHole : EntityBase
         m_moveSpeed = 0;
         m_ghostIsAlive = false;
         m_currentReviveTime = 0;
+        m_currentHealth = m_maxHealth;
     }
 
     private void Start()

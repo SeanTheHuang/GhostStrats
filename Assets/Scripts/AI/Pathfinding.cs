@@ -62,7 +62,7 @@ public class Pathfinding : MonoBehaviour {
         Node targetNode = grid.NodeFromWorldPoint(endPos);
 
         // NOTE, this means path can start from non-walkable state
-        if (targetNode.Walkable)
+        if (true)
         {
             Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
             HashSet<Node> closedSet = new HashSet<Node>();
@@ -81,9 +81,12 @@ public class Pathfinding : MonoBehaviour {
 
                 foreach (Node n in grid.GetNeighbours(currentNode))
                 {
-                    if (!n.Walkable || closedSet.Contains(n) || (n.clearance < clearance && n != targetNode))
+                    if (n != targetNode)
                     {
-                        continue;
+                        if (!n.Walkable || closedSet.Contains(n) || (n.clearance < clearance && n != targetNode))
+                        {
+                            continue;
+                        }
                     }
                     
                     int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, n);
@@ -203,7 +206,7 @@ public class Pathfinding : MonoBehaviour {
         Node startNode = grid.NodeFromWorldPoint(startPos);
         Node targetNode = grid.NodeFromWorldPoint(targetPos);
 
-        if (targetNode.Walkable)
+        if (true)
         {
             Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
             HashSet<Node> closedSet = new HashSet<Node>();
@@ -223,9 +226,12 @@ public class Pathfinding : MonoBehaviour {
 
                 foreach (Node n in grid.GetNeighbours(currentNode))
                 {
-                    if (!n.Walkable || closedSet.Contains(n) || (n.clearance < clearance && n != targetNode))
+                    if (n != targetNode)
                     {
-                        continue;
+                        if (!n.Walkable || closedSet.Contains(n) || (n.clearance < clearance && n != targetNode))
+                        {
+                            continue;
+                        }
                     }
 
                     int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, n);

@@ -130,7 +130,7 @@ public class PathRequestManager : MonoBehaviour {
         if (node == null)
             return;
 
-        Debug.Log("GOT HERE");
+        //Debug.Log("GOT HERE");
 
         if (!node.WalkabilityIsLocked)
         {

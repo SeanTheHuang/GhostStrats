@@ -28,6 +28,8 @@ public class GameMaster : MonoBehaviour {
 
     public bool m_playersTurn;
 
+    private List<Vector3> m_tempUnwalkable;
+
     public static GameMaster Instance()
     {
         return instance;
@@ -39,6 +41,7 @@ public class GameMaster : MonoBehaviour {
         m_ghostList = new List<GhostController>();
         m_punkList = new List<PunkController>();
         m_ghostHoleList = new List<GhostHole>();
+        m_tempUnwalkable = new List<Vector3>();
 
         foreach (GameObject go in m_startGhostArray)
             m_ghostList.Add(go.GetComponent<GhostController>());
@@ -211,6 +214,11 @@ public class GameMaster : MonoBehaviour {
 
     void PunkStartTurn()
     {
+        foreach(GhostController gc in m_ghostList)
+        {
+            PathRequestManager.Instance().TogglePositionWalkable(gc.transform.position, false);
+            m_tempUnwalkable.Add(gc.transform.position);
+        }
         StartCoroutine(PunkAnimation());
     }
 
@@ -226,6 +234,12 @@ public class GameMaster : MonoBehaviour {
                 yield return null;
             }
         }
+
+        foreach(Vector3 v3 in m_tempUnwalkable)
+        {
+            PathRequestManager.Instance().TogglePositionWalkable(v3, true);
+        }
+        m_tempUnwalkable.Clear();
         GhostStartTurn();
         yield return null;
     }
