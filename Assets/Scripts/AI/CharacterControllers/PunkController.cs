@@ -20,6 +20,7 @@ public class PunkController : EntityBase
 
     Vector3 m_roomToExplore;
     Vector3 m_lastRoomExplored;
+    Room m_roomTarget;
 
     public int m_attackRange = 0;
     public int m_attackDamage = 0;
@@ -35,7 +36,12 @@ public class PunkController : EntityBase
     {
         m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
         m_realPath = new List<Vector3> { };
-        m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0,m_hiveMind.m_HouseLocations.Count)].position;
+
+        int t = Random.Range(0, m_hiveMind.m_RoomList.Count);
+        m_roomTarget = m_hiveMind.ChooseFirstRoom();
+        m_roomTarget.m_targeted = true;
+        m_roomToExplore = m_roomTarget.transform.position;
+        //m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0,m_hiveMind.m_HouseLocations.Count)].position;
         //m_roomToExplore = m_hiveMind.m_HouseLocations[0].position;
         m_state = PunkStates.IDLE;
         m_currentHealth = m_maxHealth;
@@ -529,14 +535,18 @@ public class PunkController : EntityBase
     {
         //dont use this for the first room
         m_lastRoomExplored = m_roomToExplore;
-        while (true)
+        m_roomTarget.m_targeted = false;
+        m_roomTarget = m_hiveMind.ChooseRoom(m_roomTarget);
+        m_roomToExplore = m_roomTarget.transform.position;
+        m_roomTarget.m_targeted = true;
+        /*while (true)
         {
-            m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0, m_hiveMind.m_HouseLocations.Count)].position;
+           // m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0, m_hiveMind.m_HouseLocations.Count)].position;
             if(m_roomToExplore != m_lastRoomExplored)
             {
                 break;
             }
-        }
+        }*/
         Vector3 pos = m_roomToExplore;
         pos.x += Random.Range(-1, 1);
         pos.z += Random.Range(-1, 1);
