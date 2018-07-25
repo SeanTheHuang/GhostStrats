@@ -142,7 +142,7 @@ public class GameMaster : MonoBehaviour {
                     yield return null;
             }
 
-            yield return new WaitForSeconds(0.6f); // Small delay after respawn to gauge dafuq happened
+            yield return new WaitForSeconds(0.4f); // Small delay after respawn to gauge dafuq happened
         }
 
         // After spawn animation, time to start players turn

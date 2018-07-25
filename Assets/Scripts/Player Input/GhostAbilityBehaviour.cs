@@ -31,7 +31,7 @@ public enum GhostActionState
 public class GhostAbilityBehaviour : MonoBehaviour
 {
     PathRequestManager m_pathRequestManager;
-    GhostController m_ghostController;
+    protected GhostController m_ghostController;
     GameMaster m_gameMaster;
 
     public Transform m_attackTilePrefab;
@@ -40,7 +40,9 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public GhostType m_ghostType
     { get; protected set; }
 
-    protected GhostActionState m_actionState;
+    public GhostActionState m_actionState
+    { get; protected set; }
+
     protected AimingDirection m_aimingDirection; // The direction the ghost is currently facing
     public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     //public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
@@ -201,12 +203,13 @@ public class GhostAbilityBehaviour : MonoBehaviour
             return AimingDirection.South;
     }
 
-    public void ConfirmDirection()
+    public virtual void ConfirmDirection()
     {
-        m_ghostController.EndMovement();
+        if (m_actionState != GhostActionState.ABILITY)
+            m_ghostController.EndMovement();
+
         MousePicker.Instance().FinishAimingAbility();
         Debug.Log("Confirmed ability targets!");
-        m_attackCooldownTimer = m_attackCooldown; // Update the timer
         AbilityUsed();
         m_aimingAbility = false;
     }
@@ -226,7 +229,6 @@ public class GhostAbilityBehaviour : MonoBehaviour
     {
         MousePicker.Instance().FinishAimingAbility(); // Just incase aiming doesn't come back
         m_ghostController.ClearChoosingPath();
-        m_ghostController.EndMovement();
         m_aimingAbility = false;
         ClearAttackVisuals();
         AbilityUsed();
@@ -429,6 +431,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     {
         Debug.Log("Ghost Hide");
         m_actionState = GhostActionState.HIDE;
+        m_ghostController.EndMovement();
         ImmediateConfirmAbility();
     }
 

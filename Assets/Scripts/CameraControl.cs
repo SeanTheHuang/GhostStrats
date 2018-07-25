@@ -136,6 +136,10 @@ public class CameraControl : MonoBehaviour
             m_targetPosition.z -= m_cameraPanSpeed * Time.deltaTime;
         else if (mousePosY >= Screen.height - mouseDistFromEdgeOfScreen)
             m_targetPosition.z += m_cameraPanSpeed * Time.deltaTime;
+
+        // Ensure target position is within clamp range
+        m_targetPosition.x = Mathf.Clamp(m_targetPosition.x, m_lowerLimits.x, m_upperLimits.y);
+        m_targetPosition.z = Mathf.Clamp(m_targetPosition.z, m_lowerLimits.y, m_upperLimits.y);
     }
 
     void ClampCameraPosition()
