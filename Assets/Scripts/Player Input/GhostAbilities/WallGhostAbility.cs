@@ -62,4 +62,12 @@ public class WallGhostAbility : GhostAbilityBehaviour {
             // TODO: Turn back to normal ghost
         }
     }
+
+    public override void ConfirmDirection()
+    {
+        if (m_actionState == GhostActionState.ABILITY)
+            m_ghostController.EndMovement();
+
+        base.ConfirmDirection();
+    }
 }

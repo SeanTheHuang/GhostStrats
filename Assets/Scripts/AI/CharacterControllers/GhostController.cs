@@ -35,7 +35,8 @@ public class GhostController : EntityBase {
     // Path finding
     Vector3 m_spawnLocation;
     Vector3 m_currentStopPoint;
-    List<Vector3> m_pathToFollow;
+    List<Vector3> m_movePath1; // Movement before ability
+    List<Vector3> m_movePath2; // Movement after ability
     bool m_pathFound;
 
     // TEST: stuff to visialize path
@@ -58,7 +59,8 @@ public class GhostController : EntityBase {
         m_ghostState = m_oldGhostState = CharacterStates.IDLE;
         m_abilities = GetComponent<GhostAbilityBehaviour>();
         m_ghostUI = GetComponent<GhostUi>();
-        m_pathToFollow = new List<Vector3>();
+        m_movePath1 = new List<Vector3>();
+        m_movePath2 = new List<Vector3>();
         m_performing = false;
         m_previousNode = null;
         m_spawnLocation = transform.position;
@@ -187,7 +189,11 @@ public class GhostController : EntityBase {
         foreach (Transform t in m_choosingPathBallsList)
         {
             // Add point for each choosing ball
-            m_pathToFollow.Add(t.position);
+            if (m_abilities.m_actionState == GhostActionState.NONE)
+                m_movePath1.Add(t.position);
+            else
+                m_movePath2.Add(t.position);
+
             m_currentStopPoint = t.position;
 
             // Temp, spawn some nice balls at confirmed location
@@ -343,8 +349,8 @@ public class GhostController : EntityBase {
 
     public Vector3 GetDestinationPosition()
     {
-        if (m_pathToFollow.Count > 0)
-            return m_pathToFollow[m_pathToFollow.Count - 1];
+        if (m_movePath1.Count > 0)
+            return m_movePath1[m_movePath1.Count - 1];
         else
             return transform.position;
     }
@@ -356,7 +362,8 @@ public class GhostController : EntityBase {
 
     void ResetPath()
     {
-        m_pathToFollow.Clear();
+        m_movePath1.Clear();
+        m_movePath2.Clear();
         m_previousNode = null;
         m_currentStopPoint = transform.position;
         m_numMovesLeft = m_maxMoves;
@@ -409,24 +416,24 @@ public class GhostController : EntityBase {
         m_choosingPathBallsList.Clear();
 
         // Character intial rotation
-        if (m_pathToFollow.Count > 0)
+        if (m_movePath1.Count > 0)
         {
-            Vector3 dir = m_pathToFollow[0] - transform.position;
+            Vector3 dir = m_movePath1[0] - transform.position;
             dir.y = 0;
             transform.rotation = Quaternion.LookRotation(dir);
         }
 
         // Start by moving to target location
         m_ghostState = CharacterStates.MOVING;
-        for (int i = 0; i < m_pathToFollow.Count; i++) {
+        for (int i = 0; i < m_movePath1.Count; i++) {
             while (true) {
-                Vector3 newPosition = Vector3.MoveTowards(transform.position, m_pathToFollow[i], m_moveSpeed * Time.deltaTime);
+                Vector3 newPosition = Vector3.MoveTowards(transform.position, m_movePath1[i], m_moveSpeed * Time.deltaTime);
                 if (newPosition == transform.position) // Reached point, move onto next!
                 {
-                    if (i + 1 < m_pathToFollow.Count)
+                    if (i + 1 < m_movePath1.Count)
                     {
                         // Update rotation
-                        Vector3 dir = m_pathToFollow[i+1] - transform.position;
+                        Vector3 dir = m_movePath1[i+1] - transform.position;
                         dir.y = 0;
                         transform.rotation = Quaternion.LookRotation(dir);
                     }
@@ -440,10 +447,38 @@ public class GhostController : EntityBase {
         }
 
         // Clean previous stored path
-        m_pathToFollow.Clear();
+        m_movePath1.Clear();
 
         // Perform selected action (maybe pause and rotate towards target first)
         m_abilities.EndOfTurn();
+
+        yield return new WaitForSeconds(0.5f); // Pause for a bit for animation
+
+        // Start moving again if theres more
+        for (int i = 0; i < m_movePath2.Count; i++)
+        {
+            while (true)
+            {
+                Vector3 newPosition = Vector3.MoveTowards(transform.position, m_movePath2[i], m_moveSpeed * Time.deltaTime);
+                if (newPosition == transform.position) // Reached point, move onto next!
+                {
+                    if (i + 1 < m_movePath2.Count)
+                    {
+                        // Update rotation
+                        Vector3 dir = m_movePath2[i + 1] - transform.position;
+                        dir.y = 0;
+                        transform.rotation = Quaternion.LookRotation(dir);
+                    }
+                    break;
+                }
+                else
+                    transform.position = newPosition; // Not reached, move the player!
+
+                yield return null; // Move over a number of frames
+            }
+        }
+
+        yield return new WaitForSeconds(0.5f); // Pause for another period of time
 
         m_performing = false;
         yield return null;
