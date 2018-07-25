@@ -1,0 +1,473 @@
+fileFormatVersion: 2
+guid: 5fe3bbbc29980b34586871cdaccaf349
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: GamePlayerSideUIBehindFrameGlow2_0
+    21300002: GamePlayerSideUIBehindFrameGlow2_1
+    21300004: GamePlayerSideUIBehindFrameGlow2_2
+    21300006: GamePlayerSideUIBehindFrameGlow2_3
+    21300008: GamePlayerSideUIBehindFrameGlow2_4
+    21300010: GamePlayerSideUIBehindFrameGlow2_5
+    21300012: GamePlayerSideUIBehindFrameGlow2_6
+    21300014: GamePlayerSideUIBehindFrameGlow2_7
+    21300016: GamePlayerSideUIBehindFrameGlow2_8
+    21300018: GamePlayerSideUIBehindFrameGlow2_9
+    21300020: GamePlayerSideUIBehindFrameGlow2_10
+    21300022: GamePlayerSideUIBehindFrameGlow2_11
+    21300024: GamePlayerSideUIBehindFrameGlow2_12
+    21300026: GamePlayerSideUIBehindFrameGlow2_13
+    21300028: GamePlayerSideUIBehindFrameGlow2_14
+    21300030: GamePlayerSideUIBehindFrameGlow2_15
+    21300032: GamePlayerSideUIBehindFrameGlow2_16
+    21300034: GamePlayerSideUIBehindFrameGlow2_17
+  externalObjects: {}
+  serializedVersion: 5
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 324
+        width: 1270
+        height: 1578
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e28545dafb76a94bb8afb341002ec7e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 231
+        width: 151
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d81b941a70a0b144781a4285482497cc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_2
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 231
+        width: 78
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c739b8b8fd9364da1ddb5b3875d08b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_3
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 231
+        width: 139
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2315ee571a0c822438760417e500aa8a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_4
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 232
+        width: 24
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88a035a15e2c76145b35cac3032295e3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_5
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 231
+        width: 90
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f0f0835653c4548b2dd19db1bc1f19
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_6
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 230
+        width: 336
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11263f6e97a6f3f46969c8fb82e388f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_7
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 230
+        width: 238
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85fdaec4a5744f54e850cbd87cdf76f6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_8
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 137
+        width: 221
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7853d2172e9defb4e9d48c643911e937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_9
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 137
+        width: 78
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c61ec676a6c22d54cbc526c17404537d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_10
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 136
+        width: 262
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e38adba76fcb284f9be8f1c33aea726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_11
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 137
+        width: 136
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6acc51e834d5ef046b81b0b430dac764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_12
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 136
+        width: 364
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 153001f72b561ca4e9c95c8c511bdafe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_13
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 43
+        width: 222
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f936e8c2bc68a4c93cc5f76e648b9b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_14
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 43
+        width: 78
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7854a974552f6a4dacbfb1f6c367120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_15
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 43
+        width: 119
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d77687eaea3a883449cfde7d4416f51a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_16
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 43
+        width: 122
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c44a867f2eec5844b8a660c4ea19398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePlayerSideUIBehindFrameGlow2_17
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 44
+        width: 82
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e71ef4fb4e7cc54449f3dd19b111e7eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 27b1e4ea6ec7abc49a72f9bac68e550f
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
