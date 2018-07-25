@@ -1,0 +1,212 @@
+fileFormatVersion: 2
+guid: 3bd4e28a8f4127b4e8bd53ee3fe6bf5e
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Baseball_Bat
+    100002: //RootNode
+    100004: Punk_Body
+    100006: Punk_bodyBat_Bone
+    100008: Punk_bodyHairSpike01
+    100010: Punk_bodyHead
+    100012: Punk_bodyHeadBone002
+    100014: Punk_bodyLCalf
+    100016: Punk_bodyLCollarbone
+    100018: Punk_bodyLDigit11
+    100020: Punk_bodyLDigit11 1
+    100022: Punk_bodyLDigit12
+    100024: Punk_bodyLDigit13
+    100026: Punk_bodyLDigit21
+    100028: Punk_bodyLDigit22
+    100030: Punk_bodyLDigit23
+    100032: Punk_bodyLDigit31
+    100034: Punk_bodyLDigit32
+    100036: Punk_bodyLDigit33
+    100038: Punk_bodyLDigit41
+    100040: Punk_bodyLDigit42
+    100042: Punk_bodyLDigit43
+    100044: Punk_bodyLFoot
+    100046: Punk_bodyLForearm1
+    100048: Punk_bodyLForearm2
+    100050: Punk_bodyLPalm
+    100052: Punk_bodyLThigh
+    100054: Punk_bodyLUpperarm
+    100056: Punk_bodyNeck1
+    100058: Punk_bodyNeck2
+    100060: Punk_bodyPelvis
+    100062: Punk_bodyRCalf
+    100064: Punk_bodyRCollarbone
+    100066: Punk_bodyRDigit11
+    100068: Punk_bodyRDigit11 1
+    100070: Punk_bodyRDigit12
+    100072: Punk_bodyRDigit13
+    100074: Punk_bodyRDigit21
+    100076: Punk_bodyRDigit22
+    100078: Punk_bodyRDigit23
+    100080: Punk_bodyRDigit31
+    100082: Punk_bodyRDigit32
+    100084: Punk_bodyRDigit33
+    100086: Punk_bodyRDigit41
+    100088: Punk_bodyRDigit42
+    100090: Punk_bodyRDigit43
+    100092: Punk_bodyRFoot
+    100094: Punk_bodyRForearm1
+    100096: Punk_bodyRForearm2
+    100098: Punk_bodyRibcage
+    100100: Punk_bodyRPalm
+    100102: Punk_bodyRThigh
+    100104: Punk_bodyRUpperarm
+    100106: Punk_bodySpine1
+    100108: Punk_bodySpine2
+    100110: Punk_bodySpine3
+    100112: Punk_bodySpine4
+    100114: Punk_bodyTail1
+    100116: Punk_bodyTail2
+    100118: Punk_grp
+    400000: Baseball_Bat
+    400002: //RootNode
+    400004: Punk_Body
+    400006: Punk_bodyBat_Bone
+    400008: Punk_bodyHairSpike01
+    400010: Punk_bodyHead
+    400012: Punk_bodyHeadBone002
+    400014: Punk_bodyLCalf
+    400016: Punk_bodyLCollarbone
+    400018: Punk_bodyLDigit11
+    400020: Punk_bodyLDigit11 1
+    400022: Punk_bodyLDigit12
+    400024: Punk_bodyLDigit13
+    400026: Punk_bodyLDigit21
+    400028: Punk_bodyLDigit22
+    400030: Punk_bodyLDigit23
+    400032: Punk_bodyLDigit31
+    400034: Punk_bodyLDigit32
+    400036: Punk_bodyLDigit33
+    400038: Punk_bodyLDigit41
+    400040: Punk_bodyLDigit42
+    400042: Punk_bodyLDigit43
+    400044: Punk_bodyLFoot
+    400046: Punk_bodyLForearm1
+    400048: Punk_bodyLForearm2
+    400050: Punk_bodyLPalm
+    400052: Punk_bodyLThigh
+    400054: Punk_bodyLUpperarm
+    400056: Punk_bodyNeck1
+    400058: Punk_bodyNeck2
+    400060: Punk_bodyPelvis
+    400062: Punk_bodyRCalf
+    400064: Punk_bodyRCollarbone
+    400066: Punk_bodyRDigit11
+    400068: Punk_bodyRDigit11 1
+    400070: Punk_bodyRDigit12
+    400072: Punk_bodyRDigit13
+    400074: Punk_bodyRDigit21
+    400076: Punk_bodyRDigit22
+    400078: Punk_bodyRDigit23
+    400080: Punk_bodyRDigit31
+    400082: Punk_bodyRDigit32
+    400084: Punk_bodyRDigit33
+    400086: Punk_bodyRDigit41
+    400088: Punk_bodyRDigit42
+    400090: Punk_bodyRDigit43
+    400092: Punk_bodyRFoot
+    400094: Punk_bodyRForearm1
+    400096: Punk_bodyRForearm2
+    400098: Punk_bodyRibcage
+    400100: Punk_bodyRPalm
+    400102: Punk_bodyRThigh
+    400104: Punk_bodyRUpperarm
+    400106: Punk_bodySpine1
+    400108: Punk_bodySpine2
+    400110: Punk_bodySpine3
+    400112: Punk_bodySpine4
+    400114: Punk_bodyTail1
+    400116: Punk_bodyTail2
+    400118: Punk_grp
+    2100000: M_Punk
+    4300000: Baseball_Bat
+    4300002: Punk_Body
+    9500000: //RootNode
+    13700000: Baseball_Bat
+    13700002: Punk_Body
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

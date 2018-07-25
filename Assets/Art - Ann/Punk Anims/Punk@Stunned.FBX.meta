@@ -1,0 +1,247 @@
+fileFormatVersion: 2
+guid: 77519cefbe4765f43a87e17bed70237e
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Baseball_Bat
+    100002: //RootNode
+    100004: Punk_Body
+    100006: Punk_body
+    100008: Punk_bodyBat_Bone
+    100010: Punk_bodyHairSpike01
+    100012: Punk_bodyHead
+    100014: Punk_bodyHeadBone002
+    100016: Punk_bodyLCalf
+    100018: Punk_bodyLCollarbone
+    100020: Punk_bodyLDigit11
+    100022: Punk_bodyLDigit11 1
+    100024: Punk_bodyLDigit12
+    100026: Punk_bodyLDigit13
+    100028: Punk_bodyLDigit21
+    100030: Punk_bodyLDigit22
+    100032: Punk_bodyLDigit23
+    100034: Punk_bodyLDigit31
+    100036: Punk_bodyLDigit32
+    100038: Punk_bodyLDigit33
+    100040: Punk_bodyLDigit41
+    100042: Punk_bodyLDigit42
+    100044: Punk_bodyLDigit43
+    100046: Punk_bodyLFoot
+    100048: Punk_bodyLForearm1
+    100050: Punk_bodyLForearm2
+    100052: Punk_bodyLPalm
+    100054: Punk_bodyLPlatform
+    100056: Punk_bodyLThigh
+    100058: Punk_bodyLUpperarm
+    100060: Punk_bodyNeck1
+    100062: Punk_bodyNeck2
+    100064: Punk_bodyPelvis
+    100066: Punk_bodyRCalf
+    100068: Punk_bodyRCollarbone
+    100070: Punk_bodyRDigit11
+    100072: Punk_bodyRDigit11 1
+    100074: Punk_bodyRDigit12
+    100076: Punk_bodyRDigit13
+    100078: Punk_bodyRDigit21
+    100080: Punk_bodyRDigit22
+    100082: Punk_bodyRDigit23
+    100084: Punk_bodyRDigit31
+    100086: Punk_bodyRDigit32
+    100088: Punk_bodyRDigit33
+    100090: Punk_bodyRDigit41
+    100092: Punk_bodyRDigit42
+    100094: Punk_bodyRDigit43
+    100096: Punk_bodyRFoot
+    100098: Punk_bodyRForearm1
+    100100: Punk_bodyRForearm2
+    100102: Punk_bodyRibcage
+    100104: Punk_bodyRPalm
+    100106: Punk_bodyRPlatform
+    100108: Punk_bodyRThigh
+    100110: Punk_bodyRUpperarm
+    100112: Punk_bodySpine1
+    100114: Punk_bodySpine2
+    100116: Punk_bodySpine3
+    100118: Punk_bodySpine4
+    100120: Punk_bodyTail1
+    100122: Punk_bodyTail2
+    100124: Punk_grp
+    400000: Baseball_Bat
+    400002: //RootNode
+    400004: Punk_Body
+    400006: Punk_body
+    400008: Punk_bodyBat_Bone
+    400010: Punk_bodyHairSpike01
+    400012: Punk_bodyHead
+    400014: Punk_bodyHeadBone002
+    400016: Punk_bodyLCalf
+    400018: Punk_bodyLCollarbone
+    400020: Punk_bodyLDigit11
+    400022: Punk_bodyLDigit11 1
+    400024: Punk_bodyLDigit12
+    400026: Punk_bodyLDigit13
+    400028: Punk_bodyLDigit21
+    400030: Punk_bodyLDigit22
+    400032: Punk_bodyLDigit23
+    400034: Punk_bodyLDigit31
+    400036: Punk_bodyLDigit32
+    400038: Punk_bodyLDigit33
+    400040: Punk_bodyLDigit41
+    400042: Punk_bodyLDigit42
+    400044: Punk_bodyLDigit43
+    400046: Punk_bodyLFoot
+    400048: Punk_bodyLForearm1
+    400050: Punk_bodyLForearm2
+    400052: Punk_bodyLPalm
+    400054: Punk_bodyLPlatform
+    400056: Punk_bodyLThigh
+    400058: Punk_bodyLUpperarm
+    400060: Punk_bodyNeck1
+    400062: Punk_bodyNeck2
+    400064: Punk_bodyPelvis
+    400066: Punk_bodyRCalf
+    400068: Punk_bodyRCollarbone
+    400070: Punk_bodyRDigit11
+    400072: Punk_bodyRDigit11 1
+    400074: Punk_bodyRDigit12
+    400076: Punk_bodyRDigit13
+    400078: Punk_bodyRDigit21
+    400080: Punk_bodyRDigit22
+    400082: Punk_bodyRDigit23
+    400084: Punk_bodyRDigit31
+    400086: Punk_bodyRDigit32
+    400088: Punk_bodyRDigit33
+    400090: Punk_bodyRDigit41
+    400092: Punk_bodyRDigit42
+    400094: Punk_bodyRDigit43
+    400096: Punk_bodyRFoot
+    400098: Punk_bodyRForearm1
+    400100: Punk_bodyRForearm2
+    400102: Punk_bodyRibcage
+    400104: Punk_bodyRPalm
+    400106: Punk_bodyRPlatform
+    400108: Punk_bodyRThigh
+    400110: Punk_bodyRUpperarm
+    400112: Punk_bodySpine1
+    400114: Punk_bodySpine2
+    400116: Punk_bodySpine3
+    400118: Punk_bodySpine4
+    400120: Punk_bodyTail1
+    400122: Punk_bodyTail2
+    400124: Punk_grp
+    2100000: M_Punk
+    4300000: Baseball_Bat
+    4300002: Punk_Body
+    7400000: Stunned
+    9500000: //RootNode
+    13700000: Baseball_Bat
+    13700002: Punk_Body
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Stunned
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
