@@ -247,7 +247,7 @@ public class PunkController : EntityBase
             }
             if(PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
             {
-                OnEntityHit(m_hiveMind.m_TrapDamage);
+                OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 EndTurn();
                 return;
@@ -279,7 +279,7 @@ public class PunkController : EntityBase
             }
             if (PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
             {
-                OnEntityHit(m_hiveMind.m_TrapDamage);
+                OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 EndTurn();
                 return;
