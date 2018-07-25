@@ -11,8 +11,11 @@ public class PunkHiveMind : MonoBehaviour
         
     }
 
+
+    public bool m_displayGizmos = false;
+
     // Use this for initialization
-    public List<Transform> m_HouseLocations;
+    public List<Room> m_RoomList;
     public List<Transform> m_PunkLocations;
     public int m_TrapDamage = 4;
 
@@ -55,5 +58,54 @@ public class PunkHiveMind : MonoBehaviour
     public void RemovePunk(Transform tr)
     {
         m_PunkLocations.Remove(tr);
+    }
+
+    public Room ChooseRoom(Room _r)
+    {
+        int count = 0;
+        while (true)
+        {
+            int t = Random.Range(0, _r.m_connectedRooms.Count);
+            if(_r.m_connectedRooms[t].m_targeted == false)
+            {
+                return _r.m_connectedRooms[t];
+            }
+
+            if(count > 30)
+            {//safety as some room only connect to two others.
+                return ChooseFirstRoom();
+            }
+        }
+    }
+
+    public Room ChooseFirstRoom()
+    {
+        while (true)
+        {
+            int temp = Random.Range(0, m_RoomList.Count);
+            if (m_RoomList[temp].m_targeted == false)
+            {
+                return m_RoomList[temp];
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(m_displayGizmos == false)
+        {
+            return;
+        }
+
+        Gizmos.color = Color.cyan;
+        for(int i = 0; i< m_RoomList.Count; i++)
+        {
+            Gizmos.color = Color.black;
+            Room r = m_RoomList[i];
+            for(int j=0; j < r.m_connectedRooms.Count; j++)
+            {
+                Gizmos.DrawLine(r.transform.position, r.m_connectedRooms[j].transform.position);
+            }
+        }
     }
 }
