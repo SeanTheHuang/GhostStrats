@@ -33,6 +33,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
 
     // The ghosts associated to the keyboard buttons 1,2,3
     private List<GameObject> m_ghostList;
+    private List<GhostController> m_ghostControllerList;
 
     public static PlayerKeyboardInput Instance()
     {
@@ -43,6 +44,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
     {
         instance = this;
         m_ghostList = new List<GameObject>();
+        m_ghostControllerList = new List<GhostController>();
     }
 
     void Start()
@@ -68,13 +70,13 @@ public class PlayerKeyboardInput : MonoBehaviour {
             return;
 
         // Keyboard input to select ghosts, only select ghost if they exist
-        if (Input.GetKeyDown(m_ghostKey1) && m_ghostList.Count > 0)
+        if (Input.GetKeyDown(m_ghostKey1) && (m_ghostList.Count > 0) && (m_ghostControllerList[0].GhostIsAlive))
             m_gameMaster.UpdateSelectedGhost(m_ghostList[0]);
 
-        else if (Input.GetKeyDown(m_ghostKey2) && m_ghostList.Count > 1)
+        else if (Input.GetKeyDown(m_ghostKey2) && (m_ghostList.Count > 1) && (m_ghostControllerList[1].GhostIsAlive))
             m_gameMaster.UpdateSelectedGhost(m_ghostList[1]);
 
-        else if (Input.GetKeyDown(m_ghostKey3) && m_ghostList.Count > 2)
+        else if (Input.GetKeyDown(m_ghostKey3) && (m_ghostList.Count > 2) && (m_ghostControllerList[2].GhostIsAlive))
             m_gameMaster.UpdateSelectedGhost(m_ghostList[2]);
 
         // Keyboard input to use ghost abilities
@@ -115,6 +117,9 @@ public class PlayerKeyboardInput : MonoBehaviour {
 
             m_ghostList.Add(ghostList[i]);
         }
+
+        foreach (GameObject ec in m_ghostList)
+            m_ghostControllerList.Add(ec.GetComponent<GhostController>());
     }
 
     public void UpdateSelectedGhost(GameObject newGhost)

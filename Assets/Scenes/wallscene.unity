@@ -1399,9 +1399,9 @@ GameObject:
   - component: {fileID: 808408376}
   - component: {fileID: 808408375}
   - component: {fileID: 808408374}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4703,6 +4703,7 @@ GameObject:
   - component: {fileID: 2082748540}
   - component: {fileID: 2082748539}
   - component: {fileID: 2082748547}
+  - component: {fileID: 2082748548}
   m_Layer: 12
   m_Name: __TestGameMaster__
   m_TagString: Untagged
@@ -4801,7 +4802,7 @@ MonoBehaviour:
   m_currentGhost: {fileID: 0}
   m_selectionMask:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 10240
 --- !u!114 &2082748543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4890,6 +4891,19 @@ MonoBehaviour:
   - Drop a doll that scares and stuns any punks that walk onto it.
   - Scare and draw in punks.
   - Scare and push away any punk inside the spook area.
+--- !u!114 &2082748548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2082748538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8ebe127fa8c884b99ced0c4fa48a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_poofParticlesPrefab: {fileID: 4224202087993366, guid: e5b8f0bbca5be184a9e4a1e22f7397fa,
+    type: 2}
 --- !u!1 &2105828506 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1063440732498334, guid: a6814f9035a53cc43973d1f00a2804f5,
