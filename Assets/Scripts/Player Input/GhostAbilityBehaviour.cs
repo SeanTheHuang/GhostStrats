@@ -408,6 +408,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_ghostController.m_OutofSight = true;
         m_hideCooldownTimer = m_hideCooldown; // Update the timer
         // PUT IT HERE HUGO
+        PathRequestManager.Instance().SetNodeState(NodeState.GHOST_HIDE, transform);
     }
 
     void PerformOverwatch()
