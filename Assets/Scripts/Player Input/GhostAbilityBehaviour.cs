@@ -33,6 +33,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     PathRequestManager m_pathRequestManager;
     protected GhostController m_ghostController;
     GameMaster m_gameMaster;
+    private Animator m_animator;
 
     public Transform m_attackTilePrefab;
     List<Transform> m_attackTileList;
@@ -99,6 +100,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         SetGhostType();
 
         m_ghostUI = GetComponent<GhostUi>();
+        m_animator = transform.Find("Model").GetComponent<Animator>();
     }
 
     protected virtual void SetGhostType()
@@ -336,6 +338,11 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public void OnHit()
     {
+        if(m_ghostController.GetCurrentHealth() == 0)
+            m_animator.SetTrigger("Death");
+        else
+            m_animator.SetTrigger("Damaged");
+
         if (m_actionState == GhostActionState.OVERSPOOK)
             // Stop overwatching
             m_actionState = GhostActionState.NONE;
@@ -393,6 +400,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     void PerformAttack()
     {
+        m_animator.SetTrigger("Attack");
         ClearAttackVisuals();
         m_attackCooldownTimer = m_attackCooldown;
 
