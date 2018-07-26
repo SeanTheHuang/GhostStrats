@@ -25,6 +25,15 @@ public class EndTurnPromptController : MonoBehaviour {
         m_centreScreenPosition = (Screen.height / 2) - (Screen.height / 4);
     }
 
+    private void Update()
+    {
+        if (!m_visible)
+            return;
+
+        if(Input.GetKeyDown(KeyCode.Space))
+            Disappear();
+    }
+
     // Triggers the events for the banner to fade in and fade out again
     public void Appear()
     {
