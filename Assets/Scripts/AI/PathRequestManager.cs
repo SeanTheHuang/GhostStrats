@@ -134,7 +134,6 @@ public class PathRequestManager : MonoBehaviour {
 
         if (!node.WalkabilityIsLocked)
         {
-            Debug.Log("Locking node at: " + _position);
             node.Walkable = _newState;
         }
     }
