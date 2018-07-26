@@ -209,7 +209,6 @@ MonoBehaviour:
   - {fileID: 1710481978}
   - {fileID: 649312554}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &225147714
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +364,6 @@ MonoBehaviour:
   - {fileID: 1710481978}
   - {fileID: 1125350363}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &247482621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,7 +1255,6 @@ MonoBehaviour:
   - {fileID: 224776752}
   - {fileID: 1698707371}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &685248601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,7 +1543,6 @@ MonoBehaviour:
   - {fileID: 1125350363}
   - {fileID: 1769754073}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &768310866 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1793360708425880, guid: a6814f9035a53cc43973d1f00a2804f5,
@@ -2489,7 +2485,6 @@ MonoBehaviour:
   - {fileID: 766139102}
   - {fileID: 1710481978}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &1165262651
 GameObject:
   m_ObjectHideFlags: 0
@@ -3403,7 +3398,6 @@ MonoBehaviour:
   - {fileID: 1769754073}
   - {fileID: 1698707371}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &1466639856
 GameObject:
   m_ObjectHideFlags: 0
@@ -3860,7 +3854,6 @@ MonoBehaviour:
   - {fileID: 1710481978}
   - {fileID: 1698707371}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &1586499510 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1837687414804584, guid: a6814f9035a53cc43973d1f00a2804f5,
@@ -3923,7 +3916,6 @@ MonoBehaviour:
   - {fileID: 1710481978}
   - {fileID: 1441836522}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &1710481976
 GameObject:
   m_ObjectHideFlags: 0
@@ -3972,7 +3964,6 @@ MonoBehaviour:
   - {fileID: 1125350363}
   - {fileID: 1698707371}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &1715646032
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,7 +4010,6 @@ MonoBehaviour:
   - {fileID: 1769754073}
   - {fileID: 224776752}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &1769754071
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,7 +4056,6 @@ MonoBehaviour:
   - {fileID: 766139102}
   - {fileID: 1710481978}
   m_targeted: 0
-  DisplayGizmos: 0
 --- !u!1 &1782991669
 GameObject:
   m_ObjectHideFlags: 0
@@ -5082,6 +5071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369813c6fd738ef468cfde96bb7dc9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_displayGizmos: 0
   m_RoomList:
   - {fileID: 1710481978}
   - {fileID: 1580366385}
