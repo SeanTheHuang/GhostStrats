@@ -58,12 +58,22 @@ public class MousePicker : MonoBehaviour {
         {
             if (m_mouseMode == MouseMode.MOVEMENT)
             {
-                if (rayHit.transform.CompareTag("Entity/Ghost") || rayHit.transform.CompareTag("Entity/Punk") || rayHit.transform.CompareTag("Entity/GhostRelic"))
+                // Check node is valid
+                Node node = PathRequestManager.Instance().NodeFromWorldPoint(rayHit.point);
+                    
+                if (node != null)
                 {
-                    m_currentGhost.ResetChoosingPathNodes(); // Delete current potential path
-                }
-                else
-                {
+                    if (!node.Walkable)
+                        return;
+                    // Check if no punks or ghosts there
+                    List<Vector3> tempList = new List<Vector3>();
+                    tempList.Add(node.WorldPosition);
+
+                    if (GameMaster.Instance().GetPunksAtLocations(tempList).Count > 0)
+                        return;
+                    if (GameMaster.Instance().GetGhostsAtLocations(tempList).Count > 0)
+                        return;
+
                     // Player wants to move towards this position
                     m_currentGhost.OnTargetLocation(rayHit.point);
                 }
