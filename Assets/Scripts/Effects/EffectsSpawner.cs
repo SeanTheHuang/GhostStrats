@@ -8,6 +8,6 @@ public class EffectsSpawner : MonoBehaviour {
 
     public void SpawnPoofPrefab(Vector3 _location)
     {
-        Instantiate(m_poofParticlesPrefab, transform.position, Quaternion.identity);
+        Instantiate(m_poofParticlesPrefab, _location, m_poofParticlesPrefab.rotation);
     }
 }

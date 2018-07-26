@@ -78,14 +78,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        m_attackTileList = new List<Transform>();
-        m_ghostController = GetComponent<GhostController>();
-        m_rotatedAffectedSquares = new List<Vector3>();
-        m_actionState = GhostActionState.NONE;
-        m_currentAffectedSquares = m_attackSquares;
-        m_aimingAbility = false;
-
-        m_aimingDirection = AimingDirection.North;
+        Initialize();
     }
 
     private void Start()
@@ -101,6 +94,18 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         m_ghostUI = GetComponent<GhostUi>();
         m_animator = transform.Find("Model").GetComponent<Animator>();
+    }
+
+    protected virtual void Initialize()
+    {
+        m_attackTileList = new List<Transform>();
+        m_ghostController = GetComponent<GhostController>();
+        m_rotatedAffectedSquares = new List<Vector3>();
+        m_actionState = GhostActionState.NONE;
+        m_currentAffectedSquares = m_attackSquares;
+        m_aimingAbility = false;
+
+        m_aimingDirection = AimingDirection.North;
     }
 
     protected virtual void SetGhostType()
@@ -227,7 +232,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
             m_ghostController.EndMovement();
 
         MousePicker.Instance().FinishAimingAbility();
-        Debug.Log("Confirmed ability targets!");
+        //Debug.Log("Confirmed ability targets!");
         AbilityUsed();
         m_aimingAbility = false;
 
@@ -501,7 +506,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public virtual void ChooseSpecial()
     {
-        Debug.Log("Ghost Special");
+        //Debug.Log("Ghost Special");
         m_actionState = GhostActionState.ABILITY;
     }
 

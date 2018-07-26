@@ -102,7 +102,8 @@ public class PunkController : EntityBase
         transform.rotation = Quaternion.LookRotation(dir);
 
         m_currentHealth -= _damage;
-        if(m_currentHealth == 0 && m_state != PunkStates.DEAD)
+        TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.GHOST_DAMAGE, _damage);
+        if (m_currentHealth == 0 && m_state != PunkStates.DEAD)
         {
             m_hiveMind.RemovePunk(transform);
             GameMaster.Instance().RemovePunk(this);
@@ -291,7 +292,8 @@ public class PunkController : EntityBase
             {
                 Vector3 dir = m_realPath[0] - transform.position;//rotation
                 dir.y = 0;
-                transform.rotation = Quaternion.LookRotation(dir);
+                if (dir != Vector3.zero)
+                    transform.rotation = Quaternion.LookRotation(dir);
 
                 if (PathRequestManager.Instance().GetNodeState(m_realPath[m_pathIndex]) == NodeState.GHOST_HIDE)
                 {//check if next is hidden ghost

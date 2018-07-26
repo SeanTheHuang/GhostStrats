@@ -151,13 +151,15 @@ public class GameMaster : MonoBehaviour {
         }
 
         // After spawn animation, time to start players turn
-        StartPlayersTurn();
+        StartPlayerChoice();
 
         yield return null;
     }
 
-    void StartPlayersTurn()
+    void StartPlayerChoice()
     {
+        PathRequestManager.Instance().GetComponent<NodeGrid>().ShowNodeGrid();
+
         // Turn ghost tiles unwalkable
         foreach (GhostController gc in m_ghostList)
         {
@@ -191,6 +193,7 @@ public class GameMaster : MonoBehaviour {
         m_playersTurn = false;
         m_currentlySelectedGhost.OnDeselected();
         MousePicker.Instance().StopPicking();
+        PathRequestManager.Instance().GetComponent<NodeGrid>().HideNodeGrid();
         StartCoroutine(GhostEndTurnAnimation());
     }
 

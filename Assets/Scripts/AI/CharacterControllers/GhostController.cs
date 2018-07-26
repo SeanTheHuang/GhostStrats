@@ -176,7 +176,7 @@ public class GhostController : EntityBase {
         dir.y = 0;
         transform.rotation = Quaternion.LookRotation(dir);
         m_abilities.OnHit();
-
+        TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.PUNK_DAMAGE, _damage);
         if (m_currentHealth < 1)
         {
             if (m_ghostAnimator != null)
@@ -292,7 +292,7 @@ public class GhostController : EntityBase {
         MousePicker.Instance().StartPicking(transform.position, this);
 
         // Update the UI
-        GetComponent<GhostAbilityBehaviour>().OnSelected();
+        m_abilities.OnSelected();
 
         if (m_aimModel)
             m_aimModel.ShowAimModel();

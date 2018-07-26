@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class WallGhostAbility : GhostAbilityBehaviour {
 
+    public Transform m_wallModel;
+
+    protected override void Initialize()
+    {
+        m_wallModel.SetParent(null); // Toss kid out
+        ToggleWallMode(false);
+        base.Initialize();
+    }
+
     protected override void SetGhostType()
     {
         m_ghostType = GhostType.WALLER;
@@ -46,7 +55,7 @@ public class WallGhostAbility : GhostAbilityBehaviour {
 
         }
 
-        // TODO: Turn into ghost wall
+        StartCoroutine(TransformAnimation(true));
 
         // Block off current path
         foreach (Vector3 v3 in m_rotatedAffectedSquares)
@@ -55,9 +64,6 @@ public class WallGhostAbility : GhostAbilityBehaviour {
 
     public override void StartOfTurn()
     {
-        base.StartOfTurn();
-
-
         // Clear up path where wall was
         if (m_actionState == GhostActionState.ABILITY)
         {
@@ -65,8 +71,10 @@ public class WallGhostAbility : GhostAbilityBehaviour {
             foreach (Vector3 v3 in m_rotatedAffectedSquares)
                 PathRequestManager.Instance().TogglePositionWalkable(v3, true);
 
-            // TODO: Turn back to normal ghost
+            StartCoroutine(TransformAnimation(false));
         }
+
+        base.StartOfTurn();
     }
 
     public override void ConfirmDirection()
@@ -75,5 +83,36 @@ public class WallGhostAbility : GhostAbilityBehaviour {
             m_ghostController.EndMovement();
 
         base.ConfirmDirection();
+    }
+
+    IEnumerator TransformAnimation(bool _becomeWall)
+    {
+        TextEffectController.Instance.GetComponent<EffectsSpawner>().SpawnPoofPrefab(transform.position);
+        yield return new WaitForSeconds(0.3f);
+
+        if (_becomeWall)
+        {
+            m_wallModel.position = transform.position;
+            m_wallModel.rotation = transform.rotation;
+        }
+        ToggleWallMode(_becomeWall);
+        yield return null;
+    }
+
+    void ToggleWallMode(bool _becomeWall)
+    {
+        // Shit way of doing stuff, turn stuff off, turn stuff on i want :4)
+        Renderer[] rend = GetComponentsInChildren<Renderer>();
+        Renderer[] wallRend = m_wallModel.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer r in rend)
+        {
+            if (r.name == "SelectedCircle")
+                continue;
+            r.enabled = !_becomeWall;
+        }
+
+        foreach (Renderer r in wallRend)
+            r.enabled = _becomeWall;
     }
 }
