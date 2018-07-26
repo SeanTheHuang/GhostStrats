@@ -32,6 +32,8 @@ public class PunkController : EntityBase
     PunkStates m_state;
     int m_pathIndex = 0;
 
+    public bool m_displayGizmos;
+
     private void Awake()
     {
         m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
@@ -47,6 +49,7 @@ public class PunkController : EntityBase
         m_currentHealth = m_maxHealth;
 
     }
+
     private void Update()
     {
         switch (m_state)
@@ -567,5 +570,25 @@ public class PunkController : EntityBase
                 return vcopy;
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(m_displayGizmos == false)
+        {
+            return;
+        }
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, circleSightRadius);
+
+        Gizmos.DrawLine(transform.position, transform.position + (transform.forward * forwardSightRadius));
+
+        Vector3 left =  Quaternion.Euler(0, forwardSightAngle, 0) * transform.forward;
+        Gizmos.DrawLine(transform.position, transform.position + (left.normalized * forwardSightRadius));
+
+        Vector3 right = Quaternion.Euler(0, -forwardSightAngle, 0) * transform.forward;
+        Gizmos.DrawLine(transform.position, transform.position + (right.normalized * forwardSightRadius));
+
     }
 }
