@@ -13,6 +13,13 @@ public class DollGhostAbility : GhostAbilityBehaviour {
     {
         base.ChooseSpecial();
         ImmediateConfirmAbility();
+
+        if (m_ghostController.m_aimModel)
+        {
+            m_ghostController.m_aimModel.transform.position = m_ghostController.TargetPoint();
+            m_ghostController.m_aimModel.SetText("Drop Doll");
+            m_ghostController.m_aimModel.m_locked = true;
+        }
     }
 
     protected override void PerformSpecialAbility()
