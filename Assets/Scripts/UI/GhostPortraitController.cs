@@ -15,6 +15,7 @@ public class GhostPortraitController : MonoBehaviour {
     public GameObject m_ghost;
     public GameObject m_healthBar;
     public GameObject m_largeHealthBar;
+    public GameObject m_GhostFace;
     public GameObject m_highlight;
     public GameObject m_portrait;
     public GameObject m_specialAbilityIcon;
@@ -24,6 +25,7 @@ public class GhostPortraitController : MonoBehaviour {
 
     private Image m_specialAbilityImage;
     private Image m_largeHealthBarImage;
+    public Image m_GhostFaceImage;
     private Image m_highlightImage;
     private Image m_portraitImage;
 
@@ -67,6 +69,7 @@ public class GhostPortraitController : MonoBehaviour {
         m_highlightImage = m_highlight.GetComponent<Image>();
         m_specialAbilityImage = m_specialAbilityIcon.GetComponent<Image>();
         m_largeHealthBarImage = m_largeHealthBar.GetComponent<Image>();
+        m_GhostFaceImage = m_GhostFace.GetComponent<Image>();
 
         m_originalPosition = transform.position;
 
@@ -88,12 +91,14 @@ public class GhostPortraitController : MonoBehaviour {
     {
         m_highlightImage.enabled = false;
         m_largeHealthBarImage.enabled = false;
+        m_GhostFaceImage.enabled = false;
     }
 
     public void OnSelected()
     {
         m_highlightImage.enabled = true;
         m_largeHealthBarImage.enabled = true;
+        m_GhostFaceImage.enabled = true;
         m_specialAbilityImage.sprite = m_SpecialAbilityIconSprite;
     }
 
