@@ -1673,7 +1673,7 @@ MonoBehaviour:
   m_circlingDistance: 4
   m_unwalkableMask:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 5632
   m_gridWorldSize: {x: 15, y: 15}
   m_nodeRadius: 0.5
 --- !u!4 &1086865989
@@ -1703,7 +1703,7 @@ MonoBehaviour:
   m_currentGhost: {fileID: 0}
   m_selectionMask:
     serializedVersion: 2
-    m_Bits: 6145
+    m_Bits: 14336
 --- !u!114 &1086865991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2344,9 +2344,9 @@ GameObject:
   - component: {fileID: 1605835432}
   - component: {fileID: 1605835431}
   - component: {fileID: 1605835430}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -8,7 +8,10 @@ public enum TextEffectTypes
     GHOST_DAMAGE,
     PUNK_DAMAGE,
     STUNNED,
-    RESPAWN
+    RESPAWN,
+    OVERSPOOK,
+    BOO,
+    HIDE
 }
 
 [System.Serializable]

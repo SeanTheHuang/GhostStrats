@@ -406,6 +406,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         RotateTowardsAbilityDir();
 
+        TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.BOO, 0);
         List<PunkController> affectedPunks = GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares);
         foreach (PunkController pc in affectedPunks)
             pc.OnEntityHit(m_baseAttackDamage, transform.position);
@@ -417,6 +418,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_hideCooldownTimer = m_hideCooldown; // Update the timer
         // PUT IT HERE HUGO
         PathRequestManager.Instance().SetNodeState(NodeState.GHOST_HIDE, transform);
+        TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.HIDE, 0);
     }
 
     void PerformOverwatch()
@@ -427,6 +429,8 @@ public class GhostAbilityBehaviour : MonoBehaviour
         // Rotate player visuals
         Vector3 lookDir = AverageAimDirection();
         transform.rotation = Quaternion.LookRotation(lookDir);
+
+        TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.OVERSPOOK, 0);
     }
 
     protected virtual void PerformSpecialAbility()
