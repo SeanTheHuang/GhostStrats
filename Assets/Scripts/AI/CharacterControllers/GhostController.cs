@@ -16,12 +16,16 @@ public class GhostController : EntityBase {
     public GhostHole m_ghostSpawner;
     private GhostUi m_ghostUI;
     private Animator m_ghostAnimator;
+    int m_layerMask;
 
     // Current stats at start of turn
     Vector3 m_positionAtStartOfTurn;
     public int m_numMovesLeft;
     public bool m_abilityUsed;
-    
+
+    [HideInInspector]
+    public GhostAimModel m_aimModel;
+
     public bool m_performing
     { get; private set; }
     
@@ -66,7 +70,13 @@ public class GhostController : EntityBase {
         m_spawnLocation = transform.position;
         m_currentHealth = m_maxHealth;
         m_OutofSight = false;
+        m_layerMask = gameObject.layer;
         m_ghostAnimator = transform.Find("Model").GetComponent<Animator>();
+        m_aimModel = GetComponentInChildren<GhostAimModel>();
+
+        // If aim model, throw it out of parent
+        if (m_aimModel)
+            m_aimModel.transform.SetParent(null);
     }
 
     #region EVENT_FUNCTIONS
@@ -128,6 +138,9 @@ public class GhostController : EntityBase {
 
     public void HideGhost()
     {
+        // Make sure mouse can't hit dead ghost
+        gameObject.layer = 2;
+
         MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
         SkinnedMeshRenderer[] sm_renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         GhostIsAlive = false;
@@ -141,6 +154,7 @@ public class GhostController : EntityBase {
 
     public void ShowGhost()
     {
+        gameObject.layer = m_layerMask; // Make sure mouse can hit ghost again
         MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
         SkinnedMeshRenderer[] sm_renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         GhostIsAlive = true;
@@ -264,6 +278,9 @@ public class GhostController : EntityBase {
                     break;
             }
         }
+
+        if (m_aimModel && !m_aimModel.m_locked)
+            m_aimModel.transform.position = m_choosingPathBallsList[m_choosingPathBallsList.Count-1].position;
     }
 
     public override void OnSelected()
@@ -276,6 +293,9 @@ public class GhostController : EntityBase {
 
         // Update the UI
         GetComponent<GhostAbilityBehaviour>().OnSelected();
+
+        if (m_aimModel)
+            m_aimModel.ShowAimModel();
     }
 
     public void OnDeselected()
@@ -285,6 +305,10 @@ public class GhostController : EntityBase {
 
         // Update the UI
         m_ghostUI.OnDeselected();
+
+        if (m_aimModel)
+            if (!m_aimModel.m_locked)
+                m_aimModel.HideAimModel();
     }
 
     public void OnStartOfTurn()
@@ -297,6 +321,12 @@ public class GhostController : EntityBase {
 
         // Tell ability manager
         m_abilities.StartOfTurn();
+        // Set aim model real far out initially
+        if (m_aimModel)
+        {
+            m_aimModel.transform.position = Vector3.up * 1000;
+            m_aimModel.transform.rotation = transform.rotation;
+        }
     }
 
     public void OnEndOfTurn()
@@ -378,8 +408,17 @@ public class GhostController : EntityBase {
             Destroy(t.gameObject);
         m_confirmedPathBallsList.Clear();
     }
+
     public void ResetAction()
     {
+        // Make aim model go away
+        if (m_aimModel)
+        {
+            m_aimModel.transform.position = Vector3.up * 1000;
+            m_aimModel.transform.rotation = transform.rotation;
+            m_aimModel.ResetAimModel();
+        }
+
         ResetPath();
         m_abilities.ResetAction();
     }
@@ -414,6 +453,12 @@ public class GhostController : EntityBase {
         foreach (Transform t in m_choosingPathBallsList)
             Destroy(t.gameObject);
         m_choosingPathBallsList.Clear();
+
+        if (m_aimModel)
+        {
+            m_aimModel.ResetAimModel();
+            m_aimModel.HideAimModel();
+        }
 
         // Character intial rotation
         if (m_movePath1.Count > 0)

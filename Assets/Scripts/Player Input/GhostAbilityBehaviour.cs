@@ -33,6 +33,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     PathRequestManager m_pathRequestManager;
     protected GhostController m_ghostController;
     GameMaster m_gameMaster;
+    private Animator m_animator;
 
     public Transform m_attackTilePrefab;
     List<Transform> m_attackTileList;
@@ -99,6 +100,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         SetGhostType();
 
         m_ghostUI = GetComponent<GhostUi>();
+        m_animator = transform.Find("Model").GetComponent<Animator>();
     }
 
     protected virtual void SetGhostType()
@@ -194,13 +196,29 @@ public class GhostAbilityBehaviour : MonoBehaviour
             angle += 360.0f;
 
         if (angle >= 45 && angle <= 135)
+        {
+            if (m_ghostController.m_aimModel)
+                m_ghostController.m_aimModel.transform.rotation = Quaternion.AngleAxis(270, Vector3.up);
             return AimingDirection.West;
+        }
         else if (angle >= 135 && angle <= 225)
+        {
+            if (m_ghostController.m_aimModel)
+                m_ghostController.m_aimModel.transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
             return AimingDirection.North;
+        }
         else if (angle >= 225 && angle <= 315)
+        {
+            if (m_ghostController.m_aimModel)
+                m_ghostController.m_aimModel.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
             return AimingDirection.East;
+        }
         else
+        {
+            if (m_ghostController.m_aimModel)
+                m_ghostController.m_aimModel.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
             return AimingDirection.South;
+        }
     }
 
     public virtual void ConfirmDirection()
@@ -212,6 +230,9 @@ public class GhostAbilityBehaviour : MonoBehaviour
         Debug.Log("Confirmed ability targets!");
         AbilityUsed();
         m_aimingAbility = false;
+
+        if (m_ghostController.m_aimModel)
+            m_ghostController.m_aimModel.m_locked = true;
     }
 
     protected void StartAimingAbility()
@@ -317,9 +338,20 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public void OnHit()
     {
+        if(m_ghostController.GetCurrentHealth() == 0)
+            m_animator.SetTrigger("Death");
+        else
+            m_animator.SetTrigger("Damaged");
+
         if (m_actionState == GhostActionState.OVERSPOOK)
             // Stop overwatching
             m_actionState = GhostActionState.NONE;
+
+        else if (m_actionState == GhostActionState.HIDE)
+        {
+            m_actionState = GhostActionState.NONE;
+            // TODO, play unhide animation
+        }
     }
 
     public void EndOfTurn()
@@ -368,6 +400,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     void PerformAttack()
     {
+        m_animator.SetTrigger("Attack");
         ClearAttackVisuals();
         m_attackCooldownTimer = m_attackCooldown;
 
@@ -382,6 +415,8 @@ public class GhostAbilityBehaviour : MonoBehaviour
     {
         m_ghostController.m_OutofSight = true;
         m_hideCooldownTimer = m_hideCooldown; // Update the timer
+        // PUT IT HERE HUGO
+        PathRequestManager.Instance().SetNodeState(NodeState.GHOST_HIDE, transform);
     }
 
     void PerformOverwatch()
@@ -425,6 +460,12 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_actionState = GhostActionState.BOO;
         m_currentAffectedSquares = m_attackSquares;
         StartAimingAbility();
+
+        if (m_ghostController.m_aimModel)
+        {
+            m_ghostController.m_aimModel.transform.position = m_ghostController.TargetPoint();
+            m_ghostController.m_aimModel.SetText("Boo");
+        }
     }
 
     public void ChooseHide()
@@ -433,6 +474,12 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_actionState = GhostActionState.HIDE;
         m_ghostController.EndMovement();
         ImmediateConfirmAbility();
+
+        if (m_ghostController.m_aimModel)
+        {
+            m_ghostController.m_aimModel.transform.position = m_ghostController.TargetPoint();
+            m_ghostController.m_aimModel.SetText("Hide");
+        }
     }
 
     public void ChooseOverwatch()
@@ -440,6 +487,12 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_actionState = GhostActionState.OVERSPOOK;
         m_currentAffectedSquares = m_overspookSquares;
         StartAimingAbility();
+
+        if (m_ghostController.m_aimModel)
+        {
+            m_ghostController.m_aimModel.transform.position = m_ghostController.TargetPoint();
+            m_ghostController.m_aimModel.SetText("Over Spook");
+        }
     }
 
     public virtual void ChooseSpecial()

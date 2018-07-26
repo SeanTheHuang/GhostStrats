@@ -8,7 +8,9 @@ public enum NodeState
     EMPTY,
     GHOST_TRAP,
     PUNK_TRAP,
-    OBSTACLE
+    OBSTACLE,
+    GHOST_HIDE,
+    GHOST_WALL
 }
 
 public class Node : IHeapItem<Node>

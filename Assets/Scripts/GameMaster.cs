@@ -160,14 +160,20 @@ public class GameMaster : MonoBehaviour {
     void StartPlayersTurn()
     {
         m_playersTurn = true;
-        // Start game by first selecting first ghost in list
-        m_KeyBoardInput.UpdateSelectedGhost(m_startGhostArray[0]);
-        m_ghostList[0].OnSelected();
-        m_currentlySelectedGhost = m_ghostList[0];
+        bool ghostFound = false;
 
-        // Tell all ghosts its start of turn
         foreach (GhostController gc in m_ghostList)
-            gc.OnStartOfTurn();
+        {
+            gc.OnStartOfTurn(); // Tell all ghosts its start of turn
+            // Select the first alive ghost in the list
+            if (!ghostFound && gc.GhostIsAlive)
+            {
+                ghostFound = true;
+                m_KeyBoardInput.UpdateSelectedGhost(gc.gameObject);
+                gc.OnSelected();
+                m_currentlySelectedGhost = gc;
+            }
+        }
 
         // Trigger the announcement that its the player's turn to appear on the UI
         m_AnnouncementBannerImage.GetComponent<AnnouncementBannerController>().Appear();
@@ -223,6 +229,10 @@ public class GameMaster : MonoBehaviour {
     {
         foreach(GhostController gc in m_ghostList)
         {
+            if(gc.m_OutofSight)//||is a wall
+            {
+                continue;
+            }
             m_tempUnwalkable.Add(gc.transform.position);
         }
         StartTurnUnWalkable();
