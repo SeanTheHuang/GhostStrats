@@ -18,6 +18,12 @@ public class MonsterGhostAbility : GhostAbilityBehaviour {
         base.ChooseSpecial();
         m_currentAffectedSquares = m_specialSkillSquares;
         StartAimingAbility();
+
+        if (m_ghostController.m_aimModel)
+        {
+            m_ghostController.m_aimModel.transform.position = m_ghostController.TargetPoint();
+            m_ghostController.m_aimModel.SetText("Monster");
+        }
     }
 
     public override void ConfirmDirection()

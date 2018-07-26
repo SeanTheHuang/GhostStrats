@@ -23,5 +23,12 @@ public class ScreamGhostAbility : GhostAbilityBehaviour {
     {
         base.ChooseSpecial();
         ImmediateConfirmAbility();
+
+        if (m_ghostController.m_aimModel)
+        {
+            m_ghostController.m_aimModel.transform.position = m_ghostController.TargetPoint();
+            m_ghostController.m_aimModel.SetText("Scream");
+            m_ghostController.m_aimModel.m_locked = true;
+        }
     }
 }
