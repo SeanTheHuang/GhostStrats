@@ -252,6 +252,7 @@ MonoBehaviour:
   m_attackRange: 1
   m_attackDamage: 1
   m_finishedMoving: 0
+  m_displayGizmos: 0
 --- !u!65 &225147716
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -673,6 +674,11 @@ Prefab:
       propertyPath: m_UIAbilityBar
       value: 
       objectReference: {fileID: 1586499510}
+    - target: {fileID: 33013066664809104, guid: a95586cae2cf9024197a44bbd6d3a391,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a95586cae2cf9024197a44bbd6d3a391, type: 2}
   m_IsPrefabParent: 0
@@ -894,6 +900,7 @@ MonoBehaviour:
   m_attackRange: 1
   m_attackDamage: 1
   m_finishedMoving: 0
+  m_displayGizmos: 0
 --- !u!65 &451946722
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4449,6 +4456,7 @@ MonoBehaviour:
   m_attackRange: 1
   m_attackDamage: 1
   m_finishedMoving: 0
+  m_displayGizmos: 0
 --- !u!65 &1928193441
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5134,8 +5142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_startGhostArray:
   - {fileID: 1641010462}
-  - {fileID: 729369567}
   - {fileID: 72795466}
+  - {fileID: 729369567}
   m_startPunkArray:
   - {fileID: 451946720}
   - {fileID: 225147714}
