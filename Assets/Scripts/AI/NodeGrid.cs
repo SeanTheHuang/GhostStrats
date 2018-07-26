@@ -371,7 +371,7 @@ public class NodeGrid : MonoBehaviour {
             foreach (Node n in m_mainGrid)
             {
                 if (!n.Walkable)
-                    Gizmos.color = Color.red;
+                    Gizmos.color = Color.magenta;
                 else
                 {
                     if (n.clearance == 1)
