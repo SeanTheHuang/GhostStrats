@@ -90,6 +90,10 @@ public class AbilityBarController : MonoBehaviour {
         m_hideUIAbilityUsedHighlightImage.enabled = false;
         m_overwatchUIAbilityUsedHighlightImage.enabled = false;
         m_specialUIAbilityUsedHighlightImage.enabled = false;
+        DisableCoolDownUIEffects(m_attackUIImage);
+        DisableCoolDownUIEffects(m_hideUIImage);
+        DisableCoolDownUIEffects(m_overwatchUIImage);
+        DisableCoolDownUIEffects(m_specialUIImage);
 
         // Reset Ability Highlights
         updateAbilityIcon(actionState, attackCooldownTimer, m_attackUIImage, m_attackUIHighlightImage);
