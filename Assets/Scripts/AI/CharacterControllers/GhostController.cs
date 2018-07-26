@@ -56,6 +56,11 @@ public class GhostController : EntityBase {
 
     private void Initilaize()
     {
+        // If aim model, throw it out of parent
+        m_aimModel = GetComponentInChildren<GhostAimModel>();
+        if (m_aimModel)
+            m_aimModel.transform.SetParent(null);
+
         // TEST: intialize waypoint lists
         m_confirmedPathBallsList = new List<Transform>();
         m_choosingPathBallsList = new List<Transform>();
@@ -72,11 +77,6 @@ public class GhostController : EntityBase {
         m_OutofSight = false;
         m_layerMask = gameObject.layer;
         m_ghostAnimator = transform.Find("Model").GetComponent<Animator>();
-        m_aimModel = GetComponentInChildren<GhostAimModel>();
-
-        // If aim model, throw it out of parent
-        if (m_aimModel)
-            m_aimModel.transform.SetParent(null);
     }
 
     #region EVENT_FUNCTIONS
