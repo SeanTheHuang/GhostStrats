@@ -15,7 +15,6 @@ public class GhostPortraitController : MonoBehaviour {
     public GameObject m_ghost;
     public GameObject m_healthBar;
     public GameObject m_largeHealthBar;
-    public GameObject m_GhostFace;
     public GameObject m_highlight;
     public GameObject m_portrait;
     public GameObject m_specialAbilityIcon;
@@ -69,7 +68,6 @@ public class GhostPortraitController : MonoBehaviour {
         m_highlightImage = m_highlight.GetComponent<Image>();
         m_specialAbilityImage = m_specialAbilityIcon.GetComponent<Image>();
         m_largeHealthBarImage = m_largeHealthBar.GetComponent<Image>();
-        m_GhostFaceImage = m_GhostFace.GetComponent<Image>();
 
         m_originalPosition = transform.position;
 
