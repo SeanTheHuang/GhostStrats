@@ -21,6 +21,8 @@ public class EffectTextEffect : MonoBehaviour {
     [Range(0, 1)]
     public float m_lifePercentBeforeStartFadingOut = 0.3f;
 
+    public Vector3 m_offsetFromTargetPos;
+
     public float m_floatSpeed = 15;
     public float m_lifeTime = 1;
     public float m_shrinkRate = 0.3f;
@@ -35,6 +37,7 @@ public class EffectTextEffect : MonoBehaviour {
     public void InitializeAndPlay(EffectTextTemplate _template, int _strength = 0)
     {
         UpdateValues(_template, _strength);
+        transform.position += m_offsetFromTargetPos;
         StartCoroutine(TextAnimation());
     }
 
