@@ -39,7 +39,7 @@ public class PunkController : EntityBase
         m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
         m_realPath = new List<Vector3> { };
 
-        int t = Random.Range(0, m_hiveMind.m_RoomList.Count);
+       // int t = Random.Range(0, m_hiveMind.m_RoomList.Count);
         m_roomTarget = m_hiveMind.ChooseFirstRoom();
         m_roomTarget.m_targeted = true;
         m_roomToExplore = m_roomTarget.transform.position;
@@ -187,7 +187,9 @@ public class PunkController : EntityBase
 
         }
 
-        PathRequestManager.RequestPath(transform.position, wheretogo, 1, OnPathFound);
+        //PathRequestManager.RequestPath(transform.position, wheretogo, 1, OnPathFound);
+
+        OnPathFound(PathRequestManager.Instance().GetPathImmediate(transform.position, wheretogo, 1));
         v3debug = wheretogo;
 
         //StartCoroutine(FollowPath());
@@ -195,9 +197,9 @@ public class PunkController : EntityBase
     }
 
     
-    void OnPathFound(Vector3[] _path, bool _pathFound)
+    void OnPathFound(Vector3[] _path)
     {
-        if (_pathFound)
+        if (_path.Length != 0)
         {
             m_realPath.Clear();
             if (m_prey)
@@ -248,7 +250,7 @@ public class PunkController : EntityBase
 
     void MovetoNode()
     {
-        if (m_pathIndex == 0)
+        if (m_pathIndex == 0)//first move
         {
             if (GameMaster.Instance().PunkHitOverwatch(this))
             {
@@ -270,9 +272,22 @@ public class PunkController : EntityBase
             }
             else if (m_realPath.Count > 0)
             {
-                Vector3 dir = m_realPath[0] - transform.position;
+                Vector3 dir = m_realPath[0] - transform.position;//rotation
                 dir.y = 0;
                 transform.rotation = Quaternion.LookRotation(dir);
+
+                if (PathRequestManager.Instance().GetNodeState(m_realPath[m_pathIndex]) == NodeState.GHOST_HIDE)
+                {//check if next is hidden ghost
+                    List<GhostController> ghoast = GameMaster.Instance().GetGhostsAtLocations(new List<Vector3> { m_realPath[m_pathIndex] }, false);
+                    ghoast[0].m_OutofSight = false;
+                    Debug.Log("unhiding");
+                    PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, ghoast[0].transform);
+
+                    Sight();
+                    ChooseTarget();//should just target ghost in front and attack it.
+                    m_state = PunkStates.ATTACK;
+                    return;
+                }
             }
 
         }
@@ -280,30 +295,44 @@ public class PunkController : EntityBase
 
         Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[m_pathIndex], m_moveSpeed * Time.deltaTime);
 
-        if (transform.position == m_realPath[m_pathIndex])
+        if (transform.position == m_realPath[m_pathIndex])//moved to place
         {
+            //Debug.Break();
             if (GameMaster.Instance().PunkHitOverwatch(this))
-            {
+            {//check for ghost skill overwatch
                 EndTurn();
                 return;
             }
             if (PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
-            {
+            {//check for ghost skill trap
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 EndTurn();
                 return;
             }
 
-            if (m_pathIndex + 1 < m_realPath.Count)
+            if (m_pathIndex + 1 < m_realPath.Count)//if there is another node to walk to
             {
                 Vector3 dir = m_realPath[m_pathIndex + 1] - transform.position;
                 dir.y = 0;
                 transform.rotation = Quaternion.LookRotation(dir);
+
+                if (PathRequestManager.Instance().GetNodeState(m_realPath[m_pathIndex + 1]) == NodeState.GHOST_HIDE)
+                {//check if next is hidden ghost
+                    List<GhostController> ghoast = GameMaster.Instance().GetGhostsAtLocations(new List<Vector3> { m_realPath[m_pathIndex + 1] }, false);
+                    ghoast[0].m_OutofSight = false;
+                    Debug.Log("unhiding");
+                    PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, ghoast[0].transform);
+
+                    Sight();
+                    ChooseTarget();//should just target ghost in front and attack it.
+                    m_state = PunkStates.ATTACK;
+                    return;
+                }
             }
 
             m_pathIndex++;
-            if(m_pathIndex == m_realPath.Count)
+            if(m_pathIndex == m_realPath.Count)//end of the path
             {
                 //end it?
                 m_state = PunkStates.ATTACK;
@@ -316,8 +345,8 @@ public class PunkController : EntityBase
                 ChooseTarget();
 
                 if (m_prey != m_oldPrey)
-                {
-                    PathRequestManager.RequestPath(transform.position, m_prey.position, 1, OnPathFound);
+                {//there might be problems here.
+                    OnPathFound(PathRequestManager.Instance().GetPathImmediate(transform.position, m_prey.position, 1));
                     m_pathIndex = 0;
                 }
                 //rotate check new path + sight
@@ -542,14 +571,7 @@ public class PunkController : EntityBase
         m_roomTarget = m_hiveMind.ChooseRoom(m_roomTarget);
         m_roomToExplore = m_roomTarget.transform.position;
         m_roomTarget.m_targeted = true;
-        /*while (true)
-        {
-           // m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0, m_hiveMind.m_HouseLocations.Count)].position;
-            if(m_roomToExplore != m_lastRoomExplored)
-            {
-                break;
-            }
-        }*/
+
         Vector3 pos = m_roomToExplore;
         pos.x += Random.Range(-1, 1);
         pos.z += Random.Range(-1, 1);

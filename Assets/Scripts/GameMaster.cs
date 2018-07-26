@@ -223,6 +223,10 @@ public class GameMaster : MonoBehaviour {
     {
         foreach(GhostController gc in m_ghostList)
         {
+            if(gc.m_OutofSight)//||is a wall
+            {
+                continue;
+            }
             m_tempUnwalkable.Add(gc.transform.position);
         }
         StartTurnUnWalkable();
