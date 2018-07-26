@@ -126,6 +126,12 @@ public class GameMaster : MonoBehaviour {
 
     void GhostStartTurn()
     {
+        foreach (PunkController pc in m_punkList)
+        {
+            m_tempUnwalkable.Add(pc.transform.position);
+        }
+        StartTurnUnWalkable();
+
         StartCoroutine(GhostSpawnAnimation());
     }
 
@@ -205,6 +211,7 @@ public class GameMaster : MonoBehaviour {
                 yield return null;
         }
 
+        EndTurnWalkable();
         PunkStartTurn();
     }
 
@@ -216,9 +223,10 @@ public class GameMaster : MonoBehaviour {
     {
         foreach(GhostController gc in m_ghostList)
         {
-            PathRequestManager.Instance().TogglePositionWalkable(gc.transform.position, false);
             m_tempUnwalkable.Add(gc.transform.position);
         }
+        StartTurnUnWalkable();
+
         StartCoroutine(PunkAnimation());
     }
 
@@ -235,11 +243,8 @@ public class GameMaster : MonoBehaviour {
             }
         }
 
-        foreach(Vector3 v3 in m_tempUnwalkable)
-        {
-            PathRequestManager.Instance().TogglePositionWalkable(v3, true);
-        }
-        m_tempUnwalkable.Clear();
+        EndTurnWalkable();
+
         GhostStartTurn();
         yield return null;
     }
@@ -400,4 +405,22 @@ public class GameMaster : MonoBehaviour {
         if (m_EndTurnPromptImage.GetComponent<EndTurnPromptController>().m_visible)
             m_EndTurnPromptImage.GetComponent<EndTurnPromptController>().Disappear();
     }
+
+    void EndTurnWalkable()
+    {
+        foreach (Vector3 v3 in m_tempUnwalkable)
+        {
+            PathRequestManager.Instance().TogglePositionWalkable(v3, true);
+        }
+        m_tempUnwalkable.Clear();
+    }
+
+    void StartTurnUnWalkable()
+    {
+        foreach(Vector3 v3 in m_tempUnwalkable)
+        {
+            PathRequestManager.Instance().TogglePositionWalkable(v3, false);
+        }
+    }
+
 }
