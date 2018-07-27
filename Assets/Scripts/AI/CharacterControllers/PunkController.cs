@@ -95,6 +95,8 @@ public class PunkController : EntityBase
     }
     public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
     {
+        // Adjust damage according to direction
+        _damage = GetDamageBaseOffDirection(_damage, transform.position - _positionOfHitter);
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
 
         Vector3 dir = _positionOfHitter - transform.position;
@@ -337,6 +339,7 @@ public class PunkController : EntityBase
             //Debug.Break();
             if (GameMaster.Instance().PunkHitOverwatch(this))
             {//check for ghost skill overwatch
+                Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
                 EndTurn();
                 return;
             }
@@ -389,6 +392,11 @@ public class PunkController : EntityBase
 
     }
 
+    void StunnedText()
+    {
+        TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.STUNNED, 0);
+    }
+
     void Attack()
     {
         
@@ -427,7 +435,7 @@ public class PunkController : EntityBase
                     }
                 }
             }
-            if (Time.time - m_atk_time == 2.0f)
+            if (Time.time - m_atk_time > 2.0f)
             {
                 EndTurn();
             }
@@ -444,6 +452,11 @@ public class PunkController : EntityBase
     {
         m_state = PunkStates.IDLE;
         m_anima.SetTrigger("NormalIdle");
+        Invoke("DelayedEndTurn", 0.5f);
+    }
+
+    void DelayedEndTurn()
+    {
         m_finishedMoving = true;
     }
 

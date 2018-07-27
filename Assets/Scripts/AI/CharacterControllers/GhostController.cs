@@ -168,6 +168,8 @@ public class GhostController : EntityBase {
 
     public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
     {
+        // Adjust damage according to direction
+        _damage = GetDamageBaseOffDirection(_damage, transform.position - _positionOfHitter);
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
 
         m_currentHealth = Mathf.Clamp(m_currentHealth - _damage, 0, 1000);
@@ -497,7 +499,7 @@ public class GhostController : EntityBase {
         // Perform selected action (maybe pause and rotate towards target first)
         m_abilities.EndOfTurn();
 
-        yield return new WaitForSeconds(0.8f); // Pause for a bit for animation
+        yield return new WaitForSeconds(0.5f); // Pause for a bit for animation
 
         // Start moving again if theres more
         for (int i = 0; i < m_movePath2.Count; i++)

@@ -37,4 +37,25 @@ public abstract class EntityBase : MonoBehaviour {
     public abstract void ChooseAction();
 
     public int GetCurrentHealth() { return m_currentHealth; }
+
+    /// <summary>
+    /// Adjusts damage based on attack direction.
+    /// Uses current transform's facing direction, and attack direction
+    /// 50% Damage - If attack from the front
+    /// 100% Damage - If attack from side
+    /// 200% Damage - If attack from back
+    /// </summary>
+    protected int GetDamageBaseOffDirection(int _baseDamage, Vector3 _attackDir)
+    {
+        _attackDir = _attackDir.normalized;
+
+        float dotProduct = Vector3.Dot(_attackDir, transform.forward);
+
+        if (dotProduct >= 0.998) // Attack from behind
+            return 2 * _baseDamage;
+        else if (dotProduct < 0) // Attack from the front
+            return Mathf.RoundToInt((0.5f * _baseDamage));
+        else
+            return _baseDamage; // Attack from the side
+    }
 }

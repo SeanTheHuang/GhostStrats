@@ -94,7 +94,7 @@ public class TextEffectController : MonoBehaviour {
         ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
 
         // Create, set position, and play animation
-        Transform effectText = Instantiate(m_effectsTextPrefab, Vector3.zero, Quaternion.identity, transform);
+        Transform effectText = Instantiate(m_effectsTextPrefab, WorldObject_ScreenPosition, Quaternion.identity, transform);
         effectText.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
         effectText.GetComponent<EffectTextEffect>().InitializeAndPlay(template, _strength);
     }
