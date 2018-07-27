@@ -125,11 +125,7 @@ public class PunkController : EntityBase
     {
         m_finishedMoving = false;
         OnStartOfTurn();
-        
-
         ActionPhase();
-        OnEndOfTurn();
-        //Debug.Log("PunkTurnEnd");
     }
 
 
@@ -405,36 +401,11 @@ public class PunkController : EntityBase
             m_anima.SetTrigger("IfAttacking");
             m_atk_time = Time.time;
             m_startAttack = true;
+            Invoke("ApplyAttack", 1.0f);
         }
 
         if (m_startAttack == true)
         {
-            if (Time.time - m_atk_time == 1.0f)
-            {
-                if (m_prey)
-                {
-                    Vector3 dir = m_prey.position - transform.position;
-                    dir.y = 0;
-                    transform.rotation = Quaternion.LookRotation(dir);
-
-                    if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
-                        new Vector2(m_prey.position.x, m_prey.position.z)) <= m_attackRange)
-                    {
-                        //Attack
-                        //face them
-
-                        if (m_attackRange > 1)
-                        {
-                            if (SightBehindWall(m_prey))
-                            {
-                                return;
-                            }
-                        }
-                        m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage, transform.position);
-                        //Debug.Log("attacked entity");
-                    }
-                }
-            }
             if (Time.time - m_atk_time > 2.0f)
             {
                 EndTurn();
@@ -447,6 +418,32 @@ public class PunkController : EntityBase
         
     }
 
+    void ApplyAttack()
+    {
+        if (m_prey)
+        {
+            Vector3 dir = m_prey.position - transform.position;
+            dir.y = 0;
+            transform.rotation = Quaternion.LookRotation(dir);
+
+            if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
+                new Vector2(m_prey.position.x, m_prey.position.z)) <= m_attackRange)
+            {
+                //Attack
+                //face them
+
+                if (m_attackRange > 1)
+                {
+                    if (SightBehindWall(m_prey))
+                    {
+                        return;
+                    }
+                }
+                m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage, transform.position);
+                //Debug.Log("attacked entity");
+            }
+        }
+    }
 
     void EndTurn()
     {

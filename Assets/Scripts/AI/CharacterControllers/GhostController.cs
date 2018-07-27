@@ -168,8 +168,6 @@ public class GhostController : EntityBase {
 
     public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
     {
-        // Adjust damage according to direction
-        _damage = GetDamageBaseOffDirection(_damage, transform.position - _positionOfHitter);
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
 
         m_currentHealth = Mathf.Clamp(m_currentHealth - _damage, 0, 1000);
@@ -187,6 +185,7 @@ public class GhostController : EntityBase {
             if (m_ghostSpawner)
                 m_ghostSpawner.OnGhostDeath();
 
+            Debug.Log(name + " has died.");
             GhostIsAlive = false;
         }
         else
