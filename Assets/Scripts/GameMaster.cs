@@ -26,6 +26,7 @@ public class GameMaster : MonoBehaviour {
 
     static GameMaster instance;
 
+    public bool m_playGhostInSequence = true;
     public bool m_playersTurn;
 
     private List<Vector3> m_tempUnwalkable;
@@ -205,10 +206,19 @@ public class GameMaster : MonoBehaviour {
         foreach (GhostController gc in m_ghostList)
         {
             gc.OnEndOfTurn();
+
+            if (m_playGhostInSequence)
+            {
+                CameraControl.Instance.SetFollowMode(gc.transform);   
+                while (gc.m_performing)
+                    yield return null;
+
+                // Reach here = done performing, next performance!
+            }
         }
 
         // Wait for all ghosts to finish action, then start punks turn
-        while (true)
+        while (!m_playGhostInSequence)
         {
             bool ghostsStillMoving = false;
             foreach (GhostController gc in m_ghostList)
