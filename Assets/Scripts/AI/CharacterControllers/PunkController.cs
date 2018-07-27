@@ -113,7 +113,7 @@ public class PunkController : EntityBase
 
         m_currentHealth -= _damage;
         TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.GHOST_DAMAGE, _damage);
-        if (m_currentHealth == 0 && m_state != PunkStates.DEAD)
+        if (m_currentHealth < 1 && m_state != PunkStates.DEAD)
         {
             m_anima.SetTrigger("DeathTrigger");
             m_hiveMind.RemovePunk(transform);
@@ -479,7 +479,7 @@ public class PunkController : EntityBase
     {
         m_state = PunkStates.IDLE;
         m_anima.SetBool("IsWalking", false);
-        Invoke("DelayedEndTurn", 0.5f);
+        Invoke("DelayedEndTurn", 0.9f);
     }
 
     void DelayedEndTurn()

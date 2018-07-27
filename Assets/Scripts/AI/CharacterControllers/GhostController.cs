@@ -501,7 +501,7 @@ public class GhostController : EntityBase {
         // Perform selected action (maybe pause and rotate towards target first)
         m_abilities.EndOfTurn();
 
-        yield return new WaitForSeconds(0.5f); // Pause for a bit for animation
+        yield return new WaitForSeconds(0.2f); // Pause for a bit for animation
 
         // Start moving again if theres more
         for (int i = 0; i < m_movePath2.Count; i++)
@@ -528,6 +528,8 @@ public class GhostController : EntityBase {
         }
 
         if (m_movePath2.Count > 0)
+            yield return new WaitForSeconds(0.7f); // Pause for another period of time
+        else
             yield return new WaitForSeconds(0.5f); // Pause for another period of time
 
         m_performing = false;

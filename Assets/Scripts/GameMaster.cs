@@ -149,9 +149,9 @@ public class GameMaster : MonoBehaviour {
 
                 while (!gh.m_respawnAnimationDone)
                     yield return null;
-            }
 
-            yield return new WaitForSeconds(0.4f); // Small delay after respawn to gauge dafuq happened
+                yield return new WaitForSeconds(0.4f); // Small delay after respawn to gauge dafuq happened
+            }
         }
 
         // After spawn animation, time to start players turn
@@ -209,15 +209,17 @@ public class GameMaster : MonoBehaviour {
 
         foreach (GhostController gc in m_ghostList)
         {
+            if (m_playGhostInSequence)
+            {
+                CameraControl.Instance.SetFollowMode(gc.transform);
+                yield return new WaitForSeconds(0.5f);
+            }
             gc.OnEndOfTurn();
 
             if (m_playGhostInSequence)
             {
-                CameraControl.Instance.SetFollowMode(gc.transform);   
                 while (gc.m_performing)
                     yield return null;
-
-                // Reach here = done performing, next performance!
             }
         }
 
