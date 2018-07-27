@@ -56,6 +56,11 @@ public class PunkController : EntityBase
         m_anima = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        m_anima.SetFloat("HealthPercent", 1);    
+    }
+
     private void Update()
     {
         switch (m_state)
@@ -104,15 +109,20 @@ public class PunkController : EntityBase
         dir.y = 0;
         transform.rotation = Quaternion.LookRotation(dir);
 
+        m_anima.SetFloat("HealthPercent", (float)m_currentHealth / (float)m_maxHealth);
+
         m_currentHealth -= _damage;
         TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.GHOST_DAMAGE, _damage);
         if (m_currentHealth == 0 && m_state != PunkStates.DEAD)
         {
+            m_anima.SetTrigger("DeathTrigger");
             m_hiveMind.RemovePunk(transform);
             GameMaster.Instance().RemovePunk(this);
             m_state = PunkStates.DEAD;
-            Destroy(gameObject);
+            Destroy(gameObject, 1.0f);
         }
+        else
+            m_anima.SetTrigger("GetHitTrigger");
     }
     public override void OnSelected()
     {
@@ -261,9 +271,8 @@ public class PunkController : EntityBase
     {
         if(m_startwalk == false)
         {
-            m_anima.SetTrigger("IfWalking");
-            m_startwalk = true;
-            
+            m_anima.SetBool("IsWalking", true);
+            m_startwalk = true;   
         }
     }
 
@@ -273,6 +282,8 @@ public class PunkController : EntityBase
         {
             if (GameMaster.Instance().PunkHitOverwatch(this))
             {
+                m_anima.SetTrigger("StunTrigger");
+                Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
                 EndTurn();
                 return;
             }
@@ -343,6 +354,7 @@ public class PunkController : EntityBase
             //Debug.Break();
             if (GameMaster.Instance().PunkHitOverwatch(this))
             {//check for ghost skill overwatch
+                m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
                 EndTurn();
                 return;
@@ -416,7 +428,7 @@ public class PunkController : EntityBase
             {
                 //Debug.Log("here hre hre");
             }
-            m_anima.SetTrigger("IfAttacking");
+            m_anima.SetTrigger("AttackTrigger");
             m_atk_time = Time.time;
             m_startAttack = true;
             Invoke("ApplyAttack", 1.0f);
@@ -466,7 +478,7 @@ public class PunkController : EntityBase
     void EndTurn()
     {
         m_state = PunkStates.IDLE;
-        m_anima.SetTrigger("NormalIdle");
+        m_anima.SetBool("IsWalking", false);
         Invoke("DelayedEndTurn", 0.5f);
     }
 
