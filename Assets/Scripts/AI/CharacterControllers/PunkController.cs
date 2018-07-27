@@ -396,6 +396,7 @@ public class PunkController : EntityBase
         {
             m_anima.SetTrigger("IfAttacking");
             m_atk_time = Time.time;
+            m_startAttack = true;
         }
 
         if (m_startAttack == true)
