@@ -7,14 +7,11 @@ using TMPro;
 public class GhostAimModel : MonoBehaviour {
 
     public TextMeshPro m_text;
-    MeshRenderer[] m_renderers;
     Vector3 m_textLocalPosition;
     public bool m_locked;
 
     private void Awake()
     {
-        m_renderers = GetComponentsInChildren<MeshRenderer>();
-
         // If text exists, throw them out of parent
         if (m_text)
         {
@@ -61,8 +58,11 @@ public class GhostAimModel : MonoBehaviour {
 
     void ToggleRenderers(bool _shown)
     {
-        foreach (MeshRenderer mrend in m_renderers)
+        foreach (MeshRenderer mrend in GetComponentsInChildren<MeshRenderer>())
             mrend.enabled = _shown;
+
+        foreach (Renderer rend in GetComponentsInChildren<Renderer>())
+            rend.enabled = _shown;
     }
 
 }

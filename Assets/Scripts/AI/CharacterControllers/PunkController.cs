@@ -95,6 +95,8 @@ public class PunkController : EntityBase
     }
     public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
     {
+        // Adjust damage according to direction
+        _damage = GetDamageBaseOffDirection(_damage, transform.position - _positionOfHitter);
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
 
         Vector3 dir = _positionOfHitter - transform.position;
@@ -102,7 +104,8 @@ public class PunkController : EntityBase
         transform.rotation = Quaternion.LookRotation(dir);
 
         m_currentHealth -= _damage;
-        if(m_currentHealth == 0 && m_state != PunkStates.DEAD)
+        TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.GHOST_DAMAGE, _damage);
+        if (m_currentHealth == 0 && m_state != PunkStates.DEAD)
         {
             m_hiveMind.RemovePunk(transform);
             GameMaster.Instance().RemovePunk(this);
@@ -122,11 +125,7 @@ public class PunkController : EntityBase
     {
         m_finishedMoving = false;
         OnStartOfTurn();
-        
-
         ActionPhase();
-        OnEndOfTurn();
-        //Debug.Log("PunkTurnEnd");
     }
 
 
@@ -291,7 +290,8 @@ public class PunkController : EntityBase
             {
                 Vector3 dir = m_realPath[0] - transform.position;//rotation
                 dir.y = 0;
-                transform.rotation = Quaternion.LookRotation(dir);
+                if (dir != Vector3.zero)
+                    transform.rotation = Quaternion.LookRotation(dir);
 
                 if (PathRequestManager.Instance().GetNodeState(m_realPath[m_pathIndex]) == NodeState.GHOST_HIDE)
                 {//check if next is hidden ghost
@@ -335,6 +335,7 @@ public class PunkController : EntityBase
             //Debug.Break();
             if (GameMaster.Instance().PunkHitOverwatch(this))
             {//check for ghost skill overwatch
+                Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
                 EndTurn();
                 return;
             }
@@ -387,6 +388,11 @@ public class PunkController : EntityBase
 
     }
 
+    void StunnedText()
+    {
+        TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.STUNNED, 0);
+    }
+
     void Attack()
     {
         
@@ -394,37 +400,13 @@ public class PunkController : EntityBase
         {
             m_anima.SetTrigger("IfAttacking");
             m_atk_time = Time.time;
+            m_startAttack = true;
+            Invoke("ApplyAttack", 1.0f);
         }
 
         if (m_startAttack == true)
         {
-            if (Time.time - m_atk_time == 1.0f)
-            {
-                if (m_prey)
-                {
-                    Vector3 dir = m_prey.position - transform.position;
-                    dir.y = 0;
-                    transform.rotation = Quaternion.LookRotation(dir);
-
-                    if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
-                        new Vector2(m_prey.position.x, m_prey.position.z)) <= m_attackRange)
-                    {
-                        //Attack
-                        //face them
-
-                        if (m_attackRange > 1)
-                        {
-                            if (SightBehindWall(m_prey))
-                            {
-                                return;
-                            }
-                        }
-                        m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage, transform.position);
-                        //Debug.Log("attacked entity");
-                    }
-                }
-            }
-            if (Time.time - m_atk_time == 2.0f)
+            if (Time.time - m_atk_time > 2.0f)
             {
                 EndTurn();
             }
@@ -436,11 +418,42 @@ public class PunkController : EntityBase
         
     }
 
+    void ApplyAttack()
+    {
+        if (m_prey)
+        {
+            Vector3 dir = m_prey.position - transform.position;
+            dir.y = 0;
+            transform.rotation = Quaternion.LookRotation(dir);
+
+            if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
+                new Vector2(m_prey.position.x, m_prey.position.z)) <= m_attackRange)
+            {
+                //Attack
+                //face them
+
+                if (m_attackRange > 1)
+                {
+                    if (SightBehindWall(m_prey))
+                    {
+                        return;
+                    }
+                }
+                m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage, transform.position);
+                //Debug.Log("attacked entity");
+            }
+        }
+    }
 
     void EndTurn()
     {
         m_state = PunkStates.IDLE;
         m_anima.SetTrigger("NormalIdle");
+        Invoke("DelayedEndTurn", 0.5f);
+    }
+
+    void DelayedEndTurn()
+    {
         m_finishedMoving = true;
     }
 

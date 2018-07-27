@@ -56,6 +56,11 @@ public class GhostController : EntityBase {
 
     private void Initilaize()
     {
+        // If aim model, throw it out of parent
+        m_aimModel = GetComponentInChildren<GhostAimModel>();
+        if (m_aimModel)
+            m_aimModel.transform.SetParent(null);
+
         // TEST: intialize waypoint lists
         m_confirmedPathBallsList = new List<Transform>();
         m_choosingPathBallsList = new List<Transform>();
@@ -72,11 +77,6 @@ public class GhostController : EntityBase {
         m_OutofSight = false;
         m_layerMask = gameObject.layer;
         m_ghostAnimator = transform.Find("Model").GetComponent<Animator>();
-        m_aimModel = GetComponentInChildren<GhostAimModel>();
-
-        // If aim model, throw it out of parent
-        if (m_aimModel)
-            m_aimModel.transform.SetParent(null);
     }
 
     #region EVENT_FUNCTIONS
@@ -176,7 +176,7 @@ public class GhostController : EntityBase {
         dir.y = 0;
         transform.rotation = Quaternion.LookRotation(dir);
         m_abilities.OnHit();
-
+        TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.PUNK_DAMAGE, _damage);
         if (m_currentHealth < 1)
         {
             if (m_ghostAnimator != null)
@@ -185,6 +185,7 @@ public class GhostController : EntityBase {
             if (m_ghostSpawner)
                 m_ghostSpawner.OnGhostDeath();
 
+            Debug.Log(name + " has died.");
             GhostIsAlive = false;
         }
         else
@@ -292,7 +293,7 @@ public class GhostController : EntityBase {
         MousePicker.Instance().StartPicking(transform.position, this);
 
         // Update the UI
-        GetComponent<GhostAbilityBehaviour>().OnSelected();
+        m_abilities.OnSelected();
 
         if (m_aimModel)
             m_aimModel.ShowAimModel();
@@ -523,7 +524,8 @@ public class GhostController : EntityBase {
             }
         }
 
-        yield return new WaitForSeconds(0.5f); // Pause for another period of time
+        if (m_movePath2.Count > 0)
+            yield return new WaitForSeconds(0.5f); // Pause for another period of time
 
         m_performing = false;
         yield return null;

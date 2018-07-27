@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class NodeGrid : MonoBehaviour {
 
+    public Transform m_gridVisualPrefab;
+
     [SerializeField]
     private bool DisplayGridGizmos;
 
@@ -27,9 +29,12 @@ public class NodeGrid : MonoBehaviour {
     int m_gridSizeX, m_gridSizeY;
     bool m_gridReady;
 
+    List<Transform> m_nodeVisuals;
+
     private void Awake()
     {
         m_pathfinding = GetComponent<Pathfinding>();
+        m_nodeVisuals = new List<Transform>();
         m_nodeDiameter = m_nodeRadius * 2;
         m_gridSizeX = Mathf.RoundToInt(m_gridWorldSize.x / m_nodeDiameter);
         m_gridSizeY = Mathf.RoundToInt(m_gridWorldSize.y / m_nodeDiameter);
@@ -40,6 +45,43 @@ public class NodeGrid : MonoBehaviour {
     {
         get {
             return m_gridSizeX * m_gridSizeY;  
+        }
+    }
+
+    public void ShowNodeGrid()
+    {
+        if (!m_gridVisualPrefab)
+        {
+            Debug.LogWarning("Warning, no grid visual prefab provided in NodeGrid.");
+            return;
+        }
+
+        if (m_nodeVisuals.Count < 1)
+        {
+            CreateNodeVisuals();
+            return;
+        }
+
+        // Show all grid visuals
+        foreach (Transform t in m_nodeVisuals)
+            t.gameObject.SetActive(true);
+    }
+
+    public void HideNodeGrid()
+    {
+        foreach (Transform t in m_nodeVisuals)
+            t.gameObject.SetActive(false);
+    }
+
+    void CreateNodeVisuals()
+    {
+        for (int i = 0; i < m_gridSizeY; i++)
+        {
+            for (int j = 0; j < m_gridSizeX; j++)
+            {
+                if (!m_mainGrid[j, i].WalkabilityIsLocked)
+                    m_nodeVisuals.Add(Instantiate(m_gridVisualPrefab, m_mainGrid[j, i].WorldPosition + Vector3.up * 0.01f, m_gridVisualPrefab.rotation, transform));
+            }
         }
     }
 
