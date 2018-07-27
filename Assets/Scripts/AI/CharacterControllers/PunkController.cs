@@ -29,6 +29,7 @@ public class PunkController : EntityBase
     public bool m_finishedMoving = false;
 
     Vector3 v3debug;//used when cant find a path
+    bool bdebug = false;
 
     PunkStates m_state;
     int m_pathIndex = 0;
@@ -134,6 +135,8 @@ public class PunkController : EntityBase
         m_startwalk = false;
         m_movesPerformed = 0;
         m_pathIndex = 0;
+        bdebug = false;
+        m_startAttack = false;
         if (transform.position == m_roomToExplore)
         {
             ChooseNewRoom();
@@ -260,12 +263,12 @@ public class PunkController : EntityBase
         {
             m_anima.SetTrigger("IfWalking");
             m_startwalk = true;
+            
         }
     }
 
     void MovetoNode()
     {
-        StartMove();
         if (m_pathIndex == 0)//first move
         {
             if (GameMaster.Instance().PunkHitOverwatch(this))
@@ -283,11 +286,15 @@ public class PunkController : EntityBase
 
             if (m_realPath.Count == 0)
             {
+                Debug.Log(name + ": in attack right away. " + m_prey.transform.position);
+                bdebug = true;
                 m_state = PunkStates.ATTACK;
                 return;
             }
             else if (m_realPath.Count > 0)
             {
+                StartMove();
+
                 Vector3 dir = m_realPath[0] - transform.position;//rotation
                 dir.y = 0;
                 if (dir != Vector3.zero)
@@ -300,6 +307,7 @@ public class PunkController : EntityBase
                 }
                 else if (PathRequestManager.Instance().GetNodeState(m_realPath[m_pathIndex]) == NodeState.GHOST_WALL)
                 {
+                    //not done start
                     PathRequestManager.Instance().TogglePositionWalkable(m_realPath[m_pathIndex], false);
                     if(m_lastRoomTarget.m_targeted == false)
                     {
@@ -321,7 +329,7 @@ public class PunkController : EntityBase
                     }
 
                     PathRequestManager.Instance().TogglePositionWalkable(m_realPath[m_pathIndex], true);
-
+                    //not done end
                 }
             }
 
@@ -375,6 +383,8 @@ public class PunkController : EntityBase
 
                 if (m_prey != m_oldPrey)
                 {//there might be problems here.
+                    //Debug.Log("changing target " + name);
+                    Debug.Break();
                     OnPathFound(PathRequestManager.Instance().GetPathImmediate(transform.position, m_prey.position, 1));
                     m_pathIndex = 0;
                 }
@@ -395,9 +405,17 @@ public class PunkController : EntityBase
 
     void Attack()
     {
-        
+        if (bdebug == true)
+        {
+            //Debug.Log("start attack: " + m_startAttack + ". prey = " + m_prey.name );
+        }
+
         if (m_prey && m_startAttack == false)
         {
+            if(bdebug == true)
+            {
+                //Debug.Log("here hre hre");
+            }
             m_anima.SetTrigger("IfAttacking");
             m_atk_time = Time.time;
             m_startAttack = true;
