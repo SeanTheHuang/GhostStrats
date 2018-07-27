@@ -109,16 +109,19 @@ public class GameMaster : MonoBehaviour {
     void OnGameDraw()
     {
         // TODO
+        Debug.Log("GAME IS DRAW");
     }
 
     void OnPlayerWon()
     {
         // TODO
+        Debug.Log("PLAYER WON");
     }
 
     void OnPlayerLose()
     {
         // TODO
+        Debug.Log("PLAYER LOST");
     }
 
     #endregion  
@@ -191,6 +194,7 @@ public class GameMaster : MonoBehaviour {
     void RunPlayersTurn()
     {
         // Stop allowing player to select stuff
+        TextEffectController.Instance.PlayTitleText("GHOST TIME");
         m_playersTurn = false;
         m_currentlySelectedGhost.OnDeselected();
         MousePicker.Instance().StopPicking();
@@ -246,6 +250,7 @@ public class GameMaster : MonoBehaviour {
 
     void PunkStartTurn()
     {
+        TextEffectController.Instance.PlayTitleText("PUNK TIME");
         foreach(GhostController gc in m_ghostList)
         {
             if(gc.m_OutofSight || !gc.GhostIsAlive)
