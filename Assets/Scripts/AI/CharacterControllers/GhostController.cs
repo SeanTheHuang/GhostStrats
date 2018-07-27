@@ -154,6 +154,9 @@ public class GhostController : EntityBase {
 
     public void ShowGhost()
     {
+        // ASSUMING THIS IS ONLY CALLED WHEN THEY RESPAWN
+        m_currentHealth = m_maxHealth;
+
         gameObject.layer = m_layerMask; // Make sure mouse can hit ghost again
         MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
         SkinnedMeshRenderer[] sm_renderers = GetComponentsInChildren<SkinnedMeshRenderer>();

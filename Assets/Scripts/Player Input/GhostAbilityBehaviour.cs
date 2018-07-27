@@ -270,6 +270,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         {
             // Attack punk and return true
             _punk.OnEntityHit(m_baseAttackDamage, transform.position);
+            m_actionState = GhostActionState.NONE; // No more overwatching
             return true;
         }
 
