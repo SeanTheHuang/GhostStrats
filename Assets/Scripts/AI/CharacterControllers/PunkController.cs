@@ -262,7 +262,7 @@ public class PunkController : EntityBase
         {
             //im not sure
             Debug.Log(name+ ": Path not found : " + v3debug);
-            Debug.Break();
+            //Debug.Break();
 
         }
     }
@@ -297,8 +297,8 @@ public class PunkController : EntityBase
 
             if (m_realPath.Count == 0)
             {
-                Debug.Log(name + ": in attack right away. " + m_prey.transform.position);
-                bdebug = true;
+                //Debug.Log(name + ": in attack right away. " + m_prey.transform.position);
+                //bdebug = true;
                 m_state = PunkStates.ATTACK;
                 return;
             }
@@ -396,7 +396,7 @@ public class PunkController : EntityBase
                 if (m_prey != m_oldPrey)
                 {//there might be problems here.
                     //Debug.Log("changing target " + name);
-                    Debug.Break();
+                    //Debug.Break();
                     OnPathFound(PathRequestManager.Instance().GetPathImmediate(transform.position, m_prey.position, 1));
                     m_pathIndex = 0;
                 }
@@ -417,17 +417,17 @@ public class PunkController : EntityBase
 
     void Attack()
     {
-        if (bdebug == true)
-        {
-            //Debug.Log("start attack: " + m_startAttack + ". prey = " + m_prey.name );
-        }
+        //if (bdebug == true)
+        //{
+        //    //Debug.Log("start attack: " + m_startAttack + ". prey = " + m_prey.name );
+        //}
 
         if (m_prey && m_startAttack == false)
         {
-            if(bdebug == true)
-            {
-                //Debug.Log("here hre hre");
-            }
+            //if(bdebug == true)
+            //{
+            //    //Debug.Log("here hre hre");
+            //}
             m_anima.SetTrigger("AttackTrigger");
             m_atk_time = Time.time;
             m_startAttack = true;
