@@ -123,6 +123,8 @@ public class GhostController : EntityBase {
                         dir.y = 0;
                         transform.rotation = Quaternion.LookRotation(dir);
                     }
+                    // Check of punks should be facing ghost
+                    GameMaster.Instance().CheckGhostWalkPast(transform.position);
                     break;
                 }
                 else
@@ -486,6 +488,8 @@ public class GhostController : EntityBase {
                         dir.y = 0;
                         transform.rotation = Quaternion.LookRotation(dir);
                     }
+                    // Check of punks should be facing ghost
+                    GameMaster.Instance().CheckGhostWalkPast(transform.position);
                     break;
                 }
                 else
@@ -501,7 +505,8 @@ public class GhostController : EntityBase {
         // Perform selected action (maybe pause and rotate towards target first)
         m_abilities.EndOfTurn();
 
-        yield return new WaitForSeconds(0.2f); // Pause for a bit for animation
+        if (m_abilities.m_actionState != GhostActionState.NONE)
+            yield return new WaitForSeconds(0.8f); // Pause for a bit for animation
 
         // Start moving again if theres more
         for (int i = 0; i < m_movePath2.Count; i++)
@@ -528,9 +533,7 @@ public class GhostController : EntityBase {
         }
 
         if (m_movePath2.Count > 0)
-            yield return new WaitForSeconds(0.7f); // Pause for another period of time
-        else
-            yield return new WaitForSeconds(0.5f); // Pause for another period of time
+            yield return new WaitForSeconds(0.5f);
 
         m_performing = false;
         yield return null;

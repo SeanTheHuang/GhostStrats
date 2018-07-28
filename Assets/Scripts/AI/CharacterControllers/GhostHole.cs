@@ -72,7 +72,7 @@ public class GhostHole : EntityBase
     {
         m_linkedGhost.HideGhost();
         m_ghostIsAlive = false;
-        m_currentReviveTime = m_baseReviveTime;
+        m_currentReviveTime = m_baseReviveTime+1;
     }
 
     public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)

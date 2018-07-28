@@ -215,7 +215,25 @@ public class PunkController : EntityBase
         m_state = PunkStates.MOVING;
     }
 
-    
+    public void CheckGhostWalkPast(Vector3 _ghostPosition)
+    {
+        // Check if ghost is 1 tile away, and infront of punk
+        // If conditions are true, look at ghost!
+
+        // Check Distance
+        float distOfTwoTiles = PathRequestManager.Instance().GridSize() * 4.0f;
+        if ((transform.position - _ghostPosition).sqrMagnitude >= distOfTwoTiles * distOfTwoTiles)
+            return;
+
+        // Check ghost infront of punk
+        Vector3 dirToGhost = (_ghostPosition - transform.position).normalized;
+        if (Vector3.Dot(dirToGhost, transform.forward) > 0)
+        {
+            // Ghost is infront
+            transform.rotation = Quaternion.LookRotation(dirToGhost);
+        }
+    }
+
     void OnPathFound(Vector3[] _path)
     {
         if (_path.Length != 0)
@@ -284,7 +302,7 @@ public class PunkController : EntityBase
             {
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
-                EndTurn();
+                EndTurn(0.5f);
                 return;
             }
             if(PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
@@ -356,7 +374,7 @@ public class PunkController : EntityBase
             {//check for ghost skill overwatch
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
-                EndTurn();
+                EndTurn(0.5f);
                 return;
             }
             if (PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
@@ -431,6 +449,7 @@ public class PunkController : EntityBase
             m_anima.SetTrigger("AttackTrigger");
             m_atk_time = Time.time;
             m_startAttack = true;
+            FacePrey();
             Invoke("ApplyAttack", 1.0f);
         }
 
@@ -448,14 +467,20 @@ public class PunkController : EntityBase
         
     }
 
-    void ApplyAttack()
+    void FacePrey()
     {
         if (m_prey)
         {
             Vector3 dir = m_prey.position - transform.position;
             dir.y = 0;
             transform.rotation = Quaternion.LookRotation(dir);
+        }
+    }
 
+    void ApplyAttack()
+    {
+        if (m_prey)
+        {
             if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
                 new Vector2(m_prey.position.x, m_prey.position.z)) <= m_attackRange)
             {
@@ -475,11 +500,11 @@ public class PunkController : EntityBase
         }
     }
 
-    void EndTurn()
+    void EndTurn(float extraDelay = 0)
     {
         m_state = PunkStates.IDLE;
         m_anima.SetBool("IsWalking", false);
-        Invoke("DelayedEndTurn", 0.9f);
+        Invoke("DelayedEndTurn", 0.5f + extraDelay);
     }
 
     void DelayedEndTurn()

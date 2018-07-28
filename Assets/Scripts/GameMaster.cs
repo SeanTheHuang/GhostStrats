@@ -69,7 +69,7 @@ public class GameMaster : MonoBehaviour {
             StartGame();
 
         // TEST: Make all player ghosts move
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && m_playersTurn)
             RunPlayersTurn();
     }
 
@@ -212,7 +212,7 @@ public class GameMaster : MonoBehaviour {
             if (m_playGhostInSequence)
             {
                 CameraControl.Instance.SetFollowMode(gc.transform);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.3f);
             }
             gc.OnEndOfTurn();
 
@@ -271,6 +271,7 @@ public class GameMaster : MonoBehaviour {
         foreach (PunkController pc in m_punkList)
         {
             Camera.main.GetComponent<CameraControl>().SetFollowMode(pc.transform);
+            yield return new WaitForSeconds(0.3f);
             pc.DoTurn();
 
             while (pc.m_finishedMoving == false)
@@ -399,6 +400,12 @@ public class GameMaster : MonoBehaviour {
         }
 
         return holeList;
+    }
+
+    public void CheckGhostWalkPast(Vector3 _ghostPosition)
+    {
+        foreach (PunkController pc in m_punkList)
+            pc.CheckGhostWalkPast(_ghostPosition);
     }
 
     #endregion  
