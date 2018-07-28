@@ -87,9 +87,22 @@ public class PathRequestManager : MonoBehaviour {
         if (currentNode == null)
             return false;
 
+        CheckRemoveDoll(_newState, currentNode);
+
         currentNode.m_nodeState = _newState;
         currentNode.m_entityOnTile = _entityOnTile;
         return true;
+    }
+
+    void CheckRemoveDoll(NodeState _newState, Node _currentNode)
+    {
+        if (_currentNode.m_nodeState == NodeState.GHOST_TRAP
+            && _newState == NodeState.EMPTY)
+        {
+            Destroy(_currentNode.m_entityOnTile.gameObject);
+            _currentNode.m_entityOnTile = null;
+        }
+        
     }
 
     public bool PointIsInGrid(Vector3 _worldPoint)

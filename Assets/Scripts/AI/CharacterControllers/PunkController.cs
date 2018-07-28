@@ -107,7 +107,8 @@ public class PunkController : EntityBase
 
         Vector3 dir = _positionOfHitter - transform.position;
         dir.y = 0;
-        transform.rotation = Quaternion.LookRotation(dir);
+        if (dir != Vector3.zero)
+            transform.rotation = Quaternion.LookRotation(dir);
 
         m_anima.SetFloat("HealthPercent", (float)m_currentHealth / (float)m_maxHealth);
 
@@ -224,6 +225,10 @@ public class PunkController : EntityBase
         float distOfTwoTiles = PathRequestManager.Instance().GridSize() * 4.0f;
         if ((transform.position - _ghostPosition).sqrMagnitude >= distOfTwoTiles * distOfTwoTiles)
             return;
+
+        // Check there is direct connection between ghost and punk
+        if (Physics.Linecast(transform.position + Vector3.up, _ghostPosition + Vector3.up, 1 << LayerMask.NameToLayer("Wall")))
+            return; // Wall inbetween
 
         // Check ghost infront of punk
         Vector3 dirToGhost = (_ghostPosition - transform.position).normalized;
@@ -415,6 +420,8 @@ public class PunkController : EntityBase
                 {//there might be problems here.
                     //Debug.Log("changing target " + name);
                     //Debug.Break();
+
+                    // What is point of this? vvv Because the path is never stored anywhere
                     OnPathFound(PathRequestManager.Instance().GetPathImmediate(transform.position, m_prey.position, 1));
                     m_pathIndex = 0;
                 }
@@ -692,8 +699,8 @@ public class PunkController : EntityBase
         m_roomTarget.m_targeted = true;
 
         Vector3 pos = m_roomToExplore;
-        pos.x += Random.Range(-1, 1);
-        pos.z += Random.Range(-1, 1);
+        //pos.x += Random.Range(-1, 1);
+        //pos.z += Random.Range(-1, 1);
         m_roomToExplore = pos;
     }
 

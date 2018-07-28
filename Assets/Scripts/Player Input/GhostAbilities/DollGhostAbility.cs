@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DollGhostAbility : GhostAbilityBehaviour {
 
+    public Transform m_dollPrefab;
+
     protected override void SetGhostType()
     {
         m_ghostType = GhostType.DOLLER;
@@ -29,6 +31,7 @@ public class DollGhostAbility : GhostAbilityBehaviour {
         // Drop a "doll" where you are,
         // TODO: visuals
         Debug.Log("Doll was dropped at position:" + transform.position.ToString());
-        PathRequestManager.Instance().SetNodeState(NodeState.GHOST_TRAP, transform);
+        Transform droppedDrop = Instantiate(m_dollPrefab, transform.position, m_dollPrefab.rotation);
+        PathRequestManager.Instance().SetNodeState(NodeState.GHOST_TRAP, droppedDrop);
     }
 }

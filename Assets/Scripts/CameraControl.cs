@@ -35,10 +35,7 @@ public class CameraControl : MonoBehaviour
     public bool m_lockCameraMovement = false;
 
     Quaternion m_initialRotation;
-
     CameraState m_cameraState;
-    float m_radius = 5;
-    float m_angle = 0;
 
     private void Awake()
     {
