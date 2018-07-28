@@ -1,24 +1,14 @@
 fileFormatVersion: 2
-guid: c58213767769f9d47832ce94afdb4421
+guid: 347250ced5cad624fac482db5a2ca7ed
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Television_Body
-    100004: Television_Screen
     400000: //RootNode
-    400002: Television_Body
-    400004: Television_Screen
     2100000: lambert1
     2300000: //RootNode
-    2300002: Television_Body
-    2300004: Television_Screen
     3300000: //RootNode
-    3300002: Television_Body
-    3300004: Television_Screen
-    4300000: TV
-    4300002: Television_Body
-    4300004: Television_Screen
+    4300000: Bathroom_Tub
   externalObjects: {}
   materials:
     importMaterials: 1
