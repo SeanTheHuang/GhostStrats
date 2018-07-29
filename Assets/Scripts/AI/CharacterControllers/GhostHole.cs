@@ -62,7 +62,7 @@ public class GhostHole : EntityBase
         m_linkedGhost.transform.position = transform.position;
         m_respawnAnimationDone = false;
         m_linkedGhost.MoveToPositionImmediate(m_targetPosition.position);
-
+        m_linkedGhost.resetUIHealth();
         CameraControl.Instance.SetFollowMode(m_linkedGhost.transform);
 
         return true;

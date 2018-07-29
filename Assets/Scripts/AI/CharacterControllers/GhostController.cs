@@ -543,4 +543,9 @@ public class GhostController : EntityBase {
     {
         m_OutofSight = false;
     }
+
+    public void resetUIHealth()
+    {
+        m_ghostUI.updateHealthbar(m_currentHealth);
+    }
 }

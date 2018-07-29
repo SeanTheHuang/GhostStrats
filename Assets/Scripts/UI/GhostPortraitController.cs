@@ -80,7 +80,7 @@ public class GhostPortraitController : MonoBehaviour {
         m_currentHealth = newHealth;
         StartCoroutine(LerpHealthBar(1.5f));
         //StartCoroutine(LerpHealthBarColor(1.5f));
-        StartCoroutine(ShakeUI(1.5f));
+        StartCoroutine(ShakeUI(0.5f));
 
         largeHealthBarController.UpdateHealthBar(m_currentHealth);
     }
@@ -147,7 +147,7 @@ public class GhostPortraitController : MonoBehaviour {
     }
 
     private IEnumerator LerpHealthBar(float time)
-    {
+    { 
         float elapsedTime = 0;
 
         while (elapsedTime < time)
