@@ -85,10 +85,10 @@ public class GameMaster : MonoBehaviour {
 
     #region END_GAME_FUNCTIONS
 
-    void CheckEndGameState()
+    bool CheckEndGameState()
     {
         bool ghostsAlive = false;
-        bool punksAlive = m_punkList.Count > 0;
+        bool punksAlive = !(m_punkList.Count < 1 && m_punkSpawner.SpawnerFinished());
 
         // Check if theres any ghost spawners left
         foreach (GhostHole gh in m_ghostHoleList)
@@ -101,12 +101,22 @@ public class GameMaster : MonoBehaviour {
         }
 
         if (!punksAlive && !ghostsAlive)
+        {
             OnGameDraw();
+            return true;
+        }
         else if (!punksAlive && ghostsAlive)
+        {
             OnPlayerWon();
+            return true;
+        }
         else if (punksAlive && !ghostsAlive)
+        {
             OnPlayerLose();
+            return true;
+        }
         // else, game is stil running
+        return false;
     }
 
     void OnGameDraw()
@@ -247,7 +257,9 @@ public class GameMaster : MonoBehaviour {
         }
 
         EndTurnWalkable();
-        PunkSpawnTurn();
+
+        if (!CheckEndGameState())
+            PunkSpawnTurn();
     }
 
     #endregion
@@ -301,7 +313,8 @@ public class GameMaster : MonoBehaviour {
 
         EndTurnWalkable();
 
-        GhostStartTurn();
+        if (!CheckEndGameState())
+            GhostStartTurn();
         yield return null;
     }
 
