@@ -114,5 +114,13 @@ public class WallGhostAbility : GhostAbilityBehaviour {
 
         foreach (Renderer r in wallRend)
             r.enabled = _becomeWall;
+
+        BoxCollider bodyBox = GetComponent<BoxCollider>();
+        if (bodyBox)
+            bodyBox.enabled = !_becomeWall;
+
+        BoxCollider wallBox = GetComponent<BoxCollider>();
+        if (wallBox)
+            wallBox.enabled = _becomeWall;
     }
 }
