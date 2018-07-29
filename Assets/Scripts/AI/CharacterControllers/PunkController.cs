@@ -23,7 +23,7 @@ public class PunkController : EntityBase
     Room m_roomTarget;
     Room m_lastRoomTarget;
 
-    public int m_attackRange = 0;
+    public float m_attackRange = 1.45f;
     public int m_attackDamage = 0;
     [HideInInspector]
     public bool m_finishedMoving = false;
@@ -49,8 +49,6 @@ public class PunkController : EntityBase
         m_roomTarget = m_hiveMind.ChooseFirstRoom();
         m_roomTarget.m_targeted = true;
         m_roomToExplore = m_roomTarget.transform.position;
-        //m_roomToExplore = m_hiveMind.m_HouseLocations[Random.Range(0,m_hiveMind.m_HouseLocations.Count)].position;
-        //m_roomToExplore = m_hiveMind.m_HouseLocations[0].position;
         m_state = PunkStates.IDLE;
         m_currentHealth = m_maxHealth;
         m_anima = GetComponent<Animator>();
@@ -320,8 +318,6 @@ public class PunkController : EntityBase
 
             if (m_realPath.Count == 0)
             {
-                //Debug.Log(name + ": in attack right away. " + m_prey.transform.position);
-                //bdebug = true;
                 m_state = PunkStates.ATTACK;
                 return;
             }
@@ -342,27 +338,9 @@ public class PunkController : EntityBase
                 else if (PathRequestManager.Instance().GetNodeState(m_realPath[m_pathIndex]) == NodeState.GHOST_WALL)
                 {
                     //not done start
-                    PathRequestManager.Instance().TogglePositionWalkable(m_realPath[m_pathIndex], false);
-                    if(m_lastRoomTarget.m_targeted == false)
-                    {
-                        m_roomTarget.m_targeted = false;
-
-                        Room temp = m_lastRoomTarget;//swap targets
-                        m_lastRoomTarget = m_roomTarget;
-                        m_roomTarget = temp;
-
-                        m_roomTarget.m_targeted = true;
-                        
-
-                        PathRequestManager.Instance().GetPathImmediate(transform.position, m_roomTarget.transform.position, 1);
-                        
-                    }
-                    else
-                    {
-                        
-                    }
-
-                    PathRequestManager.Instance().TogglePositionWalkable(m_realPath[m_pathIndex], true);
+                    InteractWallGhost(m_realPath[m_pathIndex]);
+                    m_pathIndex = 0;
+                    OnPathFound(PathRequestManager.Instance().GetPathImmediate(transform.position, m_roomTarget.transform.position, 1));
                     //not done end
                 }
             }
@@ -401,9 +379,18 @@ public class PunkController : EntityBase
                     InteractHiddenGhost(m_realPath[m_pathIndex + 1]);
                     return;
                 }
+                else if(PathRequestManager.Instance().GetNodeState(m_realPath[m_pathIndex + 1]) == NodeState.GHOST_WALL)
+                {
+                    InteractWallGhost(m_realPath[m_pathIndex + 1]);
+                }
             }
 
             m_pathIndex++;
+            m_movesPerformed++;
+            if(m_movesPerformed == m_maxMoves)
+            {
+                m_state = PunkStates.ATTACK;
+            }
             if(m_pathIndex == m_realPath.Count)//end of the path
             {
                 //end it?
@@ -418,9 +405,6 @@ public class PunkController : EntityBase
 
                 if (m_prey != m_oldPrey)
                 {//there might be problems here.
-                    //Debug.Log("changing target " + name);
-                    //Debug.Break();
-
                     // What is point of this? vvv Because the path is never stored anywhere
                     OnPathFound(PathRequestManager.Instance().GetPathImmediate(transform.position, m_prey.position, 1));
                     m_pathIndex = 0;
@@ -442,17 +426,8 @@ public class PunkController : EntityBase
 
     void Attack()
     {
-        //if (bdebug == true)
-        //{
-        //    //Debug.Log("start attack: " + m_startAttack + ". prey = " + m_prey.name );
-        //}
-
         if (m_prey && m_startAttack == false)
         {
-            //if(bdebug == true)
-            //{
-            //    //Debug.Log("here hre hre");
-            //}
             m_anima.SetTrigger("AttackTrigger");
             m_atk_time = Time.time;
             m_startAttack = true;
@@ -519,66 +494,6 @@ public class PunkController : EntityBase
         m_finishedMoving = true;
     }
 
-   /* IEnumerator FollowPath()
-    {
-        if(m_realPath.Count > 0)
-        {//rotation
-            Vector3 dir = m_realPath[0] - transform.position;
-            dir.y = 0;
-            transform.rotation = Quaternion.LookRotation(dir);
-        }
-
-        for (int i = 0; i < m_realPath.Count; i++)
-        {
-            while (true)
-            {
-                Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[i], m_moveSpeed * Time.deltaTime);
-
-                if(newPos == transform.position)
-                {
-                    if (i + 1 < m_realPath.Count)
-                    {
-                        Vector3 dir = m_realPath[i + 1] - transform.position;
-                        dir.y = 0;
-                        transform.rotation = Quaternion.LookRotation(dir);
-                    }
-
-                    break;//reached point
-                }
-                else
-                {
-                    transform.position = newPos;
-                }
-
-                yield return null;
-            }
-
-            m_movesPerformed++;
-
-
-            if (m_movesPerformed == m_maxMoves)
-            {//end if used up all moves // moved as far as possible
-                break;
-            }
-
-            m_oldPrey = m_prey;
-            Sight();
-            ChooseTarget();
-
-            if(m_prey != m_oldPrey)
-            {//choose a new path
-                PathRequestManager.RequestPath(transform.position, m_prey.position, 1, OnPathFound);
-                i = 0;//reset for-loop
-            }
-
-        }
-        //the attack if possible
-
-        m_finishedMoving = true;
-        yield return null;
-    }*/
-
-
     void Sight()
     {
         m_Targets.Clear();
@@ -613,6 +528,7 @@ public class PunkController : EntityBase
                     continue;
                 }
             }
+
             Vector2 v1 = new Vector2(transform.forward.x, transform.forward.z);
             Vector2 v2 = new Vector2(targets[i].transform.position.x, targets[i].transform.position.z);
             if (Vector2.Angle(v1, v2) < forwardSightAngle)
@@ -623,16 +539,6 @@ public class PunkController : EntityBase
                 }
             }
         }
-        //for all targets set them to visble so all punks can attack
-       /* foreach (Collider t in m_Targets)
-        {
-            //Debug.Log("target seen");
-            if (t.transform.GetComponent<GhostController>())
-            {
-                t.transform.GetComponent<GhostController>().SeenbyPunk();
-            }
-        }*/
-
     }
 
     bool SightBehindWall(Transform _t)
@@ -730,6 +636,35 @@ public class PunkController : EntityBase
         Sight();
         ChooseTarget();//should just target ghost in front and attack it.
         m_state = PunkStates.ATTACK;
+    }
+
+    void InteractWallGhost(Vector3 _v3)
+    {
+        PathRequestManager.Instance().TogglePositionWalkable(_v3, false);
+        if (m_lastRoomTarget.m_targeted == false)
+        {
+            m_roomTarget.m_targeted = false;
+
+            Room temp = m_lastRoomTarget;//swap room targets
+            m_lastRoomTarget = m_roomTarget;
+            m_roomTarget = temp;
+
+            m_roomTarget.m_targeted = true;
+
+
+            PathRequestManager.Instance().GetPathImmediate(transform.position, m_roomTarget.transform.position, 1);
+        }
+        else
+        {
+            m_lastRoomTarget = m_roomTarget;
+
+            m_hiveMind.ChooseFirstRoom();
+            m_lastRoomTarget.m_targeted = false;
+            m_roomTarget.m_targeted = true;
+        }
+
+        PathRequestManager.Instance().TogglePositionWalkable(m_realPath[m_pathIndex], true);
+
     }
 
     private void OnDrawGizmos()
