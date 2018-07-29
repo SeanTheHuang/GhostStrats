@@ -10,7 +10,7 @@ public class LargeHealthBarController : MonoBehaviour
     private Color m_lowHealth;
 
     private RectTransform healthBarRect;
-    private Image m_HealthBarImage;
+    private Image m_healthBarImage;
 
     private float m_healthBarMaxWidth; // The width of the health bar when at 100%
     private float m_healthBarCurrentWidth; // The current width of the healthbar
@@ -31,7 +31,7 @@ public class LargeHealthBarController : MonoBehaviour
         m_currentHealthBar = m_maxHealth;
 
         m_healthBarMaxWidth = GetComponent<RectTransform>().rect.width;
-        m_HealthBarImage = GetComponent<Image>();
+        m_healthBarImage = GetComponent<Image>();
         healthBarRect = GetComponent<RectTransform>();
         m_healthToBarWidth = GetComponent<RectTransform>().rect.width / m_maxHealth;
     }
@@ -41,7 +41,7 @@ public class LargeHealthBarController : MonoBehaviour
     {
         m_currentHealth = newHealth;
         StartCoroutine(LerpHealthBar(1.5f));
-        StartCoroutine(LerpHealthBarColor(1.5f));
+        //StartCoroutine(LerpHealthBarColor(1.5f));
     }
 
     private IEnumerator LerpHealthBarColor(float time)
@@ -53,7 +53,7 @@ public class LargeHealthBarController : MonoBehaviour
             yield return null;
 
         Color newBarColor;
-        Color oldBarColor = m_HealthBarImage.color;
+        Color oldBarColor = m_healthBarImage.color;
         if (m_currentHealth > m_maxHealth * 0.5f)
             newBarColor = m_highHealth;
         else if (m_currentHealth > m_maxHealth * 0.25f)
@@ -66,7 +66,7 @@ public class LargeHealthBarController : MonoBehaviour
         while (elapsedTime < time)
         {
             Color lerpColor = Color.Lerp(oldBarColor, newBarColor, (elapsedTime / time));
-            m_HealthBarImage.color = lerpColor;
+            m_healthBarImage.color = lerpColor;
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
@@ -78,11 +78,12 @@ public class LargeHealthBarController : MonoBehaviour
 
         while (elapsedTime < time)
         {
-            float width = Mathf.Lerp(m_currentHealthBar, m_currentHealth, (elapsedTime / time)) * m_healthToBarWidth;
-            transform.position = new Vector2(transform.position.x - ((healthBarRect.rect.width - width) / 2), transform.position.y);
-            healthBarRect.sizeDelta = new Vector2(width, healthBarRect.rect.height);
+            float width = Mathf.Lerp(m_currentHealthBar, m_currentHealth, (elapsedTime / time)) / m_maxHealth;
+            m_healthBarImage.fillAmount = width;
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+
+        m_currentHealthBar = m_currentHealth;
     }
 }

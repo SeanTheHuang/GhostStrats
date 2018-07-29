@@ -85,6 +85,7 @@ public class GhostHole : EntityBase
         //TODO: death actions
         if (m_currentHealth < 1)
         {
+            m_linkedGhost.OnHardDeath();
             GameMaster.Instance().RemoveGhostHole(this);
             Destroy(gameObject);
             if (m_linkedGhost)
