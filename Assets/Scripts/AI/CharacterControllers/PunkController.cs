@@ -40,6 +40,8 @@ public class PunkController : EntityBase
     bool m_startwalk, m_startAttack;
     float m_atk_time;
 
+    Vector3 m_startLoc;
+
     private void Awake()
     {
         m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
@@ -51,6 +53,7 @@ public class PunkController : EntityBase
 
     private void Start()
     {
+        m_startLoc = transform.position;
         m_anima.SetFloat("HealthPercent", 1);
         m_roomTarget = m_hiveMind.ChooseFirstRoom();
         m_roomTarget.m_targeted = true;
@@ -79,6 +82,7 @@ public class PunkController : EntityBase
             case PunkStates.DEAD:
                 {
                     //do nothing
+                    RunAway();
                     break;
                 }
             default:
@@ -426,11 +430,28 @@ public class PunkController : EntityBase
     {
         if (m_prey && m_startAttack == false)
         {
-            m_anima.SetTrigger("AttackTrigger");
-            m_atk_time = Time.time;
-            m_startAttack = true;
-            FacePrey();
-            Invoke("ApplyAttack", 1.0f);
+            if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
+            new Vector2(m_prey.position.x, m_prey.position.z)) <= m_attackRange)
+            {
+                if (m_attackRange > 1)
+                {
+                    if (SightBehindWall(m_prey))
+                    {
+                        EndTurn();
+                    }
+                }
+
+
+                m_anima.SetTrigger("AttackTrigger");
+                m_atk_time = Time.time;
+                m_startAttack = true;
+                FacePrey();
+                Invoke("ApplyAttack", 1.0f);
+            }
+            else
+            {
+                EndTurn();
+            }
         }
 
         if (m_startAttack == true)
@@ -459,25 +480,7 @@ public class PunkController : EntityBase
 
     void ApplyAttack()
     {
-        if (m_prey)
-        {
-            if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
-                new Vector2(m_prey.position.x, m_prey.position.z)) <= m_attackRange)
-            {
-                //Attack
-                //face them
-
-                if (m_attackRange > 1)
-                {
-                    if (SightBehindWall(m_prey))
-                    {
-                        return;
-                    }
-                }
-                m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage, transform.position);
-                //Debug.Log("attacked entity");
-            }
-        }
+        m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage, transform.position);
     }
 
     void EndTurn(float extraDelay = 0)
@@ -682,6 +685,12 @@ public class PunkController : EntityBase
 
         Vector3 right = Quaternion.Euler(0, -forwardSightAngle, 0) * transform.forward;
         Gizmos.DrawLine(transform.position, transform.position + (right.normalized * forwardSightRadius));
+
+    }
+
+    void RunAway()
+    {
+       // Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[m_pathIndex], m_moveSpeed * Time.deltaTime);
 
     }
 }
