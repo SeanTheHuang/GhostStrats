@@ -41,7 +41,7 @@ public class LargeHealthBarController : MonoBehaviour
     {
         m_currentHealth = newHealth;
         StartCoroutine(LerpHealthBar(1.5f));
-        StartCoroutine(LerpHealthBarColor(1.5f));
+        //StartCoroutine(LerpHealthBarColor(1.5f));
     }
 
     private IEnumerator LerpHealthBarColor(float time)

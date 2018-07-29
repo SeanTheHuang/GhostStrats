@@ -548,4 +548,10 @@ public class GhostController : EntityBase {
     {
         m_ghostUI.updateHealthbar(m_currentHealth);
     }
+
+    // Called when the ghosts spawner gets destroyed
+    public void OnHardDeath()
+    {
+        m_ghostUI.OnGhostHardDeath();
+    }
 }

@@ -111,6 +111,7 @@ public class GhostPortraitController : MonoBehaviour {
     public void OnGhostHardDeath()
     {
         m_portraitImage.sprite = m_deadGhostPortrait;
+        UpdateHealthBar(0);
     }
 
     // The ghost has respawned again
@@ -182,7 +183,7 @@ public class GhostPortraitController : MonoBehaviour {
 
     public void SelectGhostWithMouseClick()
     {
-        if(m_gameMaster.m_playersTurn)
+        if(m_gameMaster.m_playersTurn && m_currentHealth > 0)
             m_gameMaster.UpdateSelectedGhost(m_ghost);
     }
 }

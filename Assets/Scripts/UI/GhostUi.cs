@@ -72,4 +72,9 @@ public class GhostUi : MonoBehaviour
     {
         ghostPortraitController.UpdateHealthBar(currentHealth);
     }
+
+    public void OnGhostHardDeath()
+    {
+        ghostPortraitController.OnGhostHardDeath();
+    }
 }
