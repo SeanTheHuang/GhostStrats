@@ -376,8 +376,9 @@ public class GhostAbilityBehaviour : MonoBehaviour
                 PerformHide();
 
                 break;
-            case GhostActionState.ABILITY:
+            case GhostActionState.ABILITY:          
                 PerformSpecialAbility();
+                m_animator.SetTrigger("Special");
 
                 break;
             default:
