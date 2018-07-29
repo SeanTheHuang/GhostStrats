@@ -37,13 +37,21 @@ public class PunkSpawner : MonoBehaviour {
 
     IEnumerator SpawnAnimation()
     {
+        // NOTE: IF THERE ARE MORE PUNKS SPAWNING THAN SPAWN POINTS, THIS WILL FREEZE FOREVER!!!
+        // FOREVERRRRRRRRRRRRRR
+        List<int> m_takenSpots = new List<int>();
+
         for (int i = 0; i < m_spawns[m_spawnLogicIndex].m_numPunksToSpawn; i++)
         {
             int randSpawnPoint = Random.Range(0, m_spawnPoints.Length);
+            while (m_takenSpots.Contains(randSpawnPoint))
+                randSpawnPoint = Random.Range(0, m_spawnPoints.Length);
+
+            m_takenSpots.Add(randSpawnPoint);
             Quaternion rotation = Quaternion.AngleAxis((float)m_spawnPoints[randSpawnPoint].m_startDirection, Vector3.up);
             Transform temp = Instantiate(m_punkPrefab, m_spawnPoints[randSpawnPoint].transform.position, rotation);
             CameraControl.Instance.SetFollowMode(temp); // Look at dat new punk
-            // TODO, ADD PUNK TO PUNKLIST IN GAMEMASTER
+            GameMaster.Instance().NewPunk(temp);
             yield return new WaitForSeconds(0.5f);
         }
 

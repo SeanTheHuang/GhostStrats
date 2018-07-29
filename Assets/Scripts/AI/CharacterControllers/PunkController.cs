@@ -44,11 +44,6 @@ public class PunkController : EntityBase
     {
         m_wallMask = (1 << LayerMask.NameToLayer("Wall"));
         m_realPath = new List<Vector3> { };
-
-       // int t = Random.Range(0, m_hiveMind.m_RoomList.Count);
-        m_roomTarget = m_hiveMind.ChooseFirstRoom();
-        m_roomTarget.m_targeted = true;
-        m_roomToExplore = m_roomTarget.transform.position;
         m_state = PunkStates.IDLE;
         m_currentHealth = m_maxHealth;
         m_anima = GetComponent<Animator>();
@@ -56,7 +51,10 @@ public class PunkController : EntityBase
 
     private void Start()
     {
-        m_anima.SetFloat("HealthPercent", 1);    
+        m_anima.SetFloat("HealthPercent", 1);
+        m_roomTarget = m_hiveMind.ChooseFirstRoom();
+        m_roomTarget.m_targeted = true;
+        m_roomToExplore = m_roomTarget.transform.position;
     }
 
     private void Update()

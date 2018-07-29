@@ -8,6 +8,8 @@ public class GameMaster : MonoBehaviour {
     public GameObject[] m_startPunkArray; // All punks at start of game
     public GhostHole[] m_startGhostHoles; // All starting ghost holes
     PlayerKeyboardInput m_KeyBoardInput;
+    PunkSpawner m_punkSpawner;
+    PunkHiveMind m_punkHive;
 
     List<GhostHole> m_ghostHoleList; // List containing all living ghost relics
     List<GhostController> m_ghostList; // List containing all ghosts still alive
@@ -43,6 +45,8 @@ public class GameMaster : MonoBehaviour {
         m_punkList = new List<PunkController>();
         m_ghostHoleList = new List<GhostHole>();
         m_tempUnwalkable = new List<Vector3>();
+        m_punkSpawner = GetComponent<PunkSpawner>();
+        m_punkHive = GetComponent<PunkHiveMind>();
 
         foreach (GameObject go in m_startGhostArray)
             m_ghostList.Add(go.GetComponent<GhostController>());
@@ -76,8 +80,7 @@ public class GameMaster : MonoBehaviour {
 
     void StartGame()
     {
-        // TEMP: start game with players turn first
-        PunkStartTurn();
+        PunkSpawnTurn();
     }
 
     #region END_GAME_FUNCTIONS
@@ -244,12 +247,27 @@ public class GameMaster : MonoBehaviour {
         }
 
         EndTurnWalkable();
-        PunkStartTurn();
+        PunkSpawnTurn();
     }
 
     #endregion
 
     #region PUNK_TURN_FUNCTIONS
+
+    void PunkSpawnTurn()
+    {
+        StartCoroutine(SpawnAnimation());
+    }
+
+    IEnumerator SpawnAnimation()
+    {
+        m_punkSpawner.PlayTurn();
+
+        while (m_punkSpawner.m_running) // Keep waiting for punk spawner to finish
+            yield return null;
+
+        PunkStartTurn();
+    }
 
     void PunkStartTurn()
     {
@@ -467,4 +485,10 @@ public class GameMaster : MonoBehaviour {
         }
     }
 
+    public void NewPunk(Transform _newPunk)
+    {
+        m_punkHive.m_PunkLocations.Add(_newPunk);
+        m_punkList.Add(_newPunk.GetComponent<PunkController>());
+        m_punkList[m_punkList.Count - 1].m_hiveMind = m_punkHive;
+    }
 }
