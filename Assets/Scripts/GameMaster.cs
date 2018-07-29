@@ -134,6 +134,7 @@ public class GameMaster : MonoBehaviour {
         {
             m_tempUnwalkable.Add(pc.transform.position);
         }
+        StartTurnUnWalkable();
 
         StartCoroutine(GhostSpawnAnimation());
     }
@@ -165,11 +166,11 @@ public class GameMaster : MonoBehaviour {
         PathRequestManager.Instance().GetComponent<NodeGrid>().ShowNodeGrid();
 
         // Turn ghost tiles unwalkable
-        foreach (GhostController gc in m_ghostList)
+        /*foreach (GhostController gc in m_ghostList)
         {
             m_tempUnwalkable.Add(gc.transform.position);
         }
-        StartTurnUnWalkable();
+        StartTurnUnWalkable();*/
 
         m_playersTurn = true;
         bool ghostFound = false;
