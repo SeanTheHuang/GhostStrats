@@ -77,11 +77,12 @@ public class GhostPortraitController : MonoBehaviour {
     // Update the ghosts health bar
     public void UpdateHealthBar(int newHealth)
     {
+        if(m_currentHealth > newHealth)
+            StartCoroutine(ShakeUI(0.5f));
+
         m_currentHealth = newHealth;
         StartCoroutine(LerpHealthBar(1.5f));
         //StartCoroutine(LerpHealthBarColor(1.5f));
-        StartCoroutine(ShakeUI(1.5f));
-
         largeHealthBarController.UpdateHealthBar(m_currentHealth);
     }
 
