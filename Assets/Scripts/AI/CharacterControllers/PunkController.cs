@@ -82,7 +82,7 @@ public class PunkController : EntityBase
             case PunkStates.DEAD:
                 {
                     //do nothing
-                    RunAway();
+                    //RunAway();
                     break;
                 }
             default:
@@ -116,6 +116,7 @@ public class PunkController : EntityBase
         TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.GHOST_DAMAGE, _damage);
         if (m_currentHealth < 1 && m_state != PunkStates.DEAD)
         {
+            m_roomTarget.m_targeted = false;
             m_anima.SetTrigger("DeathTrigger");
             m_hiveMind.RemovePunk(transform);
             GameMaster.Instance().RemovePunk(this);
@@ -688,9 +689,15 @@ public class PunkController : EntityBase
 
     }
 
+    void FinalPath()
+    {
+        PathRequestManager.Instance().GetPathImmediate(transform.position, m_startLoc, 1);
+
+    }
+
     void RunAway()
     {
-       // Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[m_pathIndex], m_moveSpeed * Time.deltaTime);
+        Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[m_pathIndex], m_moveSpeed * Time.deltaTime);
 
     }
 }

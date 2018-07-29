@@ -87,6 +87,21 @@ public class PunkHiveMind : MonoBehaviour
             {
                 return m_RoomList[temp];
             }
+
+            bool check = false;
+            foreach(Room rr in m_RoomList)
+            {
+                if(rr.m_targeted == false)
+                {
+                    check = true;
+                    break;
+                }
+            }
+
+            if(check == false)
+            {
+                return m_RoomList[Random.Range(0, m_RoomList.Count)];
+            }
         }
     }
 
