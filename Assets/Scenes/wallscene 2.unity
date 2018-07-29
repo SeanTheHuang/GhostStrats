@@ -4140,6 +4140,42 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e5c38c3706666e4e800758c76342cfe, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1637170049 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1843005265228406, guid: 7e5c38c3706666e4e800758c76342cfe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1637170048}
+--- !u!114 &1637170050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637170049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd8d58a23ebd0840936c7e8cc99e2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_spawns:
+  - m_numTurnsUntilSpawn: 0
+    m_numPunksToSpawn: 3
+  - m_numTurnsUntilSpawn: 3
+    m_numPunksToSpawn: 2
+  - m_numTurnsUntilSpawn: 2
+    m_numPunksToSpawn: 1
+  - m_numTurnsUntilSpawn: 4
+    m_numPunksToSpawn: 3
+  - m_numTurnsUntilSpawn: 3
+    m_numPunksToSpawn: 3
+  m_spawnPoints:
+  - {fileID: 2010371809}
+  - {fileID: 1030171883}
+  - {fileID: 262695228}
+  - {fileID: 781995301}
+  - {fileID: 1403202470}
+  - {fileID: 410337550}
+  m_punkPrefab: {fileID: 4817008684814782, guid: 92b272bc015427d4fb71ef052df67f7b,
+    type: 2}
 --- !u!1 &1641010462 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1475818999294842, guid: a95586cae2cf9024197a44bbd6d3a391,
