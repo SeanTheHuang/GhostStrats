@@ -51,7 +51,7 @@ public abstract class EntityBase : MonoBehaviour {
 
         float dotProduct = Vector3.Dot(_attackDir, transform.forward);
 
-        if (dotProduct >= 0.998) // Attack from behind
+        if (dotProduct > 0) // Attack from behind
             return 2 * _baseDamage;
         else if (dotProduct < 0) // Attack from the front
             return Mathf.RoundToInt((0.5f * _baseDamage));
