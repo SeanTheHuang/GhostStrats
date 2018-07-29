@@ -3176,60 +3176,6 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114369298309921822, guid: a6814f9035a53cc43973d1f00a2804f5,
-        type: 2}
-      propertyPath: m_deadGhostPortrait
-      value: 
-      objectReference: {fileID: 21300050, guid: 845fcea384fb0284d92caef8c5dea779,
-        type: 3}
-    - target: {fileID: 114369298309921822, guid: a6814f9035a53cc43973d1f00a2804f5,
-        type: 2}
-      propertyPath: m_respawnGhostPortrait
-      value: 
-      objectReference: {fileID: 21300050, guid: 845fcea384fb0284d92caef8c5dea779,
-        type: 3}
-    - target: {fileID: 114369298309921822, guid: a6814f9035a53cc43973d1f00a2804f5,
-        type: 2}
-      propertyPath: m_defaultGhostPortrait
-      value: 
-      objectReference: {fileID: 21300040, guid: 845fcea384fb0284d92caef8c5dea779,
-        type: 3}
-    - target: {fileID: 114802487660027120, guid: a6814f9035a53cc43973d1f00a2804f5,
-        type: 2}
-      propertyPath: m_defaultGhostPortrait
-      value: 
-      objectReference: {fileID: 21300042, guid: 845fcea384fb0284d92caef8c5dea779,
-        type: 3}
-    - target: {fileID: 114802487660027120, guid: a6814f9035a53cc43973d1f00a2804f5,
-        type: 2}
-      propertyPath: m_respawnGhostPortrait
-      value: 
-      objectReference: {fileID: 21300052, guid: 845fcea384fb0284d92caef8c5dea779,
-        type: 3}
-    - target: {fileID: 114802487660027120, guid: a6814f9035a53cc43973d1f00a2804f5,
-        type: 2}
-      propertyPath: m_deadGhostPortrait
-      value: 
-      objectReference: {fileID: 21300052, guid: 845fcea384fb0284d92caef8c5dea779,
-        type: 3}
-    - target: {fileID: 114494206270280420, guid: a6814f9035a53cc43973d1f00a2804f5,
-        type: 2}
-      propertyPath: m_deadGhostPortrait
-      value: 
-      objectReference: {fileID: 21300056, guid: 845fcea384fb0284d92caef8c5dea779,
-        type: 3}
-    - target: {fileID: 114494206270280420, guid: a6814f9035a53cc43973d1f00a2804f5,
-        type: 2}
-      propertyPath: m_respawnGhostPortrait
-      value: 
-      objectReference: {fileID: 21300056, guid: 845fcea384fb0284d92caef8c5dea779,
-        type: 3}
-    - target: {fileID: 114494206270280420, guid: a6814f9035a53cc43973d1f00a2804f5,
-        type: 2}
-      propertyPath: m_defaultGhostPortrait
-      value: 
-      objectReference: {fileID: 21300046, guid: 845fcea384fb0284d92caef8c5dea779,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6814f9035a53cc43973d1f00a2804f5, type: 2}
   m_IsPrefabParent: 0
