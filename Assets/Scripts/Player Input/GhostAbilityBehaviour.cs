@@ -156,8 +156,6 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public void OnSelected()
     {
-        // Reset aiming direction
-        m_aimingDirection = AimingDirection.North;
 
         // Reset Ability Bar
         bool movedUsed = true;
