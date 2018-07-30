@@ -485,7 +485,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     public void ChooseHide()
     {
-        Debug.Log("Ghost Hide");
+        //Debug.Log("Ghost Hide");
         m_actionState = GhostActionState.HIDE;
         m_ghostController.EndMovement();
         ImmediateConfirmAbility();

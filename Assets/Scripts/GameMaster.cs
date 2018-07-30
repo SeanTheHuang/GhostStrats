@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour {
 
+    enum GameState
+    {
+        NO_STATE,
+        PUNK_SPAWN,
+        PUNK_RUN,
+        GHOST_SPAWN,
+        GHOST_CHOOSE,
+        GHOST_RUN,
+        GHOST_WIN,
+        PUNK_WIN,
+        GAME_DRAW
+    }
+
     public GameObject[] m_startGhostArray; // All ghosts that will be in the game
     public GameObject[] m_startPunkArray; // All punks at start of game
     public GhostHole[] m_startGhostHoles; // All starting ghost holes
@@ -31,6 +44,8 @@ public class GameMaster : MonoBehaviour {
     public bool m_playGhostInSequence = true;
     public bool m_playersTurn;
 
+    GameState m_gameState;
+
     private List<Vector3> m_tempUnwalkable;
 
     public static GameMaster Instance()
@@ -47,6 +62,8 @@ public class GameMaster : MonoBehaviour {
         m_tempUnwalkable = new List<Vector3>();
         m_punkSpawner = GetComponent<PunkSpawner>();
         m_punkHive = GetComponent<PunkHiveMind>();
+
+        m_gameState = GameState.NO_STATE;
 
         foreach (GameObject go in m_startGhostArray)
             m_ghostList.Add(go.GetComponent<GhostController>());
@@ -69,18 +86,54 @@ public class GameMaster : MonoBehaviour {
     private void Update()
     {
         // TEST: Just a button to start the game
-        if (Input.GetKeyDown(KeyCode.P))
-            StartGame();
+        if (Input.GetKeyDown(KeyCode.P) && m_gameState == GameState.NO_STATE)
+            m_gameState = GameState.PUNK_SPAWN;
 
         // TEST: Make all player ghosts move
         if (Input.GetKeyDown(KeyCode.Space) && m_playersTurn)
-            RunPlayersTurn();
+            m_gameState = GameState.GHOST_RUN;
+
+        StateMachine();
     }
 
-
-    void StartGame()
+    void StateMachine()
     {
-        PunkSpawnTurn();
+        bool newState = true;
+
+        switch (m_gameState)
+        {
+            case GameState.PUNK_SPAWN:
+                PunkSpawnTurn();
+                break;
+            case GameState.PUNK_RUN:
+                PunkStartTurn();
+                break;
+            case GameState.GHOST_SPAWN:
+                GhostStartTurn();
+                break;
+            case GameState.GHOST_CHOOSE:
+                StartPlayerChoice();
+                break;
+            case GameState.GHOST_RUN:
+                RunPlayersTurn();
+                break;
+            case GameState.GHOST_WIN:
+                OnPlayerWon();
+                break;
+            case GameState.PUNK_WIN:
+                OnPlayerLose();
+                break;
+            case GameState.GAME_DRAW:
+                OnGameDraw();
+                break;
+            default:
+                newState = false;
+                break;
+        }
+
+        if (newState) // Make sure state change only occurs once
+            m_gameState = GameState.NO_STATE;
+
     }
 
     #region END_GAME_FUNCTIONS
@@ -102,17 +155,17 @@ public class GameMaster : MonoBehaviour {
 
         if (!punksAlive && !ghostsAlive)
         {
-            OnGameDraw();
+            m_gameState = GameState.GAME_DRAW;
             return true;
         }
         else if (!punksAlive && ghostsAlive)
         {
-            OnPlayerWon();
+            m_gameState = GameState.GHOST_WIN;
             return true;
         }
         else if (punksAlive && !ghostsAlive)
         {
-            OnPlayerLose();
+            m_gameState = GameState.PUNK_WIN;
             return true;
         }
         // else, game is stil running
@@ -169,7 +222,7 @@ public class GameMaster : MonoBehaviour {
         }
 
         // After spawn animation, time to start players turn
-        StartPlayerChoice();
+        m_gameState = GameState.GHOST_CHOOSE;
 
         yield return null;
     }
@@ -257,9 +310,8 @@ public class GameMaster : MonoBehaviour {
         }
 
         EndTurnWalkable();
-
         if (!CheckEndGameState())
-            PunkSpawnTurn();
+            m_gameState = GameState.PUNK_SPAWN;
     }
 
     #endregion
@@ -278,11 +330,12 @@ public class GameMaster : MonoBehaviour {
         while (m_punkSpawner.m_running) // Keep waiting for punk spawner to finish
             yield return null;
 
-        PunkStartTurn();
+        m_gameState = GameState.PUNK_RUN;
     }
 
     void PunkStartTurn()
     {
+        Debug.Log("GOTEORJWEJR");
         TextEffectController.Instance.PlayTitleText("PUNK TIME");
         foreach(GhostController gc in m_ghostList)
         {
@@ -293,7 +346,6 @@ public class GameMaster : MonoBehaviour {
             m_tempUnwalkable.Add(gc.transform.position);
         }
         StartTurnUnWalkable();
-
         StartCoroutine(PunkAnimation());
     }
 
@@ -314,7 +366,7 @@ public class GameMaster : MonoBehaviour {
         EndTurnWalkable();
 
         if (!CheckEndGameState())
-            GhostStartTurn();
+            m_gameState = GameState.GHOST_SPAWN;
         yield return null;
     }
 
