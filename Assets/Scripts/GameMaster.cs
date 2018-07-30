@@ -46,6 +46,9 @@ public class GameMaster : MonoBehaviour {
     public bool m_punkEndedTurn;
     public bool m_punkDiedinTurn;
 
+    int m_currentPunkListIndex;
+    public bool m_punkStillPlaying;
+
     public static GameMaster Instance()
     {
         return instance;
@@ -307,6 +310,40 @@ public class GameMaster : MonoBehaviour {
         StartCoroutine(PunkSpawnAnimation());
     }
 
+    public void PlayOnePunkTurn()
+    {
+        if (m_currentPunkListIndex >= m_punkList.Count)
+        {
+            // Punk turn over
+            if (!CheckEndGameState())
+                m_gameState = GameState.GHOST_TURN;
+            else
+                m_gameState = GameState.GAME_OVER;
+        }
+        else
+        {
+            m_punkStillPlaying = true;
+            StartCoroutine(PunkTurnAnimation());
+        }
+    }
+
+    IEnumerator PunkTurnAnimation()
+    {
+        CameraControl.Instance.SetFollowMode(m_punkList[m_currentPunkListIndex].transform);
+        m_punkList[m_currentPunkListIndex].DoTurn();
+
+        while (m_punkStillPlaying)
+            yield return null;
+
+        m_currentPunkListIndex++;
+        PlayOnePunkTurn();
+    }
+
+    public void PunkDiedDuringTheirTurn()
+    {
+        m_currentPunkListIndex--; // Move back in list
+    }
+
     IEnumerator PunkSpawnAnimation()
     {
         m_punkSpawner.PlayTurn();
@@ -314,7 +351,8 @@ public class GameMaster : MonoBehaviour {
         while (m_punkSpawner.m_running) // Keep waiting for punk spawner to finish
             yield return null;
 
-        PunkStartTurn();
+        m_currentPunkListIndex = 0;
+        PlayOnePunkTurn();
     }
 
     void PunkStartTurn()

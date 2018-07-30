@@ -106,6 +106,7 @@ public class PunkController : EntityBase
         _damage = GetDamageBaseOffDirection(_damage, transform.position - _positionOfHitter);
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
 
+        // Face target who hit them
         Vector3 dir = _positionOfHitter - transform.position;
         dir.y = 0;
         if (dir != Vector3.zero)
@@ -123,13 +124,13 @@ public class PunkController : EntityBase
             m_anima.SetTrigger("DeathTrigger");
             m_hiveMind.RemovePunk(transform);
             GameMaster.Instance().RemovePunk(this);
-            Destroy(gameObject, 1.0f);
-            // FinalPath();
-
+            GameMaster.Instance().PunkDiedDuringTheirTurn(); // Can just keep calling this just incase
+            Destroy(gameObject, 2.0f);
         }
         else
             m_anima.SetTrigger("GetHitTrigger");
     }
+
     public override void OnSelected()
     {
     }
@@ -168,11 +169,6 @@ public class PunkController : EntityBase
     void OnEndOfTurn()
     {
 
-    }
-    private void OnDisable()
-    {
-        GameMaster.Instance().m_punkEndedTurn = true;
-        GameMaster.Instance().m_punkDiedinTurn = true;
     }
 
     public void ChooseLocation()
@@ -535,7 +531,7 @@ public class PunkController : EntityBase
     void DelayedEndTurn()
     {
         //m_finishedMoving = true;
-        GameMaster.Instance().m_punkEndedTurn = true;
+        GameMaster.Instance().m_punkStillPlaying = false;
     }
 
     void Sight()
