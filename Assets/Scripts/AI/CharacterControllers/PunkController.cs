@@ -399,6 +399,7 @@ public class PunkController : EntityBase
             if(m_movesPerformed == m_maxMoves)
             {
                 m_state = PunkStates.ATTACK;
+                return;
             }
             if(m_pathIndex == m_realPath.Count)//end of the path
             {
@@ -412,11 +413,22 @@ public class PunkController : EntityBase
                 Sight();
                 ChooseTarget();
 
-                if (m_prey != m_oldPrey)
+                if (m_prey != m_oldPrey && m_prey != null)
                 {//there might be problems here.
                     // What is point of this? vvv Because the path is never stored anywhere
-                    OnPathFound(PathRequestManager.Instance().GetPathImmediate(transform.position, m_prey.position, 1));
-                    m_pathIndex = 0;
+                    
+                    Vector3[] ghoat = PathRequestManager.Instance().GetPathImmediate(transform.position, m_prey.position, 1);
+                    if (ghoat.Length > 1)
+                    {
+                        Debug.Log("trying to go the distance");
+                        OnPathFound(ghoat);
+
+                        m_pathIndex = 0;
+                    }
+                    else
+                    {
+                        m_state = PunkStates.ATTACK;
+                    }
                 }
                 //rotate check new path + sight
             }
