@@ -117,6 +117,7 @@ public class PunkController : EntityBase
         TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.GHOST_DAMAGE, _damage);
         if (m_currentHealth < 1 && m_state != PunkStates.DEAD)
         {
+            m_state = PunkStates.DEAD;
             m_roomTarget.m_targeted = false;
             m_anima.SetTrigger("DeathTrigger");
             m_hiveMind.RemovePunk(transform);
@@ -316,15 +317,17 @@ public class PunkController : EntityBase
             }
             if(PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
             {
+                m_anima.SetTrigger("StunTrigger");
+                Invoke("StunnedText", 0.5f);
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
-                PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, null);
+                PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 m_state = PunkStates.IDLE;
                 traphit = true;
             }
 
             if (traphit)
             {
-                EndTurn();
+                EndTurn(0.5f);
                 return;
             }
 
@@ -374,13 +377,15 @@ public class PunkController : EntityBase
             }
             if (PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
             {//check for ghost skill trap
+                m_anima.SetTrigger("StunTrigger");
+                Invoke("StunnedText", 0.5f);
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 m_state = PunkStates.IDLE;
                 traphit = true;
             }
 
-            if(traphit)
+            if (traphit == true) 
             {
                 EndTurn(0.5f);
                 return;
