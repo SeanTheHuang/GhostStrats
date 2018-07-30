@@ -268,10 +268,10 @@ public class GameMaster : MonoBehaviour {
 
     void PunkSpawnTurn()
     {
-        StartCoroutine(SpawnAnimation());
+        StartCoroutine(PunkSpawnAnimation());
     }
 
-    IEnumerator SpawnAnimation()
+    IEnumerator PunkSpawnAnimation()
     {
         m_punkSpawner.PlayTurn();
 
