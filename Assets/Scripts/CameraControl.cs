@@ -119,7 +119,10 @@ public class CameraControl : MonoBehaviour
 
         // Added function: Press [F1] to reset to original target
         if (Input.GetKeyDown(KeyCode.F1))
+        {
             m_targetPosition = m_initialTargetPosition;
+            m_currentOffset = m_cameraOffset;
+        }
 
         // Added function, scroll wheel = zoom in and out
         float scroll = Input.GetAxisRaw("Mouse ScrollWheel");
