@@ -261,7 +261,7 @@ public class GameMaster : MonoBehaviour {
 
         foreach (GhostController gc in m_ghostList)
         {
-            if (gc.GhostIsAlive) // Don't look at a dead ghost
+            if (!gc.GhostIsAlive) // Don't look at a dead ghost
                 continue;
 
             if (m_playGhostInSequence)
