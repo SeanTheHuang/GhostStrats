@@ -510,6 +510,14 @@ public class GhostController : EntityBase {
         if (m_abilities.m_actionState != GhostActionState.NONE)
             yield return new WaitForSeconds(0.8f); // Pause for a bit for animation
 
+        // Initial rotation
+        if (m_movePath2.Count > 0)
+        {
+            Vector3 dir = m_movePath2[0] - transform.position;
+            dir.y = 0;
+            transform.rotation = Quaternion.LookRotation(dir);
+        }
+
         // Start moving again if theres more
         for (int i = 0; i < m_movePath2.Count; i++)
         {
