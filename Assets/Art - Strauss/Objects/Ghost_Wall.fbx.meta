@@ -1,22 +1,66 @@
 fileFormatVersion: 2
-guid: 646a6aab07acdbb468c9987a5b2ce265
+guid: ce628431c3b542349b5bc986450ce2e5
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: joint1
-    100004: joint2
+    100002: pCube82
+    100004: pCube83
     100006: pCube84
+    100008: pCube85
+    100010: pCube86
+    100012: pCube87
+    100014: pCube88
+    100016: pCube89
+    100018: transform1
+    100020: transform2
+    100022: transform3
+    100024: transform4
+    100026: transform5
+    100028: transform6
+    100030: transform7
     400000: //RootNode
-    400002: joint1
-    400004: joint2
+    400002: pCube82
+    400004: pCube83
     400006: pCube84
-    2100000: SmallGhostDetails
-    4300000: pCube84
-    7400000: Animations
-    9500000: //RootNode
-    11100000: //RootNode
-    13700000: pCube84
+    400008: pCube85
+    400010: pCube86
+    400012: pCube87
+    400014: pCube88
+    400016: pCube89
+    400018: transform1
+    400020: transform2
+    400022: transform3
+    400024: transform4
+    400026: transform5
+    400028: transform6
+    400030: transform7
+    2100000: LargeGhostCeramics
+    2100002: LargeGhostBody
+    2300000: pCube89
+    2300002: pCube82
+    2300004: pCube83
+    2300006: pCube84
+    2300008: pCube85
+    2300010: pCube86
+    2300012: pCube87
+    2300014: pCube88
+    3300000: pCube89
+    3300002: pCube82
+    3300004: pCube83
+    3300006: pCube84
+    3300008: pCube85
+    3300010: pCube86
+    3300012: pCube87
+    3300014: pCube88
+    4300000: pCube89
+    4300002: pCube82
+    4300004: pCube83
+    4300006: pCube84
+    4300008: pCube85
+    4300010: pCube86
+    4300012: pCube87
+    4300014: pCube88
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -44,35 +88,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Animations
-      takeName: Take 001
-      firstFrame: 1
-      lastFrame: 30
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -117,10 +133,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
