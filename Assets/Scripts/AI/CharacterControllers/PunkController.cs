@@ -117,6 +117,7 @@ public class PunkController : EntityBase
         TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.GHOST_DAMAGE, _damage);
         if (m_currentHealth < 1 && m_state != PunkStates.DEAD)
         {
+            
             m_state = PunkStates.DEAD;
             m_roomTarget.m_targeted = false;
             m_anima.SetTrigger("DeathTrigger");
@@ -168,7 +169,11 @@ public class PunkController : EntityBase
     {
 
     }
-
+    private void OnDisable()
+    {
+        GameMaster.Instance().m_punkEndedTurn = true;
+        GameMaster.Instance().m_punkDiedinTurn = true;
+    }
 
     public void ChooseLocation()
     {
@@ -321,6 +326,7 @@ public class PunkController : EntityBase
                 Invoke("StunnedText", 0.5f);
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
+                Debug.Log("hit trap");
                 m_state = PunkStates.IDLE;
                 traphit = true;
             }
@@ -382,6 +388,7 @@ public class PunkController : EntityBase
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 m_state = PunkStates.IDLE;
+                Debug.Log("hit trap");
                 traphit = true;
             }
 
@@ -527,7 +534,8 @@ public class PunkController : EntityBase
 
     void DelayedEndTurn()
     {
-        m_finishedMoving = true;
+        //m_finishedMoving = true;
+        GameMaster.Instance().m_punkEndedTurn = true;
     }
 
     void Sight()

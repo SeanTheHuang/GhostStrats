@@ -42,6 +42,10 @@ public class GameMaster : MonoBehaviour {
     private GameState m_gameState;
     private List<Vector3> m_tempUnwalkable;
 
+    [HideInInspector]
+    public bool m_punkEndedTurn;
+    public bool m_punkDiedinTurn;
+
     public static GameMaster Instance()
     {
         return instance;
@@ -331,13 +335,22 @@ public class GameMaster : MonoBehaviour {
 
     IEnumerator PunkAnimation()
     {
-        foreach (PunkController pc in m_punkList)
+        //foreach (PunkController pc in m_punkList)
+        for (int i = 0; i < m_punkList.Count; i++) 
         {
-            Camera.main.GetComponent<CameraControl>().SetFollowMode(pc.transform);
+            m_punkEndedTurn = false;
+            m_punkDiedinTurn = false;
+            Camera.main.GetComponent<CameraControl>().SetFollowMode(m_punkList[i].transform);
             yield return new WaitForSeconds(0.3f);
-            pc.DoTurn();
+            m_punkList[i].DoTurn();
 
-            while (pc.m_finishedMoving == false)
+            if(m_punkDiedinTurn == true)
+            {
+                i--;
+                m_punkDiedinTurn = false;
+            }
+
+            while (m_punkEndedTurn == false)
             {
                 yield return null;
             }

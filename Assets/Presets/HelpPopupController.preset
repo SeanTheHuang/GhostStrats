@@ -37,6 +37,10 @@ Preset:
     value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_mouseEntered
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_textHeaders.Array.size
     value: 9
     objectReference: {fileID: 0}
