@@ -239,7 +239,8 @@ public class GameMaster : MonoBehaviour {
         }
 
         // Trigger the announcement that its the player's turn to appear on the UI
-        m_AnnouncementBannerImage.GetComponent<AnnouncementBannerController>().Appear();
+        //m_AnnouncementBannerImage.GetComponent<AnnouncementBannerController>().Appear();
+        TextEffectController.Instance.GhostTurnTitle();
     }
 
     void RunPlayersTurn()
@@ -260,6 +261,9 @@ public class GameMaster : MonoBehaviour {
 
         foreach (GhostController gc in m_ghostList)
         {
+            if (gc.GhostIsAlive) // Don't look at a dead ghost
+                continue;
+
             if (m_playGhostInSequence)
             {
                 CameraControl.Instance.SetFollowMode(gc.transform);
@@ -352,6 +356,9 @@ public class GameMaster : MonoBehaviour {
             yield return null;
 
         m_currentPunkListIndex = 0;
+        TextEffectController.Instance.PunkTurnTitle();
+        CameraControl.Instance.SetOverviewMode();
+        yield return new WaitForSeconds(0.5f);
         PlayOnePunkTurn();
     }
 
