@@ -3498,11 +3498,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114104446650246570, guid: a95586cae2cf9024197a44bbd6d3a391,
-        type: 2}
-      propertyPath: m_specialSkillSquares.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4386157243234748, guid: a95586cae2cf9024197a44bbd6d3a391, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -3564,21 +3559,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114104446650246570, guid: a95586cae2cf9024197a44bbd6d3a391,
-        type: 2}
-      propertyPath: m_specialSkillSquares.Array.data[3].z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114104446650246570, guid: a95586cae2cf9024197a44bbd6d3a391,
-        type: 2}
-      propertyPath: m_specialSkillSquares.Array.data[4].z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114104446650246570, guid: a95586cae2cf9024197a44bbd6d3a391,
-        type: 2}
-      propertyPath: m_specialSkillSquares.Array.data[5].z
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a95586cae2cf9024197a44bbd6d3a391, type: 2}

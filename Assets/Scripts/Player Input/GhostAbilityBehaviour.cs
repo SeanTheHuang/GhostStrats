@@ -51,6 +51,9 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     private GhostUi m_ghostUI;
 
+    private GameObject m_ghostNormalModel;
+    private GameObject m_ghostHideModel;
+
     // The number of turns the ghost must wait before they can use the ability again.
     [Header("Attack Cooldowns")]
     public int m_attackCooldown;
@@ -94,6 +97,8 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         m_ghostUI = GetComponent<GhostUi>();
         m_animator = transform.Find("Model").GetComponent<Animator>();
+        m_ghostNormalModel = transform.Find("Model").gameObject;
+        m_ghostHideModel = transform.Find("HideModel").gameObject;
     }
 
     protected virtual void Initialize()
@@ -328,7 +333,11 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public virtual void StartOfTurn()
     {
         if (m_actionState == GhostActionState.HIDE)
+        {
             m_ghostController.m_OutofSight = false;
+            m_ghostHideModel.SetActive(false);
+            m_ghostNormalModel.SetActive(true);
+        }
 
         m_aimingAbility = false;
         m_actionState = GhostActionState.NONE;
@@ -359,6 +368,8 @@ public class GhostAbilityBehaviour : MonoBehaviour
         {
             m_actionState = GhostActionState.NONE;
             // TODO, play unhide animation
+            m_ghostHideModel.SetActive(false);
+            m_ghostNormalModel.SetActive(true);
         }
     }
 
@@ -423,6 +434,8 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     void PerformHide()
     {
+        m_ghostHideModel.SetActive(true);
+        m_ghostNormalModel.SetActive(false);
         m_ghostController.m_OutofSight = true;
         m_hideCooldownTimer = m_hideCooldown; // Update the timer
         // PUT IT HERE HUGO
