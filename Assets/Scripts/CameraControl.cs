@@ -25,15 +25,20 @@ public class CameraControl : MonoBehaviour
     [Header("Camera Limits")]
     public Vector2 m_lowerLimits;
     public Vector2 m_upperLimits;
+    public float m_zoomAmount = 4;
 
     [Header("Others")]
     public float m_lerpValue = 8;
     public float m_freeMoveLerpVal = 35;
     public float m_cameraPanSpeed = 3;
+    public float m_zoomSpeed = 4;
     public float mouseDistFromEdgeOfScreen = 20;
     public Vector3 m_cameraOffset;
+    
     public bool m_lockCameraMovement = false;
 
+    Vector3 m_currentOffset;
+    float m_cameraBaseHeight;
     Quaternion m_initialRotation;
     CameraState m_cameraState;
 
@@ -107,7 +112,7 @@ public class CameraControl : MonoBehaviour
 
         // Move towards current target position, update target position as mouse touches the screen edges
         UpdateTargetPosition();
-        Vector3 targetPos = m_targetPosition + m_cameraOffset;
+        Vector3 targetPos = m_targetPosition + m_currentOffset;
         transform.position = Vector3.Lerp(transform.position, targetPos, m_lerpValue * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, m_initialRotation, m_lerpValue * Time.deltaTime);
         ClampCameraPosition();
@@ -115,6 +120,13 @@ public class CameraControl : MonoBehaviour
         // Added function: Press [F1] to reset to original target
         if (Input.GetKeyDown(KeyCode.F1))
             m_targetPosition = m_initialTargetPosition;
+
+        // Added function, scroll wheel = zoom in and out
+        float scroll = Input.GetAxisRaw("Mouse ScrollWheel");
+        if (scroll < 0)
+            m_currentOffset.y = Mathf.Clamp(m_currentOffset.y + m_zoomSpeed * Time.deltaTime, m_cameraOffset.y - m_zoomAmount, m_cameraOffset.y + m_zoomAmount);
+        else if (scroll > 0)
+            m_currentOffset.y = Mathf.Clamp(m_currentOffset.y - m_zoomSpeed * Time.deltaTime, m_cameraOffset.y - m_zoomAmount, m_cameraOffset.y + m_zoomAmount);
     }
 
     void UpdateTargetPosition()
@@ -156,6 +168,7 @@ public class CameraControl : MonoBehaviour
 
     public void SetFreeMode(Vector3 _initialTarget)
     {
+        m_currentOffset = m_cameraOffset;
         m_targetPosition = m_initialTargetPosition = _initialTarget;
         m_cameraState = CameraState.FREE;
     }
