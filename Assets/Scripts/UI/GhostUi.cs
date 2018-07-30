@@ -47,6 +47,7 @@ public class GhostUi : MonoBehaviour
     {
         ghostPortraitController.OnDeselected();
         m_selectedCircle.enabled = false;
+        m_UIAbilityBarCntrl.OnDeselect();
     }
 
     public void MoveUsed(int numMovesLeft)

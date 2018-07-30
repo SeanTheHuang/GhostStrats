@@ -29,6 +29,8 @@ public class PlayerKeyboardInput : MonoBehaviour {
     // The keycode for opening the pause menu
     public KeyCode m_openPauseMenu;
     public GameObject m_pauseMenu;
+    public GameObject m_tutorialMenu;
+    private bool m_tutorialMenuOpen;
     private bool m_gamePaused;
 
     // The ghosts associated to the keyboard buttons 1,2,3
@@ -53,6 +55,7 @@ public class PlayerKeyboardInput : MonoBehaviour {
         m_helpPopUp = HelpPopupController.Instance();
         m_gameMaster.m_onPause += onPause;
         m_gameMaster.m_onPlay += onPlay;
+        m_tutorialMenuOpen = m_tutorialMenu.activeSelf;
     }
     
     void Update()
@@ -60,10 +63,18 @@ public class PlayerKeyboardInput : MonoBehaviour {
         // Pause the game and open the pause menu
         if (Input.GetKeyDown(m_openPauseMenu))
         {
-            if (m_gamePaused)
-                m_gameMaster.Play();
+            if (m_tutorialMenuOpen)
+            {
+                m_tutorialMenu.SetActive(false);
+                m_tutorialMenuOpen = false;
+            }
             else
-                m_gameMaster.Pause();
+            {
+                if (m_gamePaused)
+                    m_gameMaster.Play();
+                else
+                    m_gameMaster.Pause();
+            }
         }
         
         if (!m_gameMaster.m_playersTurn || m_gamePaused) // Don't update if no ghost is selected or the game is paused
@@ -140,5 +151,11 @@ public class PlayerKeyboardInput : MonoBehaviour {
     {
         m_pauseMenu.SetActive(true);
         m_gamePaused = true;
+    }
+
+    public void DisplayTutorial()
+    {
+        m_tutorialMenuOpen = !m_tutorialMenuOpen;
+        m_tutorialMenu.SetActive(m_tutorialMenuOpen);
     }
 }
