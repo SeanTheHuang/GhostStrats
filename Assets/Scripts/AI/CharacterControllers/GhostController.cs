@@ -283,10 +283,10 @@ public class GhostController : EntityBase {
                 if (possibleMoveCount < 1)
                     break;
             }
-        }
 
-        if (m_aimModel && !m_aimModel.m_locked)
-            m_aimModel.transform.position = m_choosingPathBallsList[m_choosingPathBallsList.Count-1].position;
+            if (m_aimModel && !m_aimModel.m_locked)
+                m_aimModel.transform.position = m_choosingPathBallsList[m_choosingPathBallsList.Count - 1].position;
+        }        
     }
 
     public override void OnSelected()

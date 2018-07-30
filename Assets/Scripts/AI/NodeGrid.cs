@@ -345,8 +345,8 @@ public class NodeGrid : MonoBehaviour {
     {
         float percentX = (_worldPos.x + m_gridWorldSize.x / 2) / m_gridWorldSize.x;
         float percentY = (_worldPos.z + m_gridWorldSize.y / 2) / m_gridWorldSize.y;
-        //percentX = Mathf.Clamp01(percentX);
-        //percentY = Mathf.Clamp01(percentY);
+        percentX = Mathf.Clamp01(percentX);
+        percentY = Mathf.Clamp01(percentY);
 
         int x = Mathf.RoundToInt((m_gridSizeX - 1) * percentX);
         int y = Mathf.RoundToInt((m_gridSizeY - 1) * percentY);
