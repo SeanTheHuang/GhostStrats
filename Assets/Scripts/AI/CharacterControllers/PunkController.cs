@@ -95,6 +95,7 @@ public class PunkController : EntityBase
 
     public override void OnDeath()
     {
+        Destroy(gameObject, 1.0f);
     }
     public override void OnSpawn()
     {
@@ -120,8 +121,8 @@ public class PunkController : EntityBase
             m_anima.SetTrigger("DeathTrigger");
             m_hiveMind.RemovePunk(transform);
             GameMaster.Instance().RemovePunk(this);
-            m_state = PunkStates.DEAD;
-            Destroy(gameObject, 1.0f);
+            FinalPath();
+            
         }
         else
             m_anima.SetTrigger("GetHitTrigger");
@@ -308,6 +309,7 @@ public class PunkController : EntityBase
             {
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
+                m_state = PunkStates.IDLE;
                 EndTurn(0.5f);
                 return;
             }
@@ -692,12 +694,26 @@ public class PunkController : EntityBase
     void FinalPath()
     {
         PathRequestManager.Instance().GetPathImmediate(transform.position, m_startLoc, 1);
-
+        m_pathIndex = 0;
+        m_state = PunkStates.DEAD;
     }
 
     void RunAway()
     {
-        Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[m_pathIndex], m_moveSpeed * Time.deltaTime);
-
+        Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[m_pathIndex], m_moveSpeed * 2 * Time.deltaTime);
+        if(transform.position == m_realPath[m_pathIndex])
+        {
+            m_pathIndex++;
+            if(transform.position == m_startLoc)
+            {
+                //DIE
+                OnDeath();
+            }
+        }
+        else
+        {
+            transform.position = newPos;
+        }
+        transform.position = newPos;
     }
 }
