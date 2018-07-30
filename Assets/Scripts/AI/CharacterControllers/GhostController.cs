@@ -537,6 +537,7 @@ public class GhostController : EntityBase {
         if (m_movePath2.Count > 0)
             yield return new WaitForSeconds(0.5f);
 
+        m_ghostUI.OnDeselected();
         m_performing = false;
         yield return null;
     }
