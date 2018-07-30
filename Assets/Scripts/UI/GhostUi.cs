@@ -36,11 +36,6 @@ public class GhostUi : MonoBehaviour
         m_UIAbilityBarCntrl.AbilityUsed(actionState);
     }
 
-    public void AbilityUnused()
-    {
-        m_UIAbilityBarCntrl.ResetTurn();
-    }
-
     public void OnSelected(int attackCooldownTimer, int hideCooldownTimer, int overwatchCooldownTimer, int specialCooldownTimer, bool moveUsed, bool someMoveUsed, GhostActionState actionState)
     {
         ghostPortraitController.OnSelected();
@@ -61,11 +56,6 @@ public class GhostUi : MonoBehaviour
             m_UIAbilityBarCntrl.MoveUsed(true);
         else
             m_UIAbilityBarCntrl.MoveUsed(false);
-    }
-
-    public void ResetTurn()
-    {
-        m_UIAbilityBarCntrl.ResetTurn();
     }
 
     public void updateHealthbar(int currentHealth)

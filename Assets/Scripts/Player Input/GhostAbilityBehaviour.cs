@@ -151,7 +151,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
     {
         m_ghostController.m_abilityUsed = false;
         m_gameMaster.ResetEndTurnPrompt();
-        m_ghostUI.AbilityUnused();
+        OnSelected();
     }
 
     public void OnSelected()
@@ -327,7 +327,6 @@ public class GhostAbilityBehaviour : MonoBehaviour
         if (m_actionState == GhostActionState.HIDE)
             m_ghostController.m_OutofSight = false;
 
-        AbilityUnused();
         m_aimingAbility = false;
         m_actionState = GhostActionState.NONE;
 
