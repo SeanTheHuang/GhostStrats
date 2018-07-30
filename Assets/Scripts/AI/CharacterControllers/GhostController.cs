@@ -446,6 +446,8 @@ public class GhostController : EntityBase {
 
     IEnumerator PerformAction()
     {
+        m_abilities.OnSelected();
+
         if (m_performing) // Just keep doing nothing while performing
             yield return null;
 
