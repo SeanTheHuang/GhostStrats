@@ -28,6 +28,9 @@ public class PunkController : EntityBase
     [HideInInspector]
     public bool m_finishedMoving = false;
 
+    public float m_footstepTiming = 0.5f;
+    float m_lastStepSound;
+
     Vector3 v3debug;//used when cant find a path
     bool bdebug = false;
 
@@ -41,6 +44,7 @@ public class PunkController : EntityBase
     float m_atk_time;
 
     Vector3 m_startLoc;
+    AudioSource m_footstepSource;
 
     private void Awake()
     {
@@ -49,6 +53,7 @@ public class PunkController : EntityBase
         m_state = PunkStates.IDLE;
         m_currentHealth = m_maxHealth;
         m_anima = GetComponent<Animator>();
+        m_footstepSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -62,6 +67,8 @@ public class PunkController : EntityBase
 
     private void Update()
     {
+        FootstepLogic();
+
         switch (m_state)
         {
             case PunkStates.IDLE:
@@ -91,6 +98,19 @@ public class PunkController : EntityBase
         }
 
 
+    }
+
+    void FootstepLogic()
+    {
+        if (!m_startwalk)
+            return;
+
+        if (Time.time - m_lastStepSound > m_footstepTiming)
+        {
+            m_lastStepSound = Time.time;
+            m_footstepSource.pitch = Random.Range(0.9f, 1.1f);
+            m_footstepSource.Play();
+        }
     }
 
     public override void OnDeath()
@@ -300,7 +320,8 @@ public class PunkController : EntityBase
         if(m_startwalk == false)
         {
             m_anima.SetBool("IsWalking", true);
-            m_startwalk = true;   
+            m_startwalk = true;
+            m_lastStepSound = Time.time;
         }
     }
 
@@ -314,6 +335,7 @@ public class PunkController : EntityBase
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
                 m_state = PunkStates.IDLE;
+                m_startwalk = false;
                 traphit = true;
             }
             if(PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
@@ -324,6 +346,7 @@ public class PunkController : EntityBase
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 Debug.Log("hit trap");
                 m_state = PunkStates.IDLE;
+                m_startwalk = false;
                 traphit = true;
             }
 
@@ -336,6 +359,7 @@ public class PunkController : EntityBase
             if (m_realPath.Count == 0)
             {
                 m_state = PunkStates.ATTACK;
+                m_startwalk = false;
                 return;
             }
             else if (m_realPath.Count > 0)
@@ -375,6 +399,7 @@ public class PunkController : EntityBase
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
                 m_state = PunkStates.IDLE;
+                m_startwalk = false;
                 traphit = true;
             }
             if (PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
@@ -384,6 +409,7 @@ public class PunkController : EntityBase
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 m_state = PunkStates.IDLE;
+                m_startwalk = false;
                 Debug.Log("hit trap");
                 traphit = true;
             }
@@ -415,12 +441,14 @@ public class PunkController : EntityBase
             m_movesPerformed++;
             if(m_movesPerformed == m_maxMoves)
             {
+                m_startwalk = false;
                 m_state = PunkStates.ATTACK;
                 return;
             }
             if(m_pathIndex == m_realPath.Count)//end of the path
             {
                 //end it?
+                m_startwalk = false;
                 m_state = PunkStates.ATTACK;
                 //change state
             }
@@ -516,6 +544,7 @@ public class PunkController : EntityBase
 
     void ApplyAttack()
     {
+        SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.PUNK_ATTACK);
         m_prey.GetComponent<EntityBase>().OnEntityHit(m_attackDamage, transform.position);
     }
 

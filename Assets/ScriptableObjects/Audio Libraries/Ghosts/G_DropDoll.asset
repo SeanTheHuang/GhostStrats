@@ -9,9 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c033b5f9561c45543b122fcfa364f75b, type: 3}
-  m_Name: TestGhostSounds
+  m_Name: G_DropDoll
   m_EditorClassIdentifier: 
+  m_catagory: 4
   m_pitch:
-    minValue: 0.9673887
-    maxValue: 1.4336643
-  m_audioClips: []
+    minValue: 0.91439676
+    maxValue: 1.1284049
+  m_volume: 0.5
+  m_audioClips:
+  - {fileID: 8300000, guid: f3c8019b1eb432a42a0194e0baa2945a, type: 3}

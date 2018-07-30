@@ -34,6 +34,7 @@ public class WallGhostAbility : GhostAbilityBehaviour {
     protected override void PerformSpecialAbility()
     {
         base.PerformSpecialAbility();
+        SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_WALL);
         transform.rotation = Quaternion.AngleAxis((float)m_aimingDirection, Vector3.up);
 
         StartCoroutine(TransformAnimation(true));

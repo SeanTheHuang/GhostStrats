@@ -27,9 +27,7 @@ public class DollGhostAbility : GhostAbilityBehaviour {
     protected override void PerformSpecialAbility()
     {
         base.PerformSpecialAbility();
-
-        // Drop a "doll" where you are,
-        // TODO: visuals
+        SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_DROPDOLL);
         Debug.Log("Doll was dropped at position:" + transform.position.ToString());
         Transform droppedDrop = Instantiate(m_dollPrefab, transform.position, m_dollPrefab.rotation);
         PathRequestManager.Instance().SetNodeState(NodeState.GHOST_TRAP, droppedDrop);

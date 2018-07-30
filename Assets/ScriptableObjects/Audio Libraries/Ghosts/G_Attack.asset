@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c033b5f9561c45543b122fcfa364f75b, type: 3}
+  m_Name: G_Attack
+  m_EditorClassIdentifier: 
+  m_catagory: 0
+  m_pitch:
+    minValue: 0.700389
+    maxValue: 1.3229573
+  m_volume: 0.8
+  m_audioClips:
+  - {fileID: 8300000, guid: aa8e1fbbc8eb87548b3955f7ca2ea839, type: 3}

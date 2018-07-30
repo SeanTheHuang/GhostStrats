@@ -37,6 +37,7 @@ public class MonsterGhostAbility : GhostAbilityBehaviour {
     protected override void PerformSpecialAbility()
     {
         base.PerformSpecialAbility();
+        SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_MONSTER);
         RotateTowardsAbilityDir();
 
         // Check if any punks on tiles, affected tiles and damage them
