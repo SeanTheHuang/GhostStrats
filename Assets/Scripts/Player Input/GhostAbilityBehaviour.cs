@@ -268,10 +268,15 @@ public class GhostAbilityBehaviour : MonoBehaviour
         float gridSize = PathRequestManager.Instance().GridSize();
         if ((_punk.transform.position - m_rotatedAffectedSquares[0]).sqrMagnitude < gridSize * gridSize)
         {
-            // Attack punk and return true
-            _punk.OnEntityHit(m_baseAttackDamage, transform.position);
-            m_actionState = GhostActionState.NONE; // No more overwatching
-            return true;
+            // Check punk not directly staring at ghost
+            Vector3 punkToGhost = transform.position - _punk.transform.position;
+            if (Vector3.Dot(_punk.transform.forward, punkToGhost.normalized) < 0.9f)
+            {
+                // Attack punk and return true
+                _punk.OnEntityHit(m_baseAttackDamage, transform.position);
+                m_actionState = GhostActionState.NONE; // No more overwatching
+                return true;
+            }
         }
 
         return false;
