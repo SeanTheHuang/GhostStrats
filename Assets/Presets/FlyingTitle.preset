@@ -5,10 +5,10 @@ Preset:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PlayerKeyboardInput
+  m_Name: FlyingTitle
   m_TargetType:
     m_NativeTypeID: 114
-    m_ManagedTypePPtr: {fileID: 11500000, guid: 1ac01ab5ce762ef4fb1266996d7ab666,
+    m_ManagedTypePPtr: {fileID: 11500000, guid: aa365e45cf00fb24f862b67216b5207e,
       type: 3}
     m_ManagedTypeFallback: 
   m_Properties:
@@ -29,42 +29,38 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_selectedGhost
-    value: 
+    propertyPath: m_fadeInTime
+    value: 0.2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_attack
-    value: 113
+    propertyPath: m_fadeOutTime
+    value: 0.8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_hide
-    value: 119
+    propertyPath: m_waitPeriod
+    value: 0.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_overwatch
-    value: 101
+    propertyPath: m_moveOffset.x
+    value: 800
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_special
-    value: 114
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_ghostKey1
-    value: 49
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_ghostKey2
-    value: 50
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_ghostKey3
-    value: 51
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: m_openPauseMenu
+    propertyPath: m_moveOffset.y
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_pauseMenu
-    value: 
+    propertyPath: m_moveOffset.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_driftVelocity.x
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_driftVelocity.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_driftVelocity.z
+    value: 0
     objectReference: {fileID: 0}

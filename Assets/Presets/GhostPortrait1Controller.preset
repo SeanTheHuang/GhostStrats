@@ -105,6 +105,10 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_GhostFaceImage
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_defaultGhostPortrait
     value: 
     objectReference: {fileID: 21300000, guid: b5b54075163b43c46a461fec6380e7b6, type: 3}

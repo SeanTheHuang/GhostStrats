@@ -27,6 +27,8 @@ public class TextEffectController : MonoBehaviour {
     [Header("Prefabs")]
     public Transform m_titleTextPrefab;
     public Transform m_effectsTextPrefab;
+    public Transform m_ghostTurnPrefab;
+    public Transform m_punkTurnPrefab;
 
     [Header("Effect Texts")]
     public TextEffectGroup[] m_textTemplates;
@@ -46,12 +48,12 @@ public class TextEffectController : MonoBehaviour {
         // TEST CODE
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            PlayTitleText("HELLO ME SEAN");
+            PunkTurnTitle();
         }
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            PlayEffectText(Vector3.zero, (TextEffectTypes)Random.Range(0, 4), Random.Range(0, 5));
+            GhostTurnTitle();
         }
     }
 
@@ -64,6 +66,20 @@ public class TextEffectController : MonoBehaviour {
         }
 
         return null; // Reach here, couldn't find a template for this type
+    }
+
+    public void PunkTurnTitle()
+    {
+        Transform newTitle = Instantiate(m_punkTurnPrefab, m_punkTurnPrefab.position, m_punkTurnPrefab.rotation, transform);
+        newTitle.GetComponent<RectTransform>().anchoredPosition3D = m_punkTurnPrefab.position; // Properly set position here
+        newTitle.GetComponent<FlyingTitle>().StartAnimation();
+    }
+
+    public void GhostTurnTitle()
+    {
+        Transform newTitle = Instantiate(m_ghostTurnPrefab, m_ghostTurnPrefab.position, m_ghostTurnPrefab.rotation, transform);
+        newTitle.GetComponent<RectTransform>().anchoredPosition3D = m_ghostTurnPrefab.position; // Properly set position here
+        newTitle.GetComponent<FlyingTitle>().StartAnimation();
     }
 
     public void PlayTitleText(string _titleText)
