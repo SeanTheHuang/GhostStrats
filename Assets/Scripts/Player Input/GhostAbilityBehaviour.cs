@@ -367,6 +367,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         else if (m_actionState == GhostActionState.HIDE)
         {
             m_actionState = GhostActionState.NONE;
+            PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
             // TODO, play unhide animation
             m_ghostHideModel.SetActive(false);
             m_ghostNormalModel.SetActive(true);
