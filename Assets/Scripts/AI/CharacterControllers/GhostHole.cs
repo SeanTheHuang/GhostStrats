@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GhostHole : EntityBase
 {
@@ -15,6 +16,7 @@ public class GhostHole : EntityBase
     public Transform m_targetPosition;
     bool m_ghostIsAlive;
 
+    TextMeshPro m_respawnText;
     public bool HoleIsAlive
     {
         get { return m_currentHealth > 0; }
@@ -27,6 +29,7 @@ public class GhostHole : EntityBase
         m_ghostIsAlive = false;
         m_currentReviveTime = 0;
         m_currentHealth = m_maxHealth;
+        m_respawnText = transform.Find("RespawnText").GetComponent<TextMeshPro>();
     }
 
     private void Start()
@@ -51,6 +54,7 @@ public class GhostHole : EntityBase
             return false;
 
         m_currentReviveTime -= 1;
+        UpdateRespawnText();
 
         if (m_currentReviveTime > 0) // Still waiting to revive
             return false;
@@ -73,6 +77,7 @@ public class GhostHole : EntityBase
         m_linkedGhost.HideGhost();
         m_ghostIsAlive = false;
         m_currentReviveTime = m_baseReviveTime+1;
+        UpdateRespawnText();
     }
 
     public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
@@ -101,4 +106,11 @@ public class GhostHole : EntityBase
         //no actions
     }
 
+    private void UpdateRespawnText()
+    {
+        if(m_currentReviveTime > 0)
+            m_respawnText.SetText(m_currentReviveTime.ToString());
+        else
+            m_respawnText.SetText("");
+    }
 }
