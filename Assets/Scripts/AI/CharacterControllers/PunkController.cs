@@ -306,19 +306,24 @@ public class PunkController : EntityBase
     {
         if (m_pathIndex == 0)//first move
         {
+            bool traphit = false;
             if (GameMaster.Instance().PunkHitOverwatch(this))
             {
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
                 m_state = PunkStates.IDLE;
-                EndTurn(0.5f);
-                return;
+                traphit = true;
             }
             if(PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
             {
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
-                PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
+                PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, null);
                 m_state = PunkStates.IDLE;
+                traphit = true;
+            }
+
+            if (traphit)
+            {
                 EndTurn();
                 return;
             }
@@ -359,21 +364,25 @@ public class PunkController : EntityBase
 
         if (transform.position == m_realPath[m_pathIndex])//moved to place
         {
-            //Debug.Break();
+            bool traphit = false;
             if (GameMaster.Instance().PunkHitOverwatch(this))
             {//check for ghost skill overwatch
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
                 m_state = PunkStates.IDLE;
-                EndTurn(0.5f);
-                return;
+                traphit = true;
             }
             if (PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
             {//check for ghost skill trap
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 m_state = PunkStates.IDLE;
-                EndTurn();
+                traphit = true;
+            }
+
+            if(traphit)
+            {
+                EndTurn(0.5f);
                 return;
             }
 
@@ -504,6 +513,8 @@ public class PunkController : EntityBase
 
     void EndTurn(float extraDelay = 0)
     {
+        Vector3 pos = transform.position;
+        transform.position = new Vector3(Mathf.Round(pos.x), pos.y, Mathf.Round(pos.z));
         m_state = PunkStates.IDLE;
         m_anima.SetBool("IsWalking", false);
         Invoke("DelayedEndTurn", 0.5f + extraDelay);
