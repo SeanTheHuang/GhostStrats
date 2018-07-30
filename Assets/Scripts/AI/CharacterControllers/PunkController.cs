@@ -317,6 +317,7 @@ public class PunkController : EntityBase
             {
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
+                m_state = PunkStates.IDLE;
                 EndTurn();
                 return;
             }
@@ -362,6 +363,7 @@ public class PunkController : EntityBase
             {//check for ghost skill overwatch
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
+                m_state = PunkStates.IDLE;
                 EndTurn(0.5f);
                 return;
             }
@@ -369,6 +371,7 @@ public class PunkController : EntityBase
             {//check for ghost skill trap
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
+                m_state = PunkStates.IDLE;
                 EndTurn();
                 return;
             }
