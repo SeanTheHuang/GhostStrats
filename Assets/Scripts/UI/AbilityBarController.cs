@@ -114,6 +114,25 @@ public class AbilityBarController : MonoBehaviour {
             m_undoUIHighlightImage.enabled = false;
     }
 
+    public void OnDeselect()
+    {
+        // Reset ability used highlight
+        m_moveUIHighlightImage.enabled = false;
+        m_undoUIHighlightImage.enabled = false;
+        m_attackUIHighlightImage.enabled = false;
+        m_hideUIHighlightImage.enabled = false;
+        m_overwatchUIHighlightImage.enabled = false;
+        m_specialUIHighlightImage.enabled = false;
+        m_attackUIAbilityUsedHighlightImage.enabled = false;
+        m_hideUIAbilityUsedHighlightImage.enabled = false;
+        m_overwatchUIAbilityUsedHighlightImage.enabled = false;
+        m_specialUIAbilityUsedHighlightImage.enabled = false;
+        DisableCoolDownUIEffects(m_attackUIImage);
+        DisableCoolDownUIEffects(m_hideUIImage);
+        DisableCoolDownUIEffects(m_overwatchUIImage);
+        DisableCoolDownUIEffects(m_specialUIImage);
+    }
+
     public void EnableCoolDownUIEffects(GameObject uIAbility, int coolDownNumber)
     {
         uIAbility.transform.GetChild(0).GetComponent<Image>().enabled = true;
