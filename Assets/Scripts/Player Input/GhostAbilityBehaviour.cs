@@ -278,6 +278,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
                 // Attack punk and return true
                 _punk.OnEntityHit(m_baseAttackDamage, transform.position);
                 m_actionState = GhostActionState.NONE; // No more overwatching
+                SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_ATTACK);
                 return true;
             }
         }
@@ -421,6 +422,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     void PerformAttack()
     {
+        SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_ATTACK);
         m_animator.SetTrigger("Attack");
         ClearAttackVisuals();
         m_attackCooldownTimer = m_attackCooldown;
@@ -435,6 +437,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     void PerformHide()
     {
+        SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_HIDE);
         m_ghostHideModel.SetActive(true);
         m_ghostNormalModel.SetActive(false);
         m_ghostController.m_OutofSight = true;
@@ -446,6 +449,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
     void PerformOverwatch()
     {
+        SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_OVERSPOOK);
         ClearAttackVisuals();
         m_overwatchCooldownTimer = m_overwatchCooldown;
 
