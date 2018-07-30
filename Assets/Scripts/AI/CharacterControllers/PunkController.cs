@@ -95,7 +95,7 @@ public class PunkController : EntityBase
 
     public override void OnDeath()
     {
-        Destroy(gameObject, 1.0f);
+        //Destroy(gameObject, 1.0f);
     }
     public override void OnSpawn()
     {
@@ -121,8 +121,9 @@ public class PunkController : EntityBase
             m_anima.SetTrigger("DeathTrigger");
             m_hiveMind.RemovePunk(transform);
             GameMaster.Instance().RemovePunk(this);
-            FinalPath();
-            
+            Destroy(gameObject, 1.0f);
+            // FinalPath();
+
         }
         else
             m_anima.SetTrigger("GetHitTrigger");
@@ -694,9 +695,14 @@ public class PunkController : EntityBase
 
     }
 
-    void FinalPath()
+    /*void FinalPath()
     {
-        PathRequestManager.Instance().GetPathImmediate(transform.position, m_startLoc, 1);
+        Vector3[] arr = PathRequestManager.Instance().GetPathImmediate(transform.position, m_startLoc, 1);
+        m_realPath.Clear();
+        for(int i = 0; i< arr.Length;i++)
+        {
+            m_realPath.Add(arr[i]);
+        }
         m_pathIndex = 0;
         m_state = PunkStates.DEAD;
     }
@@ -706,10 +712,19 @@ public class PunkController : EntityBase
         Vector3 newPos = Vector3.MoveTowards(transform.position, m_realPath[m_pathIndex], m_moveSpeed * 2 * Time.deltaTime);
         if(transform.position == m_realPath[m_pathIndex])
         {
+            if (m_pathIndex + 1 < m_realPath.Count)
+            {
+                Vector3 dir = m_realPath[m_pathIndex + 1] - transform.position;//rotation
+                dir.y = 0;
+                if (dir != Vector3.zero)
+                    transform.rotation = Quaternion.LookRotation(dir);
+            }
+
             m_pathIndex++;
             if(transform.position == m_startLoc)
             {
                 //DIE
+                m_state = PunkStates.IDLE;
                 OnDeath();
             }
         }
@@ -718,5 +733,5 @@ public class PunkController : EntityBase
             transform.position = newPos;
         }
         transform.position = newPos;
-    }
+    }*/
 }
