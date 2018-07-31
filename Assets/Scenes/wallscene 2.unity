@@ -1700,16 +1700,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114664700845369444, guid: 7e5c38c3706666e4e800758c76342cfe,
-        type: 2}
-      propertyPath: m_startGhostHoles.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114664700845369444, guid: 7e5c38c3706666e4e800758c76342cfe,
-        type: 2}
-      propertyPath: m_startGhostArray.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4267550307739512, guid: 7e5c38c3706666e4e800758c76342cfe, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0

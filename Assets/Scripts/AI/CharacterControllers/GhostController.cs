@@ -153,6 +153,9 @@ public class GhostController : EntityBase {
 
         foreach (SkinnedMeshRenderer rend in sm_renderers)
             rend.enabled = false;
+
+        // Create poof particles
+        TextEffectController.Instance.GetComponent<EffectsSpawner>().SpawnRespawnPoofPrefab(transform.position);
     }
 
     public void ShowGhost()

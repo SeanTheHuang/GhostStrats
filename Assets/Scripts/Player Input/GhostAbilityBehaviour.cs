@@ -279,6 +279,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
                 _punk.OnEntityHit(m_baseAttackDamage, transform.position);
                 m_actionState = GhostActionState.NONE; // No more overwatching
                 SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_ATTACK);
+                ClearAttackVisuals();
                 return true;
             }
         }
@@ -343,7 +344,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         m_aimingAbility = false;
         m_actionState = GhostActionState.NONE;
-
+        ClearAttackVisuals();
         LowerCooldown();
     }
 
@@ -363,9 +364,11 @@ public class GhostAbilityBehaviour : MonoBehaviour
             m_animator.SetTrigger("Damaged");
 
         if (m_actionState == GhostActionState.OVERSPOOK)
+        {
             // Stop overwatching
             m_actionState = GhostActionState.NONE;
-
+            ClearAttackVisuals();
+        }
         else if (m_actionState == GhostActionState.HIDE)
         {
             m_actionState = GhostActionState.NONE;
@@ -451,7 +454,6 @@ public class GhostAbilityBehaviour : MonoBehaviour
     void PerformOverwatch()
     {
         SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_OVERSPOOK);
-        ClearAttackVisuals();
         m_overwatchCooldownTimer = m_overwatchCooldown;
 
         // Rotate player visuals
