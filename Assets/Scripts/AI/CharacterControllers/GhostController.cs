@@ -89,6 +89,7 @@ public class GhostController : EntityBase {
 
     public override void OnSpawn()
     {
+
     }
 
     public void MoveToPositionImmediate(Vector3 _targetPosition)
@@ -169,6 +170,9 @@ public class GhostController : EntityBase {
 
         foreach (SkinnedMeshRenderer rend in sm_renderers)
             rend.enabled = true;
+
+        // Create poof particles
+        TextEffectController.Instance.GetComponent<EffectsSpawner>().SpawnRespawnPoofPrefab(transform.position);
     }
 
     public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
