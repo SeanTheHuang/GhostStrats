@@ -69,8 +69,6 @@ public class PunkController : EntityBase
         m_roomToExplore = m_roomTarget.transform.position;
 
         Material mat = m_materials[Random.Range(0, m_materials.Count)];
-        Debug.Log("amount of mats = " + m_materials.Count);
-
         SkinnedMeshRenderer[] meshs = GetComponentsInChildren<SkinnedMeshRenderer>();
         foreach(SkinnedMeshRenderer smr in meshs)
         {
