@@ -9,6 +9,7 @@ public enum SoundCatagory
     GHOST_OVERSPOOK,
     GHOST_MONSTER,
     GHOST_DROPDOLL,
+    GHOST_ACTIVATE_DOLL,
     GHOST_WALL,
     GHOST_HURT,
     PUNK_ATTACK,

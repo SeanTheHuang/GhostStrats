@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c033b5f9561c45543b122fcfa364f75b, type: 3}
-  m_Name: G_Overspook
+  m_Name: G_DollActivate
   m_EditorClassIdentifier: 
-  m_catagory: 2
+  m_catagory: 5
   m_pitch:
-    minValue: 0.91439676
-    maxValue: 1.1284049
-  m_volume: 0.8
+    minValue: 0.9143968
+    maxValue: 1.1478603
+  m_volume: 1
   m_audioClips:
-  - {fileID: 8300000, guid: 2f0f4bee7a39f6a4bb08ff739c662e5d, type: 3}
+  - {fileID: 8300000, guid: e0b5a7c38ea71134a8ba3146076fc390, type: 3}

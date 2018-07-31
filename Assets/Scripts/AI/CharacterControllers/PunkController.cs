@@ -40,7 +40,7 @@ public class PunkController : EntityBase
     public bool m_displayGizmos;
 
     Animator m_anima;
-    bool m_startwalk, m_startAttack;
+    bool m_startwalk, m_startAttack, m_currentlyWalking;
     float m_atk_time;
 
     Vector3 m_startLoc;
@@ -54,6 +54,7 @@ public class PunkController : EntityBase
         m_currentHealth = m_maxHealth;
         m_anima = GetComponent<Animator>();
         m_footstepSource = GetComponent<AudioSource>();
+        m_currentlyWalking = false;
     }
 
     private void Start()
@@ -102,7 +103,7 @@ public class PunkController : EntityBase
 
     void FootstepLogic()
     {
-        if (!m_startwalk)
+        if (!m_currentlyWalking)
             return;
 
         if (Time.time - m_lastStepSound > m_footstepTiming)
@@ -320,7 +321,7 @@ public class PunkController : EntityBase
         if(m_startwalk == false)
         {
             m_anima.SetBool("IsWalking", true);
-            m_startwalk = true;
+            m_startwalk = m_currentlyWalking = true;
             m_lastStepSound = Time.time;
         }
     }
@@ -335,23 +336,23 @@ public class PunkController : EntityBase
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
                 m_state = PunkStates.IDLE;
-                m_startwalk = false;
                 traphit = true;
             }
             if(PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
             {
+                SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_ACTIVATE_DOLL);
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f);
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 Debug.Log("hit trap");
                 m_state = PunkStates.IDLE;
-                m_startwalk = false;
                 traphit = true;
             }
 
             if (traphit)
             {
+                m_currentlyWalking = false;
                 EndTurn(0.5f);
                 return;
             }
@@ -359,7 +360,7 @@ public class PunkController : EntityBase
             if (m_realPath.Count == 0)
             {
                 m_state = PunkStates.ATTACK;
-                m_startwalk = false;
+                m_currentlyWalking = false;
                 return;
             }
             else if (m_realPath.Count > 0)
@@ -399,17 +400,16 @@ public class PunkController : EntityBase
                 m_anima.SetTrigger("StunTrigger");
                 Invoke("StunnedText", 0.5f); // Summon delayed text so not covering damage text
                 m_state = PunkStates.IDLE;
-                m_startwalk = false;
                 traphit = true;
             }
             if (PathRequestManager.Instance().GetNodeState(transform.position) == NodeState.GHOST_TRAP)
             {//check for ghost skill trap
                 m_anima.SetTrigger("StunTrigger");
+                SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_ACTIVATE_DOLL);
                 Invoke("StunnedText", 0.5f);
                 OnEntityHit(m_hiveMind.m_TrapDamage, transform.position);
                 PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
                 m_state = PunkStates.IDLE;
-                m_startwalk = false;
                 Debug.Log("hit trap");
                 traphit = true;
             }
@@ -417,6 +417,7 @@ public class PunkController : EntityBase
             if (traphit == true) 
             {
                 EndTurn(0.5f);
+                m_currentlyWalking = false;
                 return;
             }
 
@@ -441,15 +442,15 @@ public class PunkController : EntityBase
             m_movesPerformed++;
             if(m_movesPerformed == m_maxMoves)
             {
-                m_startwalk = false;
                 m_state = PunkStates.ATTACK;
+                m_currentlyWalking = false;
                 return;
             }
             if(m_pathIndex == m_realPath.Count)//end of the path
             {
                 //end it?
-                m_startwalk = false;
                 m_state = PunkStates.ATTACK;
+                m_currentlyWalking = false;
                 //change state
             }
             else
