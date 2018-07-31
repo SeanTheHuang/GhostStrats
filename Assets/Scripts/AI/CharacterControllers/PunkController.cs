@@ -445,6 +445,8 @@ public class PunkController : EntityBase
             {
                 m_state = PunkStates.ATTACK;
                 m_currentlyWalking = false;
+                Sight();
+                ChooseTarget();
                 return;
             }
             if(m_pathIndex == m_realPath.Count)//end of the path
@@ -452,6 +454,8 @@ public class PunkController : EntityBase
                 //end it?
                 m_state = PunkStates.ATTACK;
                 m_currentlyWalking = false;
+                Sight();
+                ChooseTarget();
                 //change state
             }
             else
