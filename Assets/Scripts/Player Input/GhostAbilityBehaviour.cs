@@ -44,10 +44,11 @@ public class GhostAbilityBehaviour : MonoBehaviour
     public GhostActionState m_actionState
     { get; protected set; }
 
-    protected AimingDirection m_aimingDirection; // The direction the ghost is currently facing
+    protected AimingDirection m_aimingDirection, m_oldAimDirection; // The direction the ghost is currently facing
     public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     //public bool m_abilityUsed; // Abilities can only be used if the character has not used this one this turn
     bool m_aimingAbility; // If the player is aiming their ability
+    bool m_canAimOnPunks;
 
     private GhostUi m_ghostUI;
 
@@ -110,7 +111,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_currentAffectedSquares = m_attackSquares;
         m_aimingAbility = false;
 
-        m_aimingDirection = AimingDirection.North;
+        m_aimingDirection = m_oldAimDirection = AimingDirection.North;
     }
 
     protected virtual void SetGhostType()
@@ -192,6 +193,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
             return;
 
         // Else, update attack tiles and visuals
+        m_oldAimDirection = m_aimingDirection;
         m_aimingDirection = newDirection;
         UpdateAttackTiles();
         UpdateAtackVisuals();
@@ -243,8 +245,9 @@ public class GhostAbilityBehaviour : MonoBehaviour
             m_ghostController.m_aimModel.m_locked = true;
     }
 
-    protected void StartAimingAbility()
+    protected void StartAimingAbility(bool _allowOverPunks = true)
     {
+        m_canAimOnPunks = _allowOverPunks;
         m_ghostController.ClearChoosingPath();
         MousePicker.Instance().PausePicking();
         m_aimingAbility = true;
@@ -312,16 +315,24 @@ public class GhostAbilityBehaviour : MonoBehaviour
 
         Vector3 pointAtWhichUseSkill = m_ghostController.GetDestinationPosition();
 
-        if (Input.GetKeyDown(KeyCode.T))
-            Debug.Log(m_aimingDirection);
-
         // Set all the attack positions to world space
+        List<Vector3> oldTiles = new List<Vector3>(m_rotatedAffectedSquares);
         m_rotatedAffectedSquares.Clear();
         for (int i = 0; i < m_currentAffectedSquares.Count; ++i)
         {
             //m_rotatedAffectedSquares.Add(new Vector3((m_currentAffectedSquares[i].x * rotationModifier.x) + pointAtWhichUseSkill.x, pointAtWhichUseSkill.y,
             //                                (m_currentAffectedSquares[i].z * rotationModifier.z) + pointAtWhichUseSkill.z));
             m_rotatedAffectedSquares.Add(Quaternion.AngleAxis((float)m_aimingDirection, Vector3.up) * m_currentAffectedSquares[i] + pointAtWhichUseSkill);
+        }
+
+        if (!m_canAimOnPunks)
+        {
+            // Check if any tiles hit punks. If so, revert to previous aim direction
+            if (GameMaster.Instance().GetPunksAtLocations(m_rotatedAffectedSquares).Count > 0)
+            {
+                m_rotatedAffectedSquares = oldTiles;
+                m_aimingDirection = m_oldAimDirection;
+            }
         }
     }
 

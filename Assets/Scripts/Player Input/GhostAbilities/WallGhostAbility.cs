@@ -22,7 +22,7 @@ public class WallGhostAbility : GhostAbilityBehaviour {
     {
         base.ChooseSpecial();
         m_currentAffectedSquares = m_specialSkillSquares;
-        StartAimingAbility();
+        StartAimingAbility(false);
 
         if (m_ghostController.m_aimModel)
         {
