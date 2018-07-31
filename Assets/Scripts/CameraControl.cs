@@ -68,14 +68,6 @@ public class CameraControl : MonoBehaviour
             default:
                 break;
         }
-
-        // TEST KEYS FOR CAMERA
-        if (Input.GetKeyDown(KeyCode.B))
-            m_cameraState = CameraState.ZOOMED_OUT;
-        else if (Input.GetKeyDown(KeyCode.N))
-            m_cameraState = CameraState.FOLLOW;
-        else if (Input.GetKeyDown(KeyCode.M))
-            m_cameraState = CameraState.FREE;
     }
 
     #region CAMERA_MOVE_LOGIC
