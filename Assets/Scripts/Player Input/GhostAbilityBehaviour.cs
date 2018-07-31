@@ -340,6 +340,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
             m_ghostHideModel.SetActive(false);
             m_ghostNormalModel.SetActive(true);
             PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
+            TextEffectController.Instance.GetComponent<EffectsSpawner>().SpawnHidePoofPrefab(transform.position);
         }
 
         m_aimingAbility = false;
@@ -446,7 +447,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_ghostNormalModel.SetActive(false);
         m_ghostController.m_OutofSight = true;
         m_hideCooldownTimer = m_hideCooldown; // Update the timer
-        // PUT IT HERE HUGO
+        TextEffectController.Instance.GetComponent<EffectsSpawner>().SpawnHidePoofPrefab(transform.position);
         PathRequestManager.Instance().SetNodeState(NodeState.GHOST_HIDE, transform);
         TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.HIDE, 0);
     }

@@ -2628,12 +2628,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114716803294554916, guid: 6ac87c422b4b5344c852204bb84d071e,
-        type: 2}
-      propertyPath: m_respawnParticlesPrefab
-      value: 
-      objectReference: {fileID: 4918496815851074, guid: bd5c41d25581e2247aa2b8eaa0532564,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac87c422b4b5344c852204bb84d071e, type: 2}
   m_IsPrefabParent: 0
