@@ -14,7 +14,8 @@ public enum SoundCatagory
     GHOST_HURT,
     PUNK_ATTACK,
     PUNK_HURT,
-    PUNK_DEAD
+    PUNK_DEAD,
+    RELIC_HURT
 }
 
 public class SoundEffectsPlayer : MonoBehaviour {

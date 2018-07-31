@@ -85,6 +85,7 @@ public class GhostHole : EntityBase
         //lose health
         m_currentHealth -= _damage;
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
+        SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.RELIC_HURT);
         TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.PUNK_DAMAGE, _damage);
 
         //TODO: death actions
