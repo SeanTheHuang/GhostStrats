@@ -553,7 +553,15 @@ public class PunkController : EntityBase
     void EndTurn(float extraDelay = 0)
     {
         Vector3 pos = transform.position;
-        transform.position = new Vector3(Mathf.Round(pos.x), pos.y, Mathf.Round(pos.z));
+        if (m_hiveMind.m_halfOffset)
+        {
+            transform.position = new Vector3(RoundToHalf(pos.x), pos.y, RoundToHalf(pos.z));
+        }
+        else
+        {
+            transform.position = new Vector3(Mathf.Round(pos.x), pos.y, Mathf.Round(pos.z));
+        }
+
         m_state = PunkStates.IDLE;
         m_anima.SetBool("IsWalking", false);
         Invoke("DelayedEndTurn", 0.5f + extraDelay);
@@ -694,8 +702,16 @@ public class PunkController : EntityBase
             }
             Vector3 vcopy = _v;
             Vector2 v2 = Random.insideUnitCircle * 4;
-            Vector3 v3 = new Vector3(Mathf.RoundToInt(v2.x), 0, Mathf.RoundToInt(v2.y));
-            vcopy += v3;
+            if(m_hiveMind.m_halfOffset)
+            {
+                Vector3 v3 = new Vector3(RoundToHalf(v2.x), 0, RoundToHalf(v2.y));
+                vcopy += v3;
+            }
+            else
+            {
+                Vector3 v3 = new Vector3(Mathf.RoundToInt(v2.x), 0, Mathf.RoundToInt(v2.y));
+                vcopy += v3;
+            }
 
             if (PathRequestManager.Instance().PositionIsWalkable(vcopy))
             {
@@ -804,4 +820,13 @@ public class PunkController : EntityBase
         }
         transform.position = newPos;
     }*/
+
+    float RoundToHalf(float _f)
+    {
+        float fcopy = _f;
+        fcopy -= 0.5f;
+        fcopy = Mathf.Round(fcopy);
+        fcopy += 0.5f;
+        return fcopy;
+    }
 }
