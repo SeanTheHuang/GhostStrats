@@ -11,7 +11,7 @@ public class PunkHiveMind : MonoBehaviour
         
     }
 
-
+    public bool m_halfOffset = false;
     public bool m_displayGizmos = false;
 
     // Use this for initialization
@@ -65,6 +65,7 @@ public class PunkHiveMind : MonoBehaviour
         int count = 0;
         while (true)
         {
+            count++;
             int t = Random.Range(0, _r.m_connectedRooms.Count);
             if(_r.m_connectedRooms[t].m_targeted == false)
             {
@@ -80,6 +81,7 @@ public class PunkHiveMind : MonoBehaviour
 
     public Room ChooseFirstRoom()
     {
+        //return m_RoomList[Random.Range(0, m_RoomList.Count)]; for debug
         while (true)
         {
             int temp = Random.Range(0, m_RoomList.Count);
