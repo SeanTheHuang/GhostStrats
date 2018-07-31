@@ -303,7 +303,8 @@ public class GameMaster : MonoBehaviour {
         }
 
         EndTurnWalkable();
-
+        // Wait a little bit
+        yield return new WaitForSeconds(0.5f);
         if (!CheckEndGameState())
             m_gameState = GameState.PUNK_TURN;
         else
@@ -367,7 +368,7 @@ public class GameMaster : MonoBehaviour {
         TextEffectController.Instance.PunkTurnTitle();
         SoundEffectsPlayer.Instance.PlaySound("PunkStart");
         CameraControl.Instance.SetOverviewMode();
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.2f);
         m_playPunkTurn = true;
     }
 
