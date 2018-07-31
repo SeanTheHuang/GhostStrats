@@ -124,6 +124,7 @@ public class MousePicker : MonoBehaviour {
                 {
                     // Player wants to move towards this position
                     m_currentGhost.OnConfirmTargetPosition();
+                    SoundEffectsPlayer.Instance.SelectSound();
                 }
             }
             // else, ray did not hit anything important
@@ -131,6 +132,7 @@ public class MousePicker : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire2"))
         {
+            SoundEffectsPlayer.Instance.DeselectSound();
             m_currentGhost.ResetAction();
             m_mouseMode = MouseMode.MOVEMENT;
             //m_currentGhost.GetComponent<GhostUi>().OnSelected();

@@ -20,6 +20,9 @@ public enum SoundCatagory
 
 public class SoundEffectsPlayer : MonoBehaviour {
 
+    public AudioClip m_selectSound;
+    public AudioClip m_deselectSound;
+
     public static SoundEffectsPlayer Instance
     { get; private set; }
 
@@ -43,5 +46,21 @@ public class SoundEffectsPlayer : MonoBehaviour {
                 break;
             }
         }
+    }
+
+    public void SelectSound()
+    {
+        m_source.clip = m_selectSound;
+        m_source.volume = 1;
+        m_source.pitch = 1;
+        m_source.Play();
+    }
+
+    public void DeselectSound()
+    {
+        m_source.clip = m_deselectSound;
+        m_source.volume = 1;
+        m_source.pitch = 1;
+        m_source.Play();
     }
 }
