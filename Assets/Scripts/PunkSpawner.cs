@@ -52,6 +52,7 @@ public class PunkSpawner : MonoBehaviour {
             Transform temp = Instantiate(m_punkPrefab, m_spawnPoints[randSpawnPoint].transform.position, rotation);
             CameraControl.Instance.SetFollowMode(temp); // Look at dat new punk
             GameMaster.Instance().NewPunk(temp);
+            SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.PUNK_SPAWN);
             yield return new WaitForSeconds(0.5f);
         }
 

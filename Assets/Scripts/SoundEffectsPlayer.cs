@@ -16,7 +16,8 @@ public enum SoundCatagory
     PUNK_HURT,
     PUNK_DEAD,
     RELIC_HURT,
-    GHOST_SPAWN
+    GHOST_SPAWN,
+    PUNK_SPAWN
 }
 
 [System.Serializable]
