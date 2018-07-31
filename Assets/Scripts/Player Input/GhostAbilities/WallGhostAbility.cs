@@ -53,6 +53,7 @@ public class WallGhostAbility : GhostAbilityBehaviour {
             foreach (Vector3 v3 in m_rotatedAffectedSquares)
                 PathRequestManager.Instance().TogglePositionWalkable(v3, true);
 
+            SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_WALL);
             StartCoroutine(TransformAnimation(false));
         }
 

@@ -45,6 +45,7 @@ public class GameMaster : MonoBehaviour {
     [HideInInspector]
     public bool m_punkEndedTurn;
     public bool m_punkDiedinTurn;
+    bool m_playPunkTurn;
 
     int m_currentPunkListIndex;
     public bool m_punkStillPlaying;
@@ -94,6 +95,9 @@ public class GameMaster : MonoBehaviour {
             RunPlayersTurn();
 
         StateLogic();
+
+        if (m_playPunkTurn)
+            PlayOnePunkTurn();
     }
 
     void StateLogic()
@@ -267,7 +271,7 @@ public class GameMaster : MonoBehaviour {
             if (m_playGhostInSequence)
             {
                 CameraControl.Instance.SetFollowMode(gc.transform);
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.5f);
             }
             gc.OnEndOfTurn();
 
@@ -316,6 +320,8 @@ public class GameMaster : MonoBehaviour {
 
     public void PlayOnePunkTurn()
     {
+        m_playPunkTurn = false;
+
         if (m_currentPunkListIndex >= m_punkList.Count)
         {
             // Punk turn over
@@ -334,13 +340,14 @@ public class GameMaster : MonoBehaviour {
     IEnumerator PunkTurnAnimation()
     {
         CameraControl.Instance.SetFollowMode(m_punkList[m_currentPunkListIndex].transform);
+        yield return new WaitForSeconds(0.5f);
         m_punkList[m_currentPunkListIndex].DoTurn();
 
         while (m_punkStillPlaying)
             yield return null;
 
         m_currentPunkListIndex++;
-        PlayOnePunkTurn();
+        m_playPunkTurn = true;
     }
 
     public void PunkDiedDuringTheirTurn()
@@ -359,7 +366,7 @@ public class GameMaster : MonoBehaviour {
         TextEffectController.Instance.PunkTurnTitle();
         CameraControl.Instance.SetOverviewMode();
         yield return new WaitForSeconds(0.5f);
-        PlayOnePunkTurn();
+        m_playPunkTurn = true;
     }
 
     void PunkStartTurn()

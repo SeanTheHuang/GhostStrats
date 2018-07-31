@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c033b5f9561c45543b122fcfa364f75b, type: 3}
-  m_Name: P_Attack
+  m_Name: G_RelicHit
   m_EditorClassIdentifier: 
-  m_catagory: 8
+  m_catagory: 11
   m_pitch:
-    minValue: 1.1478598
-    maxValue: 1.4785988
-  m_volume: 1
+    minValue: 0.75875473
+    maxValue: 0.9727632
+  m_volume: 0.8
   m_audioClips:
-  - {fileID: 8300000, guid: 4d2c282667ee5cb4d9b68fbee25451ac, type: 3}
+  - {fileID: 8300000, guid: 861fafac863e78a45ab1868b2f6b8ba0, type: 3}
