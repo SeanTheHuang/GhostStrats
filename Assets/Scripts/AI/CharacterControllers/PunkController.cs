@@ -45,6 +45,7 @@ public class PunkController : EntityBase
 
     Vector3 m_startLoc;
     AudioSource m_footstepSource;
+    public List<Material> m_materials;
 
     private void Awake()
     {
@@ -55,6 +56,8 @@ public class PunkController : EntityBase
         m_anima = GetComponent<Animator>();
         m_footstepSource = GetComponent<AudioSource>();
         m_currentlyWalking = false;
+
+        
     }
 
     private void Start()
@@ -64,6 +67,15 @@ public class PunkController : EntityBase
         m_roomTarget = m_hiveMind.ChooseFirstRoom();
         m_roomTarget.m_targeted = true;
         m_roomToExplore = m_roomTarget.transform.position;
+
+        Material mat = m_materials[Random.Range(0, m_materials.Count)];
+        Debug.Log("amount of mats = " + m_materials.Count);
+
+        SkinnedMeshRenderer[] meshs = GetComponentsInChildren<SkinnedMeshRenderer>();
+        foreach(SkinnedMeshRenderer smr in meshs)
+        {
+            smr.sharedMaterial = mat;
+        }
     }
 
     private void Update()
