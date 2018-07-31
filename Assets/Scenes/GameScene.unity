@@ -6205,7 +6205,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0, g: 0.9407029, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5058824, b: 0, a: 1}
   m_Intensity: 3.89
   m_Range: 5.30645
   m_SpotAngle: 30
@@ -7219,15 +7219,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.98
+      value: -13.984985
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.23
+      value: 6.228286
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.72
+      value: 7.720948
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
       propertyPath: m_LocalRotation.x
@@ -40649,15 +40649,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.98
+      value: -13.984983
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.98
+      value: 6.9734583
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.39
+      value: 8.387818
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2765b83e2a436a49bd2898e07fb1e70, type: 3}
       propertyPath: m_LocalRotation.x
@@ -43590,8 +43590,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0, g: 0.9407029, b: 1, a: 1}
-  m_Intensity: 3.89
+  m_Color: {r: 1, g: 0.5058824, b: 0, a: 1}
+  m_Intensity: 4
   m_Range: 5.30645
   m_SpotAngle: 30
   m_CookieSize: 10
