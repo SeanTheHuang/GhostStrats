@@ -22,6 +22,7 @@ public class ScreamGhostAbility : GhostAbilityBehaviour {
     public override void ChooseSpecial()
     {
         base.ChooseSpecial();
+        SoundEffectsPlayer.Instance.PlaySound("Select");
         ImmediateConfirmAbility();
 
         if (m_ghostController.m_aimModel)

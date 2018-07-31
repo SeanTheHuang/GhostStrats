@@ -15,7 +15,7 @@ public class DollGhostAbility : GhostAbilityBehaviour {
     {
         base.ChooseSpecial();
         ImmediateConfirmAbility();
-
+        SoundEffectsPlayer.Instance.PlaySound("Select");
         if (m_ghostController.m_aimModel)
         {
             m_ghostController.m_aimModel.transform.position = m_ghostController.TargetPoint();

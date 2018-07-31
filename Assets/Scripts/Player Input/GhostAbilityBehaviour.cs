@@ -338,6 +338,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
             m_ghostController.m_OutofSight = false;
             m_ghostHideModel.SetActive(false);
             m_ghostNormalModel.SetActive(true);
+            PathRequestManager.Instance().SetNodeState(NodeState.EMPTY, transform);
         }
 
         m_aimingAbility = false;
@@ -505,7 +506,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         m_actionState = GhostActionState.HIDE;
         m_ghostController.EndMovement();
         ImmediateConfirmAbility();
-
+        SoundEffectsPlayer.Instance.PlaySound("Select");
         if (m_ghostController.m_aimModel)
         {
             m_ghostController.m_aimModel.transform.position = m_ghostController.TargetPoint();

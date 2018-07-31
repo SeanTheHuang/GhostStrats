@@ -158,6 +158,7 @@ public class GhostController : EntityBase {
     public void ShowGhost()
     {
         // ASSUMING THIS IS ONLY CALLED WHEN THEY RESPAWN
+        SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_SPAWN);
         m_currentHealth = m_maxHealth;
 
         gameObject.layer = m_layerMask; // Make sure mouse can hit ghost again
@@ -188,6 +189,7 @@ public class GhostController : EntityBase {
         TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.PUNK_DAMAGE, _damage);
         if (m_currentHealth < 1)
         {
+            SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.GHOST_SPAWN);
             if (m_ghostAnimator != null)
                 m_ghostAnimator.SetTrigger("Death");
 

@@ -367,7 +367,7 @@ public class GameMaster : MonoBehaviour {
         TextEffectController.Instance.PunkTurnTitle();
         SoundEffectsPlayer.Instance.PlaySound("PunkStart");
         CameraControl.Instance.SetOverviewMode();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.0f);
         m_playPunkTurn = true;
     }
 
