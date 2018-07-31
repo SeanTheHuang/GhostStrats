@@ -682,8 +682,15 @@ public class PunkController : EntityBase
 
     Vector3 RandPosAroundWall(Vector3 _v)
     {
+        int counter = 0;
         while (true)
         {
+            counter++;
+            if(counter > 100)
+            {
+                Debug.Log("stuck in sound while loop in PunkController.cs");
+                return _v;
+            }
             Vector3 vcopy = _v;
             Vector2 v2 = Random.insideUnitCircle * 4;
             Vector3 v3 = new Vector3(Mathf.RoundToInt(v2.x), 0, Mathf.RoundToInt(v2.y));
