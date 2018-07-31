@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c033b5f9561c45543b122fcfa364f75b, type: 3}
   m_Name: G_Wall
   m_EditorClassIdentifier: 
-  m_catagory: 5
+  m_catagory: 6
   m_pitch:
-    minValue: 0.91439676
-    maxValue: 1.1284049
+    minValue: 0.75875473
+    maxValue: 0.9727632
   m_volume: 0.8
   m_audioClips:
-  - {fileID: 8300000, guid: 4e4533680660ae64cb586bc62f10e07b, type: 3}
+  - {fileID: 8300000, guid: 8e04f41493ec2f74cbce9014b8e0ed69, type: 3}
