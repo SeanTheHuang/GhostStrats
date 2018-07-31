@@ -27,6 +27,10 @@ public class PunkHealthBar : MonoBehaviour
         transform.rotation = Quaternion.identity;
         if(m_hp != m_punkCon.GetCurrentHealth())
         {//change health
+            if (m_hp < 0)
+            {
+                m_hp = 0;
+            }
             Debug.Log("TIME TO CHANGE THE HELATH");
             m_hp = m_punkCon.GetCurrentHealth();
             float scale = (float)m_hp / (float)m_maxHp;
