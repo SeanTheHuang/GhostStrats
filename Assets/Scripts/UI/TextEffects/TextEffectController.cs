@@ -42,20 +42,6 @@ public class TextEffectController : MonoBehaviour {
         Instance = this;
     }
 
-    private void Update()
-    {
-        // TEST SHIT
-        // TEST CODE
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            PunkTurnTitle();
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            GhostTurnTitle();
-        }
-    }
 
     EffectTextTemplate GetTemplateFromType(TextEffectTypes _type)
     {
