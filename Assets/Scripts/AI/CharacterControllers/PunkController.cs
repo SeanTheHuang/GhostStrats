@@ -124,6 +124,7 @@ public class PunkController : EntityBase
     public override void OnEntityHit(int _damage, Vector3 _positionOfHitter)
     {
         // Adjust damage according to direction
+        SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.PUNK_HURT);
         _damage = GetDamageBaseOffDirection(_damage, transform.position - _positionOfHitter);
         Debug.Log(transform.name + " has been hit for " + _damage.ToString() + " damage.");
 
