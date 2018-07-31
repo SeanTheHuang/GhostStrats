@@ -18,10 +18,17 @@ public enum SoundCatagory
     RELIC_HURT
 }
 
+[System.Serializable]
+public struct SoundClip
+{
+    public AudioClip m_audioClip;
+    public string m_name;
+}
+
 public class SoundEffectsPlayer : MonoBehaviour {
 
-    public AudioClip m_selectSound;
-    public AudioClip m_deselectSound;
+    public SoundClip[] m_initalClips;
+    Dictionary<string, AudioClip> m_soundDict;
 
     public static SoundEffectsPlayer Instance
     { get; private set; }
@@ -34,6 +41,13 @@ public class SoundEffectsPlayer : MonoBehaviour {
         // Shitty singleton baby
         Instance = this;
         m_source = GetComponent<AudioSource>();
+
+        // Initialize soundDict
+        m_soundDict = new Dictionary<string, AudioClip>();
+        foreach (SoundClip sc in m_initalClips)
+        {
+            m_soundDict.Add(sc.m_name, sc.m_audioClip);
+        }
     }
 
     public void PlaySound(SoundCatagory _catagory)
@@ -48,17 +62,9 @@ public class SoundEffectsPlayer : MonoBehaviour {
         }
     }
 
-    public void SelectSound()
+    public void PlaySound(string _name)
     {
-        m_source.clip = m_selectSound;
-        m_source.volume = 1;
-        m_source.pitch = 1;
-        m_source.Play();
-    }
-
-    public void DeselectSound()
-    {
-        m_source.clip = m_deselectSound;
+        m_source.clip = m_soundDict[_name];
         m_source.volume = 1;
         m_source.pitch = 1;
         m_source.Play();

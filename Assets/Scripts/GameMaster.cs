@@ -245,6 +245,7 @@ public class GameMaster : MonoBehaviour {
         // Trigger the announcement that its the player's turn to appear on the UI
         //m_AnnouncementBannerImage.GetComponent<AnnouncementBannerController>().Appear();
         TextEffectController.Instance.GhostTurnTitle();
+        SoundEffectsPlayer.Instance.PlaySound("GhostStart");
     }
 
     void RunPlayersTurn()
@@ -364,8 +365,9 @@ public class GameMaster : MonoBehaviour {
 
         m_currentPunkListIndex = 0;
         TextEffectController.Instance.PunkTurnTitle();
+        SoundEffectsPlayer.Instance.PlaySound("PunkStart");
         CameraControl.Instance.SetOverviewMode();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         m_playPunkTurn = true;
     }
 
