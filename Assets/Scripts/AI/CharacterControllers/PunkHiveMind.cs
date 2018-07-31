@@ -74,7 +74,8 @@ public class PunkHiveMind : MonoBehaviour
 
             if(count > 30)
             {//safety as some room only connect to two others.
-                return ChooseFirstRoom();
+                
+                return ChooseFirstRoom(_r);
             }
         }
     }
@@ -101,6 +102,34 @@ public class PunkHiveMind : MonoBehaviour
             }
 
             if(check == false)
+            {
+                return m_RoomList[Random.Range(0, m_RoomList.Count)];
+            }
+        }
+    }
+
+    public Room ChooseFirstRoom(Room _r)
+    {
+        //return m_RoomList[Random.Range(0, m_RoomList.Count)]; for debug
+        while (true)
+        {
+            int temp = Random.Range(0, m_RoomList.Count);
+            if (m_RoomList[temp].m_targeted == false)
+            {
+                return m_RoomList[temp];
+            }
+
+            bool check = false;
+            foreach (Room rr in m_RoomList)
+            {
+                if (rr.m_targeted == false && rr != _r)
+                {
+                    check = true;
+                    break;
+                }
+            }
+
+            if (check == false)
             {
                 return m_RoomList[Random.Range(0, m_RoomList.Count)];
             }
