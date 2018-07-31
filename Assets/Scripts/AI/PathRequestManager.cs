@@ -96,8 +96,16 @@ public class PathRequestManager : MonoBehaviour {
 
     void CheckRemoveDoll(NodeState _newState, Node _currentNode)
     {
+        // Removing doll
         if (_currentNode.m_nodeState == NodeState.GHOST_TRAP
             && _newState == NodeState.EMPTY)
+        {
+            Destroy(_currentNode.m_entityOnTile.gameObject);
+            _currentNode.m_entityOnTile = null;
+        }
+        // Remove doll if walling here
+        if (_newState == NodeState.GHOST_WALL
+            && _currentNode.m_nodeState == NodeState.GHOST_TRAP)
         {
             Destroy(_currentNode.m_entityOnTile.gameObject);
             _currentNode.m_entityOnTile = null;

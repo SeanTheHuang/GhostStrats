@@ -139,7 +139,7 @@ public class GhostController : EntityBase {
         yield return null;
     }
 
-    public void HideGhost()
+    public void HideGhost(bool _dieForReal = false)
     {
         // Make sure mouse can't hit dead ghost
         gameObject.layer = 2;
@@ -156,6 +156,18 @@ public class GhostController : EntityBase {
 
         // Create poof particles
         TextEffectController.Instance.GetComponent<EffectsSpawner>().SpawnRespawnPoofPrefab(transform.position);
+
+        if (_dieForReal)
+        {
+            // Get rid of all particle systems
+            PS_AutoDestroy[] particles = GetComponentsInChildren<PS_AutoDestroy>();
+            foreach (PS_AutoDestroy pad in particles)
+            {
+                ParticleSystem.MainModule main = pad.GetComponent<ParticleSystem>().main;
+                main.loop = false;
+                pad.transform.SetParent(null);
+            }
+        }
     }
 
     public void ShowGhost()

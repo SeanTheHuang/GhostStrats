@@ -99,7 +99,7 @@ public class GhostHole : EntityBase
             GameMaster.Instance().RemoveGhostHole(this);
             Destroy(gameObject);
             if (m_linkedGhost)
-                m_linkedGhost.HideGhost();
+                m_linkedGhost.HideGhost(true);
         }
     }
     public override void OnSelected()
