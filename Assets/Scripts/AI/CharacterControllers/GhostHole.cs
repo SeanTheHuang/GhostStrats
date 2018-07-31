@@ -16,6 +16,8 @@ public class GhostHole : EntityBase
     public Transform m_targetPosition;
     bool m_ghostIsAlive;
 
+    public GameObject m_damagedParticleEffect;
+
     TextMeshPro m_respawnText;
     public bool HoleIsAlive
     {
@@ -89,6 +91,7 @@ public class GhostHole : EntityBase
         SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.RELIC_HURT);
         TextEffectController.Instance.PlayEffectText(transform.position, TextEffectTypes.PUNK_DAMAGE, _damage);
 
+        Instantiate(m_damagedParticleEffect, transform.position, m_damagedParticleEffect.transform.rotation);
         //TODO: death actions
         if (m_currentHealth < 1)
         {
