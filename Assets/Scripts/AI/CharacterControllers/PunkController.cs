@@ -511,6 +511,7 @@ public class PunkController : EntityBase
                 m_anima.SetTrigger("AttackTrigger");
                 m_atk_time = Time.time;
                 m_startAttack = true;
+                m_currentlyWalking = false;
                 FacePrey();
                 Invoke("ApplyAttack", 1.0f);
             }
