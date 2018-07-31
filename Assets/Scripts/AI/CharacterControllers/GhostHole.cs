@@ -63,7 +63,6 @@ public class GhostHole : EntityBase
         // TODO: ghost spawn animation
         m_ghostIsAlive = true;
         m_linkedGhost.ShowGhost();
-        m_linkedGhost.transform.position = transform.position;
         m_respawnAnimationDone = false;
         m_linkedGhost.MoveToPositionImmediate(m_targetPosition.position);
         m_linkedGhost.resetUIHealth();
@@ -77,6 +76,8 @@ public class GhostHole : EntityBase
         m_linkedGhost.HideGhost();
         m_ghostIsAlive = false;
         m_currentReviveTime = m_baseReviveTime+1;
+        m_linkedGhost.transform.position = transform.position;
+        m_linkedGhost.transform.rotation = transform.rotation;
         UpdateRespawnText();
     }
 
