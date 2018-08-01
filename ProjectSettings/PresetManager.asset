@@ -81,3 +81,11 @@ PresetManager:
     defaultPresets:
     - m_Preset: {fileID: 2655988077585873504, guid: a6a428a40ede8774cbdfc6aae8d28487,
         type: 2}
+  - type:
+      m_NativeTypeID: 114
+      m_ManagedTypePPtr: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600,
+        type: 3}
+      m_ManagedTypeFallback: 
+    defaultPresets:
+    - m_Preset: {fileID: 2655988077585873504, guid: d3bf339bb44704f46a1ebb84d06ede8e,
+        type: 2}
