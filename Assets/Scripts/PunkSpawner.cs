@@ -59,7 +59,7 @@ public class PunkSpawner : MonoBehaviour {
             CameraControl.Instance.SetFollowMode(temp); // Look at dat new punk
             GameMaster.Instance().NewPunk(temp);
             SoundEffectsPlayer.Instance.PlaySound(SoundCatagory.PUNK_SPAWN);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.65f);
         }
 
         takenSpots.Clear();

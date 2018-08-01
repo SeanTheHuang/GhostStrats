@@ -244,7 +244,7 @@ public class GameMaster : MonoBehaviour {
                 while (!gh.m_respawnAnimationDone)
                     yield return null;
 
-                yield return new WaitForSeconds(0.4f); // Small delay after respawn to gauge dafuq happened
+                yield return new WaitForSeconds(0.7f); // Small delay after respawn to gauge dafuq happened
             }
         }
 
