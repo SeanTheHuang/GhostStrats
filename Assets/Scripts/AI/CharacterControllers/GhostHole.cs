@@ -62,7 +62,8 @@ public class GhostHole : EntityBase
             return false;
 
         // Spawn ghost and make them move to target position
-        // TODO: ghost spawn animation
+        // Create poof particles
+        TextEffectController.Instance.GetComponent<EffectsSpawner>().SpawnRespawnPoofPrefab(transform.position);
         m_ghostIsAlive = true;
         m_linkedGhost.ShowGhost();
         m_respawnAnimationDone = false;
@@ -77,6 +78,8 @@ public class GhostHole : EntityBase
     {
         m_ghostIsAlive = false;
         m_currentReviveTime = m_baseReviveTime+1;
+        // Create poof particles
+        TextEffectController.Instance.GetComponent<EffectsSpawner>().SpawnRespawnPoofPrefab(m_linkedGhost.transform.position);
         m_linkedGhost.transform.position = transform.position;
         m_linkedGhost.transform.rotation = transform.rotation;
         m_linkedGhost.HideGhost();
@@ -96,6 +99,8 @@ public class GhostHole : EntityBase
         if (m_currentHealth < 1)
         {
             m_linkedGhost.OnHardDeath();
+            // Create poof particles
+            TextEffectController.Instance.GetComponent<EffectsSpawner>().SpawnRespawnPoofPrefab(m_linkedGhost.transform.position);
             GameMaster.Instance().RemoveGhostHole(this);
             Destroy(gameObject);
             if (m_linkedGhost)
