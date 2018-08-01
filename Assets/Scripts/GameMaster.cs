@@ -34,6 +34,7 @@ public class GameMaster : MonoBehaviour {
 
     public GameObject m_AnnouncementBannerImage;
     public GameObject m_EndTurnPromptImage;
+    public GameObject m_startGameText;
 
     static GameMaster instance;
 
@@ -46,6 +47,7 @@ public class GameMaster : MonoBehaviour {
     [HideInInspector]
     public bool m_punkEndedTurn;
     public bool m_punkDiedinTurn;
+    public bool m_gameRunning;
     bool m_playPunkTurn;
 
     int m_currentPunkListIndex;
@@ -90,9 +92,18 @@ public class GameMaster : MonoBehaviour {
 
     private void Update()
     {
-        // TEST: Just a button to start the game
-        if (Input.GetKeyDown(KeyCode.P))
-            m_gameState = GameState.PUNK_TURN;
+        if (!m_gameRunning)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                m_gameState = GameState.PUNK_TURN;
+                m_gameRunning = true;
+
+                if (m_startGameText)
+                    m_startGameText.SetActive(false);
+            }
+            return;
+        }
 
         // TEST: Make all player ghosts move
         if (Input.GetKeyDown(KeyCode.Space) && m_playersTurn)

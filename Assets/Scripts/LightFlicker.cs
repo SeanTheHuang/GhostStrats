@@ -23,7 +23,7 @@ public class LightFlicker : MonoBehaviour {
         float ran = Random.Range(0, 100);
         if(Time.time - m_startTime < 4.0f)
         {
-            if (ran > Random.Range(66, 100))
+            if (ran > Random.Range(99, 100))
             {
                 m_on = !m_on;
             }
@@ -39,7 +39,7 @@ public class LightFlicker : MonoBehaviour {
             {
                 Debug.Log("flicktime");
                 m_flicktime = Time.time;
-                 wait = Random.Range(0.1f, 0.35f);
+                 wait = Random.Range(0.9f, 2.35f);
             }
             else if (m_flicktime != 0)
             {
