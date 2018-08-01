@@ -7,7 +7,7 @@ public class PunkHealthBar : MonoBehaviour
     Transform m_greenBar;
     Transform m_redBar;
 
-    PunkController m_punkCon;
+    EntityBase m_punkCon;
 
     int m_hp;
     int m_maxHp;
@@ -16,7 +16,7 @@ public class PunkHealthBar : MonoBehaviour
     {
         m_greenBar = transform.GetChild(0);
         m_redBar = transform.GetChild(1);
-        m_punkCon = transform.parent.GetComponent<PunkController>();
+        m_punkCon = transform.parent.GetComponent<EntityBase>();
         m_hp = m_punkCon.GetCurrentHealth();
         m_maxHp = m_punkCon.m_maxHealth;
     }
