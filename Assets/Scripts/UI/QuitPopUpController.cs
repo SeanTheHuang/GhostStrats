@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class QuitPopUpController : MonoBehaviour {
 
@@ -13,7 +14,9 @@ public class QuitPopUpController : MonoBehaviour {
 
     public void QuitGame()
     {
-        Application.Quit();
+        //Application.Quit();
+        
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void HidePopup()
