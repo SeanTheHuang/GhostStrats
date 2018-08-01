@@ -33044,6 +33044,11 @@ Prefab:
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 108728641256985414, guid: f86567294c39e6549ac676bb367cc759,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 5.46
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f86567294c39e6549ac676bb367cc759, type: 2}
   m_IsPrefabParent: 0
@@ -46703,6 +46708,11 @@ Prefab:
     - target: {fileID: 1384504427118568, guid: 3a38e63b7a21a504c884f3149cf0fff3, type: 2}
       propertyPath: m_Name
       value: Lamp_PointLight (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 108043992110108968, guid: 3a38e63b7a21a504c884f3149cf0fff3,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a38e63b7a21a504c884f3149cf0fff3, type: 2}
@@ -62453,6 +62463,11 @@ Prefab:
       propertyPath: m_Name
       value: Lamp_PointLight (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 108043992110108968, guid: 3a38e63b7a21a504c884f3149cf0fff3,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 3.64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a38e63b7a21a504c884f3149cf0fff3, type: 2}
   m_IsPrefabParent: 0
@@ -67405,7 +67420,7 @@ Prefab:
     - target: {fileID: 20652016882901022, guid: e73241f871eea704090cb2c6056bc126,
         type: 2}
       propertyPath: m_RenderingPath
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114589191767602568, guid: e73241f871eea704090cb2c6056bc126,
         type: 2}
@@ -67472,6 +67487,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4175350136681926, guid: f86567294c39e6549ac676bb367cc759, type: 2}
       propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 108728641256985414, guid: f86567294c39e6549ac676bb367cc759,
+        type: 2}
+      propertyPath: m_Intensity
       value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -72946,6 +72966,11 @@ Prefab:
     - target: {fileID: 4175350136681926, guid: f86567294c39e6549ac676bb367cc759, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -18.552
+      objectReference: {fileID: 0}
+    - target: {fileID: 108728641256985414, guid: f86567294c39e6549ac676bb367cc759,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 6.78
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f86567294c39e6549ac676bb367cc759, type: 2}
