@@ -147,6 +147,7 @@ public class GhostController : EntityBase {
         MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
         SkinnedMeshRenderer[] sm_renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         GhostIsAlive = false;
+        m_currentStopPoint = transform.position;
 
         foreach (MeshRenderer rend in renderers)
             rend.enabled = false;

@@ -75,11 +75,11 @@ public class GhostHole : EntityBase
 
     public void OnGhostDeath()
     {
-        m_linkedGhost.HideGhost();
         m_ghostIsAlive = false;
         m_currentReviveTime = m_baseReviveTime+1;
         m_linkedGhost.transform.position = transform.position;
         m_linkedGhost.transform.rotation = transform.rotation;
+        m_linkedGhost.HideGhost();
         UpdateRespawnText();
     }
 
