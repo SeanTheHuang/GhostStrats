@@ -593,6 +593,20 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1146528093481562, guid: a6814f9035a53cc43973d1f00a2804f5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114753840207627422, guid: a6814f9035a53cc43973d1f00a2804f5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783305217564128, guid: a6814f9035a53cc43973d1f00a2804f5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6814f9035a53cc43973d1f00a2804f5, type: 2}
   m_IsPrefabParent: 0
@@ -604,6 +618,11 @@ RectTransform:
 --- !u!224 &22353274 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224434561319729892, guid: a6814f9035a53cc43973d1f00a2804f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 22353272}
+--- !u!1 &22353275 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1753391045336708, guid: a6814f9035a53cc43973d1f00a2804f5,
     type: 2}
   m_PrefabInternal: {fileID: 22353272}
 --- !u!1001 &25736442
@@ -4101,7 +4120,7 @@ Prefab:
         type: 2}
       propertyPath: m_startGameText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 22353275}
     - target: {fileID: 114013017944642722, guid: 7e5c38c3706666e4e800758c76342cfe,
         type: 2}
       propertyPath: m_spawnPoints.Array.data[0]
