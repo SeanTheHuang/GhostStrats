@@ -44,13 +44,13 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.595
+    value: 0.55
   smoothness:
     overrideState: 1
-    value: 0.808
+    value: 0.85
   roundness:
     overrideState: 1
-    value: 0.037
+    value: 0.05
   rounded:
     overrideState: 1
     value: 0
@@ -77,13 +77,13 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   colored:
-    overrideState: 0
+    overrideState: 1
     value: 1
   intensity:
     overrideState: 1
-    value: 0.203
+    value: 0.1
   size:
-    overrideState: 0
+    overrideState: 1
     value: 1
   lumContrib:
     overrideState: 0
@@ -133,10 +133,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.61
+    value: 0.75
   color:
     overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 1}
+    value: {r: 0.09433961, g: 0.0057849786, b: 0.0057849786, a: 1}
   ambientOnly:
     overrideState: 0
     value: 1
@@ -213,7 +213,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: -30
+    value: -25
   tint:
     overrideState: 1
     value: 0
@@ -1488,7 +1488,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 1.2
+    value: 2
   threshold:
     overrideState: 1
     value: 1
@@ -1500,7 +1500,7 @@ MonoBehaviour:
     value: 65414.9
   diffusion:
     overrideState: 1
-    value: 6.23
+    value: 6.5
   anamorphicRatio:
     overrideState: 0
     value: 0.25
