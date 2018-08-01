@@ -26,9 +26,15 @@ public class PunkSpawner : MonoBehaviour {
         if (m_spawnLogicIndex >= m_spawns.Length) // No more punks to spawn!!
             return;
 
-        m_turnCounter++;
+        //m_turnCounter++;
 
-        if (m_turnCounter >= m_spawns[m_spawnLogicIndex].m_numTurnsUntilSpawn)
+        //if (m_turnCounter >= m_spawns[m_spawnLogicIndex].m_numTurnsUntilSpawn)
+        //{
+        //    m_running = true;
+        //    StartCoroutine(SpawnAnimation());
+        //}
+
+        if (!GameMaster.Instance().ThereArePunksStillAlive())
         {
             m_running = true;
             StartCoroutine(SpawnAnimation());

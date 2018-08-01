@@ -52,6 +52,9 @@ public class GameMaster : MonoBehaviour {
     int m_currentPunkListIndex;
     public bool m_punkStillPlaying;
 
+    public bool ThereArePunksStillAlive()
+    { return m_punkList.Count > 0; }
+
     public static GameMaster Instance()
     {
         return instance;
