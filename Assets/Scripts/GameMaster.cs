@@ -57,7 +57,10 @@ public class GameMaster : MonoBehaviour {
     { return m_punkList.Count > 0; }
 
     string m_sceneToChangeTo = "";
-    public Transform m_punkWinBanner, m_ghostWinBanner;
+    [Header("For Scene Change")]
+    public Transform m_punkWinBanner;
+    public Transform m_ghostWinBanner;
+    public string m_nextSceneName;
 
     public static GameMaster Instance()
     {
@@ -190,14 +193,9 @@ public class GameMaster : MonoBehaviour {
         Debug.Log("PLAYER WON");
 
         m_ghostWinBanner.gameObject.SetActive(true);
-        int buildIndex = SceneManager.GetActiveScene().buildIndex;
-        buildIndex++;
-        if(buildIndex >= SceneManager.sceneCount)
-        {
-            buildIndex = 0;
-        }
-        m_sceneToChangeTo = SceneManager.GetSceneByBuildIndex(buildIndex).name;
-
+        
+        m_sceneToChangeTo = m_nextSceneName;
+        Debug.Log(m_sceneToChangeTo);
         Invoke("ChangeScene", 4.0f);
     }
 

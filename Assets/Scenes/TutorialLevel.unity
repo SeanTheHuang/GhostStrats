@@ -4217,6 +4217,11 @@ Prefab:
       propertyPath: m_RoomList.Array.data[2]
       value: 
       objectReference: {fileID: 2080402258}
+    - target: {fileID: 114664700845369444, guid: 7e5c38c3706666e4e800758c76342cfe,
+        type: 2}
+      propertyPath: m_nextSceneName
+      value: wallscene 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e5c38c3706666e4e800758c76342cfe, type: 2}
   m_IsPrefabParent: 0
