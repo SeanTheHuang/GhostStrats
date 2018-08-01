@@ -50265,6 +50265,12 @@ Prefab:
       propertyPath: m_tutorialMenu
       value: 
       objectReference: {fileID: 789151755}
+    - target: {fileID: 114359937157858716, guid: 7e5c38c3706666e4e800758c76342cfe,
+        type: 2}
+      propertyPath: m_textBodies.Array.data[6]
+      value: Drop a doll that scares and stuns any punks that walk onto it. This ghost
+        can move again after using this ability.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e5c38c3706666e4e800758c76342cfe, type: 2}
   m_IsPrefabParent: 0
