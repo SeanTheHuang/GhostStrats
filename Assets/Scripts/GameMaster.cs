@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour {
 
@@ -54,6 +55,9 @@ public class GameMaster : MonoBehaviour {
 
     public bool ThereArePunksStillAlive()
     { return m_punkList.Count > 0; }
+
+    string m_sceneToChangeTo = "";
+    public Transform m_punkWinBanner, m_ghostWinBanner;
 
     public static GameMaster Instance()
     {
@@ -184,12 +188,33 @@ public class GameMaster : MonoBehaviour {
     {
         // TODO
         Debug.Log("PLAYER WON");
+
+        m_ghostWinBanner.gameObject.SetActive(true);
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+        buildIndex++;
+        if(buildIndex >= SceneManager.sceneCount)
+        {
+            buildIndex = 0;
+        }
+        m_sceneToChangeTo = SceneManager.GetSceneByBuildIndex(buildIndex).name;
+
+        Invoke("ChangeScene", 4.0f);
     }
 
     void OnPlayerLose()
     {
         // TODO
         Debug.Log("PLAYER LOST");
+        m_punkWinBanner.gameObject.SetActive(true);
+        m_sceneToChangeTo = SceneManager.GetActiveScene().name;
+
+        Invoke("ChangeScene", 4.0f);
+        
+    }
+
+    void ChangeScene()
+    {
+        SceneManager.LoadScene(m_sceneToChangeTo);
     }
 
     #endregion  
