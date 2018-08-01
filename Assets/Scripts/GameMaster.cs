@@ -196,6 +196,7 @@ public class GameMaster : MonoBehaviour {
         
         m_sceneToChangeTo = m_nextSceneName;
         Debug.Log(m_sceneToChangeTo);
+        SoundEffectsPlayer.Instance.PlaySound("GhostWin");
         Invoke("ChangeScene", 4.0f);
     }
 
@@ -205,6 +206,7 @@ public class GameMaster : MonoBehaviour {
         Debug.Log("PLAYER LOST");
         m_punkWinBanner.gameObject.SetActive(true);
         m_sceneToChangeTo = SceneManager.GetActiveScene().name;
+        SoundEffectsPlayer.Instance.PlaySound("PunkWin");
 
         Invoke("ChangeScene", 4.0f);
         

@@ -4157,6 +4157,11 @@ Prefab:
       propertyPath: m_spawnPoints.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114504173856973156, guid: 7e5c38c3706666e4e800758c76342cfe,
+        type: 2}
+      propertyPath: m_initalClips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 114664700845369444, guid: 7e5c38c3706666e4e800758c76342cfe,
         type: 2}
       propertyPath: m_startGhostArray.Array.size
@@ -4344,6 +4349,26 @@ Prefab:
       propertyPath: m_textBodies.Array.data[6]
       value: Drop a doll that scares and stuns any punks that walk onto it. This ghost
         can move again after using this ability.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114504173856973156, guid: 7e5c38c3706666e4e800758c76342cfe,
+        type: 2}
+      propertyPath: m_initalClips.Array.data[4].m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b95b3bb19fd16c40982b5202b054f55, type: 3}
+    - target: {fileID: 114504173856973156, guid: 7e5c38c3706666e4e800758c76342cfe,
+        type: 2}
+      propertyPath: m_initalClips.Array.data[4].m_name
+      value: PunkWin
+      objectReference: {fileID: 0}
+    - target: {fileID: 114504173856973156, guid: 7e5c38c3706666e4e800758c76342cfe,
+        type: 2}
+      propertyPath: m_initalClips.Array.data[5].m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: eeb597dd42fab4445a4c82cb0b2f7807, type: 3}
+    - target: {fileID: 114504173856973156, guid: 7e5c38c3706666e4e800758c76342cfe,
+        type: 2}
+      propertyPath: m_initalClips.Array.data[5].m_name
+      value: GhostWin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e5c38c3706666e4e800758c76342cfe, type: 2}
@@ -22326,12 +22351,12 @@ Prefab:
     - target: {fileID: 114454300847164536, guid: 55b645bc5e135934f8dcbbdeb5abb436,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114454300847164536, guid: 55b645bc5e135934f8dcbbdeb5abb436,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55b645bc5e135934f8dcbbdeb5abb436, type: 2}
