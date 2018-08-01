@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: M_Lamps
+  m_Name: M_ExteriorLamps
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -72,5 +72,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.7264151, g: 0.3025375, b: 0.09251513, a: 1}
-    - _EmissionColor: {r: 1.2976087, g: 0.013587526, b: 0, a: 1}
+    - _Color: {r: 0.24350302, g: 0.9056604, b: 0.4339594, a: 1}
+    - _EmissionColor: {r: 0, g: 1, b: 0.13710785, a: 1}

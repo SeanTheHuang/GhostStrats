@@ -340,6 +340,10 @@ public class GhostController : EntityBase {
 
     public void OnStartOfTurn()
     {
+        // Only do things when still alive
+        if (!GhostIsAlive)
+            return;
+
         // Reset variables
         m_performing = false;
         m_positionAtStartOfTurn = transform.position;

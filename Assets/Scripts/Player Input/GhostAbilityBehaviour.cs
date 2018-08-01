@@ -139,6 +139,7 @@ public class GhostAbilityBehaviour : MonoBehaviour
         else if (Input.GetButtonDown("Fire2"))
         {
             // Right click = cancel ability selection
+            m_ghostController.ResetAction();
             ResetAction();
             MousePicker.Instance().FinishAimingAbility();
         }
